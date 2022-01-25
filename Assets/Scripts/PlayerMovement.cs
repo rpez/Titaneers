@@ -79,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
     PlayerControls.GroundMovementActions map;
     public Vector2 horizontalInput;
 
+    public TimeManager m_timeManager;
+
     private void OnEnable()
     {
         controls.Enable();
@@ -101,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
         playerScale = transform.localScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        m_timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
     }
 
 
@@ -124,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         x = horizontalInput.x;
         y = horizontalInput.y;
         map.Jump.performed += _ => jumping = true;
-        map.TimeSlow.performed += _ => TimeManager.Instance.ApplyTimeScale(0.05f, 3f);
+        map.TimeSlow.performed += _ => m_timeManager.ApplyTimeScale(0.05f, 3f);
         //crouching = Input.GetKey(KeyCode.LeftControl);
 
         //Crouching

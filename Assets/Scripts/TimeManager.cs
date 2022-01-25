@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TimeManager : Singleton<TimeManager>
+public class TimeManager : MonoBehaviour
 {
     private bool m_timeScaled;
 
