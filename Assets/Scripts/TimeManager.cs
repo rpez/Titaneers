@@ -3,12 +3,19 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    private bool m_timeScaled;
+    public AnimationCurve m_transitionCurveIn;
+    public AnimationCurve m_transitionCurveOut;
 
+    private bool m_inTransition;
+    private bool m_outTransition;
+
+    private float m_targetScale;
     private float m_defaultFixedDeltaTime;
-    private float m_scaleLength;
 
     private PostProcessingManager m_PPManager;
+
+    private float m_currentTime;
+    private bool m_effect;
 
     private void Awake()
     {
@@ -18,27 +25,45 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        if (m_timeScaled)
+        m_currentTime += Time.unscaledDeltaTime;
+
+        if (m_inTransition)
         {
-            Time.timeScale += (1f / m_scaleLength) * Time.unscaledDeltaTime;
+            float amount = m_transitionCurveIn.Evaluate(m_currentTime);
+            Time.timeScale = 1f + amount * (m_targetScale - 1f);
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            m_PPManager.SetTimeSlowEffectWeight(amount);
+
+            if (Time.timeScale <= m_targetScale)
+            {
+                m_inTransition = false;
+                Time.timeScale = m_targetScale;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            }
+        }
+        if (m_outTransition)
+        {
+            float amount = m_transitionCurveOut.Evaluate(m_currentTime);
+            Time.timeScale = amount;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            m_PPManager.SetTimeSlowEffectWeight(1f - amount);
+
             if (Time.timeScale >= 1f)
             {
-                m_timeScaled = false;
+                m_outTransition = false;
                 Time.timeScale = 1f;
                 Time.fixedDeltaTime = m_defaultFixedDeltaTime;
-                m_PPManager.SetTimeSlowEffect(false);
+                
             }
         }
     }
 
-    public void ApplyTimeScale(float scale, float length)
+    public void ToggleTimeScale(float scale, bool active)
     {
-        Time.timeScale = scale;
-        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        m_inTransition = active;
+        m_outTransition = !m_inTransition;
+        m_targetScale = scale;
 
-        m_scaleLength = length;
-        m_timeScaled = true;
-
-        m_PPManager.SetTimeSlowEffect(true);
+        m_currentTime = 0;
     }
 }

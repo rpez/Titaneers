@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 horizontalInput;
 
     public TimeManager m_timeManager;
+    private bool m_slowTime;
 
     private void OnEnable()
     {
@@ -127,7 +128,11 @@ public class PlayerMovement : MonoBehaviour
         x = horizontalInput.x;
         y = horizontalInput.y;
         map.Jump.performed += _ => jumping = true;
-        map.TimeSlow.performed += _ => m_timeManager.ApplyTimeScale(0.05f, 3f);
+        map.TimeSlow.performed += _ =>
+        {
+            m_slowTime = !m_slowTime;
+            m_timeManager.ToggleTimeScale(0.05f, m_slowTime);
+        };
         //crouching = Input.GetKey(KeyCode.LeftControl);
 
         //Crouching

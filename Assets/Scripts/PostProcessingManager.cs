@@ -11,4 +11,9 @@ public class PostProcessingManager : MonoBehaviour
         if (begin) m_timeSlowVolume.StartTransitionIn();
         else m_timeSlowVolume.StartTransitionOut();
     }
+
+    public void SetTimeSlowEffectWeight(float value)
+    {
+        m_timeSlowVolume.SetWeight(value);
+    }
 }
