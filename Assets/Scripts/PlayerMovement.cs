@@ -30,7 +30,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement2 : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     //Assingables
@@ -42,8 +42,8 @@ public class PlayerMovement2 : MonoBehaviour
 
     //Rotation and look
     private float xRotation;
-    private float sensitivity = 50f;
-    private float sensMultiplier = 1f;
+    //private float sensitivity = 50f;
+    //private float sensMultiplier = 1f;
 
     //Movement
     public float moveSpeed = 4500;
@@ -124,6 +124,7 @@ public class PlayerMovement2 : MonoBehaviour
         x = horizontalInput.x;
         y = horizontalInput.y;
         map.Jump.performed += _ => jumping = true;
+        map.TimeSlow.performed += _ => TimeManager.Instance.ApplyTimeScale(0.05f, 3f);
         //crouching = Input.GetKey(KeyCode.LeftControl);
 
         //Crouching
@@ -155,7 +156,7 @@ public class PlayerMovement2 : MonoBehaviour
     private void Movement()
     {
         //Extra gravity
-        //rb.AddForce(Vector3.down * Time.deltaTime * 10);
+        rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
@@ -239,8 +240,8 @@ public class PlayerMovement2 : MonoBehaviour
             mouseY += delta.y;
         }
 
-        mouseX *= mouseSensitivity * Time.fixedDeltaTime;
-        mouseY *= mouseSensitivity * Time.fixedDeltaTime;
+        mouseX *= mouseSensitivity * Time.unscaledDeltaTime;
+        mouseY *= mouseSensitivity * Time.unscaledDeltaTime;
 
         //Find current look rotation
         Vector3 rot = playerCam.transform.localRotation.eulerAngles;
