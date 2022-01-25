@@ -8,9 +8,12 @@ public class TimeManager : Singleton<TimeManager>
     private float m_defaultFixedDeltaTime;
     private float m_scaleLength;
 
+    private PostProcessingManager m_PPManager;
+
     private void Awake()
     {
         m_defaultFixedDeltaTime = Time.fixedDeltaTime;
+        m_PPManager = GameObject.Find("Volumes").GetComponent<PostProcessingManager>();
     }
 
     private void Update()
@@ -23,6 +26,7 @@ public class TimeManager : Singleton<TimeManager>
                 m_timeScaled = false;
                 Time.timeScale = 1f;
                 Time.fixedDeltaTime = m_defaultFixedDeltaTime;
+                m_PPManager.SetTimeSlowEffect(false);
             }
         }
     }
@@ -34,5 +38,7 @@ public class TimeManager : Singleton<TimeManager>
 
         m_scaleLength = length;
         m_timeScaled = true;
+
+        m_PPManager.SetTimeSlowEffect(true);
     }
 }
