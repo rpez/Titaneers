@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3211564518	Play_test_sound			\Default Work Unit\Play_test_sound	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	300957545	test-sound	Y:\Unity Projects\Titaneers\Titaneers_WwiseProject\.cache\Windows\SFX\AardvarkRover1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\test-sound		3182152
+
