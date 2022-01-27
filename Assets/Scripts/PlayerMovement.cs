@@ -27,6 +27,7 @@
 // Some stupid rigidbody based movement by Dani
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -81,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
 
     public TimeManager m_timeManager;
     private bool m_slowTime;
+
+    private List<GameObject> m_floorContactsLastFrame = new List<GameObject>();
 
     private void OnEnable()
     {
@@ -331,6 +334,8 @@ public class PlayerMovement : MonoBehaviour
         int layer = other.gameObject.layer;
         if (whatIsGround != (whatIsGround | (1 << layer))) return;
 
+        m_floorContactsLastFrame.Clear();
+
         //Iterate through every collision in a physics update
         for (int i = 0; i < other.contactCount; i++)
         {
@@ -338,6 +343,7 @@ public class PlayerMovement : MonoBehaviour
             //FLOOR
             if (IsFloor(normal))
             {
+                m_floorContactsLastFrame.Add(other.gameObject);
                 grounded = true;
                 if (jumping) jumping = false;
                 cancellingGrounded = false;
@@ -346,12 +352,20 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //Invoke ground/wall cancel, since we can't check normals with CollisionExit
-        float delay = 3f;
-        if (!cancellingGrounded)
+        ////Invoke ground/wall cancel, since we can't check normals with CollisionExit
+        //float delay = 3f;
+        //if (!cancellingGrounded)
+        //{
+        //    cancellingGrounded = true;
+        //    Invoke(nameof(StopGrounded), Time.deltaTime * delay);
+        //}
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (m_floorContactsLastFrame.Contains(collision.gameObject))
         {
-            cancellingGrounded = true;
-            Invoke(nameof(StopGrounded), Time.deltaTime * delay);
+            StopGrounded();
         }
     }
 
