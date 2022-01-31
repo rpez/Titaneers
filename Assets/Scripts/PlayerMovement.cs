@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     public float mouseSensitivity = 100;
 
     public float counterMovement = 0.175f;
-    private float threshold = 0.01f;
+    private float threshold = 0.1f;
     public float maxSlopeAngle = 35f;
 
     //Crouch & Slide
@@ -270,6 +270,7 @@ public class PlayerMovement : MonoBehaviour
     private void CounterMovement(float x, float y, Vector2 mag)
     {
         if (!grounded || jumping) return;
+        //Debug.Log("X: " + x + ", Y: " + y + ", mag: " + mag);
 
         //Slow down sliding
         if (crouching)
@@ -279,11 +280,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Counter movement
-        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
+        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f
+            || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
         {
             rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
         }
-        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
+        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f
+            || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
         {
             rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
@@ -311,6 +314,7 @@ public class PlayerMovement : MonoBehaviour
         float v = 90 - u;
 
         float magnitue = rb.velocity.magnitude;
+        Debug.Log("vel: " + rb.velocity);
         float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad);
         float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
 
@@ -352,22 +356,22 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        ////Invoke ground/wall cancel, since we can't check normals with CollisionExit
-        //float delay = 3f;
-        //if (!cancellingGrounded)
-        //{
-        //    cancellingGrounded = true;
-        //    Invoke(nameof(StopGrounded), Time.deltaTime * delay);
-        //}
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (m_floorContactsLastFrame.Contains(collision.gameObject))
+        //Invoke ground/wall cancel, since we can't check normals with CollisionExit
+        float delay = 3f;
+        if (!cancellingGrounded)
         {
-            StopGrounded();
+            cancellingGrounded = true;
+            Invoke(nameof(StopGrounded), Time.deltaTime * delay);
         }
     }
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (m_floorContactsLastFrame.Contains(collision.gameObject))
+    //    {
+    //        StopGrounded();
+    //    }
+    //}
 
     private void StopGrounded()
     {
