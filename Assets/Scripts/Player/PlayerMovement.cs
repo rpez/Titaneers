@@ -136,13 +136,13 @@ public class PlayerMovement : MonoBehaviour
             m_slowTime = !m_slowTime;
             m_timeManager.ToggleTimeScale(0.05f, m_slowTime);
         };
-        //crouching = Input.GetKey(KeyCode.LeftControl);
+        map.Crouch.performed += _ => crouching = true;
 
         //Crouching
-        //if (Input.GetKeyDown(KeyCode.LeftControl))
-        //    StartCrouch();
-        //if (Input.GetKeyUp(KeyCode.LeftControl))
-        //    StopCrouch();
+        if (map.Crouch.IsPressed())
+            StartCrouch();
+        if (map.Crouch.WasReleasedThisFrame())
+            StopCrouch();
     }
 
     private void StartCrouch()
