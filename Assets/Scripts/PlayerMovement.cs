@@ -270,7 +270,6 @@ public class PlayerMovement : MonoBehaviour
     private void CounterMovement(float x, float y, Vector2 mag)
     {
         if (!grounded || jumping) return;
-        //Debug.Log("X: " + x + ", Y: " + y + ", mag: " + mag);
 
         //Slow down sliding
         if (crouching)
@@ -313,10 +312,9 @@ public class PlayerMovement : MonoBehaviour
         float u = Mathf.DeltaAngle(lookAngle, moveAngle);
         float v = 90 - u;
 
-        float magnitue = rb.velocity.magnitude;
-        Debug.Log("vel: " + rb.velocity);
-        float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad);
-        float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
+        float magnitude = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
+        float yMag = magnitude * Mathf.Cos(u * Mathf.Deg2Rad);
+        float xMag = magnitude * Mathf.Cos(v * Mathf.Deg2Rad);
 
         return new Vector2(xMag, yMag);
     }
@@ -357,21 +355,25 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Invoke ground/wall cancel, since we can't check normals with CollisionExit
-        float delay = 3f;
-        if (!cancellingGrounded)
-        {
-            cancellingGrounded = true;
-            Invoke(nameof(StopGrounded), Time.deltaTime * delay);
-        }
+        //float delay = 3f;
+        //if (!cancellingGrounded)
+        //{
+        //    cancellingGrounded = true;
+        //    Invoke(nameof(StopGrounded), Time.deltaTime * delay);
+        //}
     }
 
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (m_floorContactsLastFrame.Contains(collision.gameObject))
-    //    {
-    //        StopGrounded();
-    //    }
-    //}
+    private void OnCollisionExit(Collision collision)
+    {
+        if (m_floorContactsLastFrame.Contains(collision.gameObject))
+        {
+            m_floorContactsLastFrame.Remove(collision.gameObject);
+            if (m_floorContactsLastFrame.Count <= 0)
+            {
+                StopGrounded();
+            }
+        }
+    }
 
     private void StopGrounded()
     {
