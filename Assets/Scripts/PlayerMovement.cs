@@ -27,6 +27,7 @@
 // Some stupid rigidbody based movement by Dani
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     public float mouseSensitivity = 100;
 
     public float counterMovement = 0.175f;
-    private float threshold = 0.01f;
+    private float threshold = 0.1f;
     public float maxSlopeAngle = 35f;
 
     //Crouch & Slide
@@ -81,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
 
     public TimeManager m_timeManager;
     private bool m_slowTime;
+
+    private List<GameObject> m_floorContactsLastFrame = new List<GameObject>();
 
     private void OnEnable()
     {
@@ -276,11 +279,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Counter movement
-        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
+        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f
+            || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
         {
             rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
         }
-        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
+        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f
+            || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
         {
             rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
@@ -307,9 +312,9 @@ public class PlayerMovement : MonoBehaviour
         float u = Mathf.DeltaAngle(lookAngle, moveAngle);
         float v = 90 - u;
 
-        float magnitue = rb.velocity.magnitude;
-        float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad);
-        float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
+        float magnitude = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
+        float yMag = magnitude * Mathf.Cos(u * Mathf.Deg2Rad);
+        float xMag = magnitude * Mathf.Cos(v * Mathf.Deg2Rad);
 
         return new Vector2(xMag, yMag);
     }
@@ -331,6 +336,8 @@ public class PlayerMovement : MonoBehaviour
         int layer = other.gameObject.layer;
         if (whatIsGround != (whatIsGround | (1 << layer))) return;
 
+        m_floorContactsLastFrame.Clear();
+
         //Iterate through every collision in a physics update
         for (int i = 0; i < other.contactCount; i++)
         {
@@ -338,6 +345,7 @@ public class PlayerMovement : MonoBehaviour
             //FLOOR
             if (IsFloor(normal))
             {
+                m_floorContactsLastFrame.Add(other.gameObject);
                 grounded = true;
                 if (jumping) jumping = false;
                 cancellingGrounded = false;
@@ -347,11 +355,23 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Invoke ground/wall cancel, since we can't check normals with CollisionExit
-        float delay = 3f;
-        if (!cancellingGrounded)
+        //float delay = 3f;
+        //if (!cancellingGrounded)
+        //{
+        //    cancellingGrounded = true;
+        //    Invoke(nameof(StopGrounded), Time.deltaTime * delay);
+        //}
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (m_floorContactsLastFrame.Contains(collision.gameObject))
         {
-            cancellingGrounded = true;
-            Invoke(nameof(StopGrounded), Time.deltaTime * delay);
+            m_floorContactsLastFrame.Remove(collision.gameObject);
+            if (m_floorContactsLastFrame.Count <= 0)
+            {
+                StopGrounded();
+            }
         }
     }
 

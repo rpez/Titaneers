@@ -15,7 +15,6 @@ public class TimeManager : MonoBehaviour
     private PostProcessingManager m_PPManager;
 
     private float m_currentTime;
-    private bool m_effect;
 
     private void Awake()
     {

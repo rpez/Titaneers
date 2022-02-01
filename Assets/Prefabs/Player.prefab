@@ -82,7 +82,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!136 &1653063845389026193
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   slideCounterMovement: 0.2
   jumpForce: 550
   horizontalInput: {x: 0, y: 0}
+  m_timeManager: {fileID: 0}
 --- !u!1001 &3371820072455283852
 PrefabInstance:
   m_ObjectHideFlags: 0
