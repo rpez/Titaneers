@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     public float counterMovement = 0.175f;
     private float threshold = 0.1f;
     public float maxSlopeAngle = 35f;
+    public float slideLandingBoost = 10f;
 
     //Crouch & Slide
     private float crouchHeight = 1f;
@@ -176,8 +177,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        Debug.Log("crouch: " + crouching);
-
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
@@ -358,7 +357,14 @@ public class PlayerMovement : MonoBehaviour
             if (IsFloor(normal))
             {
                 m_floorContactsLastFrame.Add(other.gameObject);
-                grounded = true;
+                if (!grounded)
+                {
+                    grounded = true;
+                    if (crouching)
+                    {
+                        rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * slideLandingBoost);
+                    }
+                }
                 if (jumping) jumping = false;
                 cancellingGrounded = false;
                 normalVector = normal;
