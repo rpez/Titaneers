@@ -58,8 +58,12 @@ public class PlayerMovement : MonoBehaviour
     public float maxSlopeAngle = 35f;
 
     //Crouch & Slide
-    private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
-    private Vector3 playerScale;
+    private float crouchHeight = 1f;
+    private Vector3 crouchCameraOffset = new Vector3(0f, -1f, 0f);
+    private Vector3 crouchCameraPosition;
+    private float playerHeight;
+    private Vector3 defaultCameraPostion;
+    private CapsuleCollider collider;
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
 
@@ -104,7 +108,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        playerScale = transform.localScale;
+        collider = GetComponent<CapsuleCollider>();
+        playerHeight = collider.height;
+        defaultCameraPostion = playerCam.localPosition;
+        crouchCameraPosition = defaultCameraPostion - crouchCameraOffset;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         m_timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
@@ -139,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         map.Crouch.performed += _ => crouching = true;
 
         //Crouching
-        if (map.Crouch.IsPressed())
+        if (map.Crouch.WasPressedThisFrame())
             StartCrouch();
         if (map.Crouch.WasReleasedThisFrame())
             StopCrouch();
@@ -147,8 +154,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void StartCrouch()
     {
-        transform.localScale = crouchScale;
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+        collider.height = crouchHeight;
+        playerCam.localPosition = crouchCameraPosition;
+        //transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         if (rb.velocity.magnitude > 0.5f)
         {
             if (grounded)
@@ -160,12 +168,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void StopCrouch()
     {
-        transform.localScale = playerScale;
+        collider.height = playerHeight;
+        playerCam.localPosition = defaultCameraPostion;
+        crouching = false;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
     private void Movement()
     {
+        Debug.Log("crouch: " + crouching);
+
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
