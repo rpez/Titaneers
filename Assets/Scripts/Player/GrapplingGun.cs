@@ -29,12 +29,23 @@ using UnityEngine.InputSystem;
 
 public class GrapplingGun : MonoBehaviour
 {
+    public LayerMask whatIsGrappleable;
+
+    [Header("Assign in Editor")]
     public GameObject hitpointPrefab;
+    public Transform gunTip, playerCam, player;
+
+    [Header("Grapple Parameters")]
+    public float range = 100f;
+    public float maxLengthMultiplier = 0.1f;
+    public float minLengthMultiplier = 0.01f;
+    public float springForce = 10f;
+    public float dampening = 10f;
+    public float massScale = 1f;
+
     private LineRenderer lr;
     private GameObject grapplePoint;
-    public LayerMask whatIsGrappleable;
-    public Transform gunTip, playerCam, player;
-    private float maxDistance = 1000f;
+    
     private SpringJoint joint;
 
     bool isGrappling;
@@ -73,7 +84,7 @@ public class GrapplingGun : MonoBehaviour
     void StartGrapple()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerCam.position, playerCam.forward, out hit, maxDistance, whatIsGrappleable))
+        if (Physics.Raycast(playerCam.position, playerCam.forward, out hit, range, whatIsGrappleable))
         {
             isGrappling = true;
             grapplePoint = GameObject.Instantiate(hitpointPrefab, hit.point, Quaternion.identity);
@@ -86,13 +97,13 @@ public class GrapplingGun : MonoBehaviour
             float distanceFromPoint = Vector3.Distance(player.position, grapplePoint.transform.position);
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = distanceFromPoint * 0.1f;
-            joint.minDistance = distanceFromPoint * 0.01f;
+            joint.maxDistance = distanceFromPoint * maxLengthMultiplier;
+            joint.minDistance = distanceFromPoint * minLengthMultiplier;
 
             //Adjust these values to fit your game.
-            joint.spring = 10f;
-            joint.damper = 10f;
-            joint.massScale = 1f;
+            joint.spring = springForce;
+            joint.damper = dampening;
+            joint.massScale = massScale;
 
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
