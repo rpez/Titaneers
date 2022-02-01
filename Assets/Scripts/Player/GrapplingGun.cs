@@ -44,7 +44,11 @@ public class GrapplingGun : MonoBehaviour
     public float dampening = 10f;
     public float massScale = 1f;
     public float grappleSpeed = 1f;
+    public int maxCharges = 2;
+    public float cooldown = 3f;
 
+    private int currentCharges;
+    private float currentTime;
     private LineRenderer lr;
     private GameObject grapplePoint;
     
@@ -55,10 +59,21 @@ public class GrapplingGun : MonoBehaviour
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
+        currentCharges = maxCharges;
     }
 
     void Update()
     {
+        if (currentCharges < maxCharges)
+        {
+            currentTime += Time.deltaTime;
+            if (currentTime >= cooldown)
+            {
+                currentCharges += 1;
+                currentTime = 0;
+            }
+        }
+
         if (isGrappling)
         {
             joint.connectedAnchor = grapplePoint.transform.position;
@@ -85,6 +100,7 @@ public class GrapplingGun : MonoBehaviour
     /// </summary>
     void LaunchGrapple()
     {
+        if (currentCharges <= 0) return;
         RaycastHit hit;
         if (Physics.Raycast(playerCam.position, playerCam.forward, out hit, range, whatIsGrappleable))
         {
@@ -115,6 +131,8 @@ public class GrapplingGun : MonoBehaviour
 
         lr.positionCount = 2;
         currentGrapplePosition = gunTip.position;
+
+        currentCharges--;
     }
 
     /// <summary>
@@ -122,6 +140,7 @@ public class GrapplingGun : MonoBehaviour
     /// </summary>
     void StopGrapple()
     {
+        StopAllCoroutines();
         lr.positionCount = 0;
         Destroy(grapplePoint);
         isGrappling = false;
