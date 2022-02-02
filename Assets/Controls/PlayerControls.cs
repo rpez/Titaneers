@@ -71,6 +71,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""68f19d12-07e8-4b29-bb8e-6d138d98b16b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Grappling"",
+                    ""type"": ""Button"",
+                    ""id"": ""601555d3-2a47-4c80-87ca-d669a4e96fea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +190,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23f0332e-be81-4eb9-9fa3-2c1c366bd541"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf76bb2e-323f-4fdb-838c-5ababcc63e68"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grappling"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -202,6 +242,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_GroundMovement_Crouch = m_GroundMovement.FindAction("Crouch", throwIfNotFound: true);
         m_GroundMovement_Dash = m_GroundMovement.FindAction("Dash", throwIfNotFound: true);
         m_GroundMovement_TimeSlow = m_GroundMovement.FindAction("TimeSlow", throwIfNotFound: true);
+        m_GroundMovement_Fire = m_GroundMovement.FindAction("Fire", throwIfNotFound: true);
+        m_GroundMovement_Grappling = m_GroundMovement.FindAction("Grappling", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -266,6 +308,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_GroundMovement_Crouch;
     private readonly InputAction m_GroundMovement_Dash;
     private readonly InputAction m_GroundMovement_TimeSlow;
+    private readonly InputAction m_GroundMovement_Fire;
+    private readonly InputAction m_GroundMovement_Grappling;
     public struct GroundMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -275,6 +319,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_GroundMovement_Crouch;
         public InputAction @Dash => m_Wrapper.m_GroundMovement_Dash;
         public InputAction @TimeSlow => m_Wrapper.m_GroundMovement_TimeSlow;
+        public InputAction @Fire => m_Wrapper.m_GroundMovement_Fire;
+        public InputAction @Grappling => m_Wrapper.m_GroundMovement_Grappling;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -299,6 +345,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @TimeSlow.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnTimeSlow;
                 @TimeSlow.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnTimeSlow;
                 @TimeSlow.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnTimeSlow;
+                @Fire.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnFire;
+                @Grappling.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrappling;
+                @Grappling.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrappling;
+                @Grappling.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrappling;
             }
             m_Wrapper.m_GroundMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -318,6 +370,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @TimeSlow.started += instance.OnTimeSlow;
                 @TimeSlow.performed += instance.OnTimeSlow;
                 @TimeSlow.canceled += instance.OnTimeSlow;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @Grappling.started += instance.OnGrappling;
+                @Grappling.performed += instance.OnGrappling;
+                @Grappling.canceled += instance.OnGrappling;
             }
         }
     }
@@ -338,5 +396,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnTimeSlow(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnGrappling(InputAction.CallbackContext context);
     }
 }
