@@ -1945,12 +1945,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerContainer
       objectReference: {fileID: 0}
-    - target: {fileID: 6965098877999748812, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: dashStrength
+      propertyPath: dashTime
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}

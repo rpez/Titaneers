@@ -73,8 +73,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2496024928326046036}
-  - component: {fileID: 2496024928326046037}
-  - component: {fileID: 2496024928326046038}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -98,36 +96,6 @@ Transform:
   m_Father: {fileID: 8002697790043786536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &2496024928326046037
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2496024928326046034}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 2
---- !u!136 &2496024928326046038
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2496024928326046034}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2496024928342583110
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,8 +521,15 @@ MonoBehaviour:
   mouseSensitivity: 2
   counterMovement: 0.175
   maxSlopeAngle: 35
+  slideLandingBoost: 10
   slideForce: 400
   slideCounterMovement: 0.2
+  dashStrength: 100
+  dashTime: 0.3
+  dashDirection: {x: 0, y: 0, z: 0}
+  dashSpeedBoost: 2
+  maxDashCharges: 2
+  dashCooldown: 3
   jumpForce: 550
   horizontalInput: {x: 0, y: 0}
   m_timeManager: {fileID: 0}
@@ -571,7 +546,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!136 &6965098877999748811

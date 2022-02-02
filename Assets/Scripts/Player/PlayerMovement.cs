@@ -67,8 +67,16 @@ public class PlayerMovement : MonoBehaviour
     private CapsuleCollider collider;
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
+
+    // Dash
     public float dashStrength = 20f;
     public float dashTime = 0.3f;
+    public Vector3 dashDirection;
+    public float dashSpeedBoost = 2f;
+    public int maxDashCharges = 2;
+    public float dashCooldown = 3f;
+    private int currentDashCharges;
+    private float currentCdTime;
 
     //Jumpings
     private bool readyToJump = true;
@@ -118,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         m_timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
+        currentDashCharges = maxDashCharges;
     }
 
 
@@ -143,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
         map.Jump.performed += _ => jumping = true;
         map.Dash.performed += _ =>
         {
-            if (!dashing) StartCoroutine(Dash(FindVelRelativeToLook()));
+            if (!dashing) StartCoroutine(Dash());
         };
         map.TimeSlow.performed += _ =>
         {
@@ -183,7 +192,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (dashing) return;
 
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -201,6 +209,36 @@ public class PlayerMovement : MonoBehaviour
         //Set max speed
         float maxSpeed = this.maxSpeed;
 
+        if (dashing)
+        {
+            transform.Translate(dashDirection * dashStrength * Time.unscaledDeltaTime);
+        }
+        else
+        {
+            //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
+            if (x > 0 && xMag > maxSpeed) x = 0;
+            if (x < 0 && xMag < -maxSpeed) x = 0;
+            if (y > 0 && yMag > maxSpeed) y = 0;
+            if (y < 0 && yMag < -maxSpeed) y = 0;
+
+            //Some multipliers
+            float multiplier = 1f, multiplierV = 1f;
+
+            // Movement in air
+            if (!grounded)
+            {
+                multiplier = 0.5f;
+                multiplierV = 0.5f;
+            }
+
+            // Movement while sliding
+            if (grounded && crouching) multiplierV = 0f;
+
+            //Apply forces to move player
+            rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
+            rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
+        }
+
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
         if (crouching && grounded && readyToJump)
         {
@@ -208,28 +246,15 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
-        if (x > 0 && xMag > maxSpeed) x = 0;
-        if (x < 0 && xMag < -maxSpeed) x = 0;
-        if (y > 0 && yMag > maxSpeed) y = 0;
-        if (y < 0 && yMag < -maxSpeed) y = 0;
-
-        //Some multipliers
-        float multiplier = 1f, multiplierV = 1f;
-
-        // Movement in air
-        if (!grounded)
+        if (currentDashCharges < maxDashCharges)
         {
-            multiplier = 0.5f;
-            multiplierV = 0.5f;
+            currentCdTime += Time.deltaTime;
+            if (currentCdTime >= dashCooldown)
+            {
+                currentDashCharges += 1;
+                currentCdTime = 0;
+            }
         }
-
-        // Movement while sliding
-        if (grounded && crouching) multiplierV = 0f;
-
-        //Apply forces to move player
-        rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-        rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
     }
 
     private void Jump()
@@ -253,15 +278,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator Dash(Vector2 movedir)
+    private IEnumerator Dash()
     {
-        dashing = true;
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(new Vector3(movedir.x, 0f, movedir.y) * dashStrength, ForceMode.Impulse);
-        rb.useGravity = false;
-        yield return new WaitForSeconds(dashTime);
-        dashing = false;
-        rb.useGravity = true;
+        if (currentDashCharges > 0)
+        {
+            dashing = true;
+            Vector3 vel = rb.velocity;
+            rb.velocity = Vector3.zero;
+            rb.useGravity = false;
+            dashDirection = orientation.transform.forward * y + orientation.transform.right * x;
+            dashDirection.Normalize();
+            float angle = Vector3.Angle(dashDirection, vel);
+            currentDashCharges--;
+
+            yield return new WaitForSeconds(dashTime * Time.unscaledDeltaTime);
+
+            dashing = false;
+            rb.velocity = angle <= 50f ? vel * dashSpeedBoost : Vector3.zero;
+            rb.useGravity = true;
+        }
     }
 
     private void ResetJump()
@@ -300,7 +335,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!grounded || jumping) return;
+        if (!grounded || jumping || dashing) return;
 
         //Slow down sliding
         if (crouching)
