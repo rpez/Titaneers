@@ -395,6 +395,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &372902657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2496024928567296276, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+  m_PrefabInstance: {fileID: 2496024928203559705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &372902663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372902657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebcd14b2a8653d40b0c9f6be3822429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 0}
+  shootSound: {fileID: 0}
+  reload_Sound: {fileID: 0}
+  fireType: 0
+  bulletType: 0
+  attack_Point: {fileID: 0}
 --- !u!1 &412846007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1296,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: forgotten_skylands
       objectReference: {fileID: 0}
+    - target: {fileID: 3369543129261394409, guid: 5bd95faa08f168c4f9a2963ac4e96fc3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3369543129261394414, guid: 5bd95faa08f168c4f9a2963ac4e96fc3, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1435,6 +1462,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.1, y: 8.74, z: 0.57498926}
   m_Center: {x: 0, y: 0, z: 80.27662}
+--- !u!1 &1811476221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4758802823799522771, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+  m_PrefabInstance: {fileID: 2496024928203559705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1811476226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811476221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fc7caa4c01282489303054e1fdaf27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 372902663}
 --- !u!1 &1924871438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,9 +1890,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2273668857937266182, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2273668858029645089, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273668858029645089, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2273668858029645093, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: m_Pivot.x
@@ -1944,6 +1998,10 @@ PrefabInstance:
     - target: {fileID: 4758802823799522771, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_Name
       value: PlayerContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758802823799522771, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
@@ -2045,6 +2103,10 @@ PrefabInstance:
     - target: {fileID: 6911524230178210787, guid: 258561b9e9625a54083a1ab0062dde45, type: 3}
       propertyPath: m_Name
       value: pitch_robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911524230178210787, guid: 258561b9e9625a54083a1ab0062dde45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 258561b9e9625a54083a1ab0062dde45, type: 3}
