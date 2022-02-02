@@ -20,13 +20,13 @@
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
-
-    Modified by rpez 2022
 */
 
 // Some stupid rigidbody based movement by Dani
+// Modified by rpez 2022
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -67,15 +67,17 @@ public class PlayerMovement : MonoBehaviour
     private CapsuleCollider collider;
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
+    public float dashStrength = 20f;
+    public float dashTime = 0.3f;
 
-    //Jumping
+    //Jumpings
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
     public float jumpForce = 550f;
 
     //Input
     float x, y;
-    bool jumping, sprinting, crouching;
+    bool jumping, sprinting, crouching, dashing;
 
     //Sliding
     private Vector3 normalVector = Vector3.up;
@@ -139,6 +141,10 @@ public class PlayerMovement : MonoBehaviour
         x = horizontalInput.x;
         y = horizontalInput.y;
         map.Jump.performed += _ => jumping = true;
+        map.Dash.performed += _ =>
+        {
+            if (!dashing) StartCoroutine(Dash(FindVelRelativeToLook()));
+        };
         map.TimeSlow.performed += _ =>
         {
             m_slowTime = !m_slowTime;
@@ -177,6 +183,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
+        if (dashing) return;
+
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
@@ -245,10 +253,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator Dash(Vector2 movedir)
+    {
+        dashing = true;
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(new Vector3(movedir.x, 0f, movedir.y) * dashStrength, ForceMode.Impulse);
+        rb.useGravity = false;
+        yield return new WaitForSeconds(dashTime);
+        dashing = false;
+        rb.useGravity = true;
+    }
+
     private void ResetJump()
     {
         readyToJump = true;
     }
+
 
     private float desiredX;
     private void Look()
@@ -362,6 +382,7 @@ public class PlayerMovement : MonoBehaviour
                     grounded = true;
                     if (crouching)
                     {
+                        // If landing on a floor, boost slide
                         rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * slideLandingBoost);
                     }
                 }
