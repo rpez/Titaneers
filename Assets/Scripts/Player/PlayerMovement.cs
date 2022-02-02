@@ -287,6 +287,10 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
             dashDirection = orientation.transform.forward * y + orientation.transform.right * x;
+            if (dashDirection.magnitude < 0.01f)
+            {
+                Debug.Log("sfas");
+            }
             dashDirection.Normalize();
             float angle = Vector3.Angle(dashDirection, vel);
             currentDashCharges--;
