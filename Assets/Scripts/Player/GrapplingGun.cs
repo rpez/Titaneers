@@ -30,53 +30,57 @@ using UnityEngine.InputSystem;
 
 public class GrapplingGun : MonoBehaviour
 {
-    public LayerMask whatIsGrappleable;
-
     [Header("Assign in editor")]
-    public GameObject hitpointPrefab;
-    public Transform gunTip, playerCam, player;
+    public GameObject HitpointPrefab;
+    public Transform GunTip, PlayerCamera, Player;
 
-    [Header("Grapple parameters")]
-    public float range = 100f;
-    public float maxLengthMultiplier = 0.1f;
-    public float minLengthMultiplier = 0.01f;
-    public float springForce = 10f;
-    public float dampening = 10f;
-    public float massScale = 1f;
-    public float grappleSpeed = 1f;
-    public int maxCharges = 2;
-    public float cooldown = 3f;
+    [Header("Layers")]
+    public LayerMask GrappleLayer;
 
-    private int currentCharges;
-    private float currentTime;
-    private LineRenderer lr;
-    private GameObject grapplePoint;
-    
-    private SpringJoint joint;
+    [Header("Grappling")]
+    public float Range = 100f;
+    public float MaxLengthMultiplier = 0.1f;
+    public float MinLengthMultiplier = 0.01f;
+    public float SpringForce = 10f;
+    public float Dampening = 10f;
+    public float MassScale = 1f;
+    public float GrappleSpeed = 100f;
+    public float Cooldown = 3f;
+    public int MaxCharges = 2;
 
-    bool isGrappling;
+    // Other references
+    private LineRenderer _lineRenderer;
+    private GameObject _grapplePoint;
+    private SpringJoint _joint;
+
+    // State booleans
+    bool _isGrappling;
+
+    // Other variables
+    private int _currentCharges;
+    private float _currentTime;
 
     void Awake()
     {
-        lr = GetComponent<LineRenderer>();
-        currentCharges = maxCharges;
+        _lineRenderer = GetComponent<LineRenderer>();
+        _currentCharges = MaxCharges;
     }
 
     void Update()
     {
-        if (currentCharges < maxCharges)
+        if (_currentCharges < MaxCharges)
         {
-            currentTime += Time.deltaTime;
-            if (currentTime >= cooldown)
+            _currentTime += Time.deltaTime;
+            if (_currentTime >= Cooldown)
             {
-                currentCharges += 1;
-                currentTime = 0;
+                _currentCharges += 1;
+                _currentTime = 0;
             }
         }
 
-        if (isGrappling)
+        if (_isGrappling)
         {
-            joint.connectedAnchor = grapplePoint.transform.position;
+            _joint.connectedAnchor = _grapplePoint.transform.position;
         }
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -100,39 +104,39 @@ public class GrapplingGun : MonoBehaviour
     /// </summary>
     void LaunchGrapple()
     {
-        if (currentCharges <= 0) return;
+        if (_currentCharges <= 0) return;
         RaycastHit hit;
-        if (Physics.Raycast(playerCam.position, playerCam.forward, out hit, range, whatIsGrappleable))
+        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
         {
-            grapplePoint = GameObject.Instantiate(hitpointPrefab, hit.point, Quaternion.identity);
-            grapplePoint.transform.parent = hit.transform;
-            float distance = (grapplePoint.transform.position - gunTip.transform.position).magnitude;
-            StartCoroutine(Grapple(distance / grappleSpeed));
+            _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
+            _grapplePoint.transform.parent = hit.transform;
+            float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
+            StartCoroutine(Grapple(distance / GrappleSpeed));
         }
     }
 
     void ConnectGrapple()
     {
-        isGrappling = true;
-        joint = player.gameObject.AddComponent<SpringJoint>();
-        joint.autoConfigureConnectedAnchor = false;
-        joint.connectedAnchor = grapplePoint.transform.position;
+        _isGrappling = true;
+        _joint = Player.gameObject.AddComponent<SpringJoint>();
+        _joint.autoConfigureConnectedAnchor = false;
+        _joint.connectedAnchor = _grapplePoint.transform.position;
 
-        float distanceFromPoint = Vector3.Distance(player.position, grapplePoint.transform.position);
+        float distanceFromPoint = Vector3.Distance(Player.position, _grapplePoint.transform.position);
 
         //The distance grapple will try to keep from grapple point. 
-        joint.maxDistance = distanceFromPoint * maxLengthMultiplier;
-        joint.minDistance = distanceFromPoint * minLengthMultiplier;
+        _joint.maxDistance = distanceFromPoint * MaxLengthMultiplier;
+        _joint.minDistance = distanceFromPoint * MinLengthMultiplier;
 
         //Adjust these values to fit your game.
-        joint.spring = springForce;
-        joint.damper = dampening;
-        joint.massScale = massScale;
+        _joint.spring = SpringForce;
+        _joint.damper = Dampening;
+        _joint.massScale = MassScale;
 
-        lr.positionCount = 2;
-        currentGrapplePosition = gunTip.position;
+        _lineRenderer.positionCount = 2;
+        currentGrapplePosition = GunTip.position;
 
-        currentCharges--;
+        _currentCharges--;
     }
 
     /// <summary>
@@ -141,10 +145,10 @@ public class GrapplingGun : MonoBehaviour
     void StopGrapple()
     {
         StopAllCoroutines();
-        lr.positionCount = 0;
-        Destroy(grapplePoint);
-        isGrappling = false;
-        Destroy(joint);
+        _lineRenderer.positionCount = 0;
+        Destroy(_grapplePoint);
+        _isGrappling = false;
+        Destroy(_joint);
     }
 
     private Vector3 currentGrapplePosition;
@@ -152,22 +156,22 @@ public class GrapplingGun : MonoBehaviour
     void DrawRope()
     {
         //If not grappling, don't draw rope
-        if (!joint) return;
+        if (!_joint) return;
 
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint.transform.position, Time.deltaTime * 8f);
+        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, _grapplePoint.transform.position, Time.deltaTime * 8f);
 
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
+        _lineRenderer.SetPosition(0, GunTip.position);
+        _lineRenderer.SetPosition(1, currentGrapplePosition);
     }
 
     public bool IsGrappling()
     {
-        return joint != null;
+        return _joint != null;
     }
 
     public Vector3 GetGrapplePoint()
     {
-        return grapplePoint.transform.position;
+        return _grapplePoint.transform.position;
     }
 
     private IEnumerator Grapple(float delay)
