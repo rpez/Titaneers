@@ -334,13 +334,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionCurveIn:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   TransitionCurveOut:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1063,8 +1099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9031446a757894947af8fb28d97a1e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_slowTimelineIn: {fileID: 11400000, guid: e4ecf36556e838c48a4182693274de7b, type: 2}
-  m_slowTimelineOut: {fileID: 11400000, guid: c9ea4946518122c4b831265a89fbb8e8, type: 2}
 --- !u!1 &906649023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773ddaaaf415f8947935e5bb026032b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_timeSlowVolume: {fileID: 820497210}
+  TimeSlowVolume: {fileID: 820497210}
 --- !u!1001 &1987067207
 PrefabInstance:
   m_ObjectHideFlags: 0
