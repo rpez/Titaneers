@@ -3,55 +3,58 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public AnimationCurve m_transitionCurveIn;
-    public AnimationCurve m_transitionCurveOut;
+    [Header("Adjust the transition into and out of time slow")]
+    public AnimationCurve TransitionCurveIn;
+    public AnimationCurve TransitionCurveOut;
 
-    private bool m_inTransition;
-    private bool m_outTransition;
+    // Other references
+    private PostProcessingManager _postProcessingManager;
 
-    private float m_targetScale;
-    private float m_defaultFixedDeltaTime;
+    // State boolenas
+    private bool _inTransition;
+    private bool _outTransition;
 
-    private PostProcessingManager m_PPManager;
-
-    private float m_currentTime;
+    // Other Variables
+    private float _targetScale;
+    private float _defaultFixedDeltaTime;
+    private float _currentTime;
 
     private void Awake()
     {
-        m_defaultFixedDeltaTime = Time.fixedDeltaTime;
-        m_PPManager = GameObject.Find("Volumes").GetComponent<PostProcessingManager>();
+        _defaultFixedDeltaTime = Time.fixedDeltaTime;
+        _postProcessingManager = GameObject.Find("Volumes").GetComponent<PostProcessingManager>();
     }
 
     private void Update()
     {
-        m_currentTime += Time.unscaledDeltaTime;
+        _currentTime += Time.unscaledDeltaTime;
 
-        if (m_inTransition)
+        if (_inTransition)
         {
-            float amount = m_transitionCurveIn.Evaluate(m_currentTime);
-            Time.timeScale = 1f + amount * (m_targetScale - 1f);
+            float amount = TransitionCurveIn.Evaluate(_currentTime);
+            Time.timeScale = 1f + amount * (_targetScale - 1f);
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
-            m_PPManager.SetTimeSlowEffectWeight(amount);
+            _postProcessingManager.SetTimeSlowEffectWeight(amount);
 
-            if (Time.timeScale <= m_targetScale)
+            if (Time.timeScale <= _targetScale)
             {
-                m_inTransition = false;
-                Time.timeScale = m_targetScale;
+                _inTransition = false;
+                Time.timeScale = _targetScale;
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
             }
         }
-        if (m_outTransition)
+        if (_outTransition)
         {
-            float amount = m_transitionCurveOut.Evaluate(m_currentTime);
+            float amount = TransitionCurveOut.Evaluate(_currentTime);
             Time.timeScale = amount;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
-            m_PPManager.SetTimeSlowEffectWeight(1f - amount);
+            _postProcessingManager.SetTimeSlowEffectWeight(1f - amount);
 
             if (Time.timeScale >= 1f)
             {
-                m_outTransition = false;
+                _outTransition = false;
                 Time.timeScale = 1f;
-                Time.fixedDeltaTime = m_defaultFixedDeltaTime;
+                Time.fixedDeltaTime = _defaultFixedDeltaTime;
                 
             }
         }
@@ -59,10 +62,10 @@ public class TimeManager : MonoBehaviour
 
     public void ToggleTimeScale(float scale, bool active)
     {
-        m_inTransition = active;
-        m_outTransition = !m_inTransition;
-        m_targetScale = scale;
+        _inTransition = active;
+        _outTransition = !_inTransition;
+        _targetScale = scale;
 
-        m_currentTime = 0;
+        _currentTime = 0;
     }
 }
