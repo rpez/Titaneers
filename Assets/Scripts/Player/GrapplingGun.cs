@@ -32,11 +32,11 @@ public class GrapplingGun : MonoBehaviour
 {
     public LayerMask whatIsGrappleable;
 
-    [Header("Assign in Editor")]
+    [Header("Assign in editor")]
     public GameObject hitpointPrefab;
     public Transform gunTip, playerCam, player;
 
-    [Header("Grapple Parameters")]
+    [Header("Grapple parameters")]
     public float range = 100f;
     public float maxLengthMultiplier = 0.1f;
     public float minLengthMultiplier = 0.01f;

@@ -510,29 +510,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7293b4df9ddf4eb409ea8d7ce7eec22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCam: {fileID: 2496024927849926546}
-  orientation: {fileID: 2496024928342583161}
-  moveSpeed: 4500
-  maxSpeed: 20
-  grounded: 0
-  whatIsGround:
+  PlayerCamera: {fileID: 2496024927849926546}
+  Orientation: {fileID: 2496024928342583161}
+  GroundLayer:
     serializedVersion: 2
     m_Bits: 128
-  mouseSensitivity: 2
-  counterMovement: 0.175
-  maxSlopeAngle: 35
-  slideLandingBoost: 10
-  slideForce: 400
-  slideCounterMovement: 0.2
-  dashStrength: 100
-  dashTime: 0.3
-  dashDirection: {x: 0, y: 0, z: 0}
-  dashSpeedBoost: 2
-  maxDashCharges: 2
-  dashCooldown: 3
-  jumpForce: 550
-  horizontalInput: {x: 0, y: 0}
-  m_timeManager: {fileID: 0}
+  MouseSensitivity: 3
+  MoveSpeed: 4500
+  MaxSpeed: 20
+  CounterMovementForce: 0.175
+  MaxSlopeAngle: 35
+  SlideLandingBoost: 10
+  SlideForce: 400
+  SlideCounterMovement: 0.2
+  DashStrength: 200
+  DashTime: 2
+  DashSpeedBoost: 2
+  MaxDashCharges: 2
+  DashCooldown: 3
+  JumpForce: 550
 --- !u!54 &6965098877999748812
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -34,99 +34,100 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
 
-    //Assingables
-    public Transform playerCam;
-    public Transform orientation;
+    [Header("Assign in editor")]
+    public Transform PlayerCamera;
+    public Transform Orientation;
 
-    //Other
-    private Rigidbody rb;
+    [Header("Layers")]
+    public LayerMask GroundLayer;
 
-    //Rotation and look
-    private float xRotation;
-    //private float sensitivity = 50f;
-    //private float sensMultiplier = 1f;
+    [Header("Movement")]
+    public float MouseSensitivity = 100;
+    public float MoveSpeed = 4500;
+    public float MaxSpeed = 20;
+    public float CounterMovementForce = 0.175f;
+    public float MaxSlopeAngle = 35f;
 
-    //Movement
-    public float moveSpeed = 4500;
-    public float maxSpeed = 20;
-    public bool grounded;
-    public LayerMask whatIsGround;
-    public float mouseSensitivity = 100;
+    [Header("Sliding")]
+    public float SlideLandingBoost = 10f;
+    public float SlideForce = 400;
+    public float SlideCounterMovement = 0.2f;
 
-    public float counterMovement = 0.175f;
-    private float threshold = 0.1f;
-    public float maxSlopeAngle = 35f;
-    public float slideLandingBoost = 10f;
+    [Header("Dashing")]
+    public float DashStrength = 20f;
+    public float DashTime = 0.3f;
+    public float DashSpeedBoost = 2f;
+    public int MaxDashCharges = 2;
+    public float DashCooldown = 3f;
 
-    //Crouch & Slide
-    private float crouchHeight = 1f;
-    private Vector3 crouchCameraOffset = new Vector3(0f, -1f, 0f);
-    private Vector3 crouchCameraPosition;
-    private float playerHeight;
-    private Vector3 defaultCameraPostion;
-    private CapsuleCollider collider;
-    public float slideForce = 400;
-    public float slideCounterMovement = 0.2f;
+    [Header("Jumping")]
+    public float JumpForce = 550f;
 
-    // Dash
-    public float dashStrength = 20f;
-    public float dashTime = 0.3f;
-    public Vector3 dashDirection;
-    public float dashSpeedBoost = 2f;
-    public int maxDashCharges = 2;
-    public float dashCooldown = 3f;
-    private int currentDashCharges;
-    private float currentCdTime;
+    // Player state booleans
+    private bool _grounded;
+    private bool _readyToJump = true;
+    private bool _slowTime;
+    private bool _jumping, _sprinting, _crouching, _dashing;
 
-    //Jumpings
-    private bool readyToJump = true;
-    private float jumpCooldown = 0.25f;
-    public float jumpForce = 550f;
+    // Other references
+    private Rigidbody _rigidbody;
+    private TimeManager _timeManager;
+    private CapsuleCollider _collider;
 
-    //Input
-    float x, y;
-    bool jumping, sprinting, crouching, dashing;
+    // Other variables
+    private PlayerControls _controls;
+    private PlayerControls.GroundMovementActions _controlMapping;
+    private Vector2 _horizontalInput;
+    private float _xInput, _yInput;
+    private float _xRotation;
+    private float _minMovementThreshold = 0.1f;
+    private float _targetXRotation;
 
-    //Sliding
-    private Vector3 normalVector = Vector3.up;
-    private Vector3 wallNormalVector;
+    private int _currentDashCharges;
+    private float _currentDashCdTime;
+    private Vector3 _dashDirection;
 
-    PlayerControls controls;
-    PlayerControls.GroundMovementActions map;
-    public Vector2 horizontalInput;
+    private float _jumpCooldown = 0.25f;
 
-    public TimeManager m_timeManager;
-    private bool m_slowTime;
+    private float _crouchHeight = 1f;
+    private float _playerHeight;
+    private Vector3 _crouchCameraOffset = new Vector3(0f, -1f, 0f);
+    private Vector3 _crouchCameraPosition;
+    private Vector3 _defaultCameraPostion;
 
-    private List<GameObject> m_floorContactsLastFrame = new List<GameObject>();
+    private Vector3 _normalVector = Vector3.up;
+    private Vector3 _wallNormalVector;
+
+    // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
+    private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
 
     private void OnEnable()
     {
-        controls.Enable();
+        _controls.Enable();
     }
 
     private void OnDestroy()
     {
-        controls.Disable();
+        _controls.Disable();
     }
 
     void Awake()
     {
-        controls = new PlayerControls();
-        map = controls.GroundMovement;
-        rb = GetComponent<Rigidbody>();
+        _controls = new PlayerControls();
+        _controlMapping = _controls.GroundMovement;
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     void Start()
     {
-        collider = GetComponent<CapsuleCollider>();
-        playerHeight = collider.height;
-        defaultCameraPostion = playerCam.localPosition;
-        crouchCameraPosition = defaultCameraPostion - crouchCameraOffset;
+        _collider = GetComponent<CapsuleCollider>();
+        _playerHeight = _collider.height;
+        _defaultCameraPostion = PlayerCamera.localPosition;
+        _crouchCameraPosition = _defaultCameraPostion - _crouchCameraOffset;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        m_timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
-        currentDashCharges = maxDashCharges;
+        _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
+        _currentDashCharges = MaxDashCharges;
     }
 
 
@@ -146,47 +147,47 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void MyInput()
     {
-        map.Move.performed += context => horizontalInput = context.ReadValue<Vector2>();
-        x = horizontalInput.x;
-        y = horizontalInput.y;
-        map.Jump.performed += _ => jumping = true;
-        map.Dash.performed += _ =>
+        _controlMapping.Move.performed += context => _horizontalInput = context.ReadValue<Vector2>();
+        _xInput = _horizontalInput.x;
+        _yInput = _horizontalInput.y;
+        _controlMapping.Jump.performed += _ => _jumping = true;
+        _controlMapping.Dash.performed += _ =>
         {
-            if (!dashing) StartCoroutine(Dash());
+            if (!_dashing) StartCoroutine(Dash());
         };
-        map.TimeSlow.performed += _ =>
+        _controlMapping.TimeSlow.performed += _ =>
         {
-            m_slowTime = !m_slowTime;
-            m_timeManager.ToggleTimeScale(0.05f, m_slowTime);
+            _slowTime = !_slowTime;
+            _timeManager.ToggleTimeScale(0.05f, _slowTime);
         };
-        map.Crouch.performed += _ => crouching = true;
+        _controlMapping.Crouch.performed += _ => _crouching = true;
 
         //Crouching
-        if (map.Crouch.WasPressedThisFrame())
+        if (_controlMapping.Crouch.WasPressedThisFrame())
             StartCrouch();
-        if (map.Crouch.WasReleasedThisFrame())
+        if (_controlMapping.Crouch.WasReleasedThisFrame())
             StopCrouch();
     }
 
     private void StartCrouch()
     {
-        collider.height = crouchHeight;
-        playerCam.localPosition = crouchCameraPosition;
+        _collider.height = _crouchHeight;
+        PlayerCamera.localPosition = _crouchCameraPosition;
         //transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-        if (rb.velocity.magnitude > 0.5f)
+        if (_rigidbody.velocity.magnitude > 0.5f)
         {
-            if (grounded)
+            if (_grounded)
             {
-                rb.AddForce(orientation.transform.forward * slideForce);
+                _rigidbody.AddForce(Orientation.transform.forward * SlideForce);
             }
         }
     }
 
     private void StopCrouch()
     {
-        collider.height = playerHeight;
-        playerCam.localPosition = defaultCameraPostion;
-        crouching = false;
+        _collider.height = _playerHeight;
+        PlayerCamera.localPosition = _defaultCameraPostion;
+        _crouching = false;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
@@ -194,122 +195,120 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //Extra gravity
-        rb.AddForce(Vector3.down * Time.deltaTime * 10);
+        _rigidbody.AddForce(Vector3.down * Time.deltaTime * 10);
 
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
         float xMag = mag.x, yMag = mag.y;
 
         //Counteract sliding and sloppy movement
-        CounterMovement(x, y, mag);
+        CounterMovement(_xInput, _yInput, mag);
 
         //If holding jump && ready to jump, then jump
-        if (readyToJump && jumping) Jump();
+        if (_readyToJump && _jumping) Jump();
 
         //Set max speed
-        float maxSpeed = this.maxSpeed;
+        float maxSpeed = this.MaxSpeed;
 
-        if (dashing)
+        if (_dashing)
         {
-            transform.Translate(dashDirection * dashStrength * Time.unscaledDeltaTime);
+            transform.Translate(_dashDirection * DashStrength * Time.unscaledDeltaTime);
         }
         else
         {
             //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
-            if (x > 0 && xMag > maxSpeed) x = 0;
-            if (x < 0 && xMag < -maxSpeed) x = 0;
-            if (y > 0 && yMag > maxSpeed) y = 0;
-            if (y < 0 && yMag < -maxSpeed) y = 0;
+            if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
+            if (_xInput < 0 && xMag < -maxSpeed) _xInput = 0;
+            if (_yInput > 0 && yMag > maxSpeed) _yInput = 0;
+            if (_yInput < 0 && yMag < -maxSpeed) _yInput = 0;
 
             //Some multipliers
             float multiplier = 1f, multiplierV = 1f;
 
             // Movement in air
-            if (!grounded)
+            if (!_grounded)
             {
                 multiplier = 0.5f;
                 multiplierV = 0.5f;
             }
 
             // Movement while sliding
-            if (grounded && crouching) multiplierV = 0f;
+            if (_grounded && _crouching) multiplierV = 0f;
 
             //Apply forces to move player
-            rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-            rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
+            _rigidbody.AddForce(Orientation.transform.forward * _yInput * MoveSpeed * Time.deltaTime * multiplier * multiplierV);
+            _rigidbody.AddForce(Orientation.transform.right * _xInput * MoveSpeed * Time.deltaTime * multiplier);
         }
 
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
-        if (crouching && grounded && readyToJump)
+        if (_crouching && _grounded && _readyToJump)
         {
-            rb.AddForce(Vector3.down * Time.deltaTime * 3000);
+            _rigidbody.AddForce(Vector3.down * Time.deltaTime * 3000);
             return;
         }
 
-        if (currentDashCharges < maxDashCharges)
+        if (_currentDashCharges < MaxDashCharges)
         {
-            currentCdTime += Time.deltaTime;
-            if (currentCdTime >= dashCooldown)
+            _currentDashCdTime += Time.deltaTime;
+            if (_currentDashCdTime >= DashCooldown)
             {
-                currentDashCharges += 1;
-                currentCdTime = 0;
+                _currentDashCharges += 1;
+                _currentDashCdTime = 0;
             }
         }
     }
 
     private void Jump()
     {
-        if (grounded && readyToJump)
+        if (_grounded && _readyToJump)
         {
-            readyToJump = false;
+            _readyToJump = false;
 
             //Add jump forces
-            rb.AddForce(Vector2.up * jumpForce * 1.5f);
-            rb.AddForce(normalVector * jumpForce * 0.5f);
+            _rigidbody.AddForce(Vector2.up * JumpForce * 1.5f);
+            _rigidbody.AddForce(_normalVector * JumpForce * 0.5f);
 
             //If jumping while falling, reset y velocity.
-            Vector3 vel = rb.velocity;
-            if (rb.velocity.y < 0.5f)
-                rb.velocity = new Vector3(vel.x, 0, vel.z);
-            else if (rb.velocity.y > 0)
-                rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
+            Vector3 vel = _rigidbody.velocity;
+            if (_rigidbody.velocity.y < 0.5f)
+                _rigidbody.velocity = new Vector3(vel.x, 0, vel.z);
+            else if (_rigidbody.velocity.y > 0)
+                _rigidbody.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
 
-            Invoke(nameof(ResetJump), jumpCooldown);
+            Invoke(nameof(ResetJump), _jumpCooldown);
         }
     }
 
     private IEnumerator Dash()
     {
-        if (currentDashCharges > 0)
+        if (_currentDashCharges > 0)
         {
-            dashDirection = orientation.transform.forward * y + orientation.transform.right * x;
-            if (dashDirection.magnitude < 0.01f) yield break; // Workaround fix because sometimes the input is 0 for whatever reason
+            _dashDirection = Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
+            if (_dashDirection.magnitude < 0.01f) yield break; // Workaround fix because sometimes the input is 0 for whatever reason
 
-            dashing = true;
-            currentDashCharges--;
+            _dashing = true;
+            _currentDashCharges--;
 
-            Vector3 vel = rb.velocity;
-            rb.velocity = Vector3.zero;
-            rb.useGravity = false;
-            dashDirection.Normalize();
-            float angle = Vector3.Angle(dashDirection, vel);
+            Vector3 vel = _rigidbody.velocity;
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.useGravity = false;
+            _dashDirection.Normalize();
+            float angle = Vector3.Angle(_dashDirection, vel);
 
-            yield return new WaitForSeconds(dashTime * Time.unscaledDeltaTime);
+            yield return new WaitForSeconds(DashTime * Time.unscaledDeltaTime);
 
-            dashing = false;
+            _dashing = false;
             // Keep momentum if dash is towards relatively same direction
-            rb.velocity = angle <= 50f ? vel * dashSpeedBoost : Vector3.zero;
-            rb.useGravity = true;
+            _rigidbody.velocity = angle <= 50f ? vel * DashSpeedBoost : Vector3.zero;
+            _rigidbody.useGravity = true;
         }
     }
 
     private void ResetJump()
     {
-        readyToJump = true;
+        _readyToJump = true;
     }
 
-
-    private float desiredX;
     private void Look()
     {
         float mouseX = 0, mouseY = 0;
@@ -321,51 +320,51 @@ public class PlayerMovement : MonoBehaviour
             mouseY += delta.y;
         }
 
-        mouseX *= mouseSensitivity * Time.unscaledDeltaTime;
-        mouseY *= mouseSensitivity * Time.unscaledDeltaTime;
+        mouseX *= MouseSensitivity * Time.unscaledDeltaTime;
+        mouseY *= MouseSensitivity * Time.unscaledDeltaTime;
 
         //Find current look rotation
-        Vector3 rot = playerCam.transform.localRotation.eulerAngles;
-        desiredX = rot.y + mouseX;
+        Vector3 rot = PlayerCamera.transform.localRotation.eulerAngles;
+        _targetXRotation = rot.y + mouseX;
 
         //Rotate, and also make sure we dont over- or under-rotate.
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        _xRotation -= mouseY;
+        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
         //Perform the rotations
-        playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
-        orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
+        PlayerCamera.transform.localRotation = Quaternion.Euler(_xRotation, _targetXRotation, 0);
+        Orientation.transform.localRotation = Quaternion.Euler(0, _targetXRotation, 0);
     }
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!grounded || jumping || dashing) return;
+        if (!_grounded || _jumping || _dashing) return;
 
         //Slow down sliding
-        if (crouching)
+        if (_crouching)
         {
-            rb.AddForce(moveSpeed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
+            _rigidbody.AddForce(MoveSpeed * Time.deltaTime * -_rigidbody.velocity.normalized * SlideCounterMovement);
             return;
         }
 
         //Counter movement
-        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f
-            || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
+        if (Math.Abs(mag.x) > _minMovementThreshold && Math.Abs(x) < 0.05f
+            || (mag.x < -_minMovementThreshold && x > 0) || (mag.x > _minMovementThreshold && x < 0))
         {
-            rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
+            _rigidbody.AddForce(MoveSpeed * Orientation.transform.right * Time.deltaTime * -mag.x * CounterMovementForce);
         }
-        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f
-            || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
+        if (Math.Abs(mag.y) > _minMovementThreshold && Math.Abs(y) < 0.05f
+            || (mag.y < -_minMovementThreshold && y > 0) || (mag.y > _minMovementThreshold && y < 0))
         {
-            rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
+            _rigidbody.AddForce(MoveSpeed * Orientation.transform.forward * Time.deltaTime * -mag.y * CounterMovementForce);
         }
 
         //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
-        if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed)
+        if (Mathf.Sqrt((Mathf.Pow(_rigidbody.velocity.x, 2) + Mathf.Pow(_rigidbody.velocity.z, 2))) > MaxSpeed)
         {
-            float fallspeed = rb.velocity.y;
-            Vector3 n = rb.velocity.normalized * maxSpeed;
-            rb.velocity = new Vector3(n.x, fallspeed, n.z);
+            float fallspeed = _rigidbody.velocity.y;
+            Vector3 n = _rigidbody.velocity.normalized * MaxSpeed;
+            _rigidbody.velocity = new Vector3(n.x, fallspeed, n.z);
         }
     }
 
@@ -376,13 +375,13 @@ public class PlayerMovement : MonoBehaviour
     /// <returns></returns>
     public Vector2 FindVelRelativeToLook()
     {
-        float lookAngle = orientation.transform.eulerAngles.y;
-        float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
+        float lookAngle = Orientation.transform.eulerAngles.y;
+        float moveAngle = Mathf.Atan2(_rigidbody.velocity.x, _rigidbody.velocity.z) * Mathf.Rad2Deg;
 
         float u = Mathf.DeltaAngle(lookAngle, moveAngle);
         float v = 90 - u;
 
-        float magnitude = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
+        float magnitude = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.z).magnitude;
         float yMag = magnitude * Mathf.Cos(u * Mathf.Deg2Rad);
         float xMag = magnitude * Mathf.Cos(v * Mathf.Deg2Rad);
 
@@ -392,7 +391,7 @@ public class PlayerMovement : MonoBehaviour
     private bool IsFloor(Vector3 v)
     {
         float angle = Vector3.Angle(Vector3.up, v);
-        return angle < maxSlopeAngle;
+        return angle < MaxSlopeAngle;
     }
 
     private bool cancellingGrounded;
@@ -404,9 +403,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //Make sure we are only checking for walkable layers
         int layer = other.gameObject.layer;
-        if (whatIsGround != (whatIsGround | (1 << layer))) return;
+        if (GroundLayer != (GroundLayer | (1 << layer))) return;
 
-        m_floorContactsLastFrame.Clear();
+        _floorContactsLastFrame.Clear();
 
         //Iterate through every collision in a physics update
         for (int i = 0; i < other.contactCount; i++)
@@ -415,19 +414,19 @@ public class PlayerMovement : MonoBehaviour
             //FLOOR
             if (IsFloor(normal))
             {
-                m_floorContactsLastFrame.Add(other.gameObject);
-                if (!grounded)
+                _floorContactsLastFrame.Add(other.gameObject);
+                if (!_grounded)
                 {
-                    grounded = true;
-                    if (crouching)
+                    _grounded = true;
+                    if (_crouching)
                     {
                         // If landing on a floor, boost slide
-                        rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * slideLandingBoost);
+                        _rigidbody.AddForce(MoveSpeed * Orientation.transform.forward * Time.deltaTime * SlideLandingBoost);
                     }
                 }
-                if (jumping) jumping = false;
+                if (_jumping) _jumping = false;
                 cancellingGrounded = false;
-                normalVector = normal;
+                _normalVector = normal;
                 CancelInvoke(nameof(StopGrounded));
             }
         }
@@ -443,10 +442,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (m_floorContactsLastFrame.Contains(collision.gameObject))
+        if (_floorContactsLastFrame.Contains(collision.gameObject))
         {
-            m_floorContactsLastFrame.Remove(collision.gameObject);
-            if (m_floorContactsLastFrame.Count <= 0)
+            _floorContactsLastFrame.Remove(collision.gameObject);
+            if (_floorContactsLastFrame.Count <= 0)
             {
                 StopGrounded();
             }
@@ -455,7 +454,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void StopGrounded()
     {
-        grounded = false;
+        _grounded = false;
     }
 
 }
