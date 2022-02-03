@@ -282,22 +282,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (currentDashCharges > 0)
         {
+            dashDirection = orientation.transform.forward * y + orientation.transform.right * x;
+            if (dashDirection.magnitude < 0.01f) yield break; // Workaround fix because sometimes the input is 0 for whatever reason
+
             dashing = true;
+            currentDashCharges--;
+
             Vector3 vel = rb.velocity;
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
-            dashDirection = orientation.transform.forward * y + orientation.transform.right * x;
-            if (dashDirection.magnitude < 0.01f)
-            {
-                Debug.Log("sfas");
-            }
             dashDirection.Normalize();
             float angle = Vector3.Angle(dashDirection, vel);
-            currentDashCharges--;
 
             yield return new WaitForSeconds(dashTime * Time.unscaledDeltaTime);
 
             dashing = false;
+            // Keep momentum if dash is towards relatively same direction
             rb.velocity = angle <= 50f ? vel * dashSpeedBoost : Vector3.zero;
             rb.useGravity = true;
         }

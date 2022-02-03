@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1367
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Debug
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 492}
   m_MaxSize: {x: 10000, y: 10000}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 80
+  controlID: 156
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 53
+  controlID: 134
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -388,6 +388,14 @@ MonoBehaviour:
       \"type\": \"Button\",\n                    \"id\": \"7c2d1c78-2fdf-40c7-9356-732393b0a53e\",\n                   
       \"expectedControlType\": \"Button\",\n                    \"processors\": \"\",\n                   
       \"interactions\": \"\",\n                    \"initialStateCheck\": false\n               
+      },\n                {\n                    \"name\": \"Fire\",\n                   
+      \"type\": \"Button\",\n                    \"id\": \"68f19d12-07e8-4b29-bb8e-6d138d98b16b\",\n                   
+      \"expectedControlType\": \"Button\",\n                    \"processors\": \"\",\n                   
+      \"interactions\": \"\",\n                    \"initialStateCheck\": false\n               
+      },\n                {\n                    \"name\": \"Grappling\",\n                   
+      \"type\": \"Button\",\n                    \"id\": \"601555d3-2a47-4c80-87ca-d669a4e96fea\",\n                   
+      \"expectedControlType\": \"Button\",\n                    \"processors\": \"\",\n                   
+      \"interactions\": \"\",\n                    \"initialStateCheck\": false\n               
       }\n            ],\n            \"bindings\": [\n                {\n                   
       \"name\": \"2D Vector\",\n                    \"id\": \"9592b7f5-9926-4c94-a53c-e1463d68b74e\",\n                   
       \"path\": \"2DVector\",\n                    \"interactions\": \"\",\n                   
@@ -433,10 +441,20 @@ MonoBehaviour:
       \"path\": \"<Keyboard>/leftShift\",\n                    \"interactions\":
       \"\",\n                    \"processors\": \"\",\n                    \"groups\":
       \"\",\n                    \"action\": \"Dash\",\n                    \"isComposite\":
-      false,\n                    \"isPartOfComposite\": false\n                }\n           
-      ]\n        }\n    ],\n    \"controlSchemes\": [\n        {\n            \"name\":
-      \"controls\",\n            \"bindingGroup\": \"controls\",\n            \"devices\":
-      [\n                {\n                    \"devicePath\": \"<Keyboard>\",\n                   
+      false,\n                    \"isPartOfComposite\": false\n                },\n               
+      {\n                    \"name\": \"\",\n                    \"id\": \"23f0332e-be81-4eb9-9fa3-2c1c366bd541\",\n                   
+      \"path\": \"<Mouse>/leftButton\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"Fire\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                },\n                {\n                   
+      \"name\": \"\",\n                    \"id\": \"bf76bb2e-323f-4fdb-838c-5ababcc63e68\",\n                   
+      \"path\": \"<Mouse>/rightButton\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"Grappling\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                }\n            ]\n        }\n   
+      ],\n    \"controlSchemes\": [\n        {\n            \"name\": \"controls\",\n           
+      \"bindingGroup\": \"controls\",\n            \"devices\": [\n               
+      {\n                    \"devicePath\": \"<Keyboard>\",\n                   
       \"isOptional\": false,\n                    \"isOR\": false\n               
       },\n                {\n                    \"devicePath\": \"<Mouse>\",\n                   
       \"isOptional\": false,\n                    \"isOR\": false\n               
@@ -524,7 +542,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 00fbffff
+      m_ExpandedIDs: aaf9ffffb4f9ffff00fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -630,22 +648,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Controls
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Controls
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Users\Reetu\Unity\Titaneers
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ca7d0000
-    m_LastClickedID: 32202
-    m_ExpandedIDs: 00000000f07b0000f27b0000f47b0000f67b0000f87b0000fa7b0000fc7b0000fe7b000000ca9a3bffffff7f
+    m_SelectedIDs: 727d0000
+    m_LastClickedID: 32114
+    m_ExpandedIDs: 00000000f07b0000f27b0000f47b0000f67b0000f87b0000fa7b0000fc7b0000fe7b0000867d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -790,7 +808,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -1079,9 +1097,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 29.420174, y: 27.578495, z: -53.03842}
+    m_Target: {x: 31.32319, y: 6.049572, z: -59.798393}
     speed: 2
-    m_Value: {x: 29.420174, y: 27.578495, z: -53.03842}
+    m_Value: {x: 31.32319, y: 6.049572, z: -59.798393}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1128,13 +1146,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.21105435, y: 0.236839, z: -0.05278998, w: -0.9468787}
+    m_Target: {x: 0.051063694, y: 0.30708826, z: 0.016504027, w: -0.95016813}
     speed: 2
-    m_Value: {x: -0.21105407, y: 0.23683868, z: -0.052789908, w: -0.9468774}
+    m_Value: {x: 0.051063634, y: 0.3070879, z: 0.016504006, w: -0.950167}
   m_Size:
-    m_Target: 12.157719
+    m_Target: 5.012904
     speed: 2
-    m_Value: 12.157719
+    m_Value: 5.012904
   m_Ortho:
     m_Target: 0
     speed: 2
