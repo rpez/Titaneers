@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2575154470949659019}
   - component: {fileID: 8092534334922568529}
   - component: {fileID: 4157536862168961760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CruiseMissile_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2054897979010082167}
   - component: {fileID: 1959553018809972540}
   - component: {fileID: 7904787288337940570}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CruiseMissile_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7533022396494704163}
   - component: {fileID: 6559164350949162313}
   - component: {fileID: 4584290330913656773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CruiseMissile_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 6006179371788497584}
   - component: {fileID: 4640704457899384950}
   - component: {fileID: 8255153670785458326}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ MonoBehaviour:
   _rb: {fileID: 4640704457899384950}
   _target: {fileID: 0}
   _explosionPrefab: {fileID: 0}
-  _speed: 15
+  _speed: 20
   _rotateSpeed: 95
   _maxDistancePredict: 100
   _minDistancePredict: 5
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 4287818338875699646}
   - component: {fileID: 8489402548384074493}
   - component: {fileID: 3370919811302388643}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CruiseMissile_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -37,6 +37,7 @@ public class Missile : MonoBehaviour
         _rb.MoveRotation(Quaternion.Euler(direction));                
     }
 
+ 
     private void FixedUpdate()
     {
         _rb.velocity = transform.forward * _speed;
