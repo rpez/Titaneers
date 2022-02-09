@@ -8,9 +8,11 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    private enum ProjectileState { Normal, Controlled, Redirected }
+    private ProjectileState _state;
+
     [Header("REFERENCES")]
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private Rigidbody _target;
     [SerializeField] private GameObject _explosionPrefab;
 
     [Header("MOVEMENT")]
@@ -27,9 +29,22 @@ public class Missile : MonoBehaviour
     [SerializeField] private float _deviationAmount = 50;
     [SerializeField] private float _deviationSpeed = 2;
 
+    // Other
+    private Rigidbody _targetRb;
+    private GameObject _targetObject;
+
     public void SetTarget(Rigidbody rb)
     {
-        _target = rb;
+        _targetRb = rb;
+        _targetObject = rb.gameObject;
+        _state = ProjectileState.Normal;
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        _targetRb = null;
+        _targetObject = target;
+        _state = ProjectileState.Normal;
     }
 
     public void SetAim(Vector3 direction)
@@ -37,12 +52,27 @@ public class Missile : MonoBehaviour
         _rb.MoveRotation(Quaternion.Euler(direction));                
     }
 
+    public void GainControl(GameObject newTarget)
+    {
+        _state = ProjectileState.Controlled;
+        _rotateSpeed = 200;
+        SetTarget(newTarget);
+    }
+
+    public void Redirect(Vector3 shootPos, Vector3 dir, GameObject newTarget)
+    {
+        transform.position = shootPos;
+        _state = ProjectileState.Redirected;
+        _rotateSpeed = 75;
+        SetAim(dir);
+        SetTarget(newTarget);
+    }
  
     private void FixedUpdate()
     {
         _rb.velocity = transform.forward * _speed;
 
-        var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
+        var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _targetObject.transform.position));
 
         PredictMovement(leadTimePercentage);
 
@@ -53,9 +83,11 @@ public class Missile : MonoBehaviour
 
     private void PredictMovement(float leadTimePercentage)
     {
+        if (_targetRb == null) return;
+
         var predictionTime = Mathf.Lerp(0, _maxTimePrediction, leadTimePercentage);
 
-        _standardPrediction = _target.position + _target.velocity * predictionTime;
+        _standardPrediction = _targetRb.position + _targetRb.velocity * predictionTime;
     }
 
     private void AddDeviation(float leadTimePercentage)
@@ -77,6 +109,9 @@ public class Missile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (_state == ProjectileState.Controlled) return;
+        if (_state == ProjectileState.Redirected && collision.gameObject.tag == "Player") return;
+
         if (_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
         if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
 

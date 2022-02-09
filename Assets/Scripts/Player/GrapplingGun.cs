@@ -33,6 +33,7 @@ public class GrapplingGun : MonoBehaviour
     [Header("Assign in editor")]
     public GameObject HitpointPrefab;
     public Transform GunTip, PlayerCamera, Player;
+    public Transform ProjectileReceive, ProjectileSend;
 
     [Header("Layers")]
     public LayerMask GrappleLayer;
@@ -52,6 +53,7 @@ public class GrapplingGun : MonoBehaviour
     private LineRenderer _lineRenderer;
     private GameObject _grapplePoint;
     private SpringJoint _joint;
+    private Missile _capturedMissile;
 
     // State booleans
     bool _isGrappling;
@@ -80,7 +82,11 @@ public class GrapplingGun : MonoBehaviour
 
         if (_isGrappling)
         {
-            _joint.connectedAnchor = _grapplePoint.transform.position;
+            if (_grapplePoint == null)
+            {
+                StopGrapple();
+            }
+            else _joint.connectedAnchor = _grapplePoint.transform.position;
         }
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -90,6 +96,14 @@ public class GrapplingGun : MonoBehaviour
         else if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
             StopGrapple();
+        }
+        if (Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            if (_capturedMissile != null) GainProjectileControl();
+        }
+        else if (Mouse.current.rightButton.wasReleasedThisFrame)
+        {
+            if (_capturedMissile != null) RedirectProjectile();
         }
     }
 
@@ -108,6 +122,10 @@ public class GrapplingGun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
         {
+            if (hit.transform.gameObject.tag == "Projectile")
+            {
+                _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
+            }
             _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
             _grapplePoint.transform.parent = hit.transform;
             float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
@@ -139,6 +157,24 @@ public class GrapplingGun : MonoBehaviour
         _currentCharges--;
     }
 
+    void GainProjectileControl()
+    {
+        _capturedMissile.GainControl(ProjectileReceive.gameObject);
+    }
+
+    void RedirectProjectile()
+    {
+        GameObject target = GameObject.Instantiate(HitpointPrefab, PlayerCamera.position + PlayerCamera.forward * 1000f, Quaternion.identity);
+        RaycastHit hit;
+        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit))
+        {
+            target.transform.position = hit.point;
+            target.transform.parent = hit.transform;
+        }
+
+        _capturedMissile.Redirect(ProjectileSend.position, transform.forward, target);
+    }
+
     /// <summary>
     /// Call whenever we want to stop a grapple
     /// </summary>
@@ -146,7 +182,7 @@ public class GrapplingGun : MonoBehaviour
     {
         StopAllCoroutines();
         _lineRenderer.positionCount = 0;
-        Destroy(_grapplePoint);
+        if (_grapplePoint != null) Destroy(_grapplePoint);
         _isGrappling = false;
         Destroy(_joint);
     }
@@ -158,6 +194,12 @@ public class GrapplingGun : MonoBehaviour
         //If not grappling, don't draw rope
         if (!_joint) return;
 
+        if (_grapplePoint == null)
+        {
+            StopGrapple();
+            return;
+        }
+            
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, _grapplePoint.transform.position, Time.deltaTime * 8f);
 
         _lineRenderer.SetPosition(0, GunTip.position);
