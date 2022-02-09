@@ -54,18 +54,17 @@ public class Missile : MonoBehaviour
 
     public void GainControl(GameObject newTarget)
     {
-        _state = ProjectileState.Controlled;
         _rotateSpeed = 200;
         SetTarget(newTarget);
+        _state = ProjectileState.Controlled;
     }
 
     public void Redirect(Vector3 shootPos, Vector3 dir, GameObject newTarget)
     {
         transform.position = shootPos;
-        _state = ProjectileState.Redirected;
-        _rotateSpeed = 75;
         SetAim(dir);
         SetTarget(newTarget);
+        _state = ProjectileState.Redirected;
     }
  
     private void FixedUpdate()
@@ -73,6 +72,8 @@ public class Missile : MonoBehaviour
         _rb.velocity = transform.forward * _speed;
 
         var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _targetObject.transform.position));
+
+        _standardPrediction = _targetObject.transform.position;
 
         PredictMovement(leadTimePercentage);
 

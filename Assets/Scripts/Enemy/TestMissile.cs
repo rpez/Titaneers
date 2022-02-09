@@ -28,7 +28,7 @@ public class TestMissile : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG);
         Rigidbody rb = player.GetComponent<Rigidbody>();
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 1; ++i)
         {
             GameObject missileObj = Instantiate(_missilePrefab, _spawnPoint.position, Quaternion.identity);
             Missile missile = missileObj.GetComponent<Missile>();
