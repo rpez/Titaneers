@@ -16,7 +16,10 @@ public class TestMissile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Time.realtimeSinceStartup % 5f >= 4.5f)
+        {
+            Attack();
+        }
     }
 
     public void Attack()
