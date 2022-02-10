@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask GroundLayer;
 
     [Header("Movement")]
-    public float MouseSensitivity = 100;
+    public float MouseSensitivity = 3;
     public float MoveSpeed = 4500;
     public float MaxSpeed = 20;
     public float CounterMovementForce = 0.175f;
