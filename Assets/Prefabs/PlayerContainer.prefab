@@ -408,7 +408,7 @@ PrefabInstance:
       objectReference: {fileID: 691500010}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: GrappleLayer.m_Bits
-      value: 1088
+      value: 1216
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827568, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: m_Name

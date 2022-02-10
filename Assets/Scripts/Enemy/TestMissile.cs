@@ -33,7 +33,7 @@ public class TestMissile : MonoBehaviour
             GameObject missileObj = Instantiate(_missilePrefab, _spawnPoint.position, Quaternion.identity);
             Missile missile = missileObj.GetComponent<Missile>();
             missile.SetTarget(rb);
-            //Physics.IgnoreCollision(missile.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+            Physics.IgnoreCollision(missile.GetComponent<Collider>(), _spawnPoint.gameObject.GetComponent<Collider>());
             yield return new WaitForSeconds(.5f);
         }
     }

@@ -394,8 +394,6 @@ public class PlayerMovement : MonoBehaviour
         return angle < MaxSlopeAngle;
     }
 
-    private bool cancellingGrounded;
-
     /// <summary>
     /// Handle ground detection
     /// </summary>
@@ -405,16 +403,17 @@ public class PlayerMovement : MonoBehaviour
         int layer = other.gameObject.layer;
         if (GroundLayer != (GroundLayer | (1 << layer))) return;
 
-        _floorContactsLastFrame.Clear();
-
         //Iterate through every collision in a physics update
         for (int i = 0; i < other.contactCount; i++)
         {
             Vector3 normal = other.contacts[i].normal;
+
+            List<GameObject> newCollisions = new List<GameObject>();
+
             //FLOOR
             if (IsFloor(normal))
             {
-                _floorContactsLastFrame.Add(other.gameObject);
+                newCollisions.Add(other.gameObject);
                 if (!_grounded)
                 {
                     _grounded = true;
@@ -425,19 +424,11 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
                 if (_jumping) _jumping = false;
-                cancellingGrounded = false;
                 _normalVector = normal;
-                CancelInvoke(nameof(StopGrounded));
             }
-        }
 
-        //Invoke ground/wall cancel, since we can't check normals with CollisionExit
-        //float delay = 3f;
-        //if (!cancellingGrounded)
-        //{
-        //    cancellingGrounded = true;
-        //    Invoke(nameof(StopGrounded), Time.deltaTime * delay);
-        //}
+            if (newCollisions.Count > 0) _floorContactsLastFrame = newCollisions;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -447,14 +438,9 @@ public class PlayerMovement : MonoBehaviour
             _floorContactsLastFrame.Remove(collision.gameObject);
             if (_floorContactsLastFrame.Count <= 0)
             {
-                StopGrounded();
+                _grounded = false;
             }
         }
-    }
-
-    private void StopGrounded()
-    {
-        _grounded = false;
     }
 
 }
