@@ -222,7 +222,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.199367, y: 1}
+    m_SensorSize: {x: 2.2812006, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -340,7 +340,7 @@ MonoBehaviour:
   MaxSpeed: 20
   CounterMovementForce: 0.175
   MaxSlopeAngle: 35
-  SlideLandingBoost: 10
+  SlideLandingBoost: 1.5
   SlideForce: 400
   SlideCounterMovement: 0.2
   DashStrength: 200
@@ -349,6 +349,7 @@ MonoBehaviour:
   MaxDashCharges: 2
   DashCooldown: 3
   JumpForce: 550
+  SlowAmount: 0.1
 --- !u!54 &6965098877999748812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -387,12 +388,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 2496024927849926546}
     m_Modifications:
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
+      propertyPath: Range
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 8002697790043786536}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: GrappleSpeed
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: PlayerCamera
