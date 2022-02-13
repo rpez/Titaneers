@@ -63,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jumping")]
     public float JumpForce = 550f;
 
+    [Header("Time slow")]
+    public float SlowAmount = 0.1f;
+
     // Player state booleans
     private bool _grounded;
     private bool _readyToJump = true;
@@ -158,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
         _controlMapping.TimeSlow.performed += _ =>
         {
             _slowTime = !_slowTime;
-            _timeManager.ToggleTimeScale(0.05f, _slowTime);
+            _timeManager.ToggleTimeScale(SlowAmount, _slowTime);
         };
         _controlMapping.Crouch.performed += _ => _crouching = true;
 
@@ -283,8 +286,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_currentDashCharges > 0)
         {
+            _xInput = _horizontalInput.x;
+            _yInput = _horizontalInput.y;
+
             _dashDirection = Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
-            if (_dashDirection.magnitude < 0.01f) yield break; // Workaround fix because sometimes the input is 0 for whatever reason
+            if (_dashDirection.magnitude < 0.01f)
+            {
+                yield break; // Workaround fix because sometimes the input is 0 for whatever reason
+            }
 
             _dashing = true;
             _currentDashCharges--;
@@ -299,7 +308,8 @@ public class PlayerMovement : MonoBehaviour
 
             _dashing = false;
             // Keep momentum if dash is towards relatively same direction
-            _rigidbody.velocity = angle <= 50f ? vel * DashSpeedBoost : Vector3.zero;
+            _rigidbody.velocity = angle <= 100f ? vel : Vector3.zero;
+            _rigidbody.AddForce(_dashDirection * DashSpeedBoost, ForceMode.Impulse);
             _rigidbody.useGravity = true;
         }
     }
