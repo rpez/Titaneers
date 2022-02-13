@@ -172,7 +172,7 @@ public class GrapplingGun : MonoBehaviour
             target.transform.parent = hit.transform;
         }
 
-        _capturedMissile.Redirect(ProjectileSend.position, transform.forward, target);
+        _capturedMissile.Redirect(_capturedMissile.transform.position, transform.forward, target);
         _capturedMissile = null;
         StopGrapple();
     }
