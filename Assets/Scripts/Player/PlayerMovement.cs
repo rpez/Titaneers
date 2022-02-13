@@ -295,7 +295,7 @@ public class PlayerMovement : MonoBehaviour
             _dashDirection.Normalize();
             float angle = Vector3.Angle(_dashDirection, vel);
 
-            yield return new WaitForSeconds(DashTime * Time.unscaledDeltaTime);
+            yield return new WaitForSecondsRealtime(DashTime * Time.unscaledDeltaTime);
 
             _dashing = false;
             // Keep momentum if dash is towards relatively same direction
