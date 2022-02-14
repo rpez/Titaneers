@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestMissile : BeAttack, MonoBehaviour
+public class TestMissile : MonoBehaviour, BeAttack
 {
     [SerializeField] private float _maxHp;
     [SerializeField] private Transform _spawnPoint;
