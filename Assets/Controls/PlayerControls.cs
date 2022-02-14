@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b4ae9c21-28d2-4fe7-b801-93b602e20cc7"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": ""Normalize(min=-1,max=1)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Grappling"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea6657b6-3545-4476-861e-1f542a5c4e44"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -244,6 +264,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_GroundMovement_TimeSlow = m_GroundMovement.FindAction("TimeSlow", throwIfNotFound: true);
         m_GroundMovement_Fire = m_GroundMovement.FindAction("Fire", throwIfNotFound: true);
         m_GroundMovement_Grappling = m_GroundMovement.FindAction("Grappling", throwIfNotFound: true);
+        m_GroundMovement_Zoom = m_GroundMovement.FindAction("Zoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -310,6 +331,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_GroundMovement_TimeSlow;
     private readonly InputAction m_GroundMovement_Fire;
     private readonly InputAction m_GroundMovement_Grappling;
+    private readonly InputAction m_GroundMovement_Zoom;
     public struct GroundMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -321,6 +343,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @TimeSlow => m_Wrapper.m_GroundMovement_TimeSlow;
         public InputAction @Fire => m_Wrapper.m_GroundMovement_Fire;
         public InputAction @Grappling => m_Wrapper.m_GroundMovement_Grappling;
+        public InputAction @Zoom => m_Wrapper.m_GroundMovement_Zoom;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -351,6 +374,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Grappling.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrappling;
                 @Grappling.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrappling;
                 @Grappling.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrappling;
+                @Zoom.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnZoom;
             }
             m_Wrapper.m_GroundMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -376,6 +402,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Grappling.started += instance.OnGrappling;
                 @Grappling.performed += instance.OnGrappling;
                 @Grappling.canceled += instance.OnGrappling;
+                @Zoom.started += instance.OnZoom;
+                @Zoom.performed += instance.OnZoom;
+                @Zoom.canceled += instance.OnZoom;
             }
         }
     }
@@ -398,5 +427,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnTimeSlow(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnGrappling(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
 }
