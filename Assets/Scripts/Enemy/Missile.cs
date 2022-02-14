@@ -29,6 +29,9 @@ public class Missile : MonoBehaviour
     [SerializeField] private float _deviationAmount = 50;
     [SerializeField] private float _deviationSpeed = 2;
 
+    [Header("ATTACK")]
+    [SerializeField] private float _damage = 15;
+
     // Other
     private Rigidbody _targetRb;
     private GameObject _targetObject;
@@ -115,6 +118,9 @@ public class Missile : MonoBehaviour
 
         if (_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
         if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
+
+        if (collision.transform.GetComponent<BeAttack>() != null)
+            collision.transform.GetComponent<BeAttack>().BeAttack(_damage);
 
         Destroy(gameObject);
     }

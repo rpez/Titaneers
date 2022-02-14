@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestMissile : MonoBehaviour
+public class TestMissile : BeAttack, MonoBehaviour
 {
-
+    [SerializeField] private float _maxHp;
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private GameObject _missilePrefab;
+
+    private float _hp;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _hp = _maxHp;
     }
 
     // Update is called once per frame
@@ -38,6 +40,18 @@ public class TestMissile : MonoBehaviour
             missile.SetTarget(rb);
             Physics.IgnoreCollision(missile.GetComponent<Collider>(), _spawnPoint.gameObject.GetComponent<Collider>());
             yield return new WaitForSeconds(.5f);
+        }
+    }
+
+    public void BeAttack(float damage)
+    {
+        _hp -= damage;
+        if (_hp <= 0)
+        {
+            if (this.gameObject != null)
+            {
+                Destroy(this);
+            }
         }
     }
 }
