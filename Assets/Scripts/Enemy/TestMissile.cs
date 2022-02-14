@@ -9,6 +9,7 @@ public class TestMissile : MonoBehaviour, BeAttack
     [SerializeField] private GameObject _missilePrefab;
 
     private float _hp;
+    private float _lastShootTs;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,31 +19,22 @@ public class TestMissile : MonoBehaviour, BeAttack
     // Update is called once per frame
     void Update()
     {
-        if (Time.realtimeSinceStartup % 5f >= 4.5f)
+        if (Time.time - _lastShootTs >= 4.5f)
         {
             Attack();
+            _lastShootTs = Time.time;
         }
     }
 
     public void Attack()
     {
-        StartCoroutine(ShootMissile());
-    }
-    //Animation event
-    private IEnumerator ShootMissile()
-    {
         GameObject player = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG);
         Rigidbody rb = player.GetComponent<Rigidbody>();
-        for (int i = 0; i < 1; ++i)
-        {
-            GameObject missileObj = Instantiate(_missilePrefab, _spawnPoint.position, Quaternion.identity);
-            Missile missile = missileObj.GetComponent<Missile>();
-            missile.SetTarget(rb);
-            Physics.IgnoreCollision(missile.GetComponent<Collider>(), _spawnPoint.gameObject.GetComponent<Collider>());
-            yield return new WaitForSeconds(.5f);
-        }
+        GameObject missileObj = Instantiate(_missilePrefab, _spawnPoint.position, Quaternion.identity);
+        Missile missile = missileObj.GetComponent<Missile>();
+        missile.SetTarget(rb);
+        Physics.IgnoreCollision(missile.GetComponent<Collider>(), _spawnPoint.gameObject.GetComponent<Collider>());
     }
-
     public void BeAttack(float damage)
     {
         _hp -= damage;
