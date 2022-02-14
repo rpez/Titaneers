@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 4640704457899384950}
-  _explosionPrefab: {fileID: 0}
+  _explosionPrefab: {fileID: 8259503191771706214, guid: 4526d8d065a1c154987b35f194ae3621, type: 3}
   _speed: 75
   _rotateSpeed: 75
   _maxDistancePredict: 0
