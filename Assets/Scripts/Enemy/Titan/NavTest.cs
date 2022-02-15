@@ -17,6 +17,7 @@ public class NavTest : MonoBehaviour
     private void Update()
     {
         agent.SetDestination(_target.transform.position);
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+        if(animator!=null)
+            animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 }
