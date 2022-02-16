@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Script from: https://github.com/affaxltd/rope-tutorial
+
 public class Spring
 {
     private float _strength;
