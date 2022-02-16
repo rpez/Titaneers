@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7729264469756827565}
   - component: {fileID: 7729264469756827570}
   - component: {fileID: 7729264469756827564}
+  - component: {fileID: 844708099777086563}
   - component: {fileID: 7729264469756827567}
   m_Layer: 0
   m_Name: Weapon
@@ -133,6 +134,8 @@ MonoBehaviour:
   GunTip: {fileID: 7729264469219364797}
   PlayerCamera: {fileID: 0}
   Player: {fileID: 0}
+  ProjectileReceive: {fileID: 0}
+  ProjectileSend: {fileID: 0}
   GrappleLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -145,6 +148,49 @@ MonoBehaviour:
   GrappleSpeed: 1
   Cooldown: 3
   MaxCharges: 2
+--- !u!114 &844708099777086563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7729264469756827568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadce7ed6247857488b61efa8981c5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrapplingGun: {fileID: 7729264469756827564}
+  AffectCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 5.1568623
+      outSlope: 5.1568623
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.07317073
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Quality: 500
+  Damper: 14
+  Strength: 800
+  Velocity: 15
+  WaveCount: 3
+  WaveHeight: 1
 --- !u!120 &7729264469756827567
 LineRenderer:
   m_ObjectHideFlags: 0
