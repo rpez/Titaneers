@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Assign in editor")]
     public Transform PlayerCamera;
     public Transform Orientation;
+    public GameObject PlayerAvatar;
+    public Animator Animator;
 
     [Header("Layers")]
     public LayerMask GroundLayer;
@@ -101,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _normalVector = Vector3.up;
     private Vector3 _wallNormalVector;
 
+    private Coroutine _groundCancel;
+
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
     private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
 
@@ -143,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MyInput();
         Look();
+        Animate();
     }
 
     /// <summary>
@@ -378,6 +383,26 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Animate()
+    {
+        if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
+        {
+            Animator.Play("Run");
+        }
+        else if(!_grounded)
+        {
+            Animator.Play("Grappling");
+        }
+        else
+        {
+            Animator.Play("Idle");
+        }
+        PlayerAvatar.transform.eulerAngles = new Vector3(
+            PlayerAvatar.transform.eulerAngles.x,
+            PlayerCamera.eulerAngles.y,
+            PlayerAvatar.transform.eulerAngles.z);
+    }
+
     /// <summary>
     /// Find the velocity relative to where the player is looking
     /// Useful for vectors calculations regarding movement and limiting movement
@@ -448,9 +473,19 @@ public class PlayerMovement : MonoBehaviour
             _floorContactsLastFrame.Remove(collision.gameObject);
             if (_floorContactsLastFrame.Count <= 0)
             {
-                _grounded = false;
+                if (_groundCancel != null)
+                {
+                    StopCoroutine(_groundCancel);
+                }
+                _groundCancel = StartCoroutine(CancelGrounded());
             }
         }
     }
 
+    private IEnumerator CancelGrounded()
+    {
+        yield return new WaitForSeconds(0.4f);
+        _grounded = false;
+        _groundCancel = null;
+    }
 }
