@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>/Users/gee/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/Unity Projects/Titaneers/Titaneers_WwiseProject/</ProjectRoot>
-		<SourceFilesRoot>/Users/gee/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/Unity Projects/Titaneers/Titaneers_WwiseProject/.cache/Windows/</SourceFilesRoot>
-		<SoundBanksRoot>/Users/gee/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/Unity Projects/Titaneers/Titaneers_WwiseProject/GeneratedSoundBanks/Windows/</SoundBanksRoot>
+		<ProjectRoot>/Users/gee/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/Documents/Wwise Projects/Titaneers_WwiseProject/</ProjectRoot>
+		<SourceFilesRoot>/Users/gee/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/Documents/Wwise Projects/Titaneers_WwiseProject/.cache/Windows/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/gee/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/Unity Projects/Titaneers/Assets/StreamingAssets/Audio/GeneratedSoundBanks/Windows/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>/Users/gee/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/Unity Projects/Titaneers/Titaneers_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/gee/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/Documents/Wwise Projects/Titaneers_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -16,16 +16,52 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="87598213">
+		<SoundBank Id="3161908922" Language="SFX" Hash="3714125304">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3211564518" Name="Play_test_sound" ObjectPath="\Events\Default Work Unit\Play_test_sound" DurationType="OneShot" DurationMin="16.573376" DurationMax="16.573376">
+				<Event Id="4078825889" Name="Play_player_fs" ObjectPath="\Events\Default Work Unit\player\Play_player_fs" DurationType="OneShot" DurationMin="0.249004" DurationMax="0.487296">
+					<IncludedMemoryFiles>
+						<File Id="368284928" Language="SFX">
+							<ShortName>Footsteps_Sand_Soil_07.wav</ShortName>
+							<Path>SFX/Footsteps_Sand_Soil_07_10C4C929.wem</Path>
+						</File>
+						<File Id="420749926" Language="SFX">
+							<ShortName>Footsteps_Sand_Soil_03.wav</ShortName>
+							<Path>SFX/Footsteps_Sand_Soil_03_10C4C929.wem</Path>
+						</File>
+						<File Id="547218369" Language="SFX">
+							<ShortName>Footsteps_Sand_Soil_04.wav</ShortName>
+							<Path>SFX/Footsteps_Sand_Soil_04_10C4C929.wem</Path>
+						</File>
+						<File Id="664132167" Language="SFX">
+							<ShortName>Footsteps_Sand_Soil_05.wav</ShortName>
+							<Path>SFX/Footsteps_Sand_Soil_05_10C4C929.wem</Path>
+						</File>
+						<File Id="815792554" Language="SFX">
+							<ShortName>Footsteps_Sand_Soil_02.wav</ShortName>
+							<Path>SFX/Footsteps_Sand_Soil_02_10C4C929.wem</Path>
+						</File>
+						<File Id="890752524" Language="SFX">
+							<ShortName>Footsteps_Sand_Soil_01.wav</ShortName>
+							<Path>SFX/Footsteps_Sand_Soil_01_10C4C929.wem</Path>
+						</File>
+						<File Id="948512241" Language="SFX">
+							<ShortName>Footsteps_Sand_Soil_06.wav</ShortName>
+							<Path>SFX/Footsteps_Sand_Soil_06_10C4C929.wem</Path>
+						</File>
+						<File Id="948748423" Language="SFX">
+							<ShortName>Footsteps_Sand_Soil_08.wav</ShortName>
+							<Path>SFX/Footsteps_Sand_Soil_08_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3211564518" Name="Play_test_sound" ObjectPath="\Events\Default Work Unit\Play_test_sound" DurationType="OneShot" DurationMin="4.46114" DurationMax="4.46114">
 					<IncludedMemoryFiles>
 						<File Id="300957545" Language="SFX">
 							<ShortName>AardvarkRover1.wav</ShortName>
-							<Path>SFX/AardvarkRover1_10C4C929.wem</Path>
+							<Path>SFX/AardvarkRover1_7D92B217.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
