@@ -56,11 +56,12 @@ public class GrapplingRope : MonoBehaviour
         _spring.SetStrength(Strength);
         _spring.Update(Time.deltaTime);
 
-        var grapplePoint = GrapplingGun.GetGrapplePoint();
+        Transform grapplePoint = GrapplingGun.GetGrapplePoint();
+        if (grapplePoint == null) return;
         var gunTipPosition = GrapplingGun.GunTip.position;
-        var up = Quaternion.LookRotation((grapplePoint - gunTipPosition).normalized) * Vector3.up;
+        var up = Quaternion.LookRotation((grapplePoint.position - gunTipPosition).normalized) * Vector3.up;
 
-        _currentGrapplePosition = Vector3.Lerp(_currentGrapplePosition, grapplePoint, Time.deltaTime * 12f);
+        _currentGrapplePosition = Vector3.Lerp(_currentGrapplePosition, grapplePoint.position, Time.deltaTime * 12f);
 
         for (var i = 0; i < Quality + 1; i++)
         {

@@ -221,9 +221,9 @@ public class GrapplingGun : MonoBehaviour
         return _isLaunched;
     }
 
-    public Vector3 GetGrapplePoint()
+    public Transform GetGrapplePoint()
     {
-        return _grapplePoint.transform.position;
+        return _grapplePoint == null ? null : _grapplePoint.transform;
     }
 
     private IEnumerator Grapple(float delay)
