@@ -1,15 +1,15 @@
 Event	ID	Name			Wwise Object Path	Notes
 	3211564518	Play_test_sound			\Default Work Unit\Play_test_sound	
-	4078825889	Play_player_fs			\Default Work Unit\player\Play_player_fs	
+	3625340534	Play_player_fs_run_L			\Player_Locomotion\Footsteps\Play_player_fs_run_L	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	300957545	test-sound	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\AardvarkRover1_7D92B217.wem		\Actor-Mixer Hierarchy\Default Work Unit\test-sound		856600
-	368284928	Footsteps_Sand_Soil_07	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_07_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\fs\Footsteps_Sand_Soil_07		33988
-	420749926	Footsteps_Sand_Soil_03	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\fs\Footsteps_Sand_Soil_03		37464
-	547218369	Footsteps_Sand_Soil_04	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_04_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\fs\Footsteps_Sand_Soil_04		26162
-	664132167	Footsteps_Sand_Soil_05	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_05_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\fs\Footsteps_Sand_Soil_05		40980
-	815792554	Footsteps_Sand_Soil_02	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_02_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\fs\Footsteps_Sand_Soil_02		36498
-	890752524	Footsteps_Sand_Soil_01	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\fs\Footsteps_Sand_Soil_01		42298
-	948512241	Footsteps_Sand_Soil_06	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\fs\Footsteps_Sand_Soil_06		32132
-	948748423	Footsteps_Sand_Soil_08	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_08_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\player\fs\Footsteps_Sand_Soil_08		37108
+	368284928	Footsteps_Sand_Soil_07	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_07_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_07		33988
+	420749926	Footsteps_Sand_Soil_03	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_03_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_03		37464
+	547218369	Footsteps_Sand_Soil_04	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_04_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_04		26162
+	664132167	Footsteps_Sand_Soil_05	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_05_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_05		40980
+	815792554	Footsteps_Sand_Soil_02	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_02_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_02		36498
+	890752524	Footsteps_Sand_Soil_01	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_01_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_01		42298
+	948512241	Footsteps_Sand_Soil_06	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_06_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_06		32132
+	948748423	Footsteps_Sand_Soil_08	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\Footsteps_Sand_Soil_08_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_08		37108
 

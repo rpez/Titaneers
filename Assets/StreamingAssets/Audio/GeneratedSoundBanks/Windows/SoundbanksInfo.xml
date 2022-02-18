@@ -16,12 +16,12 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="3714125304">
+		<SoundBank Id="3161908922" Language="SFX" Hash="2905400408">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="4078825889" Name="Play_player_fs" ObjectPath="\Events\Default Work Unit\player\Play_player_fs" DurationType="OneShot" DurationMin="0.249004" DurationMax="0.487296">
+				<Event Id="3625340534" Name="Play_player_fs_run_L" ObjectPath="\Events\Player_Locomotion\Footsteps\Play_player_fs_run_L" DurationType="OneShot" DurationMin="0.249004" DurationMax="0.487296">
 					<IncludedMemoryFiles>
 						<File Id="368284928" Language="SFX">
 							<ShortName>Footsteps_Sand_Soil_07.wav</ShortName>

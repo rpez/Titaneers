@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 442162c52f26e344bd4a00fa05b17c8d
     GuidInternal: 
-    m_lastTime: -8585583864043736656
+    m_lastTime: -8585564891769654467
     List:
     - name: Main
       guid: 1201e1abfa63ae47b2be1014f3a86b45
@@ -94,28 +94,8 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: 3c65b7b172dc744bb5b9255a23b99f09
     GuidInternal: 
-    m_lastTime: -8585583864438739738
+    m_lastTime: -8585564866726164321
     List:
-    - name: Play_player_fs
-      guid: 3966b8f55db7964cb1077ab7af2123b5
-      id: 4078825889
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 3c65b7b172dc744bb5b9255a23b99f09
-      - ElementName: player
-        ObjectType: 4
-        guid: 7e1c81dd7614e6439bd737a95eabba34
-      - ElementName: Play_player_fs
-        ObjectType: 3
-        guid: 3966b8f55db7964cb1077ab7af2123b5
-      Path: Events/Default Work Unit/player/Play_player_fs
-      maxAttenuation: 0
-      maxDuration: 0.487296
-      minDuration: 0.249004
     - name: Play_test_sound
       guid: 9f89b331c037dd49aa5d97b8e033ecca
       id: 3211564518
@@ -133,23 +113,75 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 4.46114
       minDuration: 4.46114
-    - name: player
-      guid: 7e1c81dd7614e6439bd737a95eabba34
-      id: 1069431850
+  - PhysicalPath: Events/Footsteps.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player_Locomotion
+      ObjectType: 12
+      guid: 4fb2bfb7636190458852293dc25d07f1
+    - ElementName: Footsteps
+      ObjectType: 12
+      guid: cf1f6711e706574591b719b49eae25ea
+    ParentPath: Events/Player_Locomotion/Footsteps
+    guid: cf1f6711e706574591b719b49eae25ea
+    GuidInternal: 
+    m_lastTime: -8585564136797171551
+    List:
+    - name: Play_player_fs_run_L
+      guid: 3966b8f55db7964cb1077ab7af2123b5
+      id: 3625340534
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
         guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
+      - ElementName: Player_Locomotion
         ObjectType: 12
-        guid: 3c65b7b172dc744bb5b9255a23b99f09
-      - ElementName: player
-        ObjectType: 4
-        guid: 7e1c81dd7614e6439bd737a95eabba34
-      Path: Events/Default Work Unit/player
+        guid: 4fb2bfb7636190458852293dc25d07f1
+      - ElementName: Footsteps
+        ObjectType: 12
+        guid: cf1f6711e706574591b719b49eae25ea
+      - ElementName: Play_player_fs_run_L
+        ObjectType: 3
+        guid: 3966b8f55db7964cb1077ab7af2123b5
+      Path: Events/Player_Locomotion/Footsteps/Play_player_fs_run_L
+      maxAttenuation: 0
+      maxDuration: 0.487296
+      minDuration: 0.249004
+    - name: Play_player_fs_run_R
+      guid: 3c3cdd2782c5444ebf52db09f6a659b6
+      id: 3625340520
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player_Locomotion
+        ObjectType: 12
+        guid: 4fb2bfb7636190458852293dc25d07f1
+      - ElementName: Footsteps
+        ObjectType: 12
+        guid: cf1f6711e706574591b719b49eae25ea
+      - ElementName: Play_player_fs_run_R
+        ObjectType: 3
+        guid: 3c3cdd2782c5444ebf52db09f6a659b6
+      Path: Events/Player_Locomotion/Footsteps/Play_player_fs_run_R
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+  - PhysicalPath: Events/Player_Locomotion.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player_Locomotion
+      ObjectType: 12
+      guid: 4fb2bfb7636190458852293dc25d07f1
+    ParentPath: Events/Player_Locomotion
+    guid: 4fb2bfb7636190458852293dc25d07f1
+    GuidInternal: 
+    m_lastTime: -8585564891899728900
+    List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     PathAndIcons:
@@ -207,7 +239,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 05000000060000000a0000000b00000033000000340000006500000066000000
+  ExpandedWaapiItemIds: 0500000006000000090000000a0000000b00000033000000340000006500000066000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
