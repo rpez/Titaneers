@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1310103748017501788}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7386769684625669162}
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 2222031347642085931}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7386769684625669162}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7123928132219462694}
   - component: {fileID: 179789861114240139}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 3723908078168776271}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7386769684625669162}
@@ -219,7 +219,7 @@ TrailRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 16728528d6c50864297acc8505c9e75b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -243,7 +243,7 @@ TrailRenderer:
   m_Time: 5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 50
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -324,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 4014759707846100279}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7386769684625669162}
@@ -390,9 +390,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7386769684625669162}
   - component: {fileID: 1698334873726721612}
-  - component: {fileID: 6006179371788497584}
   - component: {fileID: 4640704457899384950}
   - component: {fileID: 8255153670785458326}
+  - component: {fileID: 22319945665614691}
   m_Layer: 10
   m_Name: Missile
   m_TagString: Projectile
@@ -428,8 +428,8 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7099793165288587924}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0.11841941}
-  m_Size: 6.3051744
+  m_LocalReferencePoint: {x: 0.00000047683716, y: 0.00000047683716, z: 0.5920973}
+  m_Size: 31.525877
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
@@ -451,20 +451,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3370919811302388643}
   m_Enabled: 1
---- !u!64 &6006179371788497584
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7099793165288587924}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1836222553264194175, guid: 4ab581e06f3b88042b9154887d4c359e, type: 3}
 --- !u!54 &4640704457899384950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -503,6 +489,19 @@ MonoBehaviour:
   _deviationAmount: 0
   _deviationSpeed: 2
   _damage: 15
+--- !u!65 &22319945665614691
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099793165288587924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0185196, y: 2.008756, z: 30.826216}
+  m_Center: {x: -0.07909661, y: -0.027573204, z: 0.15046082}
 --- !u!1 &8948295027296036015
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +529,7 @@ Transform:
   m_GameObject: {fileID: 8948295027296036015}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7386769684625669162}

@@ -50,13 +50,13 @@ public class GrapplingGun : MonoBehaviour
     public int MaxCharges = 2;
 
     // Other references
-    private LineRenderer _lineRenderer;
+    //private LineRenderer _lineRenderer;
     private GameObject _grapplePoint;
     private SpringJoint _joint;
     private Missile _capturedMissile;
 
     // State booleans
-    bool _isGrappling;
+    bool _isGrappling, _isLaunched;
 
     // Other variables
     private int _currentCharges;
@@ -64,7 +64,7 @@ public class GrapplingGun : MonoBehaviour
 
     void Awake()
     {
-        _lineRenderer = GetComponent<LineRenderer>();
+        //_lineRenderer = GetComponent<LineRenderer>();
         _currentCharges = MaxCharges;
     }
 
@@ -110,7 +110,7 @@ public class GrapplingGun : MonoBehaviour
     //Called after Update
     void LateUpdate()
     {
-        DrawRope();
+        //DrawRope();
     }
 
     /// <summary>
@@ -119,6 +119,7 @@ public class GrapplingGun : MonoBehaviour
     void LaunchGrapple()
     {
         if (_currentCharges <= 0) return;
+        _isLaunched = true;
         RaycastHit hit;
         if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
         {
@@ -131,6 +132,7 @@ public class GrapplingGun : MonoBehaviour
             float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
             StartCoroutine(Grapple(distance / GrappleSpeed));
         }
+        Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
     }
 
     void ConnectGrapple()
@@ -151,7 +153,7 @@ public class GrapplingGun : MonoBehaviour
         _joint.damper = Dampening;
         _joint.massScale = MassScale;
 
-        _lineRenderer.positionCount = 2;
+        //_lineRenderer.positionCount = 2;
         currentGrapplePosition = GunTip.position;
 
         _currentCharges--;
@@ -183,39 +185,45 @@ public class GrapplingGun : MonoBehaviour
     void StopGrapple()
     {
         StopAllCoroutines();
-        _lineRenderer.positionCount = 0;
+        //_lineRenderer.positionCount = 0;
         if (_grapplePoint != null) Destroy(_grapplePoint);
         _isGrappling = false;
+        _isLaunched = false;
         Destroy(_joint);
     }
 
     private Vector3 currentGrapplePosition;
 
-    void DrawRope()
-    {
-        //If not grappling, don't draw rope
-        if (!_joint) return;
+    //void DrawRope()
+    //{
+    //    //If not grappling, don't draw rope
+    //    if (!_joint) return;
 
-        if (_grapplePoint == null)
-        {
-            StopGrapple();
-            return;
-        }
+    //    if (_grapplePoint == null)
+    //    {
+    //        StopGrapple();
+    //        return;
+    //    }
             
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, _grapplePoint.transform.position, Time.deltaTime * 8f);
+    //    currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, _grapplePoint.transform.position, Time.deltaTime * 8f);
 
-        _lineRenderer.SetPosition(0, GunTip.position);
-        _lineRenderer.SetPosition(1, currentGrapplePosition);
-    }
+    //    _lineRenderer.SetPosition(0, GunTip.position);
+    //    _lineRenderer.SetPosition(1, currentGrapplePosition);
+    //}
 
     public bool IsGrappling()
     {
         return _joint != null;
     }
 
-    public Vector3 GetGrapplePoint()
+    public bool IsLaunched()
     {
-        return _grapplePoint.transform.position;
+        return _isLaunched;
+    }
+
+    public Transform GetGrapplePoint()
+    {
+        return _grapplePoint == null ? null : _grapplePoint.transform;
     }
 
     private IEnumerator Grapple(float delay)

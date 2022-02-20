@@ -54,8 +54,11 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-
 # Crashlytics generated file
 crashlytics-build.properties
 Recordings/*
+/UserSettings/*
 
+UserSettings/EditorUserSettings.asset
+UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+UserSettings/Layouts/default-2021.dwlt
