@@ -1688,17 +1688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9031446a757894947af8fb28d97a1e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &939405988 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2273668857937266180, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-  m_PrefabInstance: {fileID: 2273668857808839331}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1091094015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,26 +2430,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2273668857937266180, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b934abebcb05392408569bfd4c9d8f19, type: 3}
-    - target: {fileID: 2273668857937266181, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 2273668857937266181, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 32
-      objectReference: {fileID: 0}
     - target: {fileID: 2273668858029645089, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2273668858029645092, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: _crosshair
-      value: 
-      objectReference: {fileID: 939405988}
     - target: {fileID: 2273668858029645093, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
