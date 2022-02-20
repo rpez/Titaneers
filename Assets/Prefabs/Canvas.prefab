@@ -190,4 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554a6081df7fd3e4abc7028c7b70fc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crosshair: {fileID: 2273668857937266180}
+  ThreatIndicator: {fileID: 6241220089841148046, guid: de2bf2ce0b63fbf4cb2ab17230acd0dd, type: 3}
+  Crosshair: {fileID: 2273668857937266180}
+  _camera: {fileID: 0}
