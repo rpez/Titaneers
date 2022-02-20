@@ -33,7 +33,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [Header("Assign in editor")]
     public Transform PlayerCamera;
     public Transform Orientation;

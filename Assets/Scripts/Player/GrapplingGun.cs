@@ -54,6 +54,7 @@ public class GrapplingGun : MonoBehaviour
     private GameObject _grapplePoint;
     private SpringJoint _joint;
     private Missile _capturedMissile;
+    private UI _ui;
 
     // State booleans
     bool _isGrappling, _isLaunched;
@@ -66,10 +67,18 @@ public class GrapplingGun : MonoBehaviour
     {
         //_lineRenderer = GetComponent<LineRenderer>();
         _currentCharges = MaxCharges;
+        _ui = GameObject.Find("Canvas").GetComponent<UI>();
     }
 
     void Update()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
+        {
+            _ui.ChangeCrosshairColor(Color.red);
+        }
+        else _ui.ResetCrosshairColor();
+
         if (_currentCharges < MaxCharges)
         {
             _currentTime += Time.deltaTime;
