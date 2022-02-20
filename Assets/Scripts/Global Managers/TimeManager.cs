@@ -68,4 +68,17 @@ public class TimeManager : MonoBehaviour
 
         _currentTime = 0;
     }
+
+    public void ImpactFrame(float time, Color color)
+    {
+        // TODO: impact effect
+        FreezeFrame(time);
+    }
+
+    public void FreezeFrame(float time)
+    {
+        float currentTimeScale = Time.timeScale;
+        Time.timeScale = 0f;
+
+    }
 }
