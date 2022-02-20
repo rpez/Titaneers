@@ -23,31 +23,31 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
-        int diff = _threats.Count - _threatIndicators.Count;
-        if (diff > 0)
-        {
-            for (int i = 0; i < diff; i++)
-            {
-                GameObject indicator = GameObject.Instantiate(ThreatIndicator);
-                indicator.transform.SetParent(transform);
-                _threatIndicators.Add(indicator);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < -diff; i++)
-            {
-                _threatIndicators.Remove(_threatIndicators[_threatIndicators.Count + diff]);
-            }
-        }
+        //int diff = _threats.Count - _threatIndicators.Count;
+        //if (diff > 0)
+        //{
+        //    for (int i = 0; i < diff; i++)
+        //    {
+        //        GameObject indicator = GameObject.Instantiate(ThreatIndicator);
+        //        indicator.transform.SetParent(transform);
+        //        _threatIndicators.Add(indicator);
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < -diff; i++)
+        //    {
+        //        _threatIndicators.Remove(_threatIndicators[_threatIndicators.Count + diff]);
+        //    }
+        //}
 
-        for (int i = 0; i < _threats.Count; i++)
-        {
-            if (_threats[i] != null)
-            {
-                _threatIndicators[i].GetComponent<RectTransform>().anchoredPosition = _camera.WorldToScreenPoint(_threats[i].transform.position);
-            }
-        }
+        //for (int i = 0; i < _threats.Count; i++)
+        //{
+        //    if (_threats[i] != null)
+        //    {
+        //        _threatIndicators[i].GetComponent<RectTransform>().anchoredPosition = _camera.WorldToScreenPoint(_threats[i].transform.position);
+        //    }
+        //}
     }
 
     public void ChangeCrosshairColor(Color color)
