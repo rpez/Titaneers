@@ -71,6 +71,12 @@ public class PlayerMovement : MonoBehaviour
     public float MaxSlowTime = 2f;
     public float ChargeDelay = 0.5f;
 
+    [Header("Zooming")]
+    public float ZoomIncrement = 1f;
+
+    [Header("Explosion")]
+    public float ExplosionShakingRange = 20f;
+
     // Player state booleans
     private bool _grounded;
     private bool _readyToJump = true;
@@ -80,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Other references
     private Rigidbody _rigidbody;
+    private CameraBehavior _playerCameraBehavior;
     private TimeManager _timeManager;
     private CapsuleCollider _collider;
 
@@ -91,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
     private float _xRotation;
     private float _minMovementThreshold = 0.1f;
     private float _targetXRotation;
+    private float _scrollingInput;
 
     private int _currentDashCharges;
     private float _currentDashCdTime;
@@ -148,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        CheckExplosion();
     }
 
     private void Update()
@@ -182,6 +191,13 @@ public class PlayerMovement : MonoBehaviour
             StartCrouch();
         if (_controlMapping.Crouch.WasReleasedThisFrame())
             StopCrouch();
+
+        //Zooming
+        _controlMapping.Zoom.performed += context => _scrollingInput = context.ReadValue<float>();
+        if (_scrollingInput > 0)
+            _playerCameraBehavior.Zoom(ZoomIncrement);
+        else if (_scrollingInput < 0)
+            _playerCameraBehavior.Zoom(-ZoomIncrement);
     }
 
     private void StartCrouch()
@@ -450,6 +466,17 @@ public class PlayerMovement : MonoBehaviour
             PlayerAvatar.transform.eulerAngles.x,
             PlayerCamera.eulerAngles.y,
             PlayerAvatar.transform.eulerAngles.z);
+    }
+
+    private void CheckExplosion()
+    {
+        GameObject[] explodedProjectiles = GameObject.FindGameObjectsWithTag("Exploded");
+        foreach (GameObject exploded in explodedProjectiles)
+        {
+            if (Vector3.Distance(exploded.transform.position, transform.position) <= ExplosionShakingRange)
+                _playerCameraBehavior.Shake(1, 1);
+            Destroy(exploded);
+        }
     }
 
     /// <summary>
