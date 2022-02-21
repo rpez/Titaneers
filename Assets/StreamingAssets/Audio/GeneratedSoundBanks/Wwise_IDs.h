@@ -14,7 +14,14 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_PLAYER_FS_RUN_L = 3625340534U;
+        static const AkUniqueID PLAY_PLAYER_FS_RUN_R = 3625340520U;
+        static const AkUniqueID PLAY_PLAYER_GRAPPLE_HIT = 780547719U;
+        static const AkUniqueID PLAY_PLAYER_GRAPPLE_SHOOT = 1884037509U;
+        static const AkUniqueID PLAY_PLAYER_JUMP = 562256996U;
         static const AkUniqueID PLAY_TEST_SOUND = 3211564518U;
+        static const AkUniqueID PLAY_TITAN_MISSILE_EXPLODE = 3892312811U;
+        static const AkUniqueID PLAY_TITAN_MISSILE_SHOT = 3166948436U;
+        static const AkUniqueID STOP_TITAN_MISSILE_LOOP = 930574960U;
     } // namespace EVENTS
 
     namespace BANKS
@@ -25,8 +32,25 @@ namespace AK
 
     namespace BUSSES
     {
+        static const AkUniqueID _2DAMBIENCE = 309309195U;
+        static const AkUniqueID _2DAMBIENTBEDS = 4152869693U;
+        static const AkUniqueID _3DAMBIENCE = 1301074112U;
+        static const AkUniqueID AMBIENTBEDS = 1182634443U;
+        static const AkUniqueID AMBIENTMASTER = 1459460693U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID PLAYERCLOTH = 765206498U;
+        static const AkUniqueID PLAYERFS = 3691462299U;
+        static const AkUniqueID PLAYERLOCOMOTION = 2343802269U;
+        static const AkUniqueID PLAYERMASTER = 3538689948U;
+        static const AkUniqueID TITANMASTER = 650398475U;
     } // namespace BUSSES
+
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID OUTDOOR = 144697359U;
+        static const AkUniqueID REVERBS = 3545700988U;
+    } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES
     {

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5f1399abb1444c59eeab59515984dd, type: 3}
+  m_Name: BA11215C-D005-4ECC-8EEF-187DB28462FF
+  m_EditorClassIdentifier: 
+  objectName: Play_titan_missile_explode
+  id: 3892312811
+  guid: BA11215C-D005-4ECC-8EEF-187DB28462FF

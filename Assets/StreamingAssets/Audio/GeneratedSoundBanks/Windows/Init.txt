@@ -1,5 +1,20 @@
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	309309195	2DAmbience			\Default Work Unit\Master Audio Bus\AmbientMaster\2DAmbience	
+	650398475	TitanMaster			\Default Work Unit\Master Audio Bus\TitanMaster	
+	765206498	PlayerCloth			\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerLocomotion\PlayerCloth	
+	1182634443	AmbientBeds			\Default Work Unit\Master Audio Bus\AmbientMaster\AmbientBeds	
+	1301074112	3DAmbience			\Default Work Unit\Master Audio Bus\AmbientMaster\3DAmbience	
+	1459460693	AmbientMaster			\Default Work Unit\Master Audio Bus\AmbientMaster	
+	2343802269	PlayerLocomotion			\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerLocomotion	
+	3538689948	PlayerMaster			\Default Work Unit\Master Audio Bus\PlayerMaster	
+	3691462299	PlayerFS			\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerLocomotion\PlayerFS	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	3991942870	Music			\Default Work Unit\Master Audio Bus\Music	
+	4152869693	2DAmbientBeds			\Default Work Unit\Master Audio Bus\AmbientMaster\AmbientBeds\2DAmbientBeds	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	144697359	Outdoor			\Default Work Unit\Master Audio Bus\Reverbs\Outdoor	
+	3545700988	Reverbs			\Default Work Unit\Master Audio Bus\Reverbs	
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

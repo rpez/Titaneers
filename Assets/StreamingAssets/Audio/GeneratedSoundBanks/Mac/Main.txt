@@ -1,15 +1,51 @@
 Event	ID	Name			Wwise Object Path	Notes
+	562256996	Play_player_jump			\Player\PlayerLocomotion\PlayerJump\Play_player_jump	
+	780547719	Play_player_grapple_hit			\Player\PlayerGrapple\Play_player_grapple_hit	
+	930574960	Stop_titan_missile_loop			\Titan\TitanMissile\Stop_titan_missile_loop	
+	1884037509	Play_player_grapple_shoot			\Player\PlayerGrapple\Play_player_grapple_shoot	
+	3166948436	Play_titan_missile_shot			\Titan\TitanMissile\Play_titan_missile_shot	
 	3211564518	Play_test_sound			\Default Work Unit\Play_test_sound	
-	3625340534	Play_player_fs_run_L			\Player_Locomotion\Footsteps\Play_player_fs_run_L	
+	3625340520	Play_player_fs_run_R			\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_R	
+	3625340534	Play_player_fs_run_L			\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_L	
+	3892312811	Play_titan_missile_explode			\Titan\TitanMissile\Play_titan_missile_explode	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	66095530	sfx_player_fs_placeholder_13	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_13_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_13		27250
+	88342394	sfx_placeholder_missile_explosion	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_missile_explosion_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\TitanMissileExplode\sfx_placeholder_missile_explosion		297456
+	93405564	sfx_player_fs_placeholder_10	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_10_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_10		32200
+	94450075	sfx_player_fs_placeholder_3	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_3_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_3		19004
+	103229351	sfx_player_fs_placeholder_16	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_16_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_16		27012
+	112513259	sfx_player_fs_placeholder_5	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_5_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_5		29528
+	148981038	sfx_placeholder_missile_explosion_3	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_missile_explosion_3_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\TitanMissileExplode\sfx_placeholder_missile_explosion_3		281844
+	163298659	sfx_player_fs_placeholder_8	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_8_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_8		31132
+	168483571	sfx_player_jump_placeholder	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_jump_placeholder_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_Jump\sfx_player_jump_placeholder		116516
+	242702919	sfx_player_fs_placeholder_25	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_25_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_25		33614
+	254999833	sfx_player_fs_placeholder_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_4_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_4		21468
+	286775973	sfx_placeholder_missile_shot	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_missile_shot_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\sfx_placeholder_missile_shot		422408
 	300957545	test-sound	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\AardvarkRover1_7D92B217.wem		\Actor-Mixer Hierarchy\Default Work Unit\test-sound		856600
-	368284928	Footsteps_Sand_Soil_07	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_Soil_07_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_07		33988
-	420749926	Footsteps_Sand_Soil_03	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_Soil_03_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_03		37464
-	547218369	Footsteps_Sand_Soil_04	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_Soil_04_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_04		26162
-	664132167	Footsteps_Sand_Soil_05	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_Soil_05_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_05		40980
-	815792554	Footsteps_Sand_Soil_02	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_Soil_02_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_02		36498
-	890752524	Footsteps_Sand_Soil_01	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_Soil_01_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_01		42298
-	948512241	Footsteps_Sand_Soil_06	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_Soil_06_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_06		32132
-	948748423	Footsteps_Sand_Soil_08	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\Footsteps_Sand_Soil_08_10C4C929.wem		\Actor-Mixer Hierarchy\3D_SFX\player\fs\Footsteps_Sand_Soil_08		37108
+	368867316	sfx_player_fs_placeholder_14	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_14_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_14		21860
+	383123120	sfx_player_fs_placeholder_12	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_12_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_12		26562
+	426936550	sfx_player_fs_placeholder_7	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_7_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_7		25904
+	437185738	sfx_player_fs_placeholder_24	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_24_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_24		30492
+	455539442	sfx_player_fs_placeholder_11	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_11_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_11		29066
+	456350315	sfx_placeholder_missile_flight_loop	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_missile_flight_loop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\sfx_placeholder_missile_flight_loop		655824
+	478646925	sfx_player_fs_placeholder_19	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_19_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_19		21890
+	492273397	sfx_player_fs_placeholder_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_2		21964
+	516104416	sfx_placeholder_player_grapple_shoot	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_player_grapple_shoot_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerGrapple\sfx_placeholder_player_grapple_shoot		275872
+	553227122	sfx_player_fs_placeholder_21	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_21_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_21		20624
+	578437323	sfx_placeholder_player_grapple_hit_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_player_grapple_hit_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerGrapple\sfx_placeholder_player_grapple_hit_1		55746
+	621091838	sfx_player_jump_placeholder_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_jump_placeholder_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_Jump\sfx_player_jump_placeholder_2		123292
+	635086670	sfx_player_fs_placeholder_22	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_22_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_22		35566
+	663342625	sfx_player_fs_placeholder	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder		23608
+	684683535	sfx_player_fs_placeholder_20	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_20_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_20		23686
+	693578609	sfx_placeholder_missile_explosion_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_missile_explosion_2_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\TitanMissileExplode\sfx_placeholder_missile_explosion_2		399816
+	705536709	sfx_player_fs_placeholder_18	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_18_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_18		23638
+	807502362	sfx_player_jump_placeholder_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_jump_placeholder_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_Jump\sfx_player_jump_placeholder_1		117984
+	896131342	sfx_placeholder_missile_explosion_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_missile_explosion_1_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\TitanMissileExplode\sfx_placeholder_missile_explosion_1		309240
+	917046496	sfx_player_fs_placeholder_17	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_17_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_17		31842
+	929293165	sfx_player_fs_placeholder_15	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_15_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_15		34224
+	942197261	sfx_player_fs_placeholder_26	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_26_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_26		32574
+	951957801	sfx_player_fs_placeholder_6	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_6_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_6		26336
+	957880451	sfx_player_fs_placeholder_23	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_23_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_23		25488
+	974756581	sfx_player_fs_placeholder_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_1		20276
 

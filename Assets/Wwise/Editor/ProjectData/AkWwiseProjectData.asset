@@ -38,8 +38,108 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 8bd613bd4fdccf45a54520a04ea11cfa
     GuidInternal: 
-    m_lastTime: -8585583922432749047
+    m_lastTime: -8585564089580518967
     List:
+    - name: 2DAmbience
+      guid: ab2dae2fec0c344c82616f5c3f472ccd
+      id: 309309195
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: d12aa0cde3a59542be981459b187e48b
+      - ElementName: 2DAmbience
+        ObjectType: 2
+        guid: ab2dae2fec0c344c82616f5c3f472ccd
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/2DAmbience
+    - name: 2DAmbientBeds
+      guid: 0be7a2dfc1830449b5b0699bb0d2bf5c
+      id: 4152869693
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: d12aa0cde3a59542be981459b187e48b
+      - ElementName: AmbientBeds
+        ObjectType: 2
+        guid: 7a0dcb0f7e1dd340a0b987418a5f8bd0
+      - ElementName: 2DAmbientBeds
+        ObjectType: 2
+        guid: 0be7a2dfc1830449b5b0699bb0d2bf5c
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/AmbientBeds/2DAmbientBeds
+    - name: 3DAmbience
+      guid: 290b715c25baac4c9f32c3524a52dbe9
+      id: 1301074112
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: d12aa0cde3a59542be981459b187e48b
+      - ElementName: 3DAmbience
+        ObjectType: 2
+        guid: 290b715c25baac4c9f32c3524a52dbe9
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/3DAmbience
+    - name: AmbientBeds
+      guid: 7a0dcb0f7e1dd340a0b987418a5f8bd0
+      id: 1182634443
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: d12aa0cde3a59542be981459b187e48b
+      - ElementName: AmbientBeds
+        ObjectType: 2
+        guid: 7a0dcb0f7e1dd340a0b987418a5f8bd0
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/AmbientBeds
+    - name: AmbientMaster
+      guid: d12aa0cde3a59542be981459b187e48b
+      id: 1459460693
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: d12aa0cde3a59542be981459b187e48b
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -54,6 +154,160 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus
+    - name: Music
+      guid: 4781e2d0fdec904aaf972a53fc25f618
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Music
+        ObjectType: 2
+        guid: 4781e2d0fdec904aaf972a53fc25f618
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Music
+    - name: Outdoor
+      guid: 0de056b16f3a6e46aeca7f0dbecf9f27
+      id: 144697359
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Reverbs
+        ObjectType: 1
+        guid: a6820c59510f954f88fc367c3e206a47
+      - ElementName: Outdoor
+        ObjectType: 1
+        guid: 0de056b16f3a6e46aeca7f0dbecf9f27
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Reverbs/Outdoor
+    - name: PlayerCloth
+      guid: 62e5b8c1d60f364abce02c7e5742c8ca
+      id: 765206498
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: 62dff58067471d4e91c4323e6d86d197
+      - ElementName: PlayerLocomotion
+        ObjectType: 2
+        guid: c99ca1b3901e074e8bf9e37e98ee3092
+      - ElementName: PlayerCloth
+        ObjectType: 2
+        guid: 62e5b8c1d60f364abce02c7e5742c8ca
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster/PlayerLocomotion/PlayerCloth
+    - name: PlayerFS
+      guid: 5e40fafdd15d024996430bac2c25a534
+      id: 3691462299
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: 62dff58067471d4e91c4323e6d86d197
+      - ElementName: PlayerLocomotion
+        ObjectType: 2
+        guid: c99ca1b3901e074e8bf9e37e98ee3092
+      - ElementName: PlayerFS
+        ObjectType: 2
+        guid: 5e40fafdd15d024996430bac2c25a534
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster/PlayerLocomotion/PlayerFS
+    - name: PlayerLocomotion
+      guid: c99ca1b3901e074e8bf9e37e98ee3092
+      id: 2343802269
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: 62dff58067471d4e91c4323e6d86d197
+      - ElementName: PlayerLocomotion
+        ObjectType: 2
+        guid: c99ca1b3901e074e8bf9e37e98ee3092
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster/PlayerLocomotion
+    - name: PlayerMaster
+      guid: 62dff58067471d4e91c4323e6d86d197
+      id: 3538689948
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: 62dff58067471d4e91c4323e6d86d197
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster
+    - name: Reverbs
+      guid: a6820c59510f954f88fc367c3e206a47
+      id: 3545700988
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Reverbs
+        ObjectType: 1
+        guid: a6820c59510f954f88fc367c3e206a47
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Reverbs
+    - name: TitanMaster
+      guid: 28e5387811f4954a903faf24ec3091aa
+      id: 650398475
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8bd613bd4fdccf45a54520a04ea11cfa
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: TitanMaster
+        ObjectType: 2
+        guid: 28e5387811f4954a903faf24ec3091aa
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/TitanMaster
   BankWwu:
   - PhysicalPath: SoundBanks/Default Work Unit.wwu
     PathAndIcons:
@@ -66,7 +320,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 442162c52f26e344bd4a00fa05b17c8d
     GuidInternal: 
-    m_lastTime: -8585564891769654467
+    m_lastTime: -8585561490697388932
     List:
     - name: Main
       guid: 1201e1abfa63ae47b2be1014f3a86b45
@@ -113,21 +367,37 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 4.46114
       minDuration: 4.46114
-  - PhysicalPath: Events/Footsteps.wwu
+  - PhysicalPath: Events/Player.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
       guid: 00000000000000000000000000000000
-    - ElementName: Player_Locomotion
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    ParentPath: Events/Player
+    guid: f056f3278b069d4594dd75872401e966
+    GuidInternal: 
+    m_lastTime: -8585561545688865438
+    List: []
+  - PhysicalPath: Events/PlayerFootsteps.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerLocomotion
       ObjectType: 12
       guid: 4fb2bfb7636190458852293dc25d07f1
-    - ElementName: Footsteps
+    - ElementName: PlayerFootsteps
       ObjectType: 12
       guid: cf1f6711e706574591b719b49eae25ea
-    ParentPath: Events/Player_Locomotion/Footsteps
+    ParentPath: Events/Player/PlayerLocomotion/PlayerFootsteps
     guid: cf1f6711e706574591b719b49eae25ea
     GuidInternal: 
-    m_lastTime: -8585564136797171551
+    m_lastTime: -8585561534063597501
     List:
     - name: Play_player_fs_run_L
       guid: 3966b8f55db7964cb1077ab7af2123b5
@@ -136,52 +406,264 @@ MonoBehaviour:
       - ElementName: Events
         ObjectType: 5
         guid: 00000000000000000000000000000000
-      - ElementName: Player_Locomotion
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerLocomotion
         ObjectType: 12
         guid: 4fb2bfb7636190458852293dc25d07f1
-      - ElementName: Footsteps
+      - ElementName: PlayerFootsteps
         ObjectType: 12
         guid: cf1f6711e706574591b719b49eae25ea
       - ElementName: Play_player_fs_run_L
         ObjectType: 3
         guid: 3966b8f55db7964cb1077ab7af2123b5
-      Path: Events/Player_Locomotion/Footsteps/Play_player_fs_run_L
-      maxAttenuation: 0
-      maxDuration: 0.487296
-      minDuration: 0.249004
+      Path: Events/Player/PlayerLocomotion/PlayerFootsteps/Play_player_fs_run_L
+      maxAttenuation: 10
+      maxDuration: 0.432905
+      minDuration: 0.199666
     - name: Play_player_fs_run_R
-      guid: 3c3cdd2782c5444ebf52db09f6a659b6
+      guid: 20886915e39b73458710617e7609318f
       id: 3625340520
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
         guid: 00000000000000000000000000000000
-      - ElementName: Player_Locomotion
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerLocomotion
         ObjectType: 12
         guid: 4fb2bfb7636190458852293dc25d07f1
-      - ElementName: Footsteps
+      - ElementName: PlayerFootsteps
         ObjectType: 12
         guid: cf1f6711e706574591b719b49eae25ea
       - ElementName: Play_player_fs_run_R
         ObjectType: 3
-        guid: 3c3cdd2782c5444ebf52db09f6a659b6
-      Path: Events/Player_Locomotion/Footsteps/Play_player_fs_run_R
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-  - PhysicalPath: Events/Player_Locomotion.wwu
+        guid: 20886915e39b73458710617e7609318f
+      Path: Events/Player/PlayerLocomotion/PlayerFootsteps/Play_player_fs_run_R
+      maxAttenuation: 10
+      maxDuration: 0.432905
+      minDuration: 0.199666
+  - PhysicalPath: Events/PlayerGrapple.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
       guid: 00000000000000000000000000000000
-    - ElementName: Player_Locomotion
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerGrapple
+      ObjectType: 12
+      guid: 582a838671b151489ac09936f6e3fd4a
+    ParentPath: Events/Player/PlayerGrapple
+    guid: 582a838671b151489ac09936f6e3fd4a
+    GuidInternal: 
+    m_lastTime: -8585561543497634437
+    List:
+    - name: Play_player_grapple_hit
+      guid: 5a24b3ea184f5d4f87c298912c72b712
+      id: 780547719
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerGrapple
+        ObjectType: 12
+        guid: 582a838671b151489ac09936f6e3fd4a
+      - ElementName: Play_player_grapple_hit
+        ObjectType: 3
+        guid: 5a24b3ea184f5d4f87c298912c72b712
+      Path: Events/Player/PlayerGrapple/Play_player_grapple_hit
+      maxAttenuation: 100
+      maxDuration: 0.659647
+      minDuration: 0.612989
+    - name: Play_player_grapple_shoot
+      guid: 27dac9a5f951c44e887b5f1fed6c1c22
+      id: 1884037509
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerGrapple
+        ObjectType: 12
+        guid: 582a838671b151489ac09936f6e3fd4a
+      - ElementName: Play_player_grapple_shoot
+        ObjectType: 3
+        guid: 27dac9a5f951c44e887b5f1fed6c1c22
+      Path: Events/Player/PlayerGrapple/Play_player_grapple_shoot
+      maxAttenuation: 10
+      maxDuration: 1.633705
+      minDuration: 1.474931
+  - PhysicalPath: Events/PlayerJump.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerLocomotion
       ObjectType: 12
       guid: 4fb2bfb7636190458852293dc25d07f1
-    ParentPath: Events/Player_Locomotion
+    - ElementName: PlayerJump
+      ObjectType: 12
+      guid: 59d9d46e4afbcd48909bd62df24fbabc
+    ParentPath: Events/Player/PlayerLocomotion/PlayerJump
+    guid: 59d9d46e4afbcd48909bd62df24fbabc
+    GuidInternal: 
+    m_lastTime: -8585561550370346559
+    List:
+    - name: Play_player_jump
+      guid: 3d86d02061a1c94c980e79ebc57153e5
+      id: 562256996
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerLocomotion
+        ObjectType: 12
+        guid: 4fb2bfb7636190458852293dc25d07f1
+      - ElementName: PlayerJump
+        ObjectType: 12
+        guid: 59d9d46e4afbcd48909bd62df24fbabc
+      - ElementName: Play_player_jump
+        ObjectType: 3
+        guid: 3d86d02061a1c94c980e79ebc57153e5
+      Path: Events/Player/PlayerLocomotion/PlayerJump/Play_player_jump
+      maxAttenuation: 10
+      maxDuration: 0.719457
+      minDuration: 0.631805
+  - PhysicalPath: Events/PlayerLocomotion.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerLocomotion
+      ObjectType: 12
+      guid: 4fb2bfb7636190458852293dc25d07f1
+    ParentPath: Events/Player/PlayerLocomotion
     guid: 4fb2bfb7636190458852293dc25d07f1
     GuidInternal: 
-    m_lastTime: -8585564891899728900
+    m_lastTime: -8585564063207801482
     List: []
+  - PhysicalPath: Events/Titan.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    ParentPath: Events/Titan
+    guid: ea1f2569fa752f4eb51884dd2111927e
+    GuidInternal: 
+    m_lastTime: -8585561521985660882
+    List: []
+  - PhysicalPath: Events/TitanLocomotion.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanLocomotion
+      ObjectType: 12
+      guid: 61822860d16c0145bb7e7c2c5f686fe0
+    ParentPath: Events/Titan/TitanLocomotion
+    guid: 61822860d16c0145bb7e7c2c5f686fe0
+    GuidInternal: 
+    m_lastTime: -8585564088400464654
+    List: []
+  - PhysicalPath: Events/TitanMissile.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanMissile
+      ObjectType: 12
+      guid: 89971a8db43696419be693e20e20c5b5
+    ParentPath: Events/Titan/TitanMissile
+    guid: 89971a8db43696419be693e20e20c5b5
+    GuidInternal: 
+    m_lastTime: -8585561491776019024
+    List:
+    - name: Play_titan_missile_explode
+      guid: 5c2111ba05d0cc4e8eef187db28462ff
+      id: 3892312811
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanMissile
+        ObjectType: 12
+        guid: 89971a8db43696419be693e20e20c5b5
+      - ElementName: Play_titan_missile_explode
+        ObjectType: 3
+        guid: 5c2111ba05d0cc4e8eef187db28462ff
+      Path: Events/Titan/TitanMissile/Play_titan_missile_explode
+      maxAttenuation: 200
+      maxDuration: 3.831089
+      minDuration: 1.597392
+    - name: Play_titan_missile_shot
+      guid: 20a9f6527f4f7d4298cf9baa173308ad
+      id: 3166948436
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanMissile
+        ObjectType: 12
+        guid: 89971a8db43696419be693e20e20c5b5
+      - ElementName: Play_titan_missile_shot
+        ObjectType: 3
+        guid: 20a9f6527f4f7d4298cf9baa173308ad
+      Path: Events/Titan/TitanMissile/Play_titan_missile_shot
+      maxAttenuation: 1000
+      maxDuration: 2.39424
+      minDuration: 2.39424
+    - name: Stop_titan_missile_loop
+      guid: 7f05589c6145f24a973878bcd14b03c8
+      id: 930574960
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanMissile
+        ObjectType: 12
+        guid: 89971a8db43696419be693e20e20c5b5
+      - ElementName: Stop_titan_missile_loop
+        ObjectType: 3
+        guid: 7f05589c6145f24a973878bcd14b03c8
+      Path: Events/Titan/TitanMissile/Stop_titan_missile_loop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     PathAndIcons:
@@ -239,7 +721,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0500000006000000090000000a0000000b00000033000000340000006500000066000000
+  ExpandedWaapiItemIds: 0500000006000000090000000a0000000b0000001a00000020000000220000003300000034000000390000003b0000006500000066000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

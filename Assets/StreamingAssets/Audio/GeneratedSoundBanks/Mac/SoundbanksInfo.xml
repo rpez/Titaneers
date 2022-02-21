@@ -11,49 +11,265 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2754342975">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3421183522">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<IncludedAuxBusses>
+				<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
+				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
+			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2905400408">
+		<SoundBank Id="3161908922" Language="SFX" Hash="3787053395">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3625340534" Name="Play_player_fs_run_L" ObjectPath="\Events\Player_Locomotion\Footsteps\Play_player_fs_run_L" DurationType="OneShot" DurationMin="0.249004" DurationMax="0.487296">
+				<Event Id="3625340534" Name="Play_player_fs_run_L" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_L" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
 					<IncludedMemoryFiles>
-						<File Id="368284928" Language="SFX">
-							<ShortName>Footsteps_Sand_Soil_07.wav</ShortName>
-							<Path>SFX/Footsteps_Sand_Soil_07_10C4C929.wem</Path>
+						<File Id="66095530" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_13.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_13_10C4C929.wem</Path>
 						</File>
-						<File Id="420749926" Language="SFX">
-							<ShortName>Footsteps_Sand_Soil_03.wav</ShortName>
-							<Path>SFX/Footsteps_Sand_Soil_03_10C4C929.wem</Path>
+						<File Id="93405564" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_10.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_10_10C4C929.wem</Path>
 						</File>
-						<File Id="547218369" Language="SFX">
-							<ShortName>Footsteps_Sand_Soil_04.wav</ShortName>
-							<Path>SFX/Footsteps_Sand_Soil_04_10C4C929.wem</Path>
+						<File Id="94450075" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_3.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_3_10C4C929.wem</Path>
 						</File>
-						<File Id="664132167" Language="SFX">
-							<ShortName>Footsteps_Sand_Soil_05.wav</ShortName>
-							<Path>SFX/Footsteps_Sand_Soil_05_10C4C929.wem</Path>
+						<File Id="103229351" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_16.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_16_10C4C929.wem</Path>
 						</File>
-						<File Id="815792554" Language="SFX">
-							<ShortName>Footsteps_Sand_Soil_02.wav</ShortName>
-							<Path>SFX/Footsteps_Sand_Soil_02_10C4C929.wem</Path>
+						<File Id="112513259" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_5.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_5_10C4C929.wem</Path>
 						</File>
-						<File Id="890752524" Language="SFX">
-							<ShortName>Footsteps_Sand_Soil_01.wav</ShortName>
-							<Path>SFX/Footsteps_Sand_Soil_01_10C4C929.wem</Path>
+						<File Id="163298659" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_8.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_8_10C4C929.wem</Path>
 						</File>
-						<File Id="948512241" Language="SFX">
-							<ShortName>Footsteps_Sand_Soil_06.wav</ShortName>
-							<Path>SFX/Footsteps_Sand_Soil_06_10C4C929.wem</Path>
+						<File Id="242702919" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_25.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_25_10C4C929.wem</Path>
 						</File>
-						<File Id="948748423" Language="SFX">
-							<ShortName>Footsteps_Sand_Soil_08.wav</ShortName>
-							<Path>SFX/Footsteps_Sand_Soil_08_10C4C929.wem</Path>
+						<File Id="254999833" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_4.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_4_10C4C929.wem</Path>
+						</File>
+						<File Id="368867316" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_14.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_14_10C4C929.wem</Path>
+						</File>
+						<File Id="383123120" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_12.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_12_10C4C929.wem</Path>
+						</File>
+						<File Id="426936550" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_7.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_7_10C4C929.wem</Path>
+						</File>
+						<File Id="437185738" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_24.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_24_10C4C929.wem</Path>
+						</File>
+						<File Id="455539442" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_11.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_11_10C4C929.wem</Path>
+						</File>
+						<File Id="478646925" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_19.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_19_10C4C929.wem</Path>
+						</File>
+						<File Id="492273397" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_2.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_2_10C4C929.wem</Path>
+						</File>
+						<File Id="553227122" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_21.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_21_10C4C929.wem</Path>
+						</File>
+						<File Id="635086670" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_22.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_22_10C4C929.wem</Path>
+						</File>
+						<File Id="663342625" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_10C4C929.wem</Path>
+						</File>
+						<File Id="684683535" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_20.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_20_10C4C929.wem</Path>
+						</File>
+						<File Id="705536709" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_18.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_18_10C4C929.wem</Path>
+						</File>
+						<File Id="917046496" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_17.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_17_10C4C929.wem</Path>
+						</File>
+						<File Id="929293165" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_15.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_15_10C4C929.wem</Path>
+						</File>
+						<File Id="942197261" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_26.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_26_10C4C929.wem</Path>
+						</File>
+						<File Id="951957801" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_6.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_6_10C4C929.wem</Path>
+						</File>
+						<File Id="957880451" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_23.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_23_10C4C929.wem</Path>
+						</File>
+						<File Id="974756581" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_1.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3625340520" Name="Play_player_fs_run_R" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_R" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
+					<IncludedMemoryFiles>
+						<File Id="66095530" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_13.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_13_10C4C929.wem</Path>
+						</File>
+						<File Id="93405564" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_10.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_10_10C4C929.wem</Path>
+						</File>
+						<File Id="94450075" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_3.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_3_10C4C929.wem</Path>
+						</File>
+						<File Id="103229351" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_16.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_16_10C4C929.wem</Path>
+						</File>
+						<File Id="112513259" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_5.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_5_10C4C929.wem</Path>
+						</File>
+						<File Id="163298659" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_8.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_8_10C4C929.wem</Path>
+						</File>
+						<File Id="242702919" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_25.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_25_10C4C929.wem</Path>
+						</File>
+						<File Id="254999833" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_4.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_4_10C4C929.wem</Path>
+						</File>
+						<File Id="368867316" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_14.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_14_10C4C929.wem</Path>
+						</File>
+						<File Id="383123120" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_12.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_12_10C4C929.wem</Path>
+						</File>
+						<File Id="426936550" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_7.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_7_10C4C929.wem</Path>
+						</File>
+						<File Id="437185738" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_24.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_24_10C4C929.wem</Path>
+						</File>
+						<File Id="455539442" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_11.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_11_10C4C929.wem</Path>
+						</File>
+						<File Id="478646925" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_19.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_19_10C4C929.wem</Path>
+						</File>
+						<File Id="492273397" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_2.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_2_10C4C929.wem</Path>
+						</File>
+						<File Id="553227122" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_21.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_21_10C4C929.wem</Path>
+						</File>
+						<File Id="635086670" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_22.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_22_10C4C929.wem</Path>
+						</File>
+						<File Id="663342625" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_10C4C929.wem</Path>
+						</File>
+						<File Id="684683535" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_20.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_20_10C4C929.wem</Path>
+						</File>
+						<File Id="705536709" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_18.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_18_10C4C929.wem</Path>
+						</File>
+						<File Id="917046496" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_17.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_17_10C4C929.wem</Path>
+						</File>
+						<File Id="929293165" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_15.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_15_10C4C929.wem</Path>
+						</File>
+						<File Id="942197261" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_26.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_26_10C4C929.wem</Path>
+						</File>
+						<File Id="951957801" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_6.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_6_10C4C929.wem</Path>
+						</File>
+						<File Id="957880451" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_23.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_23_10C4C929.wem</Path>
+						</File>
+						<File Id="974756581" Language="SFX">
+							<ShortName>sfx_player_fs_placeholder_1.wav</ShortName>
+							<Path>SFX/sfx_player_fs_placeholder_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="780547719" Name="Play_player_grapple_hit" ObjectPath="\Events\Player\PlayerGrapple\Play_player_grapple_hit" MaxAttenuation="100." DurationType="OneShot" DurationMin="0.612989" DurationMax="0.659647">
+					<IncludedMemoryFiles>
+						<File Id="578437323" Language="SFX">
+							<ShortName>sfx_placeholder_player_grapple_hit_1.wav</ShortName>
+							<Path>SFX/sfx_placeholder_player_grapple_hit_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1884037509" Name="Play_player_grapple_shoot" ObjectPath="\Events\Player\PlayerGrapple\Play_player_grapple_shoot" MaxAttenuation="10." DurationType="OneShot" DurationMin="1.474931" DurationMax="1.633705">
+					<IncludedMemoryFiles>
+						<File Id="516104416" Language="SFX">
+							<ShortName>sfx_placeholder_player_grapple_shoot.wav</ShortName>
+							<Path>SFX/sfx_placeholder_player_grapple_shoot_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="562256996" Name="Play_player_jump" ObjectPath="\Events\Player\PlayerLocomotion\PlayerJump\Play_player_jump" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.631805" DurationMax="0.719457">
+					<IncludedMemoryFiles>
+						<File Id="168483571" Language="SFX">
+							<ShortName>sfx_player_jump_placeholder.wav</ShortName>
+							<Path>SFX/sfx_player_jump_placeholder_10C4C929.wem</Path>
+						</File>
+						<File Id="621091838" Language="SFX">
+							<ShortName>sfx_player_jump_placeholder_2.wav</ShortName>
+							<Path>SFX/sfx_player_jump_placeholder_2_10C4C929.wem</Path>
+						</File>
+						<File Id="807502362" Language="SFX">
+							<ShortName>sfx_player_jump_placeholder_1.wav</ShortName>
+							<Path>SFX/sfx_player_jump_placeholder_1_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -65,6 +281,39 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3892312811" Name="Play_titan_missile_explode" ObjectPath="\Events\Titan\TitanMissile\Play_titan_missile_explode" MaxAttenuation="200." DurationType="OneShot" DurationMin="1.597392" DurationMax="3.831089">
+					<IncludedMemoryFiles>
+						<File Id="88342394" Language="SFX">
+							<ShortName>sfx_placeholder_missile_explosion.wav</ShortName>
+							<Path>SFX/sfx_placeholder_missile_explosion_10C4C929.wem</Path>
+						</File>
+						<File Id="148981038" Language="SFX">
+							<ShortName>sfx_placeholder_missile_explosion_3.wav</ShortName>
+							<Path>SFX/sfx_placeholder_missile_explosion_3_10C4C929.wem</Path>
+						</File>
+						<File Id="693578609" Language="SFX">
+							<ShortName>sfx_placeholder_missile_explosion_2.wav</ShortName>
+							<Path>SFX/sfx_placeholder_missile_explosion_2_10C4C929.wem</Path>
+						</File>
+						<File Id="896131342" Language="SFX">
+							<ShortName>sfx_placeholder_missile_explosion_1.wav</ShortName>
+							<Path>SFX/sfx_placeholder_missile_explosion_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3166948436" Name="Play_titan_missile_shot" ObjectPath="\Events\Titan\TitanMissile\Play_titan_missile_shot" MaxAttenuation="1000." DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="286775973" Language="SFX">
+							<ShortName>sfx_placeholder_missile_shot.wav</ShortName>
+							<Path>SFX/sfx_placeholder_missile_shot_10C4C929.wem</Path>
+						</File>
+						<File Id="456350315" Language="SFX">
+							<ShortName>sfx_placeholder_missile_flight_loop.wav</ShortName>
+							<Path>SFX/sfx_placeholder_missile_flight_loop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="930574960" Name="Stop_titan_missile_loop" ObjectPath="\Events\Titan\TitanMissile\Stop_titan_missile_loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 		</SoundBank>
 	</SoundBanks>
