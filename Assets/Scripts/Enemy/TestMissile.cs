@@ -10,10 +10,12 @@ public class TestMissile : MonoBehaviour, BeAttack
 
     private float _hp;
     private float _lastShootTs;
+    private UI _ui;
     // Start is called before the first frame update
     void Start()
     {
         _hp = _maxHp;
+        _ui = GameObject.Find("Canvas").GetComponent<UI>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class TestMissile : MonoBehaviour, BeAttack
         GameObject player = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG);
         Rigidbody rb = player.GetComponent<Rigidbody>();
         GameObject missileObj = Instantiate(_missilePrefab, _spawnPoint.position, Quaternion.identity);
+        _ui.AddThreat(missileObj);
         Missile missile = missileObj.GetComponent<Missile>();
         missile.SetTarget(rb);
         Physics.IgnoreCollision(missile.GetComponent<Collider>(), _spawnPoint.gameObject.GetComponent<Collider>());

@@ -32,6 +32,7 @@ public class GrapplingGun : MonoBehaviour
 {
     [Header("Assign in editor")]
     public GameObject HitpointPrefab;
+    public GameObject RedirectEffect;
     public Transform GunTip, PlayerCamera, Player;
     public Transform ProjectileReceive, ProjectileSend;
 
@@ -54,6 +55,8 @@ public class GrapplingGun : MonoBehaviour
     private GameObject _grapplePoint;
     private SpringJoint _joint;
     private Missile _capturedMissile;
+    private UI _ui;
+    private TimeManager _timeManager;
 
     // State booleans
     bool _isGrappling, _isLaunched;
@@ -61,15 +64,26 @@ public class GrapplingGun : MonoBehaviour
     // Other variables
     private int _currentCharges;
     private float _currentTime;
+    private Vector3 _defaultCameraPos;
 
     void Awake()
     {
         //_lineRenderer = GetComponent<LineRenderer>();
         _currentCharges = MaxCharges;
+        _ui = GameObject.Find("Canvas").GetComponent<UI>();
+        _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
+        _defaultCameraPos = PlayerCamera.transform.localPosition;
     }
 
     void Update()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
+        {
+            _ui.ChangeCrosshairColor(Color.red);
+        }
+        else _ui.ResetCrosshairColor();
+
         if (_currentCharges < MaxCharges)
         {
             _currentTime += Time.deltaTime;
@@ -162,11 +176,15 @@ public class GrapplingGun : MonoBehaviour
     void GainProjectileControl()
     {
         _capturedMissile.GainControl(ProjectileReceive.gameObject);
+        PlayerCamera.transform.localPosition = PlayerCamera.transform.localPosition + Vector3.back * 5f;
     }
 
     void RedirectProjectile()
     {
         GameObject target = GameObject.Instantiate(HitpointPrefab, PlayerCamera.position + PlayerCamera.forward * 1000f, Quaternion.identity);
+        GameObject particles = GameObject.Instantiate(RedirectEffect, _capturedMissile.transform.position, Quaternion.identity);
+        Destroy(particles, 5f);
+
         RaycastHit hit;
         if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit))
         {
@@ -177,6 +195,8 @@ public class GrapplingGun : MonoBehaviour
         _capturedMissile.Redirect(_capturedMissile.transform.position, transform.forward, target);
         _capturedMissile = null;
         StopGrapple();
+        _timeManager.FreezeFrame(0.4f);
+        PlayerCamera.transform.localPosition = _defaultCameraPos;
     }
 
     /// <summary>

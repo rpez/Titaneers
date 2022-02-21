@@ -33,12 +33,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [Header("Assign in editor")]
     public Transform PlayerCamera;
     public Transform Orientation;
     public GameObject PlayerAvatar;
     public Animator Animator;
+    public GrapplingGun Grapple;
 
     [Header("Layers")]
     public LayerMask GroundLayer;
@@ -64,15 +64,19 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Jumping")]
     public float JumpForce = 550f;
+    public float AirResistance = 0.1f;
 
     [Header("Time slow")]
-    public float SlowAmount = 0.1f;
+    public float SlowScale = 0.1f;
+    public float MaxSlowTime = 2f;
+    public float ChargeDelay = 0.5f;
 
     // Player state booleans
     private bool _grounded;
     private bool _readyToJump = true;
     private bool _slowTime;
     private bool _jumping, _sprinting, _crouching, _dashing;
+    private bool _timeSlowChargeDelayed;
 
     // Other references
     private Rigidbody _rigidbody;
@@ -99,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _crouchCameraOffset = new Vector3(0f, -1f, 0f);
     private Vector3 _crouchCameraPosition;
     private Vector3 _defaultCameraPostion;
+
+    private float _currentSlowTime;
 
     private Vector3 _normalVector = Vector3.up;
     private Vector3 _wallNormalVector;
@@ -135,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.visible = false;
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
         _currentDashCharges = MaxDashCharges;
+        _currentSlowTime = MaxSlowTime;
     }
 
 
@@ -148,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         Look();
         Animate();
+        UpdateCooldowns();
     }
 
     /// <summary>
@@ -165,8 +173,7 @@ public class PlayerMovement : MonoBehaviour
         };
         _controlMapping.TimeSlow.performed += _ =>
         {
-            _slowTime = !_slowTime;
-            _timeManager.ToggleTimeScale(SlowAmount, _slowTime);
+            SetTimeSlow(!_slowTime);
         };
         _controlMapping.Crouch.performed += _ => _crouching = true;
 
@@ -254,7 +261,10 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.AddForce(Vector3.down * Time.deltaTime * 3000);
             return;
         }
+    }
 
+    private void UpdateCooldowns()
+    {
         if (_currentDashCharges < MaxDashCharges)
         {
             _currentDashCdTime += Time.deltaTime;
@@ -263,6 +273,31 @@ public class PlayerMovement : MonoBehaviour
                 _currentDashCharges += 1;
                 _currentDashCdTime = 0;
             }
+        }
+
+        if (!_slowTime && !_timeSlowChargeDelayed && _currentSlowTime < MaxSlowTime)
+        {
+            _currentSlowTime += Time.unscaledDeltaTime;
+        }
+        else if (_slowTime && _currentSlowTime <= 0f)
+        {
+            SetTimeSlow(false);
+        }
+        else if (_slowTime)
+        {
+            _currentSlowTime -= Time.unscaledDeltaTime;
+        }
+    }
+
+    private void SetTimeSlow(bool active)
+    {
+        if (!_slowTime && _currentSlowTime <= 0.0) return;
+        _slowTime = active;
+        _timeManager.ToggleTimeScale(SlowScale, _slowTime);
+        if (!_slowTime)
+        {
+            _timeSlowChargeDelayed = true;
+            StartCoroutine(Delay(ChargeDelay, () => _timeSlowChargeDelayed = false));
         }
     }
 
@@ -353,16 +388,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!_grounded || _jumping || _dashing) return;
+        // If dashing, no forces affect the player
+        if (_dashing) return;
 
-        //Slow down sliding
+        // If airborne
+        if (!_grounded || _jumping)
+        {
+            float horizontalSpeed = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).magnitude;
+            if (!Grapple.IsGrappling() && horizontalSpeed >= _minMovementThreshold)
+            {
+                Vector3 vecx = new Vector3(-_rigidbody.velocity.x, 0f, -_rigidbody.velocity.z) * AirResistance;
+                _rigidbody.AddForce(vecx);
+            }
+
+            return;
+        }
+
+        // Slow down sliding
         if (_crouching)
         {
             _rigidbody.AddForce(MoveSpeed * Time.deltaTime * -_rigidbody.velocity.normalized * SlideCounterMovement);
             return;
         }
 
-        //Counter movement
+        // Counter movement
         if (Math.Abs(mag.x) > _minMovementThreshold && Math.Abs(x) < 0.05f
             || (mag.x < -_minMovementThreshold && x > 0) || (mag.x > _minMovementThreshold && x < 0))
         {
@@ -374,7 +423,7 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.AddForce(MoveSpeed * Orientation.transform.forward * Time.deltaTime * -mag.y * CounterMovementForce);
         }
 
-        //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
+        // Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
         if (Mathf.Sqrt((Mathf.Pow(_rigidbody.velocity.x, 2) + Mathf.Pow(_rigidbody.velocity.z, 2))) > MaxSpeed)
         {
             float fallspeed = _rigidbody.velocity.y;
@@ -484,8 +533,14 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator CancelGrounded()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(.0f);
         _grounded = false;
         _groundCancel = null;
+    }
+
+    private IEnumerator Delay(float delay, Action callback)
+    {
+        yield return new WaitForSeconds(delay);
+        callback.Invoke();
     }
 }

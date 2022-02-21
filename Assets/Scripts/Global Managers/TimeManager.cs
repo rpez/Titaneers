@@ -10,14 +10,18 @@ public class TimeManager : MonoBehaviour
     // Other references
     private PostProcessingManager _postProcessingManager;
 
-    // State boolenas
+    // State booleans
     private bool _inTransition;
     private bool _outTransition;
+    private bool _frozen;
 
     // Other Variables
     private float _targetScale;
     private float _defaultFixedDeltaTime;
-    private float _currentTime;
+    private float _currentTransitionTime;
+    private float _currentFreezetime;
+    private float _currentTimeScale;
+    private float _freezeTime;
 
     private void Awake()
     {
@@ -27,11 +31,21 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        _currentTime += Time.unscaledDeltaTime;
+        _currentTransitionTime += Time.unscaledDeltaTime;
+
+        if (_frozen)
+        {
+            _currentFreezetime += Time.unscaledDeltaTime;
+            if (_currentFreezetime >= _freezeTime)
+            {
+                ResetFreeze();
+                _frozen = false;
+            }
+        }
 
         if (_inTransition)
         {
-            float amount = TransitionCurveIn.Evaluate(_currentTime);
+            float amount = TransitionCurveIn.Evaluate(_currentTransitionTime);
             Time.timeScale = 1f + amount * (_targetScale - 1f);
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
             _postProcessingManager.SetTimeSlowEffectWeight(amount);
@@ -45,7 +59,7 @@ public class TimeManager : MonoBehaviour
         }
         if (_outTransition)
         {
-            float amount = TransitionCurveOut.Evaluate(_currentTime);
+            float amount = TransitionCurveOut.Evaluate(_currentTransitionTime);
             Time.timeScale = amount;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
             _postProcessingManager.SetTimeSlowEffectWeight(1f - amount);
@@ -66,6 +80,26 @@ public class TimeManager : MonoBehaviour
         _outTransition = !_inTransition;
         _targetScale = scale;
 
-        _currentTime = 0;
+        _currentTransitionTime = 0;
+    }
+
+    public void ImpactFrame(float time, Color color)
+    {
+        // TODO: impact effect
+        FreezeFrame(time);
+    }
+
+    public void FreezeFrame(float time)
+    {
+        _currentTimeScale = Time.timeScale;
+        Time.timeScale = 0f;
+        _frozen = true;
+        _freezeTime = time;
+        _currentFreezetime = 0.0f;
+    }
+
+    private void ResetFreeze()
+    {
+        Time.timeScale = _currentTimeScale;
     }
 }
