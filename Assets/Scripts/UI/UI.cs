@@ -13,7 +13,7 @@ public class UI : MonoBehaviour
     // Private variables
     private Color _defaultCrosshairColor;
 
-    private List<GameObject> _threats = new List<GameObject>();
+    public List<GameObject> _threats;// = new List<GameObject>();
     private List<GameObject> _threatIndicators = new List<GameObject>();
 
     private void Start()
@@ -21,33 +21,37 @@ public class UI : MonoBehaviour
         _defaultCrosshairColor = Crosshair.color;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        //int diff = _threats.Count - _threatIndicators.Count;
-        //if (diff > 0)
-        //{
-        //    for (int i = 0; i < diff; i++)
-        //    {
-        //        GameObject indicator = GameObject.Instantiate(ThreatIndicator);
-        //        indicator.transform.SetParent(transform);
-        //        _threatIndicators.Add(indicator);
-        //    }
-        //}
-        //else
-        //{
-        //    for (int i = 0; i < -diff; i++)
-        //    {
-        //        _threatIndicators.Remove(_threatIndicators[_threatIndicators.Count + diff]);
-        //    }
-        //}
+        int diff = _threats.Count - _threatIndicators.Count;
+        if (diff > 0)
+        {
+            for (int i = 0; i < diff; i++)
+            {
+                GameObject indicator = GameObject.Instantiate(ThreatIndicator);
+                indicator.transform.SetParent(transform);
+                _threatIndicators.Add(indicator);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < -diff; i++)
+            {
+                _threatIndicators.Remove(_threatIndicators[_threatIndicators.Count + diff]);
+            }
+        }
 
-        //for (int i = 0; i < _threats.Count; i++)
-        //{
-        //    if (_threats[i] != null)
-        //    {
-        //        _threatIndicators[i].GetComponent<RectTransform>().anchoredPosition = _camera.WorldToScreenPoint(_threats[i].transform.position);
-        //    }
-        //}
+        for (int i = 0; i < _threats.Count; i++)
+        {
+            if (_threats[i] != null)
+            {
+                Canvas canvas = GetComponent<Canvas>();
+                Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(_camera, _threats[i].transform.position);
+                Vector2 result;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), screenPoint, canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _camera, out result);
+                _threatIndicators[i].GetComponent<RectTransform>().anchoredPosition = canvas.transform.TransformPoint(result) + new Vector3(-32f, -32f, 0f);
+            }
+        }
     }
 
     public void ChangeCrosshairColor(Color color)
