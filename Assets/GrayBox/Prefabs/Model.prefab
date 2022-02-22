@@ -54,7 +54,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6199919870486068933}
-  - component: {fileID: 1434258024245754791}
   - component: {fileID: 3175501528301613417}
   m_Layer: 6
   m_Name: FootCo
@@ -78,21 +77,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &1434258024245754791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128474740238823294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &3175501528301613417
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,7 +99,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 710187831423778514}
-  - component: {fileID: 8902455172927226689}
   - component: {fileID: 1099065516743095999}
   m_Layer: 6
   m_Name: FootCo (11)
@@ -139,21 +122,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &8902455172927226689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295184212474172106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &1099065516743095999
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -266,7 +234,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3194086054917742158}
-  - component: {fileID: 6313520028435144530}
   - component: {fileID: 2094242711290413900}
   m_Layer: 6
   m_Name: FootCo (8)
@@ -290,21 +257,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &6313520028435144530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631035857917396222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &2094242711290413900
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -528,7 +480,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2564399681217055901}
-  - component: {fileID: 1704744851545383665}
   - component: {fileID: 5131776636475324062}
   m_Layer: 6
   m_Name: FootCo (12)
@@ -552,21 +503,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &1704744851545383665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140267925663914990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &5131776636475324062
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -589,7 +525,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1667976941472045606}
-  - component: {fileID: 4746209792554337803}
   - component: {fileID: 2225839217153503514}
   m_Layer: 6
   m_Name: FootCo
@@ -613,21 +548,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &4746209792554337803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209613210003681563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &2225839217153503514
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -865,7 +785,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3914138288542974380}
-  - component: {fileID: 5470930054889882491}
   - component: {fileID: 8498761008188575872}
   m_Layer: 6
   m_Name: FootCo (13)
@@ -889,21 +808,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &5470930054889882491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824988055070750768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &8498761008188575872
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1005,7 +909,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4041607817165018028}
-  - component: {fileID: 2896209263161359048}
   - component: {fileID: 3833110779714624867}
   m_Layer: 6
   m_Name: FootCo (4)
@@ -1029,21 +932,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &2896209263161359048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2185259674181263452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &3833110779714624867
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1066,7 +954,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7975128141936380107}
-  - component: {fileID: 5336118206938545932}
   - component: {fileID: 7340631730353369506}
   m_Layer: 6
   m_Name: FootCo (3)
@@ -1090,21 +977,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &5336118206938545932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2256664039125946095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &7340631730353369506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1127,7 +999,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8490477125431749306}
-  - component: {fileID: 5788489931711881088}
   - component: {fileID: 2081700592599201756}
   m_Layer: 6
   m_Name: FootCo (10)
@@ -1151,21 +1022,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &5788489931711881088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2347768470035310614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &2081700592599201756
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1233,7 +1089,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3094103307805596833}
-  - component: {fileID: 7992720943267064465}
   - component: {fileID: 3463024679600000197}
   m_Layer: 6
   m_Name: FootCo (6)
@@ -1257,21 +1112,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &7992720943267064465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2608969817171293512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &3463024679600000197
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1294,7 +1134,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6251852981727872405}
-  - component: {fileID: 4274604946953883240}
   - component: {fileID: 4153498284169492746}
   m_Layer: 6
   m_Name: FootCo (3)
@@ -1318,21 +1157,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &4274604946953883240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2630139033208703127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &4153498284169492746
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1355,7 +1179,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5923397602364541102}
-  - component: {fileID: 1896860965641729378}
   - component: {fileID: 2563504033985797850}
   m_Layer: 6
   m_Name: FootCo (13)
@@ -1379,21 +1202,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &1896860965641729378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2801287732408806260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &2563504033985797850
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1511,7 +1319,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7774929226406220037}
-  - component: {fileID: 8153812588616892316}
   - component: {fileID: 4270577523801599965}
   m_Layer: 6
   m_Name: FootCo (6)
@@ -1535,21 +1342,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &8153812588616892316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2968999620844694066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &4270577523801599965
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1617,7 +1409,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3146885556627073200}
-  - component: {fileID: 1002410293027730921}
   - component: {fileID: 1314529658499817013}
   m_Layer: 6
   m_Name: FootCo (1)
@@ -1641,21 +1432,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &1002410293027730921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3483796868877863244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &1314529658499817013
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1755,7 +1531,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1578023996372431373}
-  - component: {fileID: 8334684400474077658}
   - component: {fileID: 7493348874115836249}
   m_Layer: 6
   m_Name: FootCo (9)
@@ -1779,21 +1554,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &8334684400474077658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3948495219111895841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &7493348874115836249
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2047,7 +1807,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8951962785408718665}
-  - component: {fileID: 3114840679093253829}
   - component: {fileID: 5685432485888971547}
   m_Layer: 6
   m_Name: FootCo (10)
@@ -2071,21 +1830,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &3114840679093253829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4706161118440137456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &5685432485888971547
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2108,7 +1852,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6285848236363913557}
-  - component: {fileID: 3380311056837888127}
   - component: {fileID: 432371208455652484}
   m_Layer: 6
   m_Name: FootCo (4)
@@ -2132,21 +1875,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &3380311056837888127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4764564493554906249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &432371208455652484
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2169,7 +1897,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7184721437624947889}
-  - component: {fileID: 9027492126814221359}
   - component: {fileID: 7181376441826851491}
   m_Layer: 6
   m_Name: FootCo (20)
@@ -2193,21 +1920,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &9027492126814221359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5009648055131884768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &7181376441826851491
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2320,7 +2032,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1017430633809652212}
-  - component: {fileID: 7263779427879914314}
   - component: {fileID: 3119221373886298028}
   m_Layer: 6
   m_Name: FootCo (7)
@@ -2344,21 +2055,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &7263779427879914314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5657676709193673350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &3119221373886298028
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2426,7 +2122,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399173640454801094}
-  - component: {fileID: 8546718767804166781}
   - component: {fileID: 6912440825640985003}
   m_Layer: 6
   m_Name: FootCo (15)
@@ -2450,21 +2145,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &8546718767804166781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6114654241791916747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &6912440825640985003
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2487,7 +2167,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099404953748972499}
-  - component: {fileID: 8625630613376896125}
   - component: {fileID: 8518084334002555092}
   m_Layer: 6
   m_Name: FootCo (12)
@@ -2511,21 +2190,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &8625630613376896125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6245062346488319722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &8518084334002555092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2548,7 +2212,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2671122050389130868}
-  - component: {fileID: 3686199710645489015}
   - component: {fileID: 3598102487055699994}
   m_Layer: 6
   m_Name: FootCo (5)
@@ -2572,21 +2235,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &3686199710645489015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6624263644986319826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &3598102487055699994
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2609,7 +2257,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7776194833103997706}
-  - component: {fileID: 2654626831970919636}
   - component: {fileID: 1183860601400531717}
   m_Layer: 6
   m_Name: FootCo (16)
@@ -2633,21 +2280,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &2654626831970919636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6872954850544892015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &1183860601400531717
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2750,7 +2382,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5426815364100595527}
-  - component: {fileID: 3632219407973741537}
   - component: {fileID: 5730882752530802182}
   m_Layer: 6
   m_Name: FootCo (14)
@@ -2774,21 +2405,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &3632219407973741537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7059137310665617514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &5730882752530802182
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2811,7 +2427,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6599319295414428417}
-  - component: {fileID: 3835766631960996830}
   - component: {fileID: 9150800665817287269}
   m_Layer: 6
   m_Name: FootCo (11)
@@ -2835,21 +2450,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &3835766631960996830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7135452489615721905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &9150800665817287269
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2872,7 +2472,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5687317312201576154}
-  - component: {fileID: 1469545222116874340}
   - component: {fileID: 651287571976441621}
   m_Layer: 6
   m_Name: FootCo (17)
@@ -2896,21 +2495,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &1469545222116874340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7177482780021506621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &651287571976441621
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3013,7 +2597,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1126918948118904183}
-  - component: {fileID: 3654042340084982938}
   - component: {fileID: 3847853994384701156}
   m_Layer: 6
   m_Name: FootCo (08)
@@ -3037,21 +2620,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &3654042340084982938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7363387023722732227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &3847853994384701156
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3074,7 +2642,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5641723274184273679}
-  - component: {fileID: 376509741580603953}
   - component: {fileID: 3600446015340935581}
   m_Layer: 6
   m_Name: FootCo (2)
@@ -3098,21 +2665,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &376509741580603953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7430977008816419951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &3600446015340935581
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3135,7 +2687,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 182497917248449169}
-  - component: {fileID: 602071304080281426}
   - component: {fileID: 6640221434675638505}
   m_Layer: 6
   m_Name: FootCo (15)
@@ -3159,21 +2710,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &602071304080281426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7518360387035861064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &6640221434675638505
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3241,7 +2777,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4382036035026070527}
-  - component: {fileID: 5033452109045444176}
   - component: {fileID: 4044458301110465061}
   m_Layer: 6
   m_Name: FootCo (17)
@@ -3265,21 +2800,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &5033452109045444176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7565911194843783775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &4044458301110465061
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3392,7 +2912,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2085861584898427865}
-  - component: {fileID: 8414194893941953663}
   - component: {fileID: 3372451874189841975}
   m_Layer: 6
   m_Name: FootCo (7)
@@ -3416,21 +2935,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &8414194893941953663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7688827023370821141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &3372451874189841975
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3453,7 +2957,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1255849305273803613}
-  - component: {fileID: 4951920094342478475}
   - component: {fileID: 4770921377883090575}
   m_Layer: 6
   m_Name: FootCo (16)
@@ -3477,21 +2980,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &4951920094342478475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7839680320179929824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &4770921377883090575
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3514,7 +3002,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6863236517090871192}
-  - component: {fileID: 6694102753104145773}
   - component: {fileID: 5362989212845108348}
   m_Layer: 6
   m_Name: FootCo (18)
@@ -3538,21 +3025,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &6694102753104145773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8188740618139097735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &5362989212845108348
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3575,7 +3047,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2442442135452887274}
-  - component: {fileID: 5720674587024918449}
   - component: {fileID: 7860639673520681338}
   m_Layer: 6
   m_Name: FootCo (14)
@@ -3599,21 +3070,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &5720674587024918449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215557942807520140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &7860639673520681338
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3682,7 +3138,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2066299908076421214}
-  - component: {fileID: 943285082286793050}
   - component: {fileID: 9047875039550679773}
   m_Layer: 6
   m_Name: FootCo (09)
@@ -3706,21 +3161,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &943285082286793050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8356124066158702824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &9047875039550679773
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3743,7 +3183,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7042079810119878437}
-  - component: {fileID: 7959698770337353266}
   - component: {fileID: 1353601610234941573}
   m_Layer: 6
   m_Name: FootCo (19)
@@ -3767,21 +3206,6 @@ Transform:
   m_Father: {fileID: 7777867559220403813}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0.457, y: -0.005, z: -16.731}
---- !u!114 &7959698770337353266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8485796819101731620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &1353601610234941573
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3836,7 +3260,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041911130653377180}
-  - component: {fileID: 1432459674518279926}
   - component: {fileID: 4695489181661348603}
   m_Layer: 6
   m_Name: FootCo (5)
@@ -3860,21 +3283,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &1432459674518279926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8618006198479574483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &4695489181661348603
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3897,7 +3305,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7596307344722005887}
-  - component: {fileID: 4779787984511585818}
   - component: {fileID: 2200662328482746763}
   m_Layer: 6
   m_Name: FootCo (18)
@@ -3921,21 +3328,6 @@ Transform:
   m_Father: {fileID: 4338822785590328573}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 1.854, y: -0.115, z: 3.852}
---- !u!114 &4779787984511585818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8737547096576591446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f46a3f64f37af84b9565f2213a8eb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysShowCollider: 1
-  IncludeCollidersInChildren: 1
-  GizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &2200662328482746763
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4113,14 +3505,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
---- !u!4 &5274442570771592572 stripped
+--- !u!4 &4293903508722107205 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 9140253385185518857, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 899914987519988528, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &611827006971922018 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4582277379452294679, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1191725839816910048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2838391200542782613, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1626809297419197533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2412161367050800168, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7332807795066139362 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3302972225415322985, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3699725641295190804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8884984920518210719, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2877562737711609402 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8069032694317455793, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2031266442697538652 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6063354155749413847, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7776449148960797448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2593687625098271875, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &478351536971186082 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5671910290767253545, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3485954238092146590 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &344603484185121709 stripped
@@ -4133,34 +3570,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6734931530170869177, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7014295262258865716 stripped
+--- !u!4 &7144644379393332041 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6250409095508506177, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2877562737711609402 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8069032694317455793, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4293903508722107205 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 899914987519988528, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6575852372756767409 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7829577706673091268, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1687233688811851964 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6881390770214846263, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3699725641295190804 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8884984920518210719, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6110471695799780156, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2845739809770108294 stripped
@@ -4168,34 +3580,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8028729752870558221, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7144644379393332041 stripped
+--- !u!4 &1687233688811851964 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6110471695799780156, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_CorrespondingSourceObject: {fileID: -6881390770214846263, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2031266442697538652 stripped
+--- !u!4 &6575852372756767409 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -6063354155749413847, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3485954238092146590 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7776449148960797448 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -2593687625098271875, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1191725839816910048 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2838391200542782613, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &611827006971922018 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4582277379452294679, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7829577706673091268, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &555082492750543065 stripped
@@ -4203,19 +3595,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -5738099386740791124, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &478351536971186082 stripped
+--- !u!4 &5274442570771592572 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -5671910290767253545, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
-  m_PrefabInstance: {fileID: 4029069738289303669}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7332807795066139362 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -3302972225415322985, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9140253385185518857, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6044607268825961918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7208261743932278219, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
+  m_PrefabInstance: {fileID: 4029069738289303669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7014295262258865716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6250409095508506177, guid: 0e2ed5a5773e6fa4fbdcd710354118c0, type: 3}
   m_PrefabInstance: {fileID: 4029069738289303669}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7781763001023074530
