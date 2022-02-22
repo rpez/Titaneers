@@ -11,7 +11,7 @@ public class ObjectPool : MonoBehaviour
     private List<ObjectPoolUnit> _units;
     public List<ObjectPoolUnit> Units { get => _units; }
 
-    public ObjectPoolUnit InitiateFromObjectPool(Vector3 position, Quaternion rotation, Transform partent = null)
+    public ObjectPoolUnit InitiateFromObjectPool(Vector3 position, Quaternion rotation, Transform parent = null)
     {
         if (_units.Count >= _size) return null;
         if (_units.Count > 0)
@@ -21,12 +21,12 @@ public class ObjectPool : MonoBehaviour
                 {
                     unit.transform.position = position;
                     unit.transform.rotation = rotation;
-                    unit.transform.parent = partent;
+                    unit.transform.SetParent(parent);
                     unit.Activate();
                     return unit;
                 }
             }
-        GameObject obj = Instantiate(_unitObject, position, rotation, partent);
+        GameObject obj = Instantiate(_unitObject, position, rotation, parent);
         ObjectPoolUnit newUnit = obj.GetComponent<ObjectPoolUnit>();
         if (!newUnit)
             newUnit = obj.AddComponent<ObjectPoolUnit>();
@@ -36,7 +36,7 @@ public class ObjectPool : MonoBehaviour
 
     private void Recycle(ObjectPoolUnit deactiveUnit)
     {
-        deactiveUnit.transform.parent = transform;
+        deactiveUnit.transform.SetParent(transform);
         deactiveUnit.transform.position = transform.position;
     }
 
