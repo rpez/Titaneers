@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="3787053395">
+		<SoundBank Id="3161908922" Language="SFX" Hash="987895609">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -241,7 +241,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="780547719" Name="Play_player_grapple_hit" ObjectPath="\Events\Player\PlayerGrapple\Play_player_grapple_hit" MaxAttenuation="100." DurationType="OneShot" DurationMin="0.612989" DurationMax="0.659647">
+				<Event Id="780547719" Name="Play_player_grapple_hit" ObjectPath="\Events\Player\PlayerGrapple\Play_player_grapple_hit" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.34383" DurationMax="0.403722">
 					<IncludedMemoryFiles>
 						<File Id="578437323" Language="SFX">
 							<ShortName>sfx_placeholder_player_grapple_hit_1.wav</ShortName>
