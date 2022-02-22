@@ -790,7 +790,7 @@ PlayerSettings:
     Lumin: UNITY_POST_PROCESSING_STACK_V2
     Nintendo Switch: UNITY_POST_PROCESSING_STACK_V2
     PS4: UNITY_POST_PROCESSING_STACK_V2
-    Standalone: 
+    Standalone: AMPLIFY_SHADER_EDITOR
     WebGL: UNITY_POST_PROCESSING_STACK_V2
     Windows Store Apps: UNITY_POST_PROCESSING_STACK_V2
     XboxOne: UNITY_POST_PROCESSING_STACK_V2
@@ -815,8 +815,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Template_HD
-  metroPackageVersion: 
+  metroPackageName: TemplateHD
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -824,7 +824,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Template_HD
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Titaneers
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

@@ -36,7 +36,8 @@ public class TestMissile : MonoBehaviour, BeAttack
         _ui.AddThreat(missileObj);
         Missile missile = missileObj.GetComponent<Missile>();
         missile.SetTarget(rb);
-        Physics.IgnoreCollision(missile.GetComponent<Collider>(), _spawnPoint.gameObject.GetComponent<Collider>());
+        if (_spawnPoint.gameObject.GetComponent<Collider>() != null)
+            Physics.IgnoreCollision(missile.GetComponent<Collider>(), _spawnPoint.gameObject.GetComponent<Collider>());
     }
     public void BeAttack(float damage)
     {

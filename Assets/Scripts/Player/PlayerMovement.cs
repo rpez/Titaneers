@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _playerCameraBehavior = GameObject.FindObjectOfType<CameraBehavior>();
+        _playerCameraBehavior = GetComponent<CameraBehavior>();
         _collider = GetComponent<CapsuleCollider>();
         _playerHeight = _collider.height;
         _defaultCameraPostion = PlayerCamera.localPosition;
