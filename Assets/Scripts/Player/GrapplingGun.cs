@@ -30,6 +30,11 @@ using UnityEngine.InputSystem;
 
 public class GrapplingGun : MonoBehaviour
 {
+    //Audio
+
+    public string GrappleShoot = "Play_player_grapple_shoot";
+    public string GrappleHit = "Play_player_grapple_hit";
+
     [Header("Assign in editor")]
     public GameObject HitpointPrefab;
     public GameObject RedirectEffect;
@@ -73,6 +78,8 @@ public class GrapplingGun : MonoBehaviour
         _ui = GameObject.Find("Canvas").GetComponent<UI>();
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
         _defaultCameraPos = PlayerCamera.transform.localPosition;
+
+        AkSoundEngine.RegisterGameObj(gameObject);
     }
 
     void Update()
@@ -143,6 +150,7 @@ public class GrapplingGun : MonoBehaviour
             }
             _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
             _grapplePoint.transform.parent = hit.transform;
+            AkSoundEngine.PostEvent(GrappleShoot, gameObject);
             float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
             StartCoroutine(Grapple(distance / GrappleSpeed));
         }
@@ -155,6 +163,7 @@ public class GrapplingGun : MonoBehaviour
         _joint = Player.gameObject.AddComponent<SpringJoint>();
         _joint.autoConfigureConnectedAnchor = false;
         _joint.connectedAnchor = _grapplePoint.transform.position;
+        AkSoundEngine.PostEvent(GrappleHit, _grapplePoint);
 
         float distanceFromPoint = Vector3.Distance(Player.position, _grapplePoint.transform.position);
 
