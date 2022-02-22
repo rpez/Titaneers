@@ -14,50 +14,65 @@ public class UI : MonoBehaviour
     // Private variables
     private Color _defaultCrosshairColor;
 
-    private List<GameObject> _threats = new List<GameObject>();
-    private List<ObjectPoolUnit> _threatIndicators = new List<ObjectPoolUnit>();
+    private GameObject[] _threats;
+    private ObjectPoolUnit[] _threatIndicators;
 
     private void Start()
     {
         _defaultCrosshairColor = Crosshair.color;
+        _threats = new GameObject[IndicatorPool.Size];
+        _threatIndicators = new ObjectPoolUnit[IndicatorPool.Size];
     }
 
     private void LateUpdate()
     {
-        int diff = _threats.Count - _threatIndicators.Count;
-        if (diff > 0)
-        {
-            for (int i = 0; i < diff; i++)
-            {
-                ObjectPoolUnit indicator = IndicatorPool.InitiateFromObjectPool(Vector3.zero, Quaternion.identity, transform);
-                _threatIndicators.Add(indicator);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < -diff; i++)
-            {
-                _threatIndicators[_threatIndicators.Count - i].Deactivate();
-            }
-        }
-
-        for (int i = 0; i < _threats.Count; i++)
+        for (int i = 0; i < _threats.Length; i++)
         {
             if (_threats[i] != null)
             {
-                //Vector3 dir = _threats[i].transform.position - Camera.transform.position;
-                //if (Vector3.Dot(dir, Camera.transform.forward) > 0f)
-                //{
-                //    _threatIndicators[i].Deactivate();
-                //    return;
-                //}
+                if (_threatIndicators[i] == null)
+                {
+                    ObjectPoolUnit indicator = IndicatorPool.InitiateFromObjectPool(Vector3.zero, Quaternion.identity, transform);
+                    _threatIndicators[i] = indicator;
+                }
+            }
+            else
+            {
+                if (_threatIndicators[i] != null)
+                {
+                    Color c = _threatIndicators[i].gameObject.GetComponent<Image>().color;
+                    _threatIndicators[i].gameObject.GetComponent<Image>().color = new Color(c.r, c.g, c.b, 0f);
+                    _threatIndicators[i].Deactivate();
+                    _threatIndicators[i] = null;
+                }
+            }
+        }
 
-                //_threatIndicators[i].Activate();
+        for (int i = 0; i < _threats.Length; i++)
+        {
+            if (_threats[i] != null)
+            {
+                Vector3 dir = _threats[i].transform.position - Camera.transform.position;
+                if (Vector3.Dot(dir, Camera.transform.forward) < 0f)
+                {
+                    //_threatIndicators[i].Deactivate();
+                    Color c = _threatIndicators[i].gameObject.GetComponent<Image>().color;
+                    _threatIndicators[i].gameObject.GetComponent<Image>().color = new Color(c.r, c.g, c.b, 0f);
+                    return;
+                }
+
+                Color color = _threatIndicators[i].gameObject.GetComponent<Image>().color;
+                _threatIndicators[i].gameObject.GetComponent<Image>().color = new Color(color.r, color.g, color.b, 1f);
+
                 Canvas canvas = GetComponent<Canvas>();
                 Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera, _threats[i].transform.position);
                 Vector2 result;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), screenPoint, canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : Camera, out result);
                 _threatIndicators[i].GetComponent<RectTransform>().anchoredPosition = canvas.transform.TransformPoint(result) + new Vector3(-32f, -32f, 0f);
+            }
+            else
+            {
+                if (_threatIndicators[i] != null) Debug.Log("huge gmaing");
             }
         }
     }
@@ -79,6 +94,13 @@ public class UI : MonoBehaviour
 
     public void AddThreat(GameObject obj)
     {
-        _threats.Add(obj);
+        for (int i = 0; i < _threats.Length; i++)
+        {
+            if (_threats[i] == null)
+            {
+                _threats[i] = obj;
+                return;
+            }
+        }
     }
 }

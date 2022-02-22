@@ -10,6 +10,7 @@ public class ObjectPool : MonoBehaviour
     private int _size;
     private List<ObjectPoolUnit> _units;
     public List<ObjectPoolUnit> Units { get => _units; }
+    public int Size { get => _size; }
 
     public ObjectPoolUnit InitiateFromObjectPool(Vector3 position, Quaternion rotation, Transform parent = null)
     {
