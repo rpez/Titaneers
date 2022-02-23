@@ -18,6 +18,10 @@ public class UI : MonoBehaviour
     private ObjectPoolUnit[] _threatIndicators;
     private Canvas _canvas;
 
+    private Vector2 _crosshairPos;
+    private GameObject _inCrosshair;
+    private bool _crosshairTargetSet;
+
     private Vector3 _indicatorOffset = new Vector3(-32f, -32f, 0f);
 
     private void Start()
@@ -26,10 +30,12 @@ public class UI : MonoBehaviour
         _threats = new GameObject[IndicatorPool.Size];
         _threatIndicators = new ObjectPoolUnit[IndicatorPool.Size];
         _canvas = GetComponent<Canvas>();
+        _crosshairPos = _canvas.renderingDisplaySize * 0.5f;
     }
 
     private void LateUpdate()
     {
+        _crosshairTargetSet = false;
         for (int i = 0; i < _threats.Length; i++)
         {
             if (_threats[i] != null)
@@ -70,12 +76,34 @@ public class UI : MonoBehaviour
                 Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera, _threats[i].transform.position);
                 Vector2 result;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), screenPoint, _canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : Camera, out result);
-                _threatIndicators[i].GetComponent<RectTransform>().anchoredPosition = _canvas.transform.TransformPoint(result) + _indicatorOffset;
+
+                RectTransform rt = _threatIndicators[i].GetComponent<RectTransform>();
+                rt.anchoredPosition = _canvas.transform.TransformPoint(result) + _indicatorOffset;
+
+                // Check if crosshair within indicator
+                if ((rt.anchoredPosition - _crosshairPos + new Vector2(32f, 32f)).magnitude < 32f)
+                {
+                    // If there exists a stored object already
+                    if (_inCrosshair != null)
+                    {
+                        // If current object is closer, continue
+                        if ((_inCrosshair.transform.position - Camera.transform.position).magnitude
+                            > (_threats[i].transform.position - Camera.transform.position).magnitude) continue;
+                    }
+                    // Set crosshair object
+                    _inCrosshair = _threats[i];
+                    _crosshairTargetSet = true;
+                    ChangeCrosshairColor(Color.red);
+                }
             }
             else
             {
                 if (_threatIndicators[i] != null) Debug.LogWarning("Indicator for a non-existing threat exists");
             }
+        }
+        if (!_crosshairTargetSet)
+        {
+            _inCrosshair = null;
         }
     }
 
@@ -89,9 +117,9 @@ public class UI : MonoBehaviour
         Crosshair.color = _defaultCrosshairColor;
     }
 
-    public void StartGame()
+    public GameObject GetCrosshairTarget()
     {
-        SceneManager.LoadScene("GrayBox");
+        return _inCrosshair;
     }
 
     public void AddThreat(GameObject obj)

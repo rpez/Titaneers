@@ -133,21 +133,46 @@ public class GrapplingGun : MonoBehaviour
     {
         if (_currentCharges <= 0) return;
         _isLaunched = true;
+
         RaycastHit hit;
-        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
+        bool rayHit = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer);
+        GameObject crosshairTarget = _ui.GetCrosshairTarget();
+
+        Debug.Log(crosshairTarget);
+
+        // Check whether raycast or crosshair hit is closer
+        if (crosshairTarget != null)
         {
-            if (hit.transform.gameObject.tag == "Projectile")
+            if (rayHit)
             {
-                _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
+                if ((crosshairTarget.transform.position - transform.position).magnitude
+                    < (hit.transform.position - transform.position).magnitude)
+                {
+                    Vector3 dir2 = (crosshairTarget.transform.position - transform.position).normalized;
+                    rayHit = Physics.Raycast(PlayerCamera.position, dir2, out hit, Range, GrappleLayer);
+                }
             }
-            _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
-            _grapplePoint.transform.parent = hit.transform;
-            AkSoundEngine.PostEvent(GrappleShoot, gameObject);
-            float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
-            StartCoroutine(Grapple(distance / GrappleSpeed));
+            else
+            {
+                Vector3 dir = (crosshairTarget.transform.position - PlayerCamera.position).normalized;
+                rayHit = Physics.Raycast(PlayerCamera.position, dir, out hit, Range, GrappleLayer);
+            }
         }
 
-        Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
+        // If still no hit
+        if (!rayHit) return;
+
+        if (hit.transform.gameObject.tag == "Projectile")
+        {
+            _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
+        }
+        _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
+        _grapplePoint.transform.parent = hit.transform;
+        AkSoundEngine.PostEvent(GrappleShoot, gameObject);
+        float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
+        StartCoroutine(Grapple(distance / GrappleSpeed));
+
+        //Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
     }
 
     void ConnectGrapple()
