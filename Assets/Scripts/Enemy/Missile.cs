@@ -18,7 +18,10 @@ public class Missile : MonoBehaviour
     [Header("MOVEMENT")]
     [SerializeField] private float _speed = 15;
     [SerializeField] private float _rotateSpeed = 95;
+    [SerializeField] private float _timeToLive = 20;
+    [SerializeField] private bool _isHoming = true;
 
+    // only useful when _isHoming = true
     [Header("PREDICTION")]
     [SerializeField] private float _maxDistancePredict = 100;
     [SerializeField] private float _minDistancePredict = 5;
@@ -35,6 +38,37 @@ public class Missile : MonoBehaviour
     // Other
     private Rigidbody _targetRb;
     private GameObject _targetObject;
+    private ObjectPoolUnit _poolUnit;
+    private float _destoryTime;
+    private bool _initFromPool;
+
+    public void Start()
+    {
+        _poolUnit = GetComponent<ObjectPoolUnit>();
+        if (_poolUnit != null) _initFromPool = true;
+        _destoryTime = Time.time + _timeToLive;
+    }
+
+    public void SetMovementParam(float speed, float rotateSpeed, float timeToLive, bool isHoming,
+        float maxDisPredict, float minDisPredict, float maxTimePredict, float deviationAmount, float deviationSpeed, float damage)
+    {
+        _speed = speed;
+        _rotateSpeed = rotateSpeed;
+        _timeToLive = timeToLive;
+        _isHoming = isHoming;
+        _maxDistancePredict = maxDisPredict;
+        _minDistancePredict = minDisPredict;
+        _maxTimePrediction = maxTimePredict;
+        _deviationAmount = deviationAmount;
+        _deviationSpeed = deviationSpeed;
+        _damage = damage;
+    }
+
+    public void OnActive()
+    {
+        gameObject.SetActive(true);
+        _destoryTime = Time.time + _timeToLive;
+    }
 
     public void SetTarget(Rigidbody rb)
     {
@@ -52,7 +86,7 @@ public class Missile : MonoBehaviour
 
     public void SetAim(Vector3 direction)
     {
-        _rb.MoveRotation(Quaternion.Euler(direction));                
+        _rb.MoveRotation(Quaternion.Euler(direction));
     }
 
     public void GainControl(GameObject newTarget)
@@ -69,20 +103,25 @@ public class Missile : MonoBehaviour
         SetTarget(newTarget);
         _state = ProjectileState.Redirected;
     }
- 
+
     private void FixedUpdate()
     {
         _rb.velocity = transform.forward * _speed;
 
-        var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _targetObject.transform.position));
+        if (_isHoming)
+        {
+            var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _targetObject.transform.position));
 
-        _standardPrediction = _targetObject.transform.position;
+            _standardPrediction = _targetObject.transform.position;
 
-        PredictMovement(leadTimePercentage);
+            PredictMovement(leadTimePercentage);
 
-        AddDeviation(leadTimePercentage);
+            AddDeviation(leadTimePercentage);
 
-        RotateMissile();
+            RotateMissile();
+        }
+
+        if (Time.time > _destoryTime) Recycle();
     }
 
     private void PredictMovement(float leadTimePercentage)
@@ -122,7 +161,18 @@ public class Missile : MonoBehaviour
         if (collision.transform.GetComponent<BeAttack>() != null)
             collision.transform.GetComponent<BeAttack>().BeAttack(_damage);
 
-        Destroy(gameObject);
+        Recycle();
+    }
+
+    private void Recycle()
+    {
+        if (_initFromPool)
+        {
+            gameObject.SetActive(false);    // pooled management
+            _poolUnit.Deactivate();
+        }
+        else
+            Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

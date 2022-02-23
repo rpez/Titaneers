@@ -4963,7 +4963,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 0.5
+  m_ScaleInLightmap: 0.003964997
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
@@ -9997,7 +9997,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 0.5
+  m_ScaleInLightmap: 0.007929994
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
@@ -10028,6 +10028,7 @@ GameObject:
   - component: {fileID: -5615962844845224230}
   - component: {fileID: 7740805112733739756}
   - component: {fileID: -6406979750917785884}
+  - component: {fileID: 3159037974673402742}
   m_Layer: 10
   m_Name: Missile
   m_TagString: Projectile
@@ -10063,25 +10064,25 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7099793165288587924}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.00000047683716, y: 0.00000047683716, z: 0.5920973}
-  m_Size: 1
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0.5920973}
+  m_Size: 31.525873
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.007929994
+  - screenRelativeHeight: 0.66302156
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4157536862168961760}
-  - screenRelativeHeight: 0.003964997
+  - screenRelativeHeight: 0.35952145
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4584290330913656773}
-  - screenRelativeHeight: 0.0019824984
+  - screenRelativeHeight: 0.11634902
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7904787288337940570}
-  - screenRelativeHeight: 0.00031719974
+  - screenRelativeHeight: 0.01831527
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3370919811302388643}
@@ -10118,6 +10119,8 @@ MonoBehaviour:
   _explosionPrefab: {fileID: 8259503191771706214, guid: 4526d8d065a1c154987b35f194ae3621, type: 3}
   _speed: 75
   _rotateSpeed: 75
+  _timeToLive: 20
+  _isHoming: 1
   _maxDistancePredict: 0
   _minDistancePredict: 0
   _maxTimePrediction: 0
@@ -10182,7 +10185,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: 4ffed4fb755804a52b61d62153fb5b9c, type: 2}
   useCallbacks: 0
   Callbacks: []
-  playingId: 10811
+  playingId: 0
   soundEmitterObject: {fileID: 7099793165288587924}
   transitionDuration: 0
   eventIdInternal: 0
@@ -10217,6 +10220,33 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
+--- !u!114 &3159037974673402742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099793165288587924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b81c28bd60b1541aa8bb905253a09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activateEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8255153670785458326}
+        m_TargetAssemblyTypeName: Missile, Assembly-CSharp
+        m_MethodName: OnActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8948295027296036015
 GameObject:
   m_ObjectHideFlags: 0
@@ -10285,7 +10315,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 0.5
+  m_ScaleInLightmap: 0.0019824984
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
@@ -10378,6 +10408,18 @@ PrefabInstance:
     - target: {fileID: 8162113062872524039, guid: df60f162ffa0cdd47a7c58565aa5a1dd, type: 3}
       propertyPath: LightsModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162113062872524039, guid: df60f162ffa0cdd47a7c58565aa5a1dd, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162113062872524039, guid: df60f162ffa0cdd47a7c58565aa5a1dd, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162113062872524039, guid: df60f162ffa0cdd47a7c58565aa5a1dd, type: 3}
+      propertyPath: InitialModule.startSizeZ.scalar
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8162113062872524039, guid: df60f162ffa0cdd47a7c58565aa5a1dd, type: 3}
       propertyPath: SizeModule.curve.minCurve.m_Curve.Array.size
