@@ -475,7 +475,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (GameObject exploded in explodedProjectiles)
         {
             if (Vector3.Distance(exploded.transform.position, transform.position) <= ExplosionShakingRange)
-                _playerCameraBehavior.Shake(1, 1);
+                //_playerCameraBehavior.Shake(1, 1);
             Destroy(exploded);
         }
     }
