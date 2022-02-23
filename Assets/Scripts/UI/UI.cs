@@ -61,7 +61,6 @@ public class UI : MonoBehaviour
                 // Check if behind camera
                 if (Vector3.Dot(dir, Camera.transform.forward) < 0f)
                 {
-                    //_threatIndicators[i].Deactivate();
                     _threatIndicators[i].GetComponent<Image>().color = new Color(color.r, color.g, color.b, 0f);
                     continue;
                 }
