@@ -12,18 +12,22 @@ public class CameraBehavior : MonoBehaviour
 
     private CinemachineBasicMultiChannelPerlin bmcp;
     private float shakingTimer;
+    private float focusingTimer;
     //private bool shake = false;
 
     void Awake()
     {
         bmcp = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         StopShaking();
+        StopFocusing();
     }
 
     void Update()
     {
         shakingTimer -= Time.deltaTime;
         if (shakingTimer <= 0) StopShaking();
+        focusingTimer -= Time.deltaTime;
+        if (focusingTimer <= 0) StopFocusing();
     }
 
     public void Zoom(float increment)
@@ -41,6 +45,19 @@ public class CameraBehavior : MonoBehaviour
     {
         bmcp.m_AmplitudeGain = 0;
         shakingTimer = 0;
+    }
+
+    public void Focus(Transform target, float duration)
+    {
+        vcam.LookAt = target;
+        focusingTimer = duration;
+    }
+
+    public void StopFocusing()
+    {
+        vcam.LookAt = null;
+        transform.rotation = Quaternion.identity;
+        focusingTimer = 0;
     }
 
     /*

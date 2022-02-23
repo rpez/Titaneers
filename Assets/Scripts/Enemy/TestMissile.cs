@@ -11,11 +11,14 @@ public class TestMissile : MonoBehaviour, BeAttack
     private float _hp;
     private float _lastShootTs;
     private UI _ui;
+    private CameraBehavior _playerCameraBehavior;
+
     // Start is called before the first frame update
     void Start()
     {
         _hp = _maxHp;
         _ui = GameObject.Find("Canvas").GetComponent<UI>();
+        _playerCameraBehavior = FindObjectOfType<CameraBehavior>();
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class TestMissile : MonoBehaviour, BeAttack
         _ui.AddThreat(missileObj);
         Missile missile = missileObj.GetComponent<Missile>();
         missile.SetTarget(rb);
+        _playerCameraBehavior.Focus(_spawnPoint, 0.4f);
         if (_spawnPoint.gameObject.GetComponent<Collider>() != null)
             Physics.IgnoreCollision(missile.GetComponent<Collider>(), _spawnPoint.gameObject.GetComponent<Collider>());
     }

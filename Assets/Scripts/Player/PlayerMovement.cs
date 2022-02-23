@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _playerCameraBehavior = GetComponent<CameraBehavior>();
+        _playerCameraBehavior = FindObjectOfType<CameraBehavior>();
         _collider = GetComponent<CapsuleCollider>();
         _playerHeight = _collider.height;
         _defaultCameraPostion = PlayerCamera.localPosition;
@@ -475,7 +475,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (GameObject exploded in explodedProjectiles)
         {
             if (Vector3.Distance(exploded.transform.position, transform.position) <= ExplosionShakingRange)
-                //_playerCameraBehavior.Shake(1, 1);
+                _playerCameraBehavior.Shake(1, 1);
             Destroy(exploded);
         }
     }

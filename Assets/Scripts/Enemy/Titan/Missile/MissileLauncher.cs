@@ -13,6 +13,13 @@ public class MissileLauncher : MonoBehaviour
     [SerializeField]
     private Transform _shootPoint;
 
+    private CameraBehavior _playerCameraBehavior;
+
+    void Start()
+    {
+        _playerCameraBehavior = FindObjectOfType<CameraBehavior>();
+    }
+
     //Generate Missle
     public void Launch()
     {
@@ -20,6 +27,7 @@ public class MissileLauncher : MonoBehaviour
         if(missile)
         {
             missile.GetComponent<Missile>()?.SetTarget(_target.GetComponent<Rigidbody>());
+            _playerCameraBehavior.Focus(_shootPoint, 0.4f);
         }
         else
         {
