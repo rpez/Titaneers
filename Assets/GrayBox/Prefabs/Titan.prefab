@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 1350924253}
   - component: {fileID: 1350924254}
   - component: {fileID: 1350924257}
+  - component: {fileID: 4326231144614824156}
+  - component: {fileID: 1633277555}
   m_Layer: 0
   m_Name: Titan
   m_TagString: Untagged
@@ -82,12 +84,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
   _serializedBlackboard: '{"_variables":{"stage":{"_name":"stage","_id":"36b0c125-f6aa-4749-bb6c-6ae90020f3c2","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"remainingDistance":{"_propertyPath":"UnityEngine.AI.NavMeshAgent.remainingDistance","_name":"remainingDistance","_id":"4a4fff95-67cc-4df2-ba2c-e0e87b6aca5f","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"target":{"_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"target":{"_propertyPath":"TitanSensor._target","_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"transform":{"_value":1,"_name":"transform","_id":"1af787e3-61f6-4444-8721-8d61118397ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"attackingRange":{"_value":500.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"attackingRange":{"_value":400.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"animator":{"_value":2,"_name":"animator","_id":"15654e1a-2817-40f5-8958-fe9030deb8f6","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Animator,
-    UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"HorizontalDistance":{"_propertyPath":"TitanSensor.HorizontalDistance","_name":"HorizontalDistance","_id":"6ee2db6e-7261-4685-a461-ffe6ed68034e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"VerticalDistance":{"_propertyPath":"TitanSensor.VerticalDistance","_name":"VerticalDistance","_id":"aa0e04c7-f829-4261-a232-8eb870e65605","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"DirectionAngle":{"_propertyPath":"TitanSensor.DirectionAngle","_name":"DirectionAngle","_id":"43d08ab7-7a19-41cc-9afa-2c50da420bf2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 8119981910988450899}
@@ -96,10 +100,7 @@ MonoBehaviour:
   - _json: '{"_name":"stage","_id":"36b0c125-f6aa-4749-bb6c-6ae90020f3c2","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_propertyPath":"UnityEngine.AI.NavMeshAgent.remainingDistance","_name":"remainingDistance","_id":"4a4fff95-67cc-4df2-ba2c-e0e87b6aca5f","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-    _references: []
-  - _json: '{"_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+  - _json: '{"_propertyPath":"TitanSensor._target","_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
   - _json: '{"_value":1,"_name":"transform","_id":"1af787e3-61f6-4444-8721-8d61118397ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
@@ -107,7 +108,7 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 8119981910988450899}
-  - _json: '{"_value":500.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":400.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_value":1,"_name":"animator","_id":"15654e1a-2817-40f5-8958-fe9030deb8f6","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Animator,
@@ -115,6 +116,15 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 3636939767431638625}
+  - _json: '{"_propertyPath":"TitanSensor.HorizontalDistance","_name":"HorizontalDistance","_id":"6ee2db6e-7261-4685-a461-ffe6ed68034e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
+  - _json: '{"_propertyPath":"TitanSensor.VerticalDistance","_name":"VerticalDistance","_id":"aa0e04c7-f829-4261-a232-8eb870e65605","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
+  - _json: '{"_propertyPath":"TitanSensor.DirectionAngle","_name":"DirectionAngle","_id":"43d08ab7-7a19-41cc-9afa-2c50da420bf2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
 --- !u!114 &1350924253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,12 +178,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 6573799383121238159}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 350
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Radius: 300
+  m_Speed: 300
+  m_Acceleration: 500
   avoidancePriority: 50
   m_AngularSpeed: 30
-  m_StoppingDistance: 0
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -181,6 +191,31 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4326231144614824156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573799383121238159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8668ac3134e354da0289748e335693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1633277555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573799383121238159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7da7b757969bfd4e8e4c7a52cf5456d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
 --- !u!1001 &6123124521416459141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -191,6 +226,34 @@ PrefabInstance:
     - target: {fileID: 1080113018344465515, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119355278752471083, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99354607
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119355278752471083, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0952093
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119355278752471083, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.042612348
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119355278752471083, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.044560153
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119355278752471083, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -10.684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119355278752471083, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -5.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2119355278752471083, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5.645
       objectReference: {fileID: 0}
     - target: {fileID: 7071004734020931710, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
       propertyPath: m_RootOrder
@@ -240,6 +303,34 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 17846bbcf0880234d92a613903ca8522, type: 2}
+    - target: {fileID: 7815110144659781385, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99354607
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815110144659781385, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0952093
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815110144659781385, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.042612348
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815110144659781385, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.044560153
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815110144659781385, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -10.684
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815110144659781385, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -5.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815110144659781385, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5.645
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fbaf9c652af5784e823b6e24951690d, type: 3}
 --- !u!4 &3952177061211100155 stripped

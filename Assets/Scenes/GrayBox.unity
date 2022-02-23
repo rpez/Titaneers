@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 6596.621, g: 5576.747, b: 4483.078, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1862,60 +1862,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedBlackboard
-      value: '{"_variables":{"stage":{"_name":"stage","_id":"36b0c125-f6aa-4749-bb6c-6ae90020f3c2","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"remainingDistance":{"_propertyPath":"UnityEngine.AI.NavMeshAgent.remainingDistance","_name":"remainingDistance","_id":"4a4fff95-67cc-4df2-ba2c-e0e87b6aca5f","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"target":{"_value":1,"_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"transform":{"_value":2,"_name":"transform","_id":"1af787e3-61f6-4444-8721-8d61118397ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"attackingRange":{"_value":500.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"animator":{"_value":3,"_name":"animator","_id":"15654e1a-2817-40f5-8958-fe9030deb8f6","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Animator,
-        UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _objectReferences.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _objectReferences.Array.data[1]
+    - target: {fileID: 1633277555, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _target
       value: 
       objectReference: {fileID: 2496024928203559706}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _objectReferences.Array.data[2]
-      value: 
-      objectReference: {fileID: 1350924256}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _objectReferences.Array.data[3]
-      value: 
-      objectReference: {fileID: 1387946875}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[2]._json
-      value: '{"_value":1,"_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[2]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[2]._references.Array.data[1]
-      value: 
-      objectReference: {fileID: 2496024928203559706}
-    - target: {fileID: 1350924257, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_Speed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924257, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Name
       value: Titan
-      objectReference: {fileID: 0}
-    - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8119981910988450899, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_RootOrder
@@ -1963,20 +1916,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
---- !u!4 &1350924256 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8119981910988450899, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-  m_PrefabInstance: {fileID: 1350924250}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1367897560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4758802823799522771, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
   m_PrefabInstance: {fileID: 2496024928203559705}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1387946875 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3636939767431638625, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-  m_PrefabInstance: {fileID: 1350924250}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1518163832
 GameObject:
