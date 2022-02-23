@@ -140,8 +140,6 @@ public class GrapplingGun : MonoBehaviour
         bool rayHit = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer);
         GameObject crosshairTarget = _ui.GetCrosshairTarget();
 
-        Debug.Log(crosshairTarget);
-
         // Check whether raycast or crosshair hit is closer
         if (crosshairTarget != null)
         {
