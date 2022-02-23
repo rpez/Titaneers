@@ -56,7 +56,6 @@ public class GrapplingGun : MonoBehaviour
     public int MaxCharges = 2;
 
     // Other references
-    //private LineRenderer _lineRenderer;
     private GameObject _grapplePoint;
     private SpringJoint _joint;
     private Missile _capturedMissile;
@@ -73,7 +72,6 @@ public class GrapplingGun : MonoBehaviour
 
     void Awake()
     {
-        //_lineRenderer = GetComponent<LineRenderer>();
         _currentCharges = MaxCharges;
         _ui = GameObject.Find("Canvas").GetComponent<UI>();
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
@@ -85,7 +83,9 @@ public class GrapplingGun : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
+        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer)
+            || _ui.GetCrosshairTarget() != null
+            && (_ui.GetCrosshairTarget().transform.position - PlayerCamera.position).magnitude < Range)
         {
             _ui.ChangeCrosshairColor(Color.red);
         }
@@ -128,12 +128,6 @@ public class GrapplingGun : MonoBehaviour
         }
     }
 
-    //Called after Update
-    void LateUpdate()
-    {
-        //DrawRope();
-    }
-
     /// <summary>
     /// Call whenever we want to start a grapple
     /// </summary>
@@ -141,20 +135,44 @@ public class GrapplingGun : MonoBehaviour
     {
         if (_currentCharges <= 0) return;
         _isLaunched = true;
+
         RaycastHit hit;
-        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
+        bool rayHit = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer);
+        GameObject crosshairTarget = _ui.GetCrosshairTarget();
+
+        // Check whether raycast or crosshair hit is closer
+        if (crosshairTarget != null)
         {
-            if (hit.transform.gameObject.tag == "Projectile")
+            if (rayHit)
             {
-                _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
+                if ((crosshairTarget.transform.position - transform.position).magnitude
+                    < (hit.transform.position - transform.position).magnitude)
+                {
+                    Vector3 dir2 = (crosshairTarget.transform.position - transform.position).normalized;
+                    rayHit = Physics.Raycast(PlayerCamera.position, dir2, out hit, Range, GrappleLayer);
+                }
             }
-            _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
-            _grapplePoint.transform.parent = hit.transform;
-            AkSoundEngine.PostEvent(GrappleShoot, gameObject);
-            float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
-            StartCoroutine(Grapple(distance / GrappleSpeed));
+            else
+            {
+                Vector3 dir = (crosshairTarget.transform.position - PlayerCamera.position).normalized;
+                rayHit = Physics.Raycast(PlayerCamera.position, dir, out hit, Range, GrappleLayer);
+            }
         }
-        Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
+
+        // If still no hit
+        if (!rayHit) return;
+
+        if (hit.transform.gameObject.tag == "Projectile")
+        {
+            _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
+        }
+        _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
+        _grapplePoint.transform.parent = hit.transform;
+        AkSoundEngine.PostEvent(GrappleShoot, gameObject);
+        float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
+        StartCoroutine(Grapple(distance / GrappleSpeed));
+
+        //Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
     }
 
     void ConnectGrapple()
@@ -175,9 +193,6 @@ public class GrapplingGun : MonoBehaviour
         _joint.spring = SpringForce;
         _joint.damper = Dampening;
         _joint.massScale = MassScale;
-
-        //_lineRenderer.positionCount = 2;
-        currentGrapplePosition = GunTip.position;
 
         _currentCharges--;
     }
@@ -220,25 +235,6 @@ public class GrapplingGun : MonoBehaviour
         _isLaunched = false;
         Destroy(_joint);
     }
-
-    private Vector3 currentGrapplePosition;
-
-    //void DrawRope()
-    //{
-    //    //If not grappling, don't draw rope
-    //    if (!_joint) return;
-
-    //    if (_grapplePoint == null)
-    //    {
-    //        StopGrapple();
-    //        return;
-    //    }
-            
-    //    currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, _grapplePoint.transform.position, Time.deltaTime * 8f);
-
-    //    _lineRenderer.SetPosition(0, GunTip.position);
-    //    _lineRenderer.SetPosition(1, currentGrapplePosition);
-    //}
 
     public bool IsGrappling()
     {
