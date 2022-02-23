@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitObject: {fileID: 6241220089841148046, guid: de2bf2ce0b63fbf4cb2ab17230acd0dd, type: 3}
-  _size: 20
+  _size: 50
 --- !u!1 &2273668857937266182
 GameObject:
   m_ObjectHideFlags: 0
