@@ -246,6 +246,3 @@ MonoBehaviour:
   Crosshair: {fileID: 2273668857937266180}
   Camera: {fileID: 0}
   IndicatorPool: {fileID: 2078932012}
-  _threats:
-  - {fileID: 0}
-  - {fileID: 0}

@@ -58,7 +58,7 @@ public class UI : MonoBehaviour
                     //_threatIndicators[i].Deactivate();
                     Color c = _threatIndicators[i].gameObject.GetComponent<Image>().color;
                     _threatIndicators[i].gameObject.GetComponent<Image>().color = new Color(c.r, c.g, c.b, 0f);
-                    return;
+                    continue;
                 }
 
                 Color color = _threatIndicators[i].gameObject.GetComponent<Image>().color;
