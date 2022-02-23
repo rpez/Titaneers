@@ -56,7 +56,6 @@ public class GrapplingGun : MonoBehaviour
     public int MaxCharges = 2;
 
     // Other references
-    //private LineRenderer _lineRenderer;
     private GameObject _grapplePoint;
     private SpringJoint _joint;
     private Missile _capturedMissile;
@@ -73,7 +72,6 @@ public class GrapplingGun : MonoBehaviour
 
     void Awake()
     {
-        //_lineRenderer = GetComponent<LineRenderer>();
         _currentCharges = MaxCharges;
         _ui = GameObject.Find("Canvas").GetComponent<UI>();
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
@@ -128,12 +126,6 @@ public class GrapplingGun : MonoBehaviour
         }
     }
 
-    //Called after Update
-    void LateUpdate()
-    {
-        //DrawRope();
-    }
-
     /// <summary>
     /// Call whenever we want to start a grapple
     /// </summary>
@@ -154,6 +146,7 @@ public class GrapplingGun : MonoBehaviour
             float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
             StartCoroutine(Grapple(distance / GrappleSpeed));
         }
+
         Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
     }
 
@@ -175,9 +168,6 @@ public class GrapplingGun : MonoBehaviour
         _joint.spring = SpringForce;
         _joint.damper = Dampening;
         _joint.massScale = MassScale;
-
-        //_lineRenderer.positionCount = 2;
-        currentGrapplePosition = GunTip.position;
 
         _currentCharges--;
     }
@@ -220,25 +210,6 @@ public class GrapplingGun : MonoBehaviour
         _isLaunched = false;
         Destroy(_joint);
     }
-
-    private Vector3 currentGrapplePosition;
-
-    //void DrawRope()
-    //{
-    //    //If not grappling, don't draw rope
-    //    if (!_joint) return;
-
-    //    if (_grapplePoint == null)
-    //    {
-    //        StopGrapple();
-    //        return;
-    //    }
-            
-    //    currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, _grapplePoint.transform.position, Time.deltaTime * 8f);
-
-    //    _lineRenderer.SetPosition(0, GunTip.position);
-    //    _lineRenderer.SetPosition(1, currentGrapplePosition);
-    //}
 
     public bool IsGrappling()
     {
