@@ -93,7 +93,6 @@ public class UI : MonoBehaviour
                     // Set crosshair object
                     _inCrosshair = _threats[i];
                     _crosshairTargetSet = true;
-                    ChangeCrosshairColor(Color.red);
                 }
             }
             else

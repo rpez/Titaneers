@@ -83,7 +83,8 @@ public class GrapplingGun : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer))
+        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer)
+            || _ui.GetCrosshairTarget() != null)
         {
             _ui.ChangeCrosshairColor(Color.red);
         }
