@@ -16,12 +16,16 @@ public class UI : MonoBehaviour
 
     private GameObject[] _threats;
     private ObjectPoolUnit[] _threatIndicators;
+    private Canvas _canvas;
+
+    private Vector3 _indicatorOffset = new Vector3(-32f, -32f, 0f);
 
     private void Start()
     {
         _defaultCrosshairColor = Crosshair.color;
         _threats = new GameObject[IndicatorPool.Size];
         _threatIndicators = new ObjectPoolUnit[IndicatorPool.Size];
+        _canvas = GetComponent<Canvas>();
     }
 
     private void LateUpdate()
@@ -52,27 +56,26 @@ public class UI : MonoBehaviour
         {
             if (_threats[i] != null)
             {
+                Color color = _threatIndicators[i].GetComponent<Image>().color;
                 Vector3 dir = _threats[i].transform.position - Camera.transform.position;
+                // Check if behind camera
                 if (Vector3.Dot(dir, Camera.transform.forward) < 0f)
                 {
                     //_threatIndicators[i].Deactivate();
-                    Color c = _threatIndicators[i].gameObject.GetComponent<Image>().color;
-                    _threatIndicators[i].gameObject.GetComponent<Image>().color = new Color(c.r, c.g, c.b, 0f);
+                    _threatIndicators[i].GetComponent<Image>().color = new Color(color.r, color.g, color.b, 0f);
                     continue;
                 }
 
-                Color color = _threatIndicators[i].gameObject.GetComponent<Image>().color;
                 _threatIndicators[i].gameObject.GetComponent<Image>().color = new Color(color.r, color.g, color.b, 1f);
 
-                Canvas canvas = GetComponent<Canvas>();
                 Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera, _threats[i].transform.position);
                 Vector2 result;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), screenPoint, canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : Camera, out result);
-                _threatIndicators[i].GetComponent<RectTransform>().anchoredPosition = canvas.transform.TransformPoint(result) + new Vector3(-32f, -32f, 0f);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), screenPoint, _canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : Camera, out result);
+                _threatIndicators[i].GetComponent<RectTransform>().anchoredPosition = _canvas.transform.TransformPoint(result) + _indicatorOffset;
             }
             else
             {
-                if (_threatIndicators[i] != null) Debug.Log("huge gmaing");
+                if (_threatIndicators[i] != null) Debug.LogWarning("Indicator for a non-existing threat exists");
             }
         }
     }
