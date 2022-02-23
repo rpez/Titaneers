@@ -1861,6 +1861,14 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 2496024928203559706}
+    - target: {fileID: 4837347595793011106, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423165939991564450, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1367897560}
     - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Name
       value: Titan

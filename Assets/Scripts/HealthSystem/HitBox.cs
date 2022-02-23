@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Deal Damage
-[RequireComponent(typeof(Rigidbody))]//For _trigger works correctly
-[RequireComponent(typeof(CapsuleCollider))]
 public class HitBox : MonoBehaviour
 {
     [SerializeField]
@@ -14,16 +12,30 @@ public class HitBox : MonoBehaviour
     [SerializeField]
     private LayerMask _layers;
 
-    private Rigidbody _rb;
+    //private Rigidbody _rb;
     private Collider _trigger;
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
-        if (_rb.useGravity) _rb.useGravity = false;
+        //_rb = GetComponent<Rigidbody>();
+        //if (_rb)
+        //{
+        //    if (_rb.useGravity) _rb.useGravity = false;
+        //}
+        //else
+        //{
+        //    Debug.LogError("Hit Box object doesn't have rigidbody");
+        //}
 
          _trigger = GetComponent<Collider>();
-        if (!_trigger.isTrigger) _trigger.isTrigger = true;
+        if (_trigger)
+        {
+            if (!_trigger.isTrigger) _trigger.isTrigger = true;
+        }
+        else
+        {
+            Debug.LogError("Hit Box object doesn't have Trigger");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
