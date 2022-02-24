@@ -45,9 +45,10 @@ public class MissileEmitter : ProjectileEmitterBase
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - _lastFireTime > 3.0f)
+        if (Time.time - _lastFireTime > 10.0f)
         {
             StartCoroutine(FireProjectile());
+            Debug.Log("Fire Projectile");
             _lastFireTime = Time.time;
         }
     }
