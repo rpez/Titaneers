@@ -8,7 +8,6 @@ using UnityEngine;
 
 public abstract class ProjectileEmitterBase : MonoBehaviour
 {
-    [SerializeField]
     protected GameObject _target;
 
     [SerializeField]
@@ -26,5 +25,10 @@ public abstract class ProjectileEmitterBase : MonoBehaviour
         
     }
 
-    public abstract IEnumerator FireProjectile();
+    public void FireProjectile()
+    {
+        StartCoroutine(FireProjectileImpl());
+    }
+
+    protected abstract IEnumerator FireProjectileImpl();
 }

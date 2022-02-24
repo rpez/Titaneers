@@ -39,21 +39,22 @@ public class MissileEmitter : ProjectileEmitterBase
     // Start is called before the first frame update
     void Start()
     {
-        
+        _target = GameObject.FindWithTag(Tags.PLAYER_TAG);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // for test
         if (Time.time - _lastFireTime > 10.0f)
         {
-            StartCoroutine(FireProjectile());
+            StartCoroutine(FireProjectileImpl());
             Debug.Log("Fire Projectile");
             _lastFireTime = Time.time;
         }
     }
 
-    public override IEnumerator FireProjectile()
+    protected override IEnumerator FireProjectileImpl()
     {
         switch (_shape)
         {
