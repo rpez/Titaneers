@@ -34,6 +34,7 @@ public class MissileEmitter : ProjectileEmitterBase
     [SerializeField] private float _damage = 15;
 
     private CameraBehavior _playerCameraBehavior;
+    private UI _ui;
     private float _lastFireTime;
 
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class MissileEmitter : ProjectileEmitterBase
     {
         _target = GameObject.FindWithTag(Tags.PLAYER_TAG);
         _playerCameraBehavior = FindObjectOfType<CameraBehavior>();
+        _ui = GameObject.Find("Canvas").GetComponent<UI>();
     }
 
     // Update is called once per frame
@@ -76,6 +78,7 @@ public class MissileEmitter : ProjectileEmitterBase
                                         _isHoming, _maxDistancePredict, _minDistancePredict,
                                         _maxTimePrediction, _deviationAmount, _deviationSpeed, _damage);
                                     _playerCameraBehavior.Focus(_firePoints[j], 0.4f);
+                                    _ui.AddThreat(missileUnit.gameObject);
                                 }
                             }
                             else
