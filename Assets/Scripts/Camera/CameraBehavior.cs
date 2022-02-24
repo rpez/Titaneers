@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class CameraBehavior : MonoBehaviour
 {
+    public GameObject Player;
     public CinemachineVirtualCamera vcam;
 
     public float zoomInLimit;
@@ -55,7 +56,7 @@ public class CameraBehavior : MonoBehaviour
 
     public void StopFocusing()
     {
-        vcam.LookAt = null;
+        vcam.LookAt = Player.transform;
         transform.rotation = Quaternion.identity;
         focusingTimer = 0;
     }

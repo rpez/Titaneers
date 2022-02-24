@@ -33,13 +33,14 @@ public class MissileEmitter : ProjectileEmitterBase
     [SerializeField] private float _deviationSpeed = 2;
     [SerializeField] private float _damage = 15;
 
-
-
+    private CameraBehavior _playerCameraBehavior;
     private float _lastFireTime;
+
     // Start is called before the first frame update
     void Start()
     {
         _target = GameObject.FindWithTag(Tags.PLAYER_TAG);
+        _playerCameraBehavior = FindObjectOfType<CameraBehavior>();
     }
 
     // Update is called once per frame
@@ -74,6 +75,7 @@ public class MissileEmitter : ProjectileEmitterBase
                                     missile.SetMovementParam(_speed, _rotateSpeed, _timeToLive,
                                         _isHoming, _maxDistancePredict, _minDistancePredict,
                                         _maxTimePrediction, _deviationAmount, _deviationSpeed, _damage);
+                                    _playerCameraBehavior.Focus(_firePoints[j], 0.4f);
                                 }
                             }
                             else
