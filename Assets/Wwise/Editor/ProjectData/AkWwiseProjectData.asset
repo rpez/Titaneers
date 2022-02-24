@@ -478,9 +478,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 5a24b3ea184f5d4f87c298912c72b712
       Path: Events/Player/PlayerGrapple/Play_player_grapple_hit
-      maxAttenuation: 100
-      maxDuration: 0.659647
-      minDuration: 0.612989
+      maxAttenuation: 200
+      maxDuration: 0.403722
+      minDuration: 0.34383
     - name: Play_player_grapple_shoot
       guid: 27dac9a5f951c44e887b5f1fed6c1c22
       id: 1884037509
@@ -570,8 +570,50 @@ MonoBehaviour:
     ParentPath: Events/Titan
     guid: ea1f2569fa752f4eb51884dd2111927e
     GuidInternal: 
-    m_lastTime: -8585561521985660882
+    m_lastTime: -8585559616047932779
     List: []
+  - PhysicalPath: Events/TitanFS.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanLocomotion
+      ObjectType: 12
+      guid: 61822860d16c0145bb7e7c2c5f686fe0
+    - ElementName: TitanFS
+      ObjectType: 12
+      guid: 6bb2c0ae8cd710419ce963835b86054b
+    ParentPath: Events/Titan/TitanLocomotion/TitanFS
+    guid: 6bb2c0ae8cd710419ce963835b86054b
+    GuidInternal: 
+    m_lastTime: -8585559612023518752
+    List:
+    - name: Play_titan_fs
+      guid: a86029b531610a479404ccf3eb9e2427
+      id: 487948562
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanLocomotion
+        ObjectType: 12
+        guid: 61822860d16c0145bb7e7c2c5f686fe0
+      - ElementName: TitanFS
+        ObjectType: 12
+        guid: 6bb2c0ae8cd710419ce963835b86054b
+      - ElementName: Play_titan_fs
+        ObjectType: 3
+        guid: a86029b531610a479404ccf3eb9e2427
+      Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs
+      maxAttenuation: 1000
+      maxDuration: 5.247766
+      minDuration: 3.57746
   - PhysicalPath: Events/TitanLocomotion.wwu
     PathAndIcons:
     - ElementName: Events
@@ -586,7 +628,7 @@ MonoBehaviour:
     ParentPath: Events/Titan/TitanLocomotion
     guid: 61822860d16c0145bb7e7c2c5f686fe0
     GuidInternal: 
-    m_lastTime: -8585564088400464654
+    m_lastTime: -8585559616394455200
     List: []
   - PhysicalPath: Events/TitanMissile.wwu
     PathAndIcons:
@@ -642,8 +684,8 @@ MonoBehaviour:
         guid: 20a9f6527f4f7d4298cf9baa173308ad
       Path: Events/Titan/TitanMissile/Play_titan_missile_shot
       maxAttenuation: 1000
-      maxDuration: 2.39424
-      minDuration: 2.39424
+      maxDuration: -1
+      minDuration: -1
     - name: Stop_titan_missile_loop
       guid: 7f05589c6145f24a973878bcd14b03c8
       id: 930574960
@@ -664,6 +706,62 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+  - PhysicalPath: Events/TitanTrample.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanTrample
+      ObjectType: 12
+      guid: 990923041e89e54693c1a22979595819
+    ParentPath: Events/Titan/TitanTrample
+    guid: 990923041e89e54693c1a22979595819
+    GuidInternal: 
+    m_lastTime: -8585559601894413674
+    List:
+    - name: Play_titan_trample_foot
+      guid: 1798d363e93069409b5641958da5701f
+      id: 1282535387
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanTrample
+        ObjectType: 12
+        guid: 990923041e89e54693c1a22979595819
+      - ElementName: Play_titan_trample_foot
+        ObjectType: 3
+        guid: 1798d363e93069409b5641958da5701f
+      Path: Events/Titan/TitanTrample/Play_titan_trample_foot
+      maxAttenuation: 1000
+      maxDuration: 5.247766
+      minDuration: 3.57746
+    - name: Play_titan_trample_voc
+      guid: 49fc5af124365747a0331be329c7a96f
+      id: 3060992713
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanTrample
+        ObjectType: 12
+        guid: 990923041e89e54693c1a22979595819
+      - ElementName: Play_titan_trample_voc
+        ObjectType: 3
+        guid: 49fc5af124365747a0331be329c7a96f
+      Path: Events/Titan/TitanTrample/Play_titan_trample_voc
+      maxAttenuation: 1000
+      maxDuration: 8.24533
+      minDuration: 5.238572
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     PathAndIcons:
