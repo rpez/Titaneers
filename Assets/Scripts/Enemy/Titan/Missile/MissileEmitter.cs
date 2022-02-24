@@ -47,12 +47,12 @@ public class MissileEmitter : ProjectileEmitterBase
     void Update()
     {
         // for test
-        if (Time.time - _lastFireTime > 10.0f)
-        {
-            StartCoroutine(FireProjectileImpl());
-            Debug.Log("Fire Projectile");
-            _lastFireTime = Time.time;
-        }
+        //if (Time.time - _lastFireTime > 10.0f)
+        //{
+        //    StartCoroutine(FireProjectileImpl());
+        //    Debug.Log("Fire Projectile");
+        //    _lastFireTime = Time.time;
+        //}
     }
 
     protected override IEnumerator FireProjectileImpl()

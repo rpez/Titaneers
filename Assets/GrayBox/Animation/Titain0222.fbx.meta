@@ -228,14 +228,14 @@ ModelImporter:
       events:
       - time: 0.40111148
         functionName: ActivateHitBox
-        data: SlapHitBox
+        data: SlapHItBox
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.5008271
         functionName: DeactivateHitBox
-        data: SlapHitBox
+        data: SlapHItBox
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
