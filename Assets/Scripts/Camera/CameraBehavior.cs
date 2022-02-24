@@ -50,15 +50,15 @@ public class CameraBehavior : MonoBehaviour
 
     public void Focus(Transform target, float duration)
     {
-        vcam.LookAt = target;
-        focusingTimer = duration;
+        //vcam.LookAt = target;
+        //focusingTimer = duration;
     }
 
     public void StopFocusing()
     {
-        vcam.LookAt = Player.transform;
-        transform.rotation = Quaternion.identity;
-        focusingTimer = 0;
+        //vcam.LookAt = Player.transform;
+        //transform.rotation = Quaternion.identity;
+        //focusingTimer = 0;
     }
 
     /*
