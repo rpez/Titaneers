@@ -12,14 +12,14 @@ public class HurtBox : MonoBehaviour
 
     private void Awake()
     {
-        //if(!GetComponent<Rigidbody>())
-        //{
-        //    Debug.LogError("Hit Box object doesn't have rigidbody");
-        //}
+        if (!(GetComponent<Rigidbody>()||GetComponentInParent<Rigidbody>()))
+        {
+            Debug.LogError("Hit Box object doesn't have rigidbody");
+        }
 
         if (!GetComponent<Collider>())
         {
-            Debug.LogError("Hit Box object doesn't have Trigger");
+            Debug.LogError("Hit Box object doesn't have Trigger:"+gameObject.name);
         }
     }
 

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2018170290002378460}
-  - component: {fileID: 2018170290002378432}
   - component: {fileID: 2018170290002378463}
   - component: {fileID: 2018170290002378462}
   - component: {fileID: 2018170290002378461}
@@ -36,40 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2018170290002378432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018170290002378459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1de87fcb5546fb428eb5cfbd272b846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealthPoint: 10
-  _addHealthPointEvents:
-    m_PersistentCalls:
-      m_Calls: []
-  _reduceHealthPointEvents:
-    m_PersistentCalls:
-      m_Calls: []
-  _deathEvents:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!54 &2018170290002378463
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -112,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76aa7bd20787ae345a94653b6ae6e25f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 2018170290002378432}
+  _health: {fileID: 0}
   _instantDeath: 0
 --- !u!1 &2018170290059258039
 GameObject:
