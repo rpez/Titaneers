@@ -24,6 +24,7 @@
 
 // Modified by rpez 2022
 
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -69,6 +70,7 @@ public class GrapplingGun : MonoBehaviour
     private int _currentCharges;
     private float _currentTime;
     private Vector3 _defaultCameraPos;
+    private Coroutine _launchRoutine;
 
     void Awake()
     {
@@ -170,7 +172,7 @@ public class GrapplingGun : MonoBehaviour
         _grapplePoint.transform.parent = hit.transform;
         AkSoundEngine.PostEvent(GrappleShoot, gameObject);
         float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
-        StartCoroutine(Grapple(distance / GrappleSpeed));
+        _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
 
         //Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
     }
@@ -207,8 +209,6 @@ public class GrapplingGun : MonoBehaviour
     void RedirectProjectile()
     {
         GameObject target = GameObject.Instantiate(HitpointPrefab, PlayerCamera.position + PlayerCamera.forward * 1000f, Quaternion.identity);
-        GameObject particles = GameObject.Instantiate(RedirectEffect, _capturedMissile.transform.position, Quaternion.identity);
-        Destroy(particles, 5f);
 
         RaycastHit hit;
         if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit))
@@ -219,10 +219,18 @@ public class GrapplingGun : MonoBehaviour
 
         _capturedMissile.Redirect(_capturedMissile.transform.position, transform.forward, target);
         _capturedMissile = null;
+        StartCoroutine(Delay(1f, RedirectEffects));
+    }
+
+    private void RedirectEffects()
+    {
         StopGrapple();
         _timeManager.FreezeFrame(0.4f);
         PlayerCamera.transform.localPosition = _defaultCameraPos;
         _ui.ChangeCrosshairStyle(false);
+
+        GameObject particles = GameObject.Instantiate(RedirectEffect, _capturedMissile.transform.position, Quaternion.identity);
+        Destroy(particles, 5f);
     }
 
     /// <summary>
@@ -230,7 +238,7 @@ public class GrapplingGun : MonoBehaviour
     /// </summary>
     void StopGrapple()
     {
-        StopAllCoroutines();
+        if (_launchRoutine != null) StopCoroutine(_launchRoutine);
         //_lineRenderer.positionCount = 0;
         if (_grapplePoint != null) Destroy(_grapplePoint);
         _isGrappling = false;
@@ -253,9 +261,9 @@ public class GrapplingGun : MonoBehaviour
         return _grapplePoint == null ? null : _grapplePoint.transform;
     }
 
-    private IEnumerator Grapple(float delay)
+    private IEnumerator Delay(float delay, Action callback)
     {
         yield return new WaitForSeconds(delay);
-        ConnectGrapple();
+        callback.Invoke();
     }
 }
