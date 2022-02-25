@@ -201,6 +201,7 @@ public class GrapplingGun : MonoBehaviour
     {
         _capturedMissile.GainControl(ProjectileReceive.gameObject);
         PlayerCamera.transform.localPosition = PlayerCamera.transform.localPosition + Vector3.back * 5f;
+        _ui.ChangeCrosshairStyle(true);
     }
 
     void RedirectProjectile()
@@ -221,6 +222,7 @@ public class GrapplingGun : MonoBehaviour
         StopGrapple();
         _timeManager.FreezeFrame(0.4f);
         PlayerCamera.transform.localPosition = _defaultCameraPos;
+        _ui.ChangeCrosshairStyle(false);
     }
 
     /// <summary>
