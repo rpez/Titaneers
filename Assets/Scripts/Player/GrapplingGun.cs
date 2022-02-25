@@ -64,7 +64,7 @@ public class GrapplingGun : MonoBehaviour
     private TimeManager _timeManager;
 
     // State booleans
-    bool _isGrappling, _isLaunched;
+    bool _isGrappling, _isLaunched, _redirecting;
 
     // Other variables
     private int _currentCharges;
@@ -110,6 +110,16 @@ public class GrapplingGun : MonoBehaviour
                 StopGrapple();
             }
             else _joint.connectedAnchor = _grapplePoint.transform.position;
+
+            if (_redirecting && _capturedMissile != null)
+            {
+                float dot = Vector3.Dot(transform.forward, _capturedMissile.transform.position - transform.position);
+                if (dot > 0f)
+                {
+                    RedirectProjectile();
+                    _redirecting = false;
+                }
+            }
         }
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -126,7 +136,7 @@ public class GrapplingGun : MonoBehaviour
         }
         else if (Mouse.current.rightButton.wasReleasedThisFrame)
         {
-            if (_capturedMissile != null) RedirectProjectile();
+            if (_capturedMissile != null) _redirecting = true;
         }
     }
 
@@ -204,6 +214,11 @@ public class GrapplingGun : MonoBehaviour
         _capturedMissile.GainControl(ProjectileReceive.gameObject);
         PlayerCamera.transform.localPosition = PlayerCamera.transform.localPosition + Vector3.back * 5f;
         _ui.ChangeCrosshairStyle(true);
+        //_joint.spring = SpringForce * 10f;
+        //_joint.damper = Dampening * 10f;
+        //_joint.massScale = MassScale;
+        //_joint.maxDistance = 1f;
+        //_joint.minDistance = 0.1f;
     }
 
     void RedirectProjectile()
@@ -217,8 +232,8 @@ public class GrapplingGun : MonoBehaviour
             target.transform.parent = hit.transform;
         }
 
-        _capturedMissile.Redirect(_capturedMissile.transform.position, transform.forward, target);
-        _capturedMissile = null;
+        _capturedMissile.Redirect(_capturedMissile.transform.position, PlayerCamera.forward, target);
+
         StartCoroutine(Delay(1f, RedirectEffects));
     }
 
@@ -231,6 +246,8 @@ public class GrapplingGun : MonoBehaviour
 
         GameObject particles = GameObject.Instantiate(RedirectEffect, _capturedMissile.transform.position, Quaternion.identity);
         Destroy(particles, 5f);
+
+        _capturedMissile = null;
     }
 
     /// <summary>

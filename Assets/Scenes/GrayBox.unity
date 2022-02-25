@@ -1900,6 +1900,34 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 2496024928203559706}
+    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _rotateSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _deviationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _deviationAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _maxTimePrediction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _maxDistancePredict
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _minDistancePredict
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3906724017950790444, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Enabled
       value: 1
