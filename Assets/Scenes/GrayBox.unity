@@ -1902,19 +1902,19 @@ PrefabInstance:
       objectReference: {fileID: 2496024928203559706}
     - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _speed
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _rotateSpeed
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _rotateSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _deviationSpeed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _deviationAmount
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 419731288901834487, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _maxTimePrediction
