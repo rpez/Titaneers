@@ -40,14 +40,17 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.name);
         if (!_continuous)
         {
             if ((_layers.value & (int)Mathf.Pow(2, other.gameObject.layer)) == (int)Mathf.Pow(2, other.gameObject.layer))// if the other's layer is included in _layers
             {
+                Debug.Log(other.name+"1");
                 Vector3 toOther = other.transform.position - transform.position;
                 HurtBox hurtBox;
                 if (hurtBox = other.GetComponent<HurtBox>())
                 {
+                    Debug.Log(other.name + "2");
                     DealDamage(hurtBox);
                 }
             }
@@ -56,7 +59,7 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(_continuous)
+        if (_continuous)
         {
             if ((_layers.value & (int)Mathf.Pow(2, other.gameObject.layer)) == (int)Mathf.Pow(2, other.gameObject.layer))// if the other's layer is included in _layers
             {

@@ -228,14 +228,14 @@ ModelImporter:
       events:
       - time: 0.40111148
         functionName: ActivateHitBox
-        data: SlapHitBox
+        data: SlapHItBox
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.5008271
         functionName: DeactivateHitBox
-        data: SlapHitBox
+        data: SlapHItBox
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
@@ -283,6 +283,20 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0
+        functionName: Play_titan_trample_voc
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.73626375
+        functionName: Play_titan_trample_foot
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -311,7 +325,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.24725273
+        functionName: Play_titan_fs
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.72115386
+        functionName: Play_titan_fs
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
