@@ -185,42 +185,6 @@ public class PlayerMovement : MonoBehaviour
         {
             SetTimeSlow(!_slowTime);
         };
-        _controlMapping.Crouch.performed += _ => _crouching = true;
-
-        //Crouching
-        if (_controlMapping.Crouch.WasPressedThisFrame())
-            StartCrouch();
-        if (_controlMapping.Crouch.WasReleasedThisFrame())
-            StopCrouch();
-
-        //Zooming
-        _controlMapping.Zoom.performed += context => _scrollingInput = context.ReadValue<float>();
-        if (_scrollingInput > 0)
-            _playerCameraBehavior.Zoom(ZoomIncrement);
-        else if (_scrollingInput < 0)
-            _playerCameraBehavior.Zoom(-ZoomIncrement);
-    }
-
-    private void StartCrouch()
-    {
-        _collider.height = _crouchHeight;
-        PlayerCamera.localPosition = _crouchCameraPosition;
-        //transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-        if (_rigidbody.velocity.magnitude > 0.5f)
-        {
-            if (_grounded)
-            {
-                _rigidbody.AddForce(Orientation.transform.forward * SlideForce);
-            }
-        }
-    }
-
-    private void StopCrouch()
-    {
-        _collider.height = _playerHeight;
-        PlayerCamera.localPosition = _defaultCameraPostion;
-        _crouching = false;
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
     private void Movement()
@@ -400,7 +364,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Perform the rotations
         PlayerCamera.transform.localRotation = Quaternion.Euler(_xRotation, _targetXRotation, 0);
-        Orientation.transform.localRotation = Quaternion.Euler(0, _targetXRotation, 0);
+        Orientation.transform.localRotation = Quaternion.Euler(_xRotation, _targetXRotation, 0);
     }
 
     private void CounterMovement(float x, float y, Vector2 mag)
@@ -465,7 +429,7 @@ public class PlayerMovement : MonoBehaviour
         }
         PlayerAvatar.transform.eulerAngles = new Vector3(
             PlayerAvatar.transform.eulerAngles.x,
-            PlayerCamera.eulerAngles.y,
+            Orientation.eulerAngles.y,
             PlayerAvatar.transform.eulerAngles.z);
     }
 
@@ -474,8 +438,8 @@ public class PlayerMovement : MonoBehaviour
         GameObject[] explodedProjectiles = GameObject.FindGameObjectsWithTag("Exploded");
         foreach (GameObject exploded in explodedProjectiles)
         {
-            if (Vector3.Distance(exploded.transform.position, transform.position) <= ExplosionShakingRange)
-                _playerCameraBehavior.Shake(1, 1);
+            //if (Vector3.Distance(exploded.transform.position, transform.position) <= ExplosionShakingRange)
+            //    _playerCameraBehavior.Shake(1, 1);
             Destroy(exploded);
         }
     }
