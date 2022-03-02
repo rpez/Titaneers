@@ -64,7 +64,7 @@ public class GrapplingGun : MonoBehaviour
     private TimeManager _timeManager;
 
     // State booleans
-    bool _isGrappling, _isLaunched, _redirecting;
+    bool _isGrappling, _isLaunched, _controlling, _redirecting;
 
     // Other variables
     private int _currentCharges;
@@ -103,6 +103,8 @@ public class GrapplingGun : MonoBehaviour
             }
         }
 
+
+
         if (_isGrappling)
         {
             if (_grapplePoint == null)
@@ -111,7 +113,11 @@ public class GrapplingGun : MonoBehaviour
             }
             else _joint.connectedAnchor = _grapplePoint.transform.position;
 
-            if (_redirecting && _capturedMissile != null)
+            if (_capturedMissile != null && !_capturedMissile.gameObject.GetComponent<ObjectPoolUnit>().Active)
+            {
+                ResetAfterRedirect();
+            }
+            else if (_redirecting && _capturedMissile != null)
             {
                 float dot = Vector3.Dot(transform.forward, _capturedMissile.transform.position - transform.position);
                 if (dot > 0f)
@@ -120,15 +126,16 @@ public class GrapplingGun : MonoBehaviour
                     _redirecting = false;
                 }
             }
+
         }
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            LaunchGrapple();
+            if (!_redirecting && !_controlling) LaunchGrapple();
         }
         else if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            StopGrapple();
+            if (!_redirecting && !_controlling) StopGrapple();
         }
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
@@ -212,8 +219,9 @@ public class GrapplingGun : MonoBehaviour
     void GainProjectileControl()
     {
         _capturedMissile.GainControl(ProjectileReceive.gameObject);
-        PlayerCamera.transform.localPosition = PlayerCamera.transform.localPosition + Vector3.back * 5f;
+        //PlayerCamera.transform.localPosition = PlayerCamera.transform.localPosition + Vector3.back * 5f;
         _ui.ChangeCrosshairStyle(true);
+        _controlling = true;
         //_joint.spring = SpringForce * 10f;
         //_joint.damper = Dampening * 10f;
         //_joint.massScale = MassScale;
@@ -239,13 +247,20 @@ public class GrapplingGun : MonoBehaviour
 
     private void RedirectEffects()
     {
-        StopGrapple();
         _timeManager.FreezeFrame(0.4f);
-        PlayerCamera.transform.localPosition = _defaultCameraPos;
-        _ui.ChangeCrosshairStyle(false);
+        //PlayerCamera.transform.localPosition = _defaultCameraPos;
 
         GameObject particles = GameObject.Instantiate(RedirectEffect, _capturedMissile.transform.position, Quaternion.identity);
         Destroy(particles, 5f);
+
+        ResetAfterRedirect();
+    }
+
+    private void ResetAfterRedirect()
+    {
+        StopGrapple();
+        _ui.ChangeCrosshairStyle(false);
+        _controlling = false;
 
         _capturedMissile = null;
     }
