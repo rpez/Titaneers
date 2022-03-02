@@ -22,11 +22,11 @@ public class TestMissile : MonoBehaviour, BeAttack
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - _lastShootTs >= 4.5f)
-        {
-            Attack();
-            _lastShootTs = Time.time;
-        }
+        //if (Time.time - _lastShootTs >= 4.5f)
+        //{
+        //    Attack();
+        //    _lastShootTs = Time.time;
+        //}
     }
 
     public void Attack()
