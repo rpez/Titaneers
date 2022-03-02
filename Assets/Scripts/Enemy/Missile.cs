@@ -149,7 +149,9 @@ public class Missile : MonoBehaviour
         var heading = _deviatedPrediction - transform.position;
 
         var rotation = Quaternion.LookRotation(heading);
-        _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotation, _rotateSpeed * Time.deltaTime));
+        float angle = Quaternion.Angle(transform.rotation, rotation);
+        float adjustRotateSpeed = _rotateSpeed / 180 * angle;
+        _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotation, adjustRotateSpeed * Time.deltaTime));
     }
 
     private void OnCollisionEnter(Collision collision)
