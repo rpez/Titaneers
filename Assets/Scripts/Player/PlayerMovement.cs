@@ -86,7 +86,6 @@ public class PlayerMovement : MonoBehaviour
 
     // Other references
     private Rigidbody _rigidbody;
-    private CameraBehavior _playerCameraBehavior;
     private TimeManager _timeManager;
     private CapsuleCollider _collider;
 
@@ -141,7 +140,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _playerCameraBehavior = FindObjectOfType<CameraBehavior>();
         _collider = GetComponent<CapsuleCollider>();
         _playerHeight = _collider.height;
         _defaultCameraPostion = PlayerCamera.localPosition;
@@ -431,17 +429,6 @@ public class PlayerMovement : MonoBehaviour
             PlayerAvatar.transform.eulerAngles.x,
             Orientation.eulerAngles.y,
             PlayerAvatar.transform.eulerAngles.z);
-    }
-
-    private void CheckExplosion()
-    {
-        GameObject[] explodedProjectiles = GameObject.FindGameObjectsWithTag("Exploded");
-        foreach (GameObject exploded in explodedProjectiles)
-        {
-            //if (Vector3.Distance(exploded.transform.position, transform.position) <= ExplosionShakingRange)
-            //    _playerCameraBehavior.Shake(1, 1);
-            Destroy(exploded);
-        }
     }
 
     /// <summary>

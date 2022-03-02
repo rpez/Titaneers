@@ -10029,6 +10029,7 @@ GameObject:
   - component: {fileID: 7740805112733739756}
   - component: {fileID: -6406979750917785884}
   - component: {fileID: 3159037974673402742}
+  - component: {fileID: 134379388091966412}
   m_Layer: 10
   m_Name: Missile
   m_TagString: Projectile
@@ -10127,6 +10128,21 @@ MonoBehaviour:
   _deviationAmount: 0
   _deviationSpeed: 2
   _damage: 15
+  _onExplode:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 134379388091966412}
+        m_TargetAssemblyTypeName: Cinemachine.CinemachineImpulseSource, Cinemachine
+        m_MethodName: GenerateImpulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &22319945665614691
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10185,7 +10201,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: 4ffed4fb755804a52b61d62153fb5b9c, type: 2}
   useCallbacks: 0
   Callbacks: []
-  playingId: 0
+  playingId: 676
   soundEmitterObject: {fileID: 7099793165288587924}
   transitionDuration: 0
   eventIdInternal: 0
@@ -10247,6 +10263,59 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &134379388091966412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099793165288587924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 3
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.3
+    m_ImpulseType: 2
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &8948295027296036015
 GameObject:
   m_ObjectHideFlags: 0

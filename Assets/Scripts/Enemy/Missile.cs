@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * reference video: https://www.youtube.com/watch?v=Z6qBeuN-H1M
@@ -34,6 +35,7 @@ public class Missile : MonoBehaviour
 
     [Header("ATTACK")]
     [SerializeField] private float _damage = 15;
+    [SerializeField] private UnityEvent _onExplode;
 
     // Other
     private Rigidbody _targetRb;
@@ -161,6 +163,7 @@ public class Missile : MonoBehaviour
         if (collision.transform.GetComponent<BeAttack>() != null)
             collision.transform.GetComponent<BeAttack>().BeAttack(_damage);
 
+        _onExplode.Invoke();
         Recycle();
     }
 
