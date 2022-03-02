@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
     [Header("Assign in editor")]
     public GameObject ThreatIndicator;
     public Image Crosshair;
+    public Image AttackCrosshair;
     public Camera Camera;
     public ObjectPool IndicatorPool;
 
@@ -109,11 +110,19 @@ public class UI : MonoBehaviour
     public void ChangeCrosshairColor(Color color)
     {
         Crosshair.color = color;
+        //AttackCrosshair.color = color;
     }
 
     public void ResetCrosshairColor()
     {
         Crosshair.color = _defaultCrosshairColor;
+        //AttackCrosshair.color = _defaultCrosshairColor;
+    }
+
+    public void ChangeCrosshairStyle(bool attack)
+    {
+        Crosshair.enabled = !attack;
+        AttackCrosshair.enabled = attack;
     }
 
     public GameObject GetCrosshairTarget()
