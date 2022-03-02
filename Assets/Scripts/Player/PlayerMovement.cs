@@ -155,7 +155,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-        CheckExplosion();
     }
 
     private void Update()
