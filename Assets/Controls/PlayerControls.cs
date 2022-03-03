@@ -98,6 +98,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4b5efce-1bea-4549-bf69-7b542ea34dce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed4e2a93-14ef-412b-bb96-92ea8bc5628b"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -265,6 +285,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_GroundMovement_Fire = m_GroundMovement.FindAction("Fire", throwIfNotFound: true);
         m_GroundMovement_Grappling = m_GroundMovement.FindAction("Grappling", throwIfNotFound: true);
         m_GroundMovement_Zoom = m_GroundMovement.FindAction("Zoom", throwIfNotFound: true);
+        m_GroundMovement_Restart = m_GroundMovement.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -332,6 +353,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_GroundMovement_Fire;
     private readonly InputAction m_GroundMovement_Grappling;
     private readonly InputAction m_GroundMovement_Zoom;
+    private readonly InputAction m_GroundMovement_Restart;
     public struct GroundMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -344,6 +366,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_GroundMovement_Fire;
         public InputAction @Grappling => m_Wrapper.m_GroundMovement_Grappling;
         public InputAction @Zoom => m_Wrapper.m_GroundMovement_Zoom;
+        public InputAction @Restart => m_Wrapper.m_GroundMovement_Restart;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -377,6 +400,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Zoom.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnZoom;
                 @Zoom.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnZoom;
                 @Zoom.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnZoom;
+                @Restart.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_GroundMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -405,6 +431,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -428,5 +457,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnGrappling(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }
