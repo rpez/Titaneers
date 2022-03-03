@@ -311,7 +311,7 @@ public class PlayerMovement : MonoBehaviour
             _xInput = _horizontalInput.x;
             _yInput = _horizontalInput.y;
 
-            _dashDirection = Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
+            _dashDirection = -Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
             if (_dashDirection.magnitude < 0.01f)
             {
                 yield break; // Workaround fix because sometimes the input is 0 for whatever reason

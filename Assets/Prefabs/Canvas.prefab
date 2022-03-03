@@ -345,6 +345,7 @@ MonoBehaviour:
   AttackCrosshair: {fileID: 7839878633090093506}
   Camera: {fileID: 0}
   IndicatorPool: {fileID: 2078932012}
+  _maxThreatDist: 300
 --- !u!1 &2834947626028629675
 GameObject:
   m_ObjectHideFlags: 0
