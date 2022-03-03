@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6596.621, g: 5576.747, b: 4483.078, a: 1}
+  m_IndirectSpecularColor: {r: 6596.6064, g: 5576.7666, b: 4483.039, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1439,7 +1439,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 50
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -1465,7 +1465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715425321}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 306.4, y: 392, z: 639.9}
+  m_LocalPosition: {x: 305.4, y: 392.8, z: 639.05005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2299,6 +2299,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3547403403718226279, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
   m_PrefabInstance: {fileID: 1350924250}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1804052094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7436427318874618227, guid: db3a62195a3f2c344a057403f6873965, type: 3}
+  m_PrefabInstance: {fileID: 7436427319360819130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1804052099
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804052094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damping: {x: 0, y: 0, z: 0}
+  ShoulderOffset: {x: 1.5, y: 0.4, z: 0}
+  VerticalArmLength: 0.4
+  CameraSide: 1
+  CameraDistance: 6.15
+  CameraCollisionFilter:
+    serializedVersion: 2
+    m_Bits: 192
+  IgnoreTag: 
+  CameraRadius: 0.2
+  DampingIntoCollision: 0
+  DampingFromCollision: 2
 --- !u!4 &1905091664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4931557148761253733, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
@@ -3393,6 +3422,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 6965098877999748812, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: MouseSensitivity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -3564,21 +3601,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7436427318874618225, guid: db3a62195a3f2c344a057403f6873965, type: 3}
+      propertyPath: Damping.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436427318874618225, guid: db3a62195a3f2c344a057403f6873965, type: 3}
+      propertyPath: Damping.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436427318874618225, guid: db3a62195a3f2c344a057403f6873965, type: 3}
+      propertyPath: Damping.z
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7436427320389803074, guid: db3a62195a3f2c344a057403f6873965, type: 3}
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7436427320389803074, guid: db3a62195a3f2c344a057403f6873965, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 306.4
+      value: 305.4
       objectReference: {fileID: 0}
     - target: {fileID: 7436427320389803074, guid: db3a62195a3f2c344a057403f6873965, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 392
+      value: 392.8
       objectReference: {fileID: 0}
     - target: {fileID: 7436427320389803074, guid: db3a62195a3f2c344a057403f6873965, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 639.9
+      value: 639.05005
       objectReference: {fileID: 0}
     - target: {fileID: 7436427320389803074, guid: db3a62195a3f2c344a057403f6873965, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3620,7 +3669,16 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1464087331}
-    m_RemovedComponents: []
+    - target: {fileID: 7436427320389803085, guid: db3a62195a3f2c344a057403f6873965, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436427320389803085, guid: db3a62195a3f2c344a057403f6873965, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7626866
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7436427318874618225, guid: db3a62195a3f2c344a057403f6873965, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db3a62195a3f2c344a057403f6873965, type: 3}
 --- !u!1001 &8689311028914013722
 PrefabInstance:
