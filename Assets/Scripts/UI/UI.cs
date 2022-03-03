@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public class UI : MonoBehaviour
     public Camera Camera;
     public ObjectPool IndicatorPool;
 
+    [SerializeField] private float _maxThreatDist;
     // Private variables
     private Color _defaultCrosshairColor;
 
@@ -65,8 +67,9 @@ public class UI : MonoBehaviour
             {
                 Color color = _threatIndicators[i].GetComponent<Image>().color;
                 Vector3 dir = _threats[i].transform.position - Camera.transform.position;
+                float distance = Vector3.Distance(_threats[i].transform.position, Camera.transform.position);
                 // Check if behind camera
-                if (Vector3.Dot(dir, Camera.transform.forward) < 0f)
+                if (Vector3.Dot(dir, Camera.transform.forward) < 0f || distance > _maxThreatDist)
                 {
                     _threatIndicators[i].GetComponent<Image>().color = new Color(color.r, color.g, color.b, 0f);
                     continue;
