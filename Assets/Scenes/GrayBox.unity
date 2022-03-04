@@ -3305,6 +3305,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 2085104702}
+    - target: {fileID: 2273668857808839334, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1367897560}
     - target: {fileID: 2273668858029645089, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -3399,36 +3403,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
---- !u!114 &2273668857808839332 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2869169875591493292, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-  m_PrefabInstance: {fileID: 2273668857808839331}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &2273668857808839333 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4479549683574915112, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-  m_PrefabInstance: {fileID: 2273668857808839331}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2273668857808839334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2273668857808839333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6018e80f54b461841ba76c6b1db7c448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 1367897560}
-  SpeedText: {fileID: 2273668857808839332}
 --- !u!1001 &2496024928203559705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3444,6 +3418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: DashVFX
+      value: 
+      objectReference: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
       value: 11

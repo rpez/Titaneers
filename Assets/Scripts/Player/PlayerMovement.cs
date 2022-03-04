@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject PlayerAvatar;
     public Animator Animator;
     public GrapplingGun Grapple;
+    public GameObject DashVFX;
 
     [Header("Layers")]
     public LayerMask GroundLayer;
@@ -209,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_dashing)
         {
-            transform.Translate(_dashDirection * DashStrength * Time.unscaledDeltaTime);
+            _rigidbody.AddForce(_rigidbody.velocity.normalized * 10f, ForceMode.Force);
         }
         else
         {
@@ -308,31 +309,39 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_currentDashCharges > 0)
         {
-            _xInput = _horizontalInput.x;
-            _yInput = _horizontalInput.y;
-
-            _dashDirection = -Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
-            if (_dashDirection.magnitude < 0.01f)
-            {
-                yield break; // Workaround fix because sometimes the input is 0 for whatever reason
-            }
-
             _dashing = true;
             _currentDashCharges--;
-
-            Vector3 vel = _rigidbody.velocity;
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.useGravity = false;
-            _dashDirection.Normalize();
-            float angle = Vector3.Angle(_dashDirection, vel);
+            GameObject.Instantiate(DashVFX, Orientation.transform);
 
             yield return new WaitForSecondsRealtime(DashTime * Time.unscaledDeltaTime);
 
             _dashing = false;
-            // Keep momentum if dash is towards relatively same direction
-            _rigidbody.velocity = angle <= 100f ? vel : Vector3.zero;
-            _rigidbody.AddForce(_dashDirection * DashSpeedBoost, ForceMode.Impulse);
-            _rigidbody.useGravity = true;
+
+            //_xInput = _horizontalInput.x;
+            //_yInput = _horizontalInput.y;
+
+            //_dashDirection = -Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
+            //if (_dashDirection.magnitude < 0.01f)
+            //{
+            //    yield break; // Workaround fix because sometimes the input is 0 for whatever reason
+            //}
+
+            //_dashing = true;
+            //_currentDashCharges--;
+
+            //Vector3 vel = _rigidbody.velocity;
+            //_rigidbody.velocity = Vector3.zero;
+            //_rigidbody.useGravity = false;
+            //_dashDirection.Normalize();
+            //float angle = Vector3.Angle(_dashDirection, vel);
+
+            //yield return new WaitForSecondsRealtime(DashTime * Time.unscaledDeltaTime);
+
+            //_dashing = false;
+            //// Keep momentum if dash is towards relatively same direction
+            //_rigidbody.velocity = angle <= 100f ? vel : Vector3.zero;
+            //_rigidbody.AddForce(_dashDirection * DashSpeedBoost, ForceMode.Impulse);
+            //_rigidbody.useGravity = true;
         }
     }
 

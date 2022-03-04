@@ -240,6 +240,7 @@ MonoBehaviour:
   PlayerAvatar: {fileID: 3342445681655914074}
   Animator: {fileID: 1101589508}
   Grapple: {fileID: 2496024928567296264}
+  DashVFX: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 128
