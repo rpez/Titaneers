@@ -311,7 +311,8 @@ public class PlayerMovement : MonoBehaviour
         {
             _dashing = true;
             _currentDashCharges--;
-            GameObject.Instantiate(DashVFX, Orientation.transform);
+            GameObject vfx =  GameObject.Instantiate(DashVFX, Orientation.transform);
+            Destroy(vfx, 5f);
 
             yield return new WaitForSecondsRealtime(DashTime * Time.unscaledDeltaTime);
 
