@@ -3419,9 +3419,13 @@ PrefabInstance:
       value: PlayerContainer
       objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: DashVFX
-      value: 
-      objectReference: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
+      propertyPath: DashStrength
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: AirResistance
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
       value: 11

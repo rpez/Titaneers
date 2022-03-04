@@ -51,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     public float MaxSpeed = 20;
     public float CounterMovementForce = 0.175f;
     public float MaxSlopeAngle = 35f;
+    public float ResitanceThreshold = 200f;
+    public float AirResistance = 500f;
 
     [Header("Sliding")]
     public float SlideLandingBoost = 10f;
@@ -66,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Jumping")]
     public float JumpForce = 550f;
-    public float AirResistance = 0.1f;
 
     [Header("Time slow")]
     public float SlowScale = 0.1f;
@@ -210,33 +211,31 @@ public class PlayerMovement : MonoBehaviour
 
         if (_dashing)
         {
-            _rigidbody.AddForce(_rigidbody.velocity.normalized * 10f, ForceMode.Force);
+            Vector3 xz = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).normalized;
+            _rigidbody.AddForce(xz * DashStrength, ForceMode.Force);
         }
-        else
+        //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
+        if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
+        if (_xInput < 0 && xMag < -maxSpeed) _xInput = 0;
+        if (_yInput > 0 && yMag > maxSpeed) _yInput = 0;
+        if (_yInput < 0 && yMag < -maxSpeed) _yInput = 0;
+
+        //Some multipliers
+        float multiplier = 1f, multiplierV = 1f;
+
+        // Movement in air
+        if (!_grounded)
         {
-            //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
-            if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
-            if (_xInput < 0 && xMag < -maxSpeed) _xInput = 0;
-            if (_yInput > 0 && yMag > maxSpeed) _yInput = 0;
-            if (_yInput < 0 && yMag < -maxSpeed) _yInput = 0;
-
-            //Some multipliers
-            float multiplier = 1f, multiplierV = 1f;
-
-            // Movement in air
-            if (!_grounded)
-            {
-                multiplier = 0.5f;
-                multiplierV = 0.5f;
-            }
-
-            // Movement while sliding
-            if (_grounded && _crouching) multiplierV = 0f;
-
-            //Apply forces to move player
-            _rigidbody.AddForce(Orientation.transform.forward * _yInput * MoveSpeed * Time.deltaTime * multiplier * multiplierV);
-            _rigidbody.AddForce(Orientation.transform.right * _xInput * MoveSpeed * Time.deltaTime * multiplier);
+            multiplier = 0.5f;
+            multiplierV = 0.5f;
         }
+
+        // Movement while sliding
+        if (_grounded && _crouching) multiplierV = 0f;
+
+        //Apply forces to move player
+        _rigidbody.AddForce(Orientation.transform.forward * _yInput * MoveSpeed * Time.deltaTime * multiplier * multiplierV);
+        _rigidbody.AddForce(Orientation.transform.right * _xInput * MoveSpeed * Time.deltaTime * multiplier);
 
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
         if (_crouching && _grounded && _readyToJump)
@@ -311,38 +310,22 @@ public class PlayerMovement : MonoBehaviour
         {
             _dashing = true;
             _currentDashCharges--;
+
             GameObject vfx =  GameObject.Instantiate(DashVFX, Orientation.transform);
             Destroy(vfx, 5f);
+
+            _xInput = _horizontalInput.x;
+            _yInput = _horizontalInput.y;
+            _dashDirection = Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
+
+            if (Vector3.Angle(_dashDirection, _rigidbody.velocity) >= 50f)
+            {
+                _rigidbody.velocity = _dashDirection * _rigidbody.velocity.magnitude * 0.3f;
+            }
 
             yield return new WaitForSecondsRealtime(DashTime * Time.unscaledDeltaTime);
 
             _dashing = false;
-
-            //_xInput = _horizontalInput.x;
-            //_yInput = _horizontalInput.y;
-
-            //_dashDirection = -Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
-            //if (_dashDirection.magnitude < 0.01f)
-            //{
-            //    yield break; // Workaround fix because sometimes the input is 0 for whatever reason
-            //}
-
-            //_dashing = true;
-            //_currentDashCharges--;
-
-            //Vector3 vel = _rigidbody.velocity;
-            //_rigidbody.velocity = Vector3.zero;
-            //_rigidbody.useGravity = false;
-            //_dashDirection.Normalize();
-            //float angle = Vector3.Angle(_dashDirection, vel);
-
-            //yield return new WaitForSecondsRealtime(DashTime * Time.unscaledDeltaTime);
-
-            //_dashing = false;
-            //// Keep momentum if dash is towards relatively same direction
-            //_rigidbody.velocity = angle <= 100f ? vel : Vector3.zero;
-            //_rigidbody.AddForce(_dashDirection * DashSpeedBoost, ForceMode.Impulse);
-            //_rigidbody.useGravity = true;
         }
     }
 
@@ -389,8 +372,12 @@ public class PlayerMovement : MonoBehaviour
             float horizontalSpeed = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).magnitude;
             if (!Grapple.IsGrappling() && horizontalSpeed >= _minMovementThreshold)
             {
-                Vector3 vecx = new Vector3(-_rigidbody.velocity.x, 0f, -_rigidbody.velocity.z) * AirResistance;
-                _rigidbody.AddForce(vecx);
+                // Start applying air resistance after velocity exceeds 100
+                // Cap the resitance at AirResistance
+                float resistance = (_rigidbody.velocity.magnitude - ResitanceThreshold) * 0.005f;
+                if (resistance < 0f) return;
+                if (resistance > 1f) resistance = 1f;
+                _rigidbody.AddForce(-resistance * _rigidbody.velocity.normalized * AirResistance);
             }
 
             return;
