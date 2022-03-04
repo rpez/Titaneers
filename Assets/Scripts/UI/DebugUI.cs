@@ -20,6 +20,6 @@ public class DebugUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpeedText.text = "Velocity: " + _playerRb.velocity;
+        SpeedText.text = "Velocity: " + _playerRb.velocity.magnitude;
     }
 }
