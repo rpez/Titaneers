@@ -186,7 +186,7 @@ public class GrapplingGun : MonoBehaviour
             _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
         }
         _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
-        _grapplePoint.transform.parent = hit.transform;
+        _grapplePoint.transform.parent = hit.collider.transform;
         AkSoundEngine.PostEvent(GrappleShoot, gameObject);
         float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
         _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
