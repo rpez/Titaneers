@@ -47,6 +47,7 @@ public class GrapplingGun : MonoBehaviour
 
     [Header("Grappling")]
     public float Range = 100f;
+    public float indicatorRange = 2f;
     public float MaxLengthMultiplier = 0.1f;
     public float MinLengthMultiplier = 0.01f;
     public float SpringForce = 10f;
@@ -84,14 +85,26 @@ public class GrapplingGun : MonoBehaviour
 
     void Update()
     {
+
+        // UI update
         RaycastHit hit;
-        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer)
-            || _ui.GetCrosshairTarget() != null
-            && (_ui.GetCrosshairTarget().transform.position - PlayerCamera.position).magnitude < Range)
+        bool intersect = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range * indicatorRange);
+        if (!intersect) _ui.ActiveIndicator(false);
+        else
         {
-            _ui.ChangeCrosshairColor(Color.red);
+            _ui.ActiveIndicator(true);
+            float distanceRatio = hit.distance / Range;
+            float anchorX = Mathf.Clamp(distanceRatio / indicatorRange, 0.5f, 1);
+            _ui.ChangeIndicator(anchorX);
+            bool withinRange = distanceRatio <= 1 ? true : false;
+            if (((1 << hit.collider.gameObject.layer) & GrappleLayer.value) <= 0)
+            {
+                // not grapplable area
+                _ui.ChangeCrosshairIleagal(withinRange);
+            }
+            else _ui.ResetCrosshairColor(withinRange);
         }
-        else _ui.ResetCrosshairColor();
+
 
         if (_currentCharges < MaxCharges)
         {

@@ -8,12 +8,15 @@ public class UI : MonoBehaviour
 {
     [Header("Assign in editor")]
     public GameObject ThreatIndicator;
-    public Image Crosshair;
     public Image AttackCrosshair;
     public Camera Camera;
     public ObjectPool IndicatorPool;
 
     [SerializeField] private float _maxThreatDist;
+    [SerializeField] private GameObject _rangeIndicator;
+    [SerializeField] private GameObject _topRangeIndicator;
+    [SerializeField] private RectTransform[] _rangeIndicators;
+    [SerializeField] private Image[] _rangeImage;
     // Private variables
     private Color _defaultCrosshairColor;
 
@@ -29,7 +32,7 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        _defaultCrosshairColor = Crosshair.color;
+        _defaultCrosshairColor = _rangeImage[0].color;
         _threats = new GameObject[IndicatorPool.Size];
         _threatIndicators = new ObjectPoolUnit[IndicatorPool.Size];
         _canvas = GetComponent<Canvas>();
@@ -110,21 +113,44 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void ChangeCrosshairColor(Color color)
+    public void ChangeCrosshairIleagal(bool withInRange)
     {
-        Crosshair.color = color;
-        //AttackCrosshair.color = color;
+        _topRangeIndicator.SetActive(true);
+        Color color = Color.red;
+        if (!withInRange) color.a = 0.5f;
+        foreach (Image image in _rangeImage)
+        {
+            image.color = color;
+        }
     }
 
-    public void ResetCrosshairColor()
+    public void ActiveIndicator(bool active)
     {
-        Crosshair.color = _defaultCrosshairColor;
-        //AttackCrosshair.color = _defaultCrosshairColor;
+        _rangeIndicator.SetActive(active);
+    }
+
+    public void ChangeIndicator(float anchorX)
+    {
+        foreach (RectTransform indicator in _rangeIndicators)
+        {
+            indicator.pivot = new Vector2(anchorX, indicator.pivot.y);
+        }
+    }
+
+    public void ResetCrosshairColor(bool withInRange)
+    {
+        _topRangeIndicator.SetActive(false);
+        Color color = _defaultCrosshairColor;
+        if (!withInRange) color.a = 0.5f;
+        foreach (Image image in _rangeImage)
+        {
+            image.color = color;
+        }
     }
 
     public void ChangeCrosshairStyle(bool attack)
     {
-        Crosshair.enabled = !attack;
+        _rangeIndicator.SetActive(!attack);
         AttackCrosshair.enabled = attack;
     }
 
