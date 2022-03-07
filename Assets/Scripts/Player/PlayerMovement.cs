@@ -354,7 +354,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Rotate, and also make sure we dont over- or under-rotate.
         _xRotation -= mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+        _xRotation = Mathf.Clamp(_xRotation, -85f, 85f);
 
         //Perform the rotations
         PlayerCamera.transform.localRotation = Quaternion.Euler(_xRotation, _targetXRotation, 0);
