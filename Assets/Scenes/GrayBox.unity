@@ -2785,31 +2785,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6013510190381742632, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_text
-      value: 'Move: W/A/S/D
-
-
-        Booster: SHIFT
-
-
-        Time Slow: F
-
-
-        Shoot
-        Grapple:
-
-        RIGHT MOUSE
-
-
-        Attack:
-
-        LEFT MOUSE
-
-
-        Restart:
-        R'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
 --- !u!1001 &2496024928203559705

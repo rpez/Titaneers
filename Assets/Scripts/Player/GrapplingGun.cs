@@ -85,7 +85,6 @@ public class GrapplingGun : MonoBehaviour
 
     void Update()
     {
-
         // UI update
         RaycastHit hit;
         bool intersect = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range * indicatorRange);

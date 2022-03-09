@@ -139,6 +139,18 @@ public class PlayerMovement : MonoBehaviour
         _pulling = true;
     }
 
+    private void AttackImpact()
+    {
+        GameObject hitEffect = GameObject.Instantiate(DashVFX, transform.position, Quaternion.identity);
+        Destroy(hitEffect, 5f);
+
+        _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
+        _rigidbody.useGravity = true;
+        _pulling = false;
+
+        _onReachtarget.Invoke();
+    }
+
     private void OnEnable()
     {
         _controls.Enable();
@@ -212,8 +224,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(distance.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
             if (distance.magnitude < 1f)
             {
-                _pulling = false;
-                _onReachtarget.Invoke();
+                AttackImpact();
             } 
             return;
         }
