@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _grounded;
     private bool _readyToJump = true;
     private bool _slowTime;
-    private bool _jumping, _sprinting, _crouching, _dashing;
+    private bool _jumping, _sprinting, _crouching, _dashing, _pulling;
     private bool _timeSlowChargeDelayed;
 
     // Other references
@@ -121,8 +121,23 @@ public class PlayerMovement : MonoBehaviour
 
     private Coroutine _groundCancel;
 
+    // Grapple reel in
+    private GameObject _target;
+    private Action _onReachtarget;
+    private Vector3 _pullVelocity;
+
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
     private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
+
+    public void StartPullTowards(GameObject target, Action onEnd)
+    {
+        _target = target;
+        _onReachtarget = onEnd;
+        _pullVelocity = _rigidbody.velocity;
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.useGravity = false;
+        _pulling = true;
+    }
 
     private void OnEnable()
     {
@@ -153,7 +168,6 @@ public class PlayerMovement : MonoBehaviour
         _currentDashCharges = MaxDashCharges;
         _currentSlowTime = MaxSlowTime;
     }
-
 
     private void FixedUpdate()
     {
@@ -192,6 +206,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
+        if (_pulling)
+        {
+            Vector3 distance = _target.transform.position - transform.position;
+            transform.Translate(distance.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
+            if (distance.magnitude < 1f)
+            {
+                _pulling = false;
+                _onReachtarget.Invoke();
+            } 
+            return;
+        }
 
         //Extra gravity
         _rigidbody.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -436,7 +461,7 @@ public class PlayerMovement : MonoBehaviour
     /// Useful for vectors calculations regarding movement and limiting movement
     /// </summary>
     /// <returns></returns>
-    public Vector2 FindVelRelativeToLook()
+    private Vector2 FindVelRelativeToLook()
     {
         float lookAngle = Orientation.transform.eulerAngles.y;
         float moveAngle = Mathf.Atan2(_rigidbody.velocity.x, _rigidbody.velocity.z) * Mathf.Rad2Deg;

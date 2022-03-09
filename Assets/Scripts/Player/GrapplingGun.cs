@@ -65,7 +65,7 @@ public class GrapplingGun : MonoBehaviour
     private TimeManager _timeManager;
 
     // State booleans
-    bool _isGrappling, _isLaunched, _controlling, _redirecting;
+    bool _isGrappling, _isLaunched, _controlling, _redirecting, _reeling;
 
     // Other variables
     private int _currentCharges;
@@ -116,7 +116,7 @@ public class GrapplingGun : MonoBehaviour
             }
         }
 
-
+        if (_reeling) return;
 
         if (_isGrappling)
         {
@@ -153,6 +153,10 @@ public class GrapplingGun : MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             if (_capturedMissile != null) GainProjectileControl();
+            else if (_isGrappling)
+            {
+                StartReelIn();
+            }
         }
         else if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
@@ -163,7 +167,7 @@ public class GrapplingGun : MonoBehaviour
     /// <summary>
     /// Call whenever we want to start a grapple
     /// </summary>
-    void LaunchGrapple()
+    private void LaunchGrapple()
     {
         if (_currentCharges <= 0) return;
         _isLaunched = true;
@@ -203,11 +207,9 @@ public class GrapplingGun : MonoBehaviour
         AkSoundEngine.PostEvent(GrappleShoot, gameObject);
         float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
         _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
-
-        //Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
     }
 
-    void ConnectGrapple()
+    private void ConnectGrapple()
     {
         _isGrappling = true;
         _joint = Player.gameObject.AddComponent<SpringJoint>();
@@ -229,20 +231,14 @@ public class GrapplingGun : MonoBehaviour
         _currentCharges--;
     }
 
-    void GainProjectileControl()
+    private void GainProjectileControl()
     {
         _capturedMissile.GainControl(ProjectileReceive.gameObject);
-        //PlayerCamera.transform.localPosition = PlayerCamera.transform.localPosition + Vector3.back * 5f;
         _ui.ChangeCrosshairStyle(true);
         _controlling = true;
-        //_joint.spring = SpringForce * 10f;
-        //_joint.damper = Dampening * 10f;
-        //_joint.massScale = MassScale;
-        //_joint.maxDistance = 1f;
-        //_joint.minDistance = 0.1f;
     }
 
-    void RedirectProjectile()
+    private void RedirectProjectile()
     {
         GameObject target = GameObject.Instantiate(HitpointPrefab, PlayerCamera.position + PlayerCamera.forward * 1000f, Quaternion.identity);
 
@@ -258,10 +254,25 @@ public class GrapplingGun : MonoBehaviour
         StartCoroutine(Delay(1f, RedirectEffects));
     }
 
+    private void StartReelIn()
+    {
+        if (_grapplePoint != null)
+        {
+            Player.GetComponent<PlayerMovement>().StartPullTowards(_grapplePoint, StopReelIn);
+            Destroy(_joint);
+            _reeling = true;
+        }
+    }
+
+    private void StopReelIn()
+    {
+        _reeling = false;
+        StopGrapple();
+    }
+
     private void RedirectEffects()
     {
         _timeManager.FreezeFrame(0.4f);
-        //PlayerCamera.transform.localPosition = _defaultCameraPos;
 
         GameObject particles = GameObject.Instantiate(RedirectEffect, _capturedMissile.transform.position, Quaternion.identity);
         Destroy(particles, 5f);
@@ -281,10 +292,9 @@ public class GrapplingGun : MonoBehaviour
     /// <summary>
     /// Call whenever we want to stop a grapple
     /// </summary>
-    void StopGrapple()
+    private void StopGrapple()
     {
         if (_launchRoutine != null) StopCoroutine(_launchRoutine);
-        //_lineRenderer.positionCount = 0;
         if (_grapplePoint != null) Destroy(_grapplePoint);
         _isGrappling = false;
         _isLaunched = false;
