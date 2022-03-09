@@ -559,4 +559,12 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(delay);
         callback.Invoke();
     }
+
+    public void OnPowerUpCollected()
+    {
+        if (_currentDashCharges < MaxDashCharges)
+            _currentDashCharges += 1;
+        Debug.Log("dash charges up");
+
+    }
 }
