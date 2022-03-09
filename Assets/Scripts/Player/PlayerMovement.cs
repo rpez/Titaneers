@@ -142,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
     private void AttackImpact()
     {
         GameObject hitEffect = GameObject.Instantiate(DashVFX, transform.position, Quaternion.identity);
+        hitEffect.transform.localScale = hitEffect.transform.localScale * 10f;
         Destroy(hitEffect, 5f);
 
         _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
@@ -222,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 distance = _target.transform.position - transform.position;
             transform.Translate(distance.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
-            if (distance.magnitude < 1f)
+            if (distance.magnitude < 5f)
             {
                 AttackImpact();
             } 
