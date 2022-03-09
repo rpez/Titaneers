@@ -142,19 +142,19 @@ public class GrapplingGun : MonoBehaviour
 
         }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             if (!_redirecting && !_controlling) LaunchGrapple();
         }
-        else if (Mouse.current.leftButton.wasReleasedThisFrame)
+        else if (Mouse.current.rightButton.wasReleasedThisFrame)
         {
             if (!_redirecting && !_controlling) StopGrapple();
         }
-        if (Mouse.current.rightButton.wasPressedThisFrame)
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             if (_capturedMissile != null) GainProjectileControl();
         }
-        else if (Mouse.current.rightButton.wasReleasedThisFrame)
+        else if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
             if (_capturedMissile != null) _redirecting = true;
         }

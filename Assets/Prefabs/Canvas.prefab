@@ -753,7 +753,7 @@ MonoBehaviour:
   m_text: 'Move: W/A/S/D
 
 
-    Dash: SHIFT
+    Booster: SHIFT
 
 
     Time Slow: F
@@ -761,17 +761,16 @@ MonoBehaviour:
 
     Shoot Grapple:
 
-    LEFT
+    RIGHT
     MOUSE
 
 
-    Redirect projectile (when grappled to a missile):
+    Attack:
 
-    RIGHT MOUSE
+    LEFT MOUSE
 
 
-    Restart:
-    R'
+    Restart: R'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
