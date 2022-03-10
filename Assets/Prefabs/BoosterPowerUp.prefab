@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000012015927304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BoosterPowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1000013931470818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2139883694062970180}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7001513383277555973}
   - component: {fileID: 764847046513150587}
   - component: {fileID: 3340654268754154285}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

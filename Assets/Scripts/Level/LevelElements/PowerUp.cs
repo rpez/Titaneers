@@ -21,12 +21,12 @@ public class PowerUp : MonoBehaviour
     void Update()
     {
         transform.Rotate(new Vector3(0, _rotateSpeed * Time.deltaTime, 0), Space.World);
-        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        _playerObj.GetComponent<PlayerMovement>().OnPowerUpCollected();
+        if (collision.gameObject.tag == Tags.PLAYER_TAG)
+            _playerObj.GetComponent<PlayerMovement>().OnPowerUpCollected();
         gameObject.SetActive(false);    // pooled management
         _poolUnit.Deactivate();
     }

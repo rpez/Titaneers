@@ -157,7 +157,7 @@ public class Missile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (_state == ProjectileState.Controlled) return;
-        if (_state == ProjectileState.Redirected && collision.gameObject.tag == "Player") return;
+        if (_state == ProjectileState.Redirected && collision.gameObject.tag == Tags.PLAYER_TAG) return;
 
         if (_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
         if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
