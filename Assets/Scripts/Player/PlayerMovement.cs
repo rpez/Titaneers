@@ -65,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
     public float DashSpeedBoost = 2f;
     public int MaxDashCharges = 2;
     public float DashCooldown = 3f;
+    public float CurrentDashCharges { get => _currentDashCharges; }
+    public float CurrentDashCdTime { get => _currentDashCdTime; }
 
     [Header("Jumping")]
     public float JumpForce = 550f;

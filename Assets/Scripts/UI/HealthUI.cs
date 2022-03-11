@@ -10,21 +10,20 @@ public class HealthUI : MonoBehaviour
     private Text text;
 
     [SerializeField]
-    private Slider slider;
-
-    [SerializeField]
-    private Gradient gradient;
-
-    [SerializeField]
-    private Image fillImage;
+    private BarUI healthBar;
 
     [SerializeField]
     private Health health;
 
+    private void Start()
+    {
+        healthBar = GetComponent<BarUI>();
+    }
+
     private void Update()
     {
-        text.text = "Titan HP:" + health.CurrentHealthPoint;
-        slider.value = (health.CurrentHealthPoint > 0f ? health.CurrentHealthPoint / health.MaxHealthPoint: 0f);
-        fillImage.color = gradient.Evaluate(slider.value);
+        float currentHealthPoint = health.CurrentHealthPoint;
+        text.text = "Titan HP:" + currentHealthPoint;
+        healthBar.SetValue(currentHealthPoint > 0f ? currentHealthPoint / health.MaxHealthPoint: 0f);
     }
 }
