@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5c40a678ff1399543ab4b0ff1655206e
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _HightLight_Map: {fileID: 2800000, guid: 44d04a56b2622ea4aac7d7421f94a0ea, type: 3}
+  - _Map: {fileID: 2800000, guid: 815bd0ec57a97af4282d13ff20df013d, type: 3}
+  - _Distot_ST: {fileID: 2800000, guid: c24f120ea3cf42441b00eccf9bcd4793, type: 3}
+  - _Mask: {fileID: 2800000, guid: 81f8df2de0042d240bdd4d15d77f638d, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
