@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3682510424">
+		<SoundBank Id="1355168291" Language="SFX" Hash="4159063206">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -20,12 +20,40 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2615942169">
+		<SoundBank Id="3161908922" Language="SFX" Hash="1915411029">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3625340534" Name="Play_player_fs_run_L" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_L" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
+				<Event Id="3155474038" Name="Play_combat_music" ObjectPath="\Events\Music\Play_combat_music" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="1021980294" Language="SFX">
+							<ShortName>music-combat.wav</ShortName>
+							<Path>SFX/music-combat_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{3C1986C0-4AAD-4482-95E1-DF5A66B28F9E}">
+							<Media>
+								<File Id="1021980294"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{9A97CCE0-E26F-4C27-B161-8F8CBE5863F3}">
+							<Media>
+								<File Id="1021980294"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{CB0DB418-248B-4D71-85E7-8906A9893898}">
+							<Media>
+								<File Id="1021980294"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one"/>
+					</ActionSetSwitch>
+				</Event>
+				<Event Id="3625340534" Name="Play_player_fs_run_L" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_L" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
 					<IncludedMemoryFiles>
 						<File Id="66095530" Language="SFX">
 							<ShortName>sfx_player_fs_placeholder_13.wav</ShortName>
@@ -133,7 +161,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3625340520" Name="Play_player_fs_run_R" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_R" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
+				<Event Id="3625340520" Name="Play_player_fs_run_R" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_R" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
 					<IncludedMemoryFiles>
 						<File Id="66095530" Language="SFX">
 							<ShortName>sfx_player_fs_placeholder_13.wav</ShortName>
@@ -249,7 +277,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1884037509" Name="Play_player_grapple_shoot" ObjectPath="\Events\Player\PlayerGrapple\Play_player_grapple_shoot" MaxAttenuation="10." DurationType="OneShot" DurationMin="1.474931" DurationMax="1.633705">
+				<Event Id="1884037509" Name="Play_player_grapple_shoot" ObjectPath="\Events\Player\PlayerGrapple\Play_player_grapple_shoot" MaxAttenuation="20." DurationType="OneShot" DurationMin="1.474931" DurationMax="1.633705">
 					<IncludedMemoryFiles>
 						<File Id="516104416" Language="SFX">
 							<ShortName>sfx_placeholder_player_grapple_shoot.wav</ShortName>
@@ -257,7 +285,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="562256996" Name="Play_player_jump" ObjectPath="\Events\Player\PlayerLocomotion\PlayerJump\Play_player_jump" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.631805" DurationMax="0.719457">
+				<Event Id="562256996" Name="Play_player_jump" ObjectPath="\Events\Player\PlayerLocomotion\PlayerJump\Play_player_jump" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.631805" DurationMax="0.719457">
 					<IncludedMemoryFiles>
 						<File Id="168483571" Language="SFX">
 							<ShortName>sfx_player_jump_placeholder.wav</ShortName>
@@ -385,8 +413,27 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="970928956" Name="Stop_combat_music" ObjectPath="\Events\Music\Stop_combat_music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="678209053" Name="two" ObjectPath="\Switches\Music\Music_Progress\two"/>
+					</ActionSetSwitch>
+				</Event>
 				<Event Id="930574960" Name="Stop_titan_missile_loop" ObjectPath="\Events\Titan\TitanMissile\Stop_titan_missile_loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
+			<SwitchGroups>
+				<SwitchGroup Id="678209053" Name="two" ObjectPath="\Switches\Music\Music_Progress\two" GUID="{CB0DB418-248B-4D71-85E7-8906A9893898}">
+					<Switches/>
+				</SwitchGroup>
+				<SwitchGroup Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one" GUID="{9A97CCE0-E26F-4C27-B161-8F8CBE5863F3}">
+					<Switches/>
+				</SwitchGroup>
+				<SwitchGroup Id="4150154280" Name="Music_Progress" ObjectPath="\Switches\Music\Music_Progress" GUID="{3C1986C0-4AAD-4482-95E1-DF5A66B28F9E}">
+					<Switches>
+						<Switch Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one" GUID="{9A97CCE0-E26F-4C27-B161-8F8CBE5863F3}"/>
+						<Switch Id="678209053" Name="two" ObjectPath="\Switches\Music\Music_Progress\two" GUID="{CB0DB418-248B-4D71-85E7-8906A9893898}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

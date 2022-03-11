@@ -16,6 +16,9 @@ Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	144697359	Outdoor			\Default Work Unit\Master Audio Bus\Reverbs\Outdoor	
 	3545700988	Reverbs			\Default Work Unit\Master Audio Bus\Reverbs	
 
+Effect plug-ins	ID	Name	Type				Notes
+	45410411	Brick_Wall_Minus_1dB_Peak_Fast_Release (Custom)	Wwise Peak Limiter			
+
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			
 	3859886410	System	System			
