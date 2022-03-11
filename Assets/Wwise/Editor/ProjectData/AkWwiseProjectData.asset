@@ -320,7 +320,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 442162c52f26e344bd4a00fa05b17c8d
     GuidInternal: 
-    m_lastTime: -8585561490697388932
+    m_lastTime: -8585545961764120904
     List:
     - name: Main
       guid: 1201e1abfa63ae47b2be1014f3a86b45
@@ -348,7 +348,7 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: 3c65b7b172dc744bb5b9255a23b99f09
     GuidInternal: 
-    m_lastTime: -8585564866726164321
+    m_lastTime: -8585545964262351951
     List:
     - name: Play_test_sound
       guid: 9f89b331c037dd49aa5d97b8e033ecca
@@ -367,6 +367,53 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 4.46114
       minDuration: 4.46114
+  - PhysicalPath: Events/Music.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Music
+      ObjectType: 12
+      guid: bbfb465c3e20624e99578ea3214e09d4
+    ParentPath: Events/Music
+    guid: bbfb465c3e20624e99578ea3214e09d4
+    GuidInternal: 
+    m_lastTime: -8585545963765296237
+    List:
+    - name: Play_combat_music
+      guid: 86bbba142438e248bf2f062aaf330c81
+      id: 3155474038
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: bbfb465c3e20624e99578ea3214e09d4
+      - ElementName: Play_combat_music
+        ObjectType: 3
+        guid: 86bbba142438e248bf2f062aaf330c81
+      Path: Events/Music/Play_combat_music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_combat_music
+      guid: 52e44992aae9d548befc1fd27fe50f7f
+      id: 970928956
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: bbfb465c3e20624e99578ea3214e09d4
+      - ElementName: Stop_combat_music
+        ObjectType: 3
+        guid: 52e44992aae9d548befc1fd27fe50f7f
+      Path: Events/Music/Stop_combat_music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events/Player.wwu
     PathAndIcons:
     - ElementName: Events
@@ -419,7 +466,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 3966b8f55db7964cb1077ab7af2123b5
       Path: Events/Player/PlayerLocomotion/PlayerFootsteps/Play_player_fs_run_L
-      maxAttenuation: 10
+      maxAttenuation: 20
       maxDuration: 0.432905
       minDuration: 0.199666
     - name: Play_player_fs_run_R
@@ -442,7 +489,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 20886915e39b73458710617e7609318f
       Path: Events/Player/PlayerLocomotion/PlayerFootsteps/Play_player_fs_run_R
-      maxAttenuation: 10
+      maxAttenuation: 20
       maxDuration: 0.432905
       minDuration: 0.199666
   - PhysicalPath: Events/PlayerGrapple.wwu
@@ -498,7 +545,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 27dac9a5f951c44e887b5f1fed6c1c22
       Path: Events/Player/PlayerGrapple/Play_player_grapple_shoot
-      maxAttenuation: 10
+      maxAttenuation: 20
       maxDuration: 1.633705
       minDuration: 1.474931
   - PhysicalPath: Events/PlayerJump.wwu
@@ -540,7 +587,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 3d86d02061a1c94c980e79ebc57153e5
       Path: Events/Player/PlayerLocomotion/PlayerJump/Play_player_jump
-      maxAttenuation: 10
+      maxAttenuation: 20
       maxDuration: 0.719457
       minDuration: 0.631805
   - PhysicalPath: Events/PlayerLocomotion.wwu
@@ -802,8 +849,71 @@ MonoBehaviour:
     ParentPath: Switches/Default Work Unit
     guid: 8e57cd0a6da9734e81e04a7ad73856d5
     GuidInternal: 
-    m_lastTime: -8585583922432664893
+    m_lastTime: -8585546013713900210
     List: []
+  - PhysicalPath: Switches/Music.wwu
+    PathAndIcons:
+    - ElementName: Switches
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Music
+      ObjectType: 12
+      guid: b59b97e2a65ba046a3cee56b3e50ffbd
+    ParentPath: Switches/Music
+    guid: b59b97e2a65ba046a3cee56b3e50ffbd
+    GuidInternal: 
+    m_lastTime: -8585545966069164563
+    List:
+    - name: Music_Progress
+      guid: c086193cad4a824495e1df5a66b28f9e
+      id: 4150154280
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: b59b97e2a65ba046a3cee56b3e50ffbd
+      - ElementName: Music_Progress
+        ObjectType: 11
+        guid: c086193cad4a824495e1df5a66b28f9e
+      Path: Switches/Music/Music_Progress
+      values:
+      - name: one
+        guid: e0cc979a6fe2274cb1618f8cbe5863f3
+        id: 1064933119
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Music
+          ObjectType: 12
+          guid: b59b97e2a65ba046a3cee56b3e50ffbd
+        - ElementName: Music_Progress
+          ObjectType: 11
+          guid: c086193cad4a824495e1df5a66b28f9e
+        - ElementName: one
+          ObjectType: 10
+          guid: e0cc979a6fe2274cb1618f8cbe5863f3
+      - name: two
+        guid: 18b40dcb8b24714d85e78906a9893898
+        id: 678209053
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Music
+          ObjectType: 12
+          guid: b59b97e2a65ba046a3cee56b3e50ffbd
+        - ElementName: Music_Progress
+          ObjectType: 11
+          guid: c086193cad4a824495e1df5a66b28f9e
+        - ElementName: two
+          ObjectType: 10
+          guid: 18b40dcb8b24714d85e78906a9893898
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers/Default Work Unit.wwu
     PathAndIcons:
@@ -818,7 +928,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8585583922432645473
     List: []
-  ExpandedFileSystemItemIds: 02000000050000000a000000
+  ExpandedFileSystemItemIds: 020000000300000005000000060000000a000000
   ExpandedWaapiItemIds: 0200000005000000060000000a0000000b0000000c0000000e0000001a00000020000000220000003300000034000000390000003b0000006500000066000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
