@@ -24,6 +24,7 @@
 
 // Modified by rpez 2022
 
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -46,6 +47,7 @@ public class GrapplingGun : MonoBehaviour
 
     [Header("Grappling")]
     public float Range = 100f;
+    public float indicatorRange = 2f;
     public float MaxLengthMultiplier = 0.1f;
     public float MinLengthMultiplier = 0.01f;
     public float SpringForce = 10f;
@@ -63,12 +65,13 @@ public class GrapplingGun : MonoBehaviour
     private TimeManager _timeManager;
 
     // State booleans
-    bool _isGrappling, _isLaunched;
+    bool _isGrappling, _isLaunched, _controlling, _redirecting, _reeling;
 
     // Other variables
     private int _currentCharges;
     private float _currentTime;
     private Vector3 _defaultCameraPos;
+    private Coroutine _launchRoutine;
 
     void Awake()
     {
@@ -82,14 +85,25 @@ public class GrapplingGun : MonoBehaviour
 
     void Update()
     {
+        // UI update
         RaycastHit hit;
-        if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer)
-            || _ui.GetCrosshairTarget() != null
-            && (_ui.GetCrosshairTarget().transform.position - PlayerCamera.position).magnitude < Range)
+        bool intersect = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range * indicatorRange);
+        if (!intersect) _ui.ActiveIndicator(false);
+        else
         {
-            _ui.ChangeCrosshairColor(Color.red);
+            _ui.ActiveIndicator(true);
+            float distanceRatio = hit.distance / Range;
+            float anchorX = Mathf.Clamp(distanceRatio / indicatorRange, 0.5f, 1);
+            _ui.ChangeIndicator(anchorX);
+            bool withinRange = distanceRatio <= 1 ? true : false;
+            if (((1 << hit.collider.gameObject.layer) & GrappleLayer.value) <= 0)
+            {
+                // not grapplable area
+                _ui.ChangeCrosshairIleagal(withinRange);
+            }
+            else _ui.ResetCrosshairColor(withinRange);
         }
-        else _ui.ResetCrosshairColor();
+
 
         if (_currentCharges < MaxCharges)
         {
@@ -101,6 +115,8 @@ public class GrapplingGun : MonoBehaviour
             }
         }
 
+        if (_reeling) return;
+
         if (_isGrappling)
         {
             if (_grapplePoint == null)
@@ -108,30 +124,49 @@ public class GrapplingGun : MonoBehaviour
                 StopGrapple();
             }
             else _joint.connectedAnchor = _grapplePoint.transform.position;
+
+            if (_capturedMissile != null && !_capturedMissile.gameObject.GetComponent<ObjectPoolUnit>().Active)
+            {
+                ResetAfterRedirect();
+            }
+            else if (_redirecting && _capturedMissile != null)
+            {
+                float dot = Vector3.Dot(transform.forward, _capturedMissile.transform.position - transform.position);
+                if (dot > 0f)
+                {
+                    RedirectProjectile();
+                    _redirecting = false;
+                }
+            }
+
         }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            LaunchGrapple();
-        }
-        else if (Mouse.current.leftButton.wasReleasedThisFrame)
-        {
-            StopGrapple();
-        }
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
-            if (_capturedMissile != null) GainProjectileControl();
+            if (!_redirecting && !_controlling) LaunchGrapple();
         }
         else if (Mouse.current.rightButton.wasReleasedThisFrame)
         {
-            if (_capturedMissile != null) RedirectProjectile();
+            if (!_redirecting && !_controlling) StopGrapple();
+        }
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            if (_capturedMissile != null) GainProjectileControl();
+            else if (_isGrappling)
+            {
+                StartReelIn();
+            }
+        }
+        else if (Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            if (_capturedMissile != null) _redirecting = true;
         }
     }
 
     /// <summary>
     /// Call whenever we want to start a grapple
     /// </summary>
-    void LaunchGrapple()
+    private void LaunchGrapple()
     {
         if (_currentCharges <= 0) return;
         _isLaunched = true;
@@ -167,15 +202,13 @@ public class GrapplingGun : MonoBehaviour
             _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
         }
         _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
-        _grapplePoint.transform.parent = hit.transform;
+        _grapplePoint.transform.parent = hit.collider.transform;
         AkSoundEngine.PostEvent(GrappleShoot, gameObject);
         float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
-        StartCoroutine(Grapple(distance / GrappleSpeed));
-
-        //Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward * Range, Color.green, 10f);
+        _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
     }
 
-    void ConnectGrapple()
+    private void ConnectGrapple()
     {
         _isGrappling = true;
         _joint = Player.gameObject.AddComponent<SpringJoint>();
@@ -197,17 +230,16 @@ public class GrapplingGun : MonoBehaviour
         _currentCharges--;
     }
 
-    void GainProjectileControl()
+    private void GainProjectileControl()
     {
         _capturedMissile.GainControl(ProjectileReceive.gameObject);
-        PlayerCamera.transform.localPosition = PlayerCamera.transform.localPosition + Vector3.back * 5f;
+        _ui.ChangeCrosshairStyle(true);
+        _controlling = true;
     }
 
-    void RedirectProjectile()
+    private void RedirectProjectile()
     {
         GameObject target = GameObject.Instantiate(HitpointPrefab, PlayerCamera.position + PlayerCamera.forward * 1000f, Quaternion.identity);
-        GameObject particles = GameObject.Instantiate(RedirectEffect, _capturedMissile.transform.position, Quaternion.identity);
-        Destroy(particles, 5f);
 
         RaycastHit hit;
         if (Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit))
@@ -216,20 +248,52 @@ public class GrapplingGun : MonoBehaviour
             target.transform.parent = hit.transform;
         }
 
-        _capturedMissile.Redirect(_capturedMissile.transform.position, transform.forward, target);
-        _capturedMissile = null;
+        _capturedMissile.Redirect(_capturedMissile.transform.position, PlayerCamera.forward, target);
+
+        StartCoroutine(Delay(1f, RedirectEffects));
+    }
+
+    private void StartReelIn()
+    {
+        if (_grapplePoint != null)
+        {
+            Player.GetComponent<PlayerMovement>().StartPullTowards(_grapplePoint, StopReelIn);
+            Destroy(_joint);
+            _reeling = true;
+        }
+    }
+
+    private void StopReelIn()
+    {
+        _reeling = false;
         StopGrapple();
+    }
+
+    private void RedirectEffects()
+    {
         _timeManager.FreezeFrame(0.4f);
-        PlayerCamera.transform.localPosition = _defaultCameraPos;
+
+        GameObject particles = GameObject.Instantiate(RedirectEffect, _capturedMissile.transform.position, Quaternion.identity);
+        Destroy(particles, 5f);
+
+        ResetAfterRedirect();
+    }
+
+    private void ResetAfterRedirect()
+    {
+        StopGrapple();
+        _ui.ChangeCrosshairStyle(false);
+        _controlling = false;
+
+        _capturedMissile = null;
     }
 
     /// <summary>
     /// Call whenever we want to stop a grapple
     /// </summary>
-    void StopGrapple()
+    private void StopGrapple()
     {
-        StopAllCoroutines();
-        //_lineRenderer.positionCount = 0;
+        if (_launchRoutine != null) StopCoroutine(_launchRoutine);
         if (_grapplePoint != null) Destroy(_grapplePoint);
         _isGrappling = false;
         _isLaunched = false;
@@ -251,9 +315,9 @@ public class GrapplingGun : MonoBehaviour
         return _grapplePoint == null ? null : _grapplePoint.transform;
     }
 
-    private IEnumerator Grapple(float delay)
+    private IEnumerator Delay(float delay, Action callback)
     {
         yield return new WaitForSeconds(delay);
-        ConnectGrapple();
+        callback.Invoke();
     }
 }

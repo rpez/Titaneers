@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_COMBAT_MUSIC = 3155474038U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_L = 3625340534U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_R = 3625340520U;
         static const AkUniqueID PLAY_PLAYER_GRAPPLE_HIT = 780547719U;
@@ -24,8 +25,24 @@ namespace AK
         static const AkUniqueID PLAY_TITAN_MISSILE_SHOT = 3166948436U;
         static const AkUniqueID PLAY_TITAN_TRAMPLE_FOOT = 1282535387U;
         static const AkUniqueID PLAY_TITAN_TRAMPLE_VOC = 3060992713U;
+        static const AkUniqueID STOP_COMBAT_MUSIC = 970928956U;
         static const AkUniqueID STOP_TITAN_MISSILE_LOOP = 930574960U;
     } // namespace EVENTS
+
+    namespace SWITCHES
+    {
+        namespace MUSIC_PROGRESS
+        {
+            static const AkUniqueID GROUP = 4150154280U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID ONE = 1064933119U;
+                static const AkUniqueID TWO = 678209053U;
+            } // namespace SWITCH
+        } // namespace MUSIC_PROGRESS
+
+    } // namespace SWITCHES
 
     namespace BANKS
     {

@@ -33,7 +33,6 @@ public class MissileEmitter : ProjectileEmitterBase
     [SerializeField] private float _deviationSpeed = 2;
     [SerializeField] private float _damage = 15;
 
-    private CameraBehavior _playerCameraBehavior;
     private UI _ui;
     private float _lastFireTime;
 
@@ -41,7 +40,6 @@ public class MissileEmitter : ProjectileEmitterBase
     void Start()
     {
         _target = GameObject.FindWithTag(Tags.PLAYER_TAG);
-        _playerCameraBehavior = FindObjectOfType<CameraBehavior>();
         _ui = GameObject.Find("Canvas").GetComponent<UI>();
     }
 
@@ -49,12 +47,12 @@ public class MissileEmitter : ProjectileEmitterBase
     void Update()
     {
         // for test
-        //if (Time.time - _lastFireTime > 10.0f)
-        //{
-        //    StartCoroutine(FireProjectileImpl());
-        //    Debug.Log("Fire Projectile");
-        //    _lastFireTime = Time.time;
-        //}
+        if (Time.time - _lastFireTime > 10.0f)
+        {
+            StartCoroutine(FireProjectileImpl());
+            Debug.Log("Fire Projectile");
+            _lastFireTime = Time.time;
+        }
     }
 
     protected override IEnumerator FireProjectileImpl()
@@ -77,7 +75,6 @@ public class MissileEmitter : ProjectileEmitterBase
                                     missile.SetMovementParam(_speed, _rotateSpeed, _timeToLive,
                                         _isHoming, _maxDistancePredict, _minDistancePredict,
                                         _maxTimePrediction, _deviationAmount, _deviationSpeed, _damage);
-                                    _playerCameraBehavior.Focus(_firePoints[j], 0.4f);
                                     _ui.AddThreat(missileUnit.gameObject);
                                 }
                             }

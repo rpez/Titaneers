@@ -10,10 +10,20 @@ public class HealthUI : MonoBehaviour
     private Text text;
 
     [SerializeField]
+    private BarUI healthBar;
+
+    [SerializeField]
     private Health health;
+
+    private void Start()
+    {
+        healthBar = GetComponent<BarUI>();
+    }
 
     private void Update()
     {
-        text.text = "Titan HP:" + health.CurrentHealthPoint;
+        float currentHealthPoint = health.CurrentHealthPoint;
+        text.text = "Titan HP:" + currentHealthPoint;
+        healthBar.SetValue(currentHealthPoint > 0f ? currentHealthPoint / health.MaxHealthPoint: 0f);
     }
 }

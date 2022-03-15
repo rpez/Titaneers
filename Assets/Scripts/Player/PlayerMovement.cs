@@ -30,6 +30,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject PlayerAvatar;
     public Animator Animator;
     public GrapplingGun Grapple;
+    public GameObject DashVFX;
 
     [Header("Layers")]
     public LayerMask GroundLayer;
@@ -49,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     public float MaxSpeed = 20;
     public float CounterMovementForce = 0.175f;
     public float MaxSlopeAngle = 35f;
+    public float ResitanceThreshold = 200f;
+    public float AirResistance = 500f;
 
     [Header("Sliding")]
     public float SlideLandingBoost = 10f;
@@ -61,10 +65,11 @@ public class PlayerMovement : MonoBehaviour
     public float DashSpeedBoost = 2f;
     public int MaxDashCharges = 2;
     public float DashCooldown = 3f;
+    public float CurrentDashCharges { get => _currentDashCharges; }
+    public float CurrentDashCdTime { get => _currentDashCdTime; }
 
     [Header("Jumping")]
     public float JumpForce = 550f;
-    public float AirResistance = 0.1f;
 
     [Header("Time slow")]
     public float SlowScale = 0.1f;
@@ -81,12 +86,11 @@ public class PlayerMovement : MonoBehaviour
     private bool _grounded;
     private bool _readyToJump = true;
     private bool _slowTime;
-    private bool _jumping, _sprinting, _crouching, _dashing;
+    private bool _jumping, _sprinting, _crouching, _dashing, _pulling;
     private bool _timeSlowChargeDelayed;
 
     // Other references
     private Rigidbody _rigidbody;
-    private CameraBehavior _playerCameraBehavior;
     private TimeManager _timeManager;
     private CapsuleCollider _collider;
 
@@ -119,8 +123,36 @@ public class PlayerMovement : MonoBehaviour
 
     private Coroutine _groundCancel;
 
+    // Grapple reel in
+    private GameObject _target;
+    private Action _onReachtarget;
+    private Vector3 _pullVelocity;
+
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
     private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
+
+    public void StartPullTowards(GameObject target, Action onEnd)
+    {
+        _target = target;
+        _onReachtarget = onEnd;
+        _pullVelocity = _rigidbody.velocity;
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.useGravity = false;
+        _pulling = true;
+    }
+
+    private void AttackImpact()
+    {
+        GameObject hitEffect = GameObject.Instantiate(DashVFX, transform.position, Quaternion.identity);
+        hitEffect.transform.localScale = hitEffect.transform.localScale * 10f;
+        Destroy(hitEffect, 5f);
+
+        _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
+        _rigidbody.useGravity = true;
+        _pulling = false;
+
+        _onReachtarget.Invoke();
+    }
 
     private void OnEnable()
     {
@@ -141,7 +173,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _playerCameraBehavior = FindObjectOfType<CameraBehavior>();
         _collider = GetComponent<CapsuleCollider>();
         _playerHeight = _collider.height;
         _defaultCameraPostion = PlayerCamera.localPosition;
@@ -153,11 +184,9 @@ public class PlayerMovement : MonoBehaviour
         _currentSlowTime = MaxSlowTime;
     }
 
-
     private void FixedUpdate()
     {
         Movement();
-        CheckExplosion();
     }
 
     private void Update()
@@ -185,46 +214,23 @@ public class PlayerMovement : MonoBehaviour
         {
             SetTimeSlow(!_slowTime);
         };
-        _controlMapping.Crouch.performed += _ => _crouching = true;
 
-        //Crouching
-        if (_controlMapping.Crouch.WasPressedThisFrame())
-            StartCrouch();
-        if (_controlMapping.Crouch.WasReleasedThisFrame())
-            StopCrouch();
-
-        //Zooming
-        _controlMapping.Zoom.performed += context => _scrollingInput = context.ReadValue<float>();
-        if (_scrollingInput > 0)
-            _playerCameraBehavior.Zoom(ZoomIncrement);
-        else if (_scrollingInput < 0)
-            _playerCameraBehavior.Zoom(-ZoomIncrement);
-    }
-
-    private void StartCrouch()
-    {
-        _collider.height = _crouchHeight;
-        PlayerCamera.localPosition = _crouchCameraPosition;
-        //transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-        if (_rigidbody.velocity.magnitude > 0.5f)
-        {
-            if (_grounded)
-            {
-                _rigidbody.AddForce(Orientation.transform.forward * SlideForce);
-            }
-        }
-    }
-
-    private void StopCrouch()
-    {
-        _collider.height = _playerHeight;
-        PlayerCamera.localPosition = _defaultCameraPostion;
-        _crouching = false;
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        //Restart
+        _controlMapping.Restart.performed += _ => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Movement()
     {
+        if (_pulling)
+        {
+            Vector3 distance = _target.transform.position - transform.position;
+            transform.Translate(distance.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
+            if (distance.magnitude < 5f)
+            {
+                AttackImpact();
+            } 
+            return;
+        }
 
         //Extra gravity
         _rigidbody.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -244,33 +250,31 @@ public class PlayerMovement : MonoBehaviour
 
         if (_dashing)
         {
-            transform.Translate(_dashDirection * DashStrength * Time.unscaledDeltaTime);
+            Vector3 xz = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).normalized;
+            _rigidbody.AddForce(xz * DashStrength, ForceMode.Force);
         }
-        else
+        //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
+        if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
+        if (_xInput < 0 && xMag < -maxSpeed) _xInput = 0;
+        if (_yInput > 0 && yMag > maxSpeed) _yInput = 0;
+        if (_yInput < 0 && yMag < -maxSpeed) _yInput = 0;
+
+        //Some multipliers
+        float multiplier = 1f, multiplierV = 1f;
+
+        // Movement in air
+        if (!_grounded)
         {
-            //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
-            if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
-            if (_xInput < 0 && xMag < -maxSpeed) _xInput = 0;
-            if (_yInput > 0 && yMag > maxSpeed) _yInput = 0;
-            if (_yInput < 0 && yMag < -maxSpeed) _yInput = 0;
-
-            //Some multipliers
-            float multiplier = 1f, multiplierV = 1f;
-
-            // Movement in air
-            if (!_grounded)
-            {
-                multiplier = 0.5f;
-                multiplierV = 0.5f;
-            }
-
-            // Movement while sliding
-            if (_grounded && _crouching) multiplierV = 0f;
-
-            //Apply forces to move player
-            _rigidbody.AddForce(Orientation.transform.forward * _yInput * MoveSpeed * Time.deltaTime * multiplier * multiplierV);
-            _rigidbody.AddForce(Orientation.transform.right * _xInput * MoveSpeed * Time.deltaTime * multiplier);
+            multiplier = 0.5f;
+            multiplierV = 0.5f;
         }
+
+        // Movement while sliding
+        if (_grounded && _crouching) multiplierV = 0f;
+
+        //Apply forces to move player
+        _rigidbody.AddForce(Orientation.transform.forward * _yInput * MoveSpeed * Time.deltaTime * multiplier * multiplierV);
+        _rigidbody.AddForce(Orientation.transform.right * _xInput * MoveSpeed * Time.deltaTime * multiplier);
 
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
         if (_crouching && _grounded && _readyToJump)
@@ -343,31 +347,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_currentDashCharges > 0)
         {
-            _xInput = _horizontalInput.x;
-            _yInput = _horizontalInput.y;
-
-            _dashDirection = Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
-            if (_dashDirection.magnitude < 0.01f)
-            {
-                yield break; // Workaround fix because sometimes the input is 0 for whatever reason
-            }
-
             _dashing = true;
             _currentDashCharges--;
 
-            Vector3 vel = _rigidbody.velocity;
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.useGravity = false;
-            _dashDirection.Normalize();
-            float angle = Vector3.Angle(_dashDirection, vel);
+            GameObject vfx =  GameObject.Instantiate(DashVFX, Orientation.transform);
+            Destroy(vfx, 5f);
+
+            _xInput = _horizontalInput.x;
+            _yInput = _horizontalInput.y;
+            _dashDirection = Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
+
+            if (Vector3.Angle(_dashDirection, _rigidbody.velocity) >= 50f)
+            {
+                _rigidbody.velocity = _dashDirection * _rigidbody.velocity.magnitude * 0.3f;
+            }
 
             yield return new WaitForSecondsRealtime(DashTime * Time.unscaledDeltaTime);
 
             _dashing = false;
-            // Keep momentum if dash is towards relatively same direction
-            _rigidbody.velocity = angle <= 100f ? vel : Vector3.zero;
-            _rigidbody.AddForce(_dashDirection * DashSpeedBoost, ForceMode.Impulse);
-            _rigidbody.useGravity = true;
         }
     }
 
@@ -396,11 +393,11 @@ public class PlayerMovement : MonoBehaviour
 
         //Rotate, and also make sure we dont over- or under-rotate.
         _xRotation -= mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+        _xRotation = Mathf.Clamp(_xRotation, -85f, 85f);
 
         //Perform the rotations
         PlayerCamera.transform.localRotation = Quaternion.Euler(_xRotation, _targetXRotation, 0);
-        Orientation.transform.localRotation = Quaternion.Euler(0, _targetXRotation, 0);
+        Orientation.transform.localRotation = Quaternion.Euler(_xRotation, _targetXRotation, 0);
     }
 
     private void CounterMovement(float x, float y, Vector2 mag)
@@ -414,8 +411,12 @@ public class PlayerMovement : MonoBehaviour
             float horizontalSpeed = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).magnitude;
             if (!Grapple.IsGrappling() && horizontalSpeed >= _minMovementThreshold)
             {
-                Vector3 vecx = new Vector3(-_rigidbody.velocity.x, 0f, -_rigidbody.velocity.z) * AirResistance;
-                _rigidbody.AddForce(vecx);
+                // Start applying air resistance after velocity exceeds 100
+                // Cap the resitance at AirResistance
+                float resistance = (_rigidbody.velocity.magnitude - ResitanceThreshold) * 0.005f;
+                if (resistance < 0f) return;
+                if (resistance > 1f) resistance = 1f;
+                _rigidbody.AddForce(-resistance * _rigidbody.velocity.normalized * AirResistance);
             }
 
             return;
@@ -465,19 +466,8 @@ public class PlayerMovement : MonoBehaviour
         }
         PlayerAvatar.transform.eulerAngles = new Vector3(
             PlayerAvatar.transform.eulerAngles.x,
-            PlayerCamera.eulerAngles.y,
+            Orientation.eulerAngles.y,
             PlayerAvatar.transform.eulerAngles.z);
-    }
-
-    private void CheckExplosion()
-    {
-        GameObject[] explodedProjectiles = GameObject.FindGameObjectsWithTag("Exploded");
-        foreach (GameObject exploded in explodedProjectiles)
-        {
-            if (Vector3.Distance(exploded.transform.position, transform.position) <= ExplosionShakingRange)
-                _playerCameraBehavior.Shake(1, 1);
-            Destroy(exploded);
-        }
     }
 
     /// <summary>
@@ -485,7 +475,7 @@ public class PlayerMovement : MonoBehaviour
     /// Useful for vectors calculations regarding movement and limiting movement
     /// </summary>
     /// <returns></returns>
-    public Vector2 FindVelRelativeToLook()
+    private Vector2 FindVelRelativeToLook()
     {
         float lookAngle = Orientation.transform.eulerAngles.y;
         float moveAngle = Mathf.Atan2(_rigidbody.velocity.x, _rigidbody.velocity.z) * Mathf.Rad2Deg;
@@ -570,5 +560,13 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         callback.Invoke();
+    }
+
+    public void OnPowerUpCollected()
+    {
+        if (_currentDashCharges < MaxDashCharges)
+            _currentDashCharges += 1;
+        Debug.Log("dash charges up");
+
     }
 }

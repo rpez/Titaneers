@@ -29,7 +29,7 @@ public class GrapplingRope : MonoBehaviour
     }
 
     //Called after Update
-    void LateUpdate()
+    void Update()
     {
         DrawRope();
     }

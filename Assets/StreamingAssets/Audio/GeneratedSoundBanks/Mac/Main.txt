@@ -3,14 +3,23 @@ Event	ID	Name			Wwise Object Path	Notes
 	562256996	Play_player_jump			\Player\PlayerLocomotion\PlayerJump\Play_player_jump	
 	780547719	Play_player_grapple_hit			\Player\PlayerGrapple\Play_player_grapple_hit	
 	930574960	Stop_titan_missile_loop			\Titan\TitanMissile\Stop_titan_missile_loop	
+	970928956	Stop_combat_music			\Music\Stop_combat_music	
 	1282535387	Play_titan_trample_foot			\Titan\TitanTrample\Play_titan_trample_foot	
 	1884037509	Play_player_grapple_shoot			\Player\PlayerGrapple\Play_player_grapple_shoot	
 	3060992713	Play_titan_trample_voc			\Titan\TitanTrample\Play_titan_trample_voc	
+	3155474038	Play_combat_music			\Music\Play_combat_music	
 	3166948436	Play_titan_missile_shot			\Titan\TitanMissile\Play_titan_missile_shot	
 	3211564518	Play_test_sound			\Default Work Unit\Play_test_sound	
 	3625340520	Play_player_fs_run_R			\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_R	
 	3625340534	Play_player_fs_run_L			\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_L	
 	3892312811	Play_titan_missile_explode			\Titan\TitanMissile\Play_titan_missile_explode	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	4150154280	Music_Progress			\Music\Music_Progress	
+
+Switch	ID	Name	Switch Group			Notes
+	678209053	two	Music_Progress			
+	1064933119	one	Music_Progress			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	66095530	sfx_player_fs_placeholder_13	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_13_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_13		27250
@@ -60,4 +69,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	951957801	sfx_player_fs_placeholder_6	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_6_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_6		26336
 	957880451	sfx_player_fs_placeholder_23	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_23_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_23		25488
 	974756581	sfx_player_fs_placeholder_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_1		20276
+	1021980294	music-combat	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\music-combat_D79FB2B7.wem		\Interactive Music Hierarchy\Music\CombatMusic\Music_Combat_Start\music_combat_intro\music-combat		40322552
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /*
  * reference video: https://www.youtube.com/watch?v=Z6qBeuN-H1M
@@ -34,6 +35,7 @@ public class Missile : MonoBehaviour
 
     [Header("ATTACK")]
     [SerializeField] private float _damage = 15;
+    [SerializeField] private UnityEvent _onExplode;
 
     // Other
     private Rigidbody _targetRb;
@@ -147,13 +149,15 @@ public class Missile : MonoBehaviour
         var heading = _deviatedPrediction - transform.position;
 
         var rotation = Quaternion.LookRotation(heading);
-        _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotation, _rotateSpeed * Time.deltaTime));
+        float angle = Quaternion.Angle(transform.rotation, rotation);
+        float adjustRotateSpeed = _rotateSpeed / 180 * angle;
+        _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotation, adjustRotateSpeed * Time.deltaTime));
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (_state == ProjectileState.Controlled) return;
-        if (_state == ProjectileState.Redirected && collision.gameObject.tag == "Player") return;
+        if (_state == ProjectileState.Redirected && collision.gameObject.tag == Tags.PLAYER_TAG) return;
 
         if (_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
         if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
@@ -161,6 +165,7 @@ public class Missile : MonoBehaviour
         if (collision.transform.GetComponent<BeAttack>() != null)
             collision.transform.GetComponent<BeAttack>().BeAttack(_damage);
 
+        _onExplode.Invoke();
         Recycle();
     }
 
