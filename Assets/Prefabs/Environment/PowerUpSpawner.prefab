@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerUpPool: {fileID: 4930662339800858348}
-  _spawnPoints:
-  - {fileID: 0}
+  _spawnPoints: []
+  _spawnArea: {fileID: 0}
 --- !u!114 &4930662339800858348
 MonoBehaviour:
   m_ObjectHideFlags: 0
