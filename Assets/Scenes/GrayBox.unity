@@ -3659,7 +3659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: DashStrength
-      value: 1000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: AirResistance

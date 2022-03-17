@@ -249,7 +249,8 @@ public class PlayerMovement : MonoBehaviour
         if (_dashing)
         {
             //Vector3 xz = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).normalized;
-            _rigidbody.AddForce(_rigidbody.velocity.normalized * DashStrength, ForceMode.Force);
+            _rigidbody.AddForce(_rigidbody.velocity.normalized * DashStrength * Time.unscaledDeltaTime, ForceMode.Force);
+            Debug.Log(_rigidbody.velocity.magnitude);
         }
         //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
@@ -353,7 +354,7 @@ public class PlayerMovement : MonoBehaviour
 
             _xInput = _horizontalInput.x;
             _yInput = _horizontalInput.y;
-            _dashDirection = PlayerCamera.transform.forward;// * _yInput + Orientation.transform.right * _xInput;
+            _dashDirection = Orientation.transform.forward;
 
             if (Vector3.Angle(_dashDirection, _rigidbody.velocity) >= 50f)
             {
