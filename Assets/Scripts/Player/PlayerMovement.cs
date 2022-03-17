@@ -121,8 +121,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _normalVector = Vector3.up;
     private Vector3 _wallNormalVector;
 
-    private Coroutine _groundCancel;
-
     // Grapple reel in
     private GameObject _target;
     private Action _onReachtarget;
@@ -250,8 +248,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (_dashing)
         {
-            Vector3 xz = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).normalized;
-            _rigidbody.AddForce(xz * DashStrength, ForceMode.Force);
+            //Vector3 xz = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).normalized;
+            _rigidbody.AddForce(_rigidbody.velocity.normalized * DashStrength, ForceMode.Force);
         }
         //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
@@ -355,7 +353,7 @@ public class PlayerMovement : MonoBehaviour
 
             _xInput = _horizontalInput.x;
             _yInput = _horizontalInput.y;
-            _dashDirection = Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
+            _dashDirection = PlayerCamera.transform.forward;// * _yInput + Orientation.transform.right * _xInput;
 
             if (Vector3.Angle(_dashDirection, _rigidbody.velocity) >= 50f)
             {
@@ -540,20 +538,9 @@ public class PlayerMovement : MonoBehaviour
             _floorContactsLastFrame.Remove(collision.gameObject);
             if (_floorContactsLastFrame.Count <= 0)
             {
-                if (_groundCancel != null)
-                {
-                    StopCoroutine(_groundCancel);
-                }
-                _groundCancel = StartCoroutine(CancelGrounded());
+                _grounded = false;
             }
         }
-    }
-
-    private IEnumerator CancelGrounded()
-    {
-        yield return new WaitForSeconds(.0f);
-        _grounded = false;
-        _groundCancel = null;
     }
 
     private IEnumerator Delay(float delay, Action callback)
