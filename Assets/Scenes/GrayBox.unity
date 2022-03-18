@@ -2851,7 +2851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: MaxBoostAmount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: BoosterStrength
@@ -2859,7 +2859,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: BoostRechargeCap
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: BoostRechargeRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: BoostRechargeCooldown
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
@@ -3140,6 +3148,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4930662339800858348, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
+      propertyPath: _size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4930662339800858349, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
       propertyPath: m_Name
       value: PowerUpSpawner
