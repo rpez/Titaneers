@@ -319,11 +319,11 @@ MonoBehaviour:
   SlideLandingBoost: 1.5
   SlideForce: 400
   SlideCounterMovement: 0.2
-  BoosterStrength: 10000
-  MaxBoostAmount: 5
+  BoosterStrength: 20000
+  MaxBoostAmount: 3
   BoostRechargeCooldown: 1
   BoostRechargeRate: 0.3
-  BoostRechargeCap: 2
+  BoostRechargeCap: 1
   JumpForce: 550
   SlowScale: 0.1
   MaxSlowTime: 2
