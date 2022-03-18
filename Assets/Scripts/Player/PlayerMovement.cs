@@ -65,8 +65,7 @@ public class PlayerMovement : MonoBehaviour
     public float BoostRechargeCooldown = 1f;
     public float BoostRechargeRate = 0.5f;
     public float BoostRechargeCap = 2f;
-    //public float CurrentDashCharges { get => _currentDashCharges; }
-    //public float CurrentDashCdTime { get => _currentDashCdTime; }
+    public float CurrentBoostAmount { get => _currentBoostAmount; }
 
     [Header("Jumping")]
     public float JumpForce = 550f;
@@ -562,9 +561,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnPowerUpCollected()
     {
-        //if (_currentDashCharges < MaxDashCharges)
-        //    _currentDashCharges += 1;
-        Debug.Log("dash charges up");
-
+        if (_currentBoostAmount < MaxBoostAmount)
+        {
+            _currentBoostAmount += 1f;
+            if (_currentBoostAmount > MaxBoostAmount) _currentBoostAmount = MaxBoostAmount;
+        }
     }
 }
