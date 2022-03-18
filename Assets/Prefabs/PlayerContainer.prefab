@@ -315,14 +315,15 @@ MonoBehaviour:
   MaxSlopeAngle: 35
   ResitanceThreshold: 200
   AirResistance: 500
+  MinPullVelocity: 50
   SlideLandingBoost: 1.5
   SlideForce: 400
   SlideCounterMovement: 0.2
-  DashStrength: 1000
-  DashTime: 15
-  DashSpeedBoost: 5
-  MaxDashCharges: 2
-  DashCooldown: 3
+  BoosterStrength: 20000
+  MaxBoostAmount: 3
+  BoostRechargeCooldown: 1
+  BoostRechargeRate: 0.3
+  BoostRechargeCap: 1
   JumpForce: 550
   SlowScale: 0.1
   MaxSlowTime: 2

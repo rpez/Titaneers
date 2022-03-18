@@ -19,10 +19,6 @@ public class BoosterBarUI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float currentDashCoolness = (
-            playerMovement.CurrentDashCdTime < playerMovement.DashCooldown
-            ? playerMovement.CurrentDashCdTime / playerMovement.DashCooldown
-            : 0f);
-        boosterBar.SetValue(playerMovement.CurrentDashCharges + currentDashCoolness);
+        boosterBar.SetValue(playerMovement.CurrentBoostAmount / playerMovement.MaxBoostAmount);
     }
 }

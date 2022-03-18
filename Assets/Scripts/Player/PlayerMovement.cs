@@ -53,20 +53,20 @@ public class PlayerMovement : MonoBehaviour
     public float MaxSlopeAngle = 35f;
     public float ResitanceThreshold = 200f;
     public float AirResistance = 500f;
+    public float MinPullVelocity = 20f;
 
     [Header("Sliding")]
     public float SlideLandingBoost = 10f;
     public float SlideForce = 400;
     public float SlideCounterMovement = 0.2f;
 
-    [Header("Dashing")]
-    public float DashStrength = 20f;
-    public float DashTime = 0.3f;
-    public float DashSpeedBoost = 2f;
-    public int MaxDashCharges = 2;
-    public float DashCooldown = 3f;
-    public float CurrentDashCharges { get => _currentDashCharges; }
-    public float CurrentDashCdTime { get => _currentDashCdTime; }
+    [Header("Boosting")]
+    public float BoosterStrength = 20f;
+    public float MaxBoostAmount = 5f;
+    public float BoostRechargeCooldown = 1f;
+    public float BoostRechargeRate = 0.5f;
+    public float BoostRechargeCap = 2f;
+    public float CurrentBoostAmount { get => _currentBoostAmount; }
 
     [Header("Jumping")]
     public float JumpForce = 550f;
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _grounded;
     private bool _readyToJump = true;
     private bool _slowTime;
-    private bool _jumping, _sprinting, _crouching, _dashing, _pulling;
+    private bool _jumping, _sprinting, _crouching, _boosting, _pulling;
     private bool _timeSlowChargeDelayed;
 
     // Other references
@@ -104,9 +104,9 @@ public class PlayerMovement : MonoBehaviour
     private float _targetXRotation;
     private float _scrollingInput;
 
-    private int _currentDashCharges;
-    private float _currentDashCdTime;
-    private Vector3 _dashDirection;
+    private Vector3 _boostDirection;
+    private float _currentBoostAmount;
+    private float _currentBoostRechargeTime;
 
     private float _jumpCooldown = 0.25f;
 
@@ -121,8 +121,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _normalVector = Vector3.up;
     private Vector3 _wallNormalVector;
 
-    private Coroutine _groundCancel;
-
     // Grapple reel in
     private GameObject _target;
     private Action _onReachtarget;
@@ -136,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
         _target = target;
         _onReachtarget = onEnd;
         _pullVelocity = _rigidbody.velocity;
+        if (_pullVelocity.magnitude <= MinPullVelocity) _pullVelocity = MinPullVelocity * _pullVelocity.normalized;
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.useGravity = false;
         _pulling = true;
@@ -180,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
-        _currentDashCharges = MaxDashCharges;
+        _currentBoostAmount = MaxBoostAmount * 0.2f;
         _currentSlowTime = MaxSlowTime;
     }
 
@@ -206,9 +205,13 @@ public class PlayerMovement : MonoBehaviour
         _xInput = _horizontalInput.x;
         _yInput = _horizontalInput.y;
         _controlMapping.Jump.performed += _ => _jumping = true;
-        _controlMapping.Dash.performed += _ =>
+        _controlMapping.Booster.performed += _ =>
         {
-            if (!_dashing) StartCoroutine(Dash());
+            Boost();
+        };
+        if (_controlMapping.Booster.WasReleasedThisFrame())
+        {
+            CancelBoost();
         };
         _controlMapping.TimeSlow.performed += _ =>
         {
@@ -248,10 +251,11 @@ public class PlayerMovement : MonoBehaviour
         //Set max speed
         float maxSpeed = this.MaxSpeed;
 
-        if (_dashing)
+        if (_boosting)
         {
-            Vector3 xz = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).normalized;
-            _rigidbody.AddForce(xz * DashStrength, ForceMode.Force);
+            Vector3 parallelComponent = Vector3.Project(_rigidbody.velocity, PlayerCamera.transform.forward);
+            _rigidbody.velocity = parallelComponent;
+            _rigidbody.AddForce(PlayerCamera.transform.forward * BoosterStrength * Time.unscaledDeltaTime, ForceMode.Force);
         }
         //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
@@ -286,14 +290,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateCooldowns()
     {
-        if (_currentDashCharges < MaxDashCharges)
+        if (!_boosting)
         {
-            _currentDashCdTime += Time.deltaTime;
-            if (_currentDashCdTime >= DashCooldown)
+            if (_currentBoostAmount < BoostRechargeCap)
             {
-                _currentDashCharges += 1;
-                _currentDashCdTime = 0;
+                _currentBoostRechargeTime += Time.deltaTime;
+                if (_currentBoostRechargeTime >= BoostRechargeCooldown)
+                {
+                    _currentBoostAmount += Time.deltaTime * BoostRechargeRate;
+                }
             }
+        }
+        else if (_currentBoostAmount <= 0f)
+        {
+            CancelBoost();
+        }
+        else
+        {
+            _currentBoostAmount -= Time.deltaTime;
+            _currentBoostRechargeTime = 0f;
         }
 
         if (!_slowTime && !_timeSlowChargeDelayed && _currentSlowTime < MaxSlowTime)
@@ -343,29 +358,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator Dash()
+    private void Boost()
     {
-        if (_currentDashCharges > 0)
+        if (_currentBoostAmount > 0)
         {
-            _dashing = true;
-            _currentDashCharges--;
+            _boosting = true;
+            _rigidbody.useGravity = false;
 
             GameObject vfx =  GameObject.Instantiate(DashVFX, Orientation.transform);
             Destroy(vfx, 5f);
-
-            _xInput = _horizontalInput.x;
-            _yInput = _horizontalInput.y;
-            _dashDirection = Orientation.transform.forward * _yInput + Orientation.transform.right * _xInput;
-
-            if (Vector3.Angle(_dashDirection, _rigidbody.velocity) >= 50f)
-            {
-                _rigidbody.velocity = _dashDirection * _rigidbody.velocity.magnitude * 0.3f;
-            }
-
-            yield return new WaitForSecondsRealtime(DashTime * Time.unscaledDeltaTime);
-
-            _dashing = false;
         }
+    }
+
+    private void CancelBoost()
+    {
+        _boosting = false;
+        _rigidbody.useGravity = true;
+        _currentBoostRechargeTime = 0f;
     }
 
     private void ResetJump()
@@ -403,7 +412,7 @@ public class PlayerMovement : MonoBehaviour
     private void CounterMovement(float x, float y, Vector2 mag)
     {
         // If dashing, no forces affect the player
-        if (_dashing) return;
+        if (_boosting) return;
 
         // If airborne
         if (!_grounded || _jumping)
@@ -540,20 +549,9 @@ public class PlayerMovement : MonoBehaviour
             _floorContactsLastFrame.Remove(collision.gameObject);
             if (_floorContactsLastFrame.Count <= 0)
             {
-                if (_groundCancel != null)
-                {
-                    StopCoroutine(_groundCancel);
-                }
-                _groundCancel = StartCoroutine(CancelGrounded());
+                _grounded = false;
             }
         }
-    }
-
-    private IEnumerator CancelGrounded()
-    {
-        yield return new WaitForSeconds(.0f);
-        _grounded = false;
-        _groundCancel = null;
     }
 
     private IEnumerator Delay(float delay, Action callback)
@@ -564,9 +562,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnPowerUpCollected()
     {
-        if (_currentDashCharges < MaxDashCharges)
-            _currentDashCharges += 1;
-        Debug.Log("dash charges up");
-
+        if (_currentBoostAmount < MaxBoostAmount)
+        {
+            _currentBoostAmount += 1f;
+            if (_currentBoostAmount > MaxBoostAmount) _currentBoostAmount = MaxBoostAmount;
+        }
     }
 }

@@ -55,7 +55,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""Booster"",
                     ""type"": ""Button"",
                     ""id"": ""59d4ba46-ac8d-4d7a-a6cb-1bb656d92998"",
                     ""expectedControlType"": ""Button"",
@@ -205,7 +205,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dash"",
+                    ""action"": ""Booster"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -280,7 +280,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_GroundMovement_Move = m_GroundMovement.FindAction("Move", throwIfNotFound: true);
         m_GroundMovement_Jump = m_GroundMovement.FindAction("Jump", throwIfNotFound: true);
         m_GroundMovement_Crouch = m_GroundMovement.FindAction("Crouch", throwIfNotFound: true);
-        m_GroundMovement_Dash = m_GroundMovement.FindAction("Dash", throwIfNotFound: true);
+        m_GroundMovement_Booster = m_GroundMovement.FindAction("Booster", throwIfNotFound: true);
         m_GroundMovement_TimeSlow = m_GroundMovement.FindAction("TimeSlow", throwIfNotFound: true);
         m_GroundMovement_Fire = m_GroundMovement.FindAction("Fire", throwIfNotFound: true);
         m_GroundMovement_Grappling = m_GroundMovement.FindAction("Grappling", throwIfNotFound: true);
@@ -348,7 +348,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_GroundMovement_Move;
     private readonly InputAction m_GroundMovement_Jump;
     private readonly InputAction m_GroundMovement_Crouch;
-    private readonly InputAction m_GroundMovement_Dash;
+    private readonly InputAction m_GroundMovement_Booster;
     private readonly InputAction m_GroundMovement_TimeSlow;
     private readonly InputAction m_GroundMovement_Fire;
     private readonly InputAction m_GroundMovement_Grappling;
@@ -361,7 +361,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_GroundMovement_Move;
         public InputAction @Jump => m_Wrapper.m_GroundMovement_Jump;
         public InputAction @Crouch => m_Wrapper.m_GroundMovement_Crouch;
-        public InputAction @Dash => m_Wrapper.m_GroundMovement_Dash;
+        public InputAction @Booster => m_Wrapper.m_GroundMovement_Booster;
         public InputAction @TimeSlow => m_Wrapper.m_GroundMovement_TimeSlow;
         public InputAction @Fire => m_Wrapper.m_GroundMovement_Fire;
         public InputAction @Grappling => m_Wrapper.m_GroundMovement_Grappling;
@@ -385,9 +385,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Crouch.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnCrouch;
-                @Dash.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnDash;
+                @Booster.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnBooster;
+                @Booster.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnBooster;
+                @Booster.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnBooster;
                 @TimeSlow.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnTimeSlow;
                 @TimeSlow.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnTimeSlow;
                 @TimeSlow.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnTimeSlow;
@@ -416,9 +416,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
+                @Booster.started += instance.OnBooster;
+                @Booster.performed += instance.OnBooster;
+                @Booster.canceled += instance.OnBooster;
                 @TimeSlow.started += instance.OnTimeSlow;
                 @TimeSlow.performed += instance.OnTimeSlow;
                 @TimeSlow.canceled += instance.OnTimeSlow;
@@ -452,7 +452,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
+        void OnBooster(InputAction.CallbackContext context);
         void OnTimeSlow(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnGrappling(InputAction.CallbackContext context);
