@@ -26,8 +26,10 @@ public class PowerUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == Tags.PLAYER_TAG)
+        {
             _playerObj.GetComponent<PlayerMovement>().OnPowerUpCollected();
-        gameObject.SetActive(false);    // pooled management
-        _poolUnit.Deactivate();
+            gameObject.SetActive(false);    // pooled management
+            _poolUnit.Deactivate();
+        }
     }
 }

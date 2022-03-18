@@ -254,7 +254,6 @@ public class PlayerMovement : MonoBehaviour
         if (_boosting)
         {
             Vector3 parallelComponent = Vector3.Project(_rigidbody.velocity, PlayerCamera.transform.forward);
-            Debug.Log(parallelComponent.magnitude);
             _rigidbody.velocity = parallelComponent;
             _rigidbody.AddForce(PlayerCamera.transform.forward * BoosterStrength * Time.unscaledDeltaTime, ForceMode.Force);
         }

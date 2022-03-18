@@ -315,6 +315,7 @@ MonoBehaviour:
   MaxSlopeAngle: 35
   ResitanceThreshold: 200
   AirResistance: 500
+  MinPullVelocity: 50
   SlideLandingBoost: 1.5
   SlideForce: 400
   SlideCounterMovement: 0.2
