@@ -305,6 +305,7 @@ MonoBehaviour:
   Animator: {fileID: 1101589508}
   Grapple: {fileID: 2496024928567296264}
   DashVFX: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
+  AttackVFX: {fileID: 3668409308039402410, guid: 1b7c882bdddf3cf44803276a6a7b9f9c, type: 3}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator Animator;
     public GrapplingGun Grapple;
     public GameObject DashVFX;
+    public GameObject AttackVFX;
 
     [Header("Layers")]
     public LayerMask GroundLayer;
@@ -153,6 +154,13 @@ public class PlayerMovement : MonoBehaviour
         _onReachtarget.Invoke();
     }
 
+    private void Attack()
+    {
+        GameObject vfx = GameObject.Instantiate(AttackVFX, transform.position, Quaternion.identity);
+        vfx.transform.SetParent(transform);
+        Destroy(vfx, 5f);
+    }
+
     private void OnEnable()
     {
         _controls.Enable();
@@ -220,6 +228,11 @@ public class PlayerMovement : MonoBehaviour
 
         //Restart
         _controlMapping.Restart.performed += _ => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Attack();
+        }
     }
 
     private void Movement()
