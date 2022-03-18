@@ -3667,7 +3667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: BoosterStrength
-      value: 2000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder

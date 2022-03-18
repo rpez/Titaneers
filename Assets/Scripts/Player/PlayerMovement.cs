@@ -59,15 +59,12 @@ public class PlayerMovement : MonoBehaviour
     public float SlideForce = 400;
     public float SlideCounterMovement = 0.2f;
 
-    [Header("Dashing")]
+    [Header("Boosting")]
     public float BoosterStrength = 20f;
-    //public float DashTime = 0.3f;
-    //public float DashSpeedBoost = 2f;
-    //public int MaxDashCharges = 2;
-    //public float DashCooldown = 3f;
     public float MaxBoostAmount = 5f;
     public float BoostRechargeCooldown = 1f;
     public float BoostRechargeRate = 0.5f;
+    public float BoostRechargeCap = 2f;
     //public float CurrentDashCharges { get => _currentDashCharges; }
     //public float CurrentDashCdTime { get => _currentDashCdTime; }
 
@@ -89,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _grounded;
     private bool _readyToJump = true;
     private bool _slowTime;
-    private bool _jumping, _sprinting, _crouching, _dashing, _pulling;
+    private bool _jumping, _sprinting, _crouching, _boosting, _pulling;
     private bool _timeSlowChargeDelayed;
 
     // Other references
@@ -107,8 +104,6 @@ public class PlayerMovement : MonoBehaviour
     private float _targetXRotation;
     private float _scrollingInput;
 
-    //private int _currentDashCharges;
-    //private float _currentDashCdTime;
     private Vector3 _boostDirection;
     private float _currentBoostAmount;
     private float _currentBoostRechargeTime;
@@ -183,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
-        _currentBoostAmount = MaxBoostAmount * 0.5f;
+        _currentBoostAmount = MaxBoostAmount * 0.2f;
         _currentSlowTime = MaxSlowTime;
     }
 
@@ -255,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
         //Set max speed
         float maxSpeed = this.MaxSpeed;
 
-        if (_dashing)
+        if (_boosting)
         {
             Vector3 parallelComponent = Vector3.Project(_rigidbody.velocity, PlayerCamera.transform.forward);
             Debug.Log(parallelComponent.magnitude);
@@ -295,13 +290,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateCooldowns()
     {
-        if (_currentBoostAmount < MaxBoostAmount)
+        if (!_boosting)
         {
-            _currentBoostRechargeTime += Time.deltaTime;
-            if (_currentBoostRechargeTime >= BoostRechargeCooldown)
+            if (_currentBoostAmount < BoostRechargeCap)
             {
-                _currentBoostAmount += Time.deltaTime * BoostRechargeRate;
+                _currentBoostRechargeTime += Time.deltaTime;
+                if (_currentBoostRechargeTime >= BoostRechargeCooldown)
+                {
+                    _currentBoostAmount += Time.deltaTime * BoostRechargeRate;
+                }
             }
+        }
+        else if (_currentBoostAmount <= 0f)
+        {
+            CancelBoost();
+        }
+        else
+        {
+            _currentBoostAmount -= Time.deltaTime;
+            _currentBoostRechargeTime = 0f;
         }
 
         if (!_slowTime && !_timeSlowChargeDelayed && _currentSlowTime < MaxSlowTime)
@@ -355,7 +362,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_currentBoostAmount > 0)
         {
-            _dashing = true;
+            _boosting = true;
             _rigidbody.useGravity = false;
 
             GameObject vfx =  GameObject.Instantiate(DashVFX, Orientation.transform);
@@ -365,8 +372,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void CancelBoost()
     {
-        _dashing = false;
+        _boosting = false;
         _rigidbody.useGravity = true;
+        _currentBoostRechargeTime = 0f;
     }
 
     private void ResetJump()
@@ -404,7 +412,7 @@ public class PlayerMovement : MonoBehaviour
     private void CounterMovement(float x, float y, Vector2 mag)
     {
         // If dashing, no forces affect the player
-        if (_dashing) return;
+        if (_boosting) return;
 
         // If airborne
         if (!_grounded || _jumping)
