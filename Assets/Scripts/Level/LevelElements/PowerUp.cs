@@ -23,9 +23,9 @@ public class PowerUp : MonoBehaviour
         transform.Rotate(new Vector3(0, _rotateSpeed * Time.deltaTime, 0), Space.World);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == Tags.PLAYER_TAG)
+        if (other.gameObject.tag == Tags.PLAYER_TAG)
             _playerObj.GetComponent<PlayerMovement>().OnPowerUpCollected();
         gameObject.SetActive(false);    // pooled management
         _poolUnit.Deactivate();

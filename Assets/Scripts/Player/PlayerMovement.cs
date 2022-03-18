@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     public float MaxSlopeAngle = 35f;
     public float ResitanceThreshold = 200f;
     public float AirResistance = 500f;
+    public float MinPullVelocity = 20f;
 
     [Header("Sliding")]
     public float SlideLandingBoost = 10f;
@@ -133,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
         _target = target;
         _onReachtarget = onEnd;
         _pullVelocity = _rigidbody.velocity;
+        if (_pullVelocity.magnitude <= MinPullVelocity) _pullVelocity = MinPullVelocity * _pullVelocity.normalized;
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.useGravity = false;
         _pulling = true;
