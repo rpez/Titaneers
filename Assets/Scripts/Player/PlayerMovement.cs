@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject PlayerAvatar;
     public Animator Animator;
     public GrapplingGun Grapple;
+    public GameObject Sword;
     public GameObject DashVFX;
     public GameObject AttackVFX;
 
@@ -83,11 +84,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("Explosion")]
     public float ExplosionShakingRange = 20f;
 
+    [Header("Attacking")]
+    public float AttackTime = 0.5f;
+
     // Player state booleans
     private bool _grounded;
     private bool _readyToJump = true;
     private bool _slowTime;
-    private bool _jumping, _sprinting, _crouching, _boosting, _pulling;
+    private bool _jumping, _sprinting, _crouching, _boosting, _pulling, _attacking;
     private bool _timeSlowChargeDelayed;
 
     // Other references
@@ -156,9 +160,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack()
     {
-        GameObject vfx = GameObject.Instantiate(AttackVFX, transform.position, Quaternion.identity);
-        vfx.transform.SetParent(transform);
-        Destroy(vfx, 5f);
+        if (!_attacking)
+        {
+            GameObject vfx = GameObject.Instantiate(AttackVFX, transform.position, Quaternion.identity);
+            vfx.transform.SetParent(Sword.transform);
+            Destroy(vfx, 5f);
+
+            Sword.SetActive(true);
+            _attacking = true;
+            StartCoroutine(Delay(AttackTime, EndAttack));
+        }
+    }
+
+    private void EndAttack()
+    {
+        _attacking = false;
+        Sword.SetActive(false);
     }
 
     private void OnEnable()
