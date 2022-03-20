@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator Animator;
     public GrapplingGun Grapple;
     public GameObject Sword;
+    public HitBox SwordHitbox;
     public GameObject DashVFX;
     public GameObject AttackVFX;
 
@@ -86,12 +87,13 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Attacking")]
     public float AttackTime = 0.5f;
+    public float RecoverTime = 0.5f;
 
     // Player state booleans
     private bool _grounded;
     private bool _readyToJump = true;
     private bool _slowTime;
-    private bool _jumping, _sprinting, _crouching, _boosting, _pulling, _attacking;
+    private bool _jumping, _sprinting, _crouching, _boosting, _pulling, _attacking, _recovering;
     private bool _timeSlowChargeDelayed;
 
     // Other references
@@ -160,13 +162,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack()
     {
-        if (!_attacking)
+        if (!_attacking && !_recovering)
         {
-            GameObject vfx = GameObject.Instantiate(AttackVFX, transform.position, Quaternion.identity);
-            vfx.transform.SetParent(Sword.transform);
+            GameObject vfx = GameObject.Instantiate(AttackVFX, Sword.transform);
             Destroy(vfx, 5f);
 
-            Sword.SetActive(true);
+            SwordHitbox.gameObject.SetActive(true);
+            SwordHitbox.SetDamage(_rigidbody.velocity.magnitude);
             _attacking = true;
             StartCoroutine(Delay(AttackTime, EndAttack));
         }
@@ -175,7 +177,14 @@ public class PlayerMovement : MonoBehaviour
     private void EndAttack()
     {
         _attacking = false;
-        Sword.SetActive(false);
+        _recovering = true;
+        SwordHitbox.gameObject.SetActive(false);
+        StartCoroutine(Delay(RecoverTime, Recover));
+    }
+
+    private void Recover()
+    {
+        _recovering = false;
     }
 
     private void OnEnable()

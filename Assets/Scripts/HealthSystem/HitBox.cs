@@ -15,6 +15,11 @@ public class HitBox : MonoBehaviour
     //private Rigidbody _rb;
     private Collider _trigger;
 
+    public void SetDamage(float damage)
+    {
+        _damage = damage;
+    }
+
     private void Awake()
     {
         //_rb = GetComponent<Rigidbody>();
