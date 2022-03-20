@@ -40,7 +40,6 @@ public class GrapplingGun : MonoBehaviour
     public GameObject HitpointPrefab;
     public GameObject RedirectEffect;
     public Transform GunTip, PlayerCamera, Player;
-    public Transform ProjectileReceive, ProjectileSend;
 
     [Header("Layers")]
     public LayerMask GrappleLayer;
@@ -232,7 +231,7 @@ public class GrapplingGun : MonoBehaviour
 
     private void GainProjectileControl()
     {
-        _capturedMissile.GainControl(ProjectileReceive.gameObject);
+        _capturedMissile.GainControl(gameObject);
         _ui.ChangeCrosshairStyle(true);
         _controlling = true;
     }
