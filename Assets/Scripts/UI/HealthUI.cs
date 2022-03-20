@@ -23,7 +23,7 @@ public class HealthUI : MonoBehaviour
     private void Update()
     {
         float currentHealthPoint = health.CurrentHealthPoint;
-        text.text = "Titan HP:" + currentHealthPoint;
+        text.text = "Titan HP:" + Mathf.Round(currentHealthPoint);
         healthBar.SetValue(currentHealthPoint > 0f ? currentHealthPoint / health.MaxHealthPoint: 0f);
     }
 }

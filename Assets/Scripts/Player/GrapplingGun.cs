@@ -72,12 +72,28 @@ public class GrapplingGun : MonoBehaviour
     private Vector3 _defaultCameraPos;
     private Coroutine _launchRoutine;
 
+    private PlayerControls _controls;
+    private PlayerControls.GroundMovementActions _controlMapping;
+
+    private void OnEnable()
+    {
+        _controls.Enable();
+    }
+
+    private void OnDestroy()
+    {
+        _controls.Disable();
+    }
+
     void Awake()
     {
+        _controls = new PlayerControls();
+        _controlMapping = _controls.GroundMovement;
         _currentCharges = MaxCharges;
         _ui = GameObject.Find("Canvas").GetComponent<UI>();
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
         _defaultCameraPos = PlayerCamera.transform.localPosition;
+        _controlMapping = _controls.GroundMovement;
 
         AkSoundEngine.RegisterGameObj(gameObject);
     }
@@ -140,6 +156,19 @@ public class GrapplingGun : MonoBehaviour
 
         }
 
+        _controlMapping.GrapplePull.performed += _ =>
+        {
+            if (_capturedMissile != null) GainProjectileControl();
+            else if (_isGrappling)
+            {
+                StartReelIn();
+            }
+        };
+        if (_controlMapping.GrapplePull.WasReleasedThisFrame())
+        {
+            if (_capturedMissile != null) _redirecting = true;
+        }
+
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             if (!_redirecting && !_controlling) LaunchGrapple();
@@ -147,18 +176,6 @@ public class GrapplingGun : MonoBehaviour
         else if (Mouse.current.rightButton.wasReleasedThisFrame)
         {
             if (!_redirecting && !_controlling) StopGrapple();
-        }
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            if (_capturedMissile != null) GainProjectileControl();
-            else if (_isGrappling)
-            {
-                StartReelIn();
-            }
-        }
-        else if (Mouse.current.leftButton.wasReleasedThisFrame)
-        {
-            if (_capturedMissile != null) _redirecting = true;
         }
     }
 

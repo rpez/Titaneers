@@ -2918,7 +2918,7 @@ PrefabInstance:
     - target: {fileID: 566537040, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 1367897560}
+      objectReference: {fileID: 2496024928203559711}
     - target: {fileID: 566537040, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: maxSpeed
       value: 500
@@ -3072,6 +3072,10 @@ PrefabInstance:
       propertyPath: Sword
       value: 
       objectReference: {fileID: 1334746145}
+    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: SwordHitbox
+      value: 
+      objectReference: {fileID: 1691826803}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
       value: 11

@@ -89,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
     public float AttackTime = 0.5f;
     public float RecoverTime = 0.5f;
 
+    public Vector3 CurrentVelocity { get; private set; }
+
     // Player state booleans
     private bool _grounded;
     private bool _readyToJump = true;
@@ -168,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(vfx, 5f);
 
             SwordHitbox.gameObject.SetActive(true);
-            SwordHitbox.SetDamage(_rigidbody.velocity.magnitude);
+            SwordHitbox.SetDamage(CurrentVelocity.magnitude);
             _attacking = true;
             StartCoroutine(Delay(AttackTime, EndAttack));
         }
@@ -272,6 +274,10 @@ public class PlayerMovement : MonoBehaviour
                 AttackImpact();
             } 
             return;
+        }
+        else
+        {
+            CurrentVelocity = _rigidbody.velocity;
         }
 
         //Extra gravity

@@ -107,6 +107,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GrapplePull"",
+                    ""type"": ""Button"",
+                    ""id"": ""e50fdbfd-2d79-49f7-b644-667bb7640821"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +261,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87f58682-cd55-4d66-af10-063ba5c5e473"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrapplePull"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -286,6 +306,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_GroundMovement_Grappling = m_GroundMovement.FindAction("Grappling", throwIfNotFound: true);
         m_GroundMovement_Zoom = m_GroundMovement.FindAction("Zoom", throwIfNotFound: true);
         m_GroundMovement_Restart = m_GroundMovement.FindAction("Restart", throwIfNotFound: true);
+        m_GroundMovement_GrapplePull = m_GroundMovement.FindAction("GrapplePull", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -354,6 +375,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_GroundMovement_Grappling;
     private readonly InputAction m_GroundMovement_Zoom;
     private readonly InputAction m_GroundMovement_Restart;
+    private readonly InputAction m_GroundMovement_GrapplePull;
     public struct GroundMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -367,6 +389,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Grappling => m_Wrapper.m_GroundMovement_Grappling;
         public InputAction @Zoom => m_Wrapper.m_GroundMovement_Zoom;
         public InputAction @Restart => m_Wrapper.m_GroundMovement_Restart;
+        public InputAction @GrapplePull => m_Wrapper.m_GroundMovement_GrapplePull;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -403,6 +426,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Restart.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRestart;
                 @Restart.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRestart;
                 @Restart.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnRestart;
+                @GrapplePull.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrapplePull;
+                @GrapplePull.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrapplePull;
+                @GrapplePull.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGrapplePull;
             }
             m_Wrapper.m_GroundMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -434,6 +460,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Restart.started += instance.OnRestart;
                 @Restart.performed += instance.OnRestart;
                 @Restart.canceled += instance.OnRestart;
+                @GrapplePull.started += instance.OnGrapplePull;
+                @GrapplePull.performed += instance.OnGrapplePull;
+                @GrapplePull.canceled += instance.OnGrapplePull;
             }
         }
     }
@@ -458,5 +487,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnGrappling(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
+        void OnGrapplePull(InputAction.CallbackContext context);
     }
 }
