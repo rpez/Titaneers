@@ -14,6 +14,8 @@ Shader "powerup"
 		_map_tiling("map_tiling", Vector) = (2,2,0,0)
 		_map_speed("map_speed", Vector) = (0,0,0,0)
 		_VertexOffest_speed("VertexOffest_speed", Vector) = (0,0,0,0)
+		_TextureSample0("Texture Sample 0", 2D) = "white" {}
+		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
 		[HideInInspector] _RenderQueueType("Render Queue Type", Float) = 5
 		[HideInInspector] [ToggleUI] _AddPrecomputedVelocity("Add Precomputed Velocity", Float) = 1
@@ -175,9 +177,9 @@ Shader "powerup"
 
 			HLSLPROGRAM
 
+			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define _SPECULAR_OCCLUSION_FROM_AO 1
 			#pragma instancing_options renderinglayer
-			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define HAVE_MESH_MODIFICATION
 			#define ASE_SRP_VERSION 999999
 
@@ -243,7 +245,7 @@ Shader "powerup"
 				float4 uv1 : TEXCOORD1;
 				float4 uv2 : TEXCOORD2;
 				float4 ase_texcoord : TEXCOORD0;
-				half4 ase_color : COLOR;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -255,8 +257,8 @@ Shader "powerup"
 				float4 interp02 : TEXCOORD2;
 				float4 interp03 : TEXCOORD3;
 				float4 interp04 : TEXCOORD4;
-				float4 ase_color : COLOR;
 				float4 ase_texcoord5 : TEXCOORD5;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 				#if defined(SHADER_STAGE_FRAGMENT) && defined(ASE_NEED_CULLFACE)
@@ -265,12 +267,13 @@ Shader "powerup"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
-			half2 _VertexOffest_speed;
-			half _VertexOffset_ST;
-			half2 _map_speed;
-			half2 _map_tiling;
-			half _Bloom;
-			half _Step;
+			float2 _VertexOffest_speed;
+			float _VertexOffset_ST;
+			float4 _TextureSample0_ST;
+			float2 _map_speed;
+			float2 _map_tiling;
+			float _Bloom;
+			float _Step;
 			float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
@@ -313,6 +316,7 @@ Shader "powerup"
 			float4 _DoubleSidedConstants;
 			CBUFFER_END
 			sampler2D _VertexOffset_map;
+			sampler2D _TextureSample0;
 			sampler2D _map;
 
 
@@ -515,11 +519,11 @@ Shader "powerup"
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, outputPackedVaryingsMeshToPS);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( outputPackedVaryingsMeshToPS );
 
-				half2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				half2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
+				float2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
 				
-				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				outputPackedVaryingsMeshToPS.ase_texcoord5.xy = inputMesh.ase_texcoord.xy;
+				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
 				outputPackedVaryingsMeshToPS.ase_texcoord5.zw = 0;
@@ -591,14 +595,16 @@ Shader "powerup"
 				BuiltinData builtinData;
 
 				GlobalSurfaceDescription surfaceDescription = (GlobalSurfaceDescription)0;
-				half2 uv03 = packedInput.ase_texcoord5.xy * _map_tiling + float2( 0,0 );
-				half2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
-				half4 tex2DNode2 = tex2D( _map, panner4 );
+				float2 uv_TextureSample0 = packedInput.ase_texcoord5.xy * _TextureSample0_ST.xy + _TextureSample0_ST.zw;
 				
-				half4 temp_cast_1 = (_Step).xxxx;
-				half4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_1 , ( packedInput.ase_color.a * tex2DNode2 ));
+				float2 uv03 = packedInput.ase_texcoord5.xy * _map_tiling + float2( 0,0 );
+				float2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
+				float4 tex2DNode2 = tex2D( _map, panner4 );
 				
-				surfaceDescription.Albedo = float3( 0.5, 0.5, 0.5 );
+				float4 temp_cast_2 = (_Step).xxxx;
+				float4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_2 , ( packedInput.ase_color.a * tex2DNode2 ));
+				
+				surfaceDescription.Albedo = tex2D( _TextureSample0, uv_TextureSample0 ).rgb;
 				surfaceDescription.Normal = float3( 0, 0, 1 );
 				surfaceDescription.BentNormal = float3( 0, 0, 1 );
 				surfaceDescription.CoatMask = 0;
@@ -698,9 +704,9 @@ Shader "powerup"
 
 			HLSLPROGRAM
 
+			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define _SPECULAR_OCCLUSION_FROM_AO 1
 			#pragma instancing_options renderinglayer
-			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define HAVE_MESH_MODIFICATION
 			#define ASE_SRP_VERSION 999999
 
@@ -755,15 +761,15 @@ Shader "powerup"
 				float4 uv0 : TEXCOORD0;
 				float4 uv1 : TEXCOORD1;
 				float4 uv2 : TEXCOORD2;
-				half4 ase_color : COLOR;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct PackedVaryingsMeshToPS
 			{
 				float4 positionCS : SV_Position;
-				float4 ase_color : COLOR;
 				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				#if defined(SHADER_STAGE_FRAGMENT) && defined(ASE_NEED_CULLFACE)
 				FRONT_FACE_TYPE cullFace : FRONT_FACE_SEMANTIC;
@@ -771,12 +777,13 @@ Shader "powerup"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
-			half2 _VertexOffest_speed;
-			half _VertexOffset_ST;
-			half2 _map_speed;
-			half2 _map_tiling;
-			half _Bloom;
-			half _Step;
+			float2 _VertexOffest_speed;
+			float _VertexOffset_ST;
+			float4 _TextureSample0_ST;
+			float2 _map_speed;
+			float2 _map_tiling;
+			float _Bloom;
+			float _Step;
 			float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
@@ -819,6 +826,7 @@ Shader "powerup"
 			float4 _DoubleSidedConstants;
 			CBUFFER_END
 			sampler2D _VertexOffset_map;
+			sampler2D _TextureSample0;
 			sampler2D _map;
 
 
@@ -1021,11 +1029,11 @@ Shader "powerup"
 				UNITY_SETUP_INSTANCE_ID(inputMesh);
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, outputPackedVaryingsMeshToPS);
 
-				half2 uv015 = inputMesh.uv0.xy * float2( 1,1 ) + float2( 0,0 );
-				half2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
+				float2 uv015 = inputMesh.uv0.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
 				
-				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				outputPackedVaryingsMeshToPS.ase_texcoord.xy = inputMesh.uv0.xy;
+				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
 				outputPackedVaryingsMeshToPS.ase_texcoord.zw = 0;
@@ -1083,14 +1091,16 @@ Shader "powerup"
 				SurfaceData surfaceData;
 				BuiltinData builtinData;
 				GlobalSurfaceDescription surfaceDescription = (GlobalSurfaceDescription)0;
-				half2 uv03 = packedInput.ase_texcoord.xy * _map_tiling + float2( 0,0 );
-				half2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
-				half4 tex2DNode2 = tex2D( _map, panner4 );
+				float2 uv_TextureSample0 = packedInput.ase_texcoord.xy * _TextureSample0_ST.xy + _TextureSample0_ST.zw;
 				
-				half4 temp_cast_1 = (_Step).xxxx;
-				half4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_1 , ( packedInput.ase_color.a * tex2DNode2 ));
+				float2 uv03 = packedInput.ase_texcoord.xy * _map_tiling + float2( 0,0 );
+				float2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
+				float4 tex2DNode2 = tex2D( _map, panner4 );
 				
-				surfaceDescription.Albedo = float3( 0.5, 0.5, 0.5 );
+				float4 temp_cast_2 = (_Step).xxxx;
+				float4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_2 , ( packedInput.ase_color.a * tex2DNode2 ));
+				
+				surfaceDescription.Albedo = tex2D( _TextureSample0, uv_TextureSample0 ).rgb;
 				surfaceDescription.Normal = float3( 0, 0, 1 );
 				surfaceDescription.BentNormal = float3( 0, 0, 1 );
 				surfaceDescription.CoatMask = 0;
@@ -1183,9 +1193,9 @@ Shader "powerup"
 
 			HLSLPROGRAM
 
+			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define _SPECULAR_OCCLUSION_FROM_AO 1
 			#pragma instancing_options renderinglayer
-			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define HAVE_MESH_MODIFICATION
 			#define ASE_SRP_VERSION 999999
 
@@ -1238,7 +1248,7 @@ Shader "powerup"
 				float3 positionOS : POSITION;
 				float3 normalOS : NORMAL;
 				float4 ase_texcoord : TEXCOORD0;
-				half4 ase_color : COLOR;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1256,12 +1266,13 @@ Shader "powerup"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
-			half2 _VertexOffest_speed;
-			half _VertexOffset_ST;
-			half2 _map_speed;
-			half2 _map_tiling;
-			half _Bloom;
-			half _Step;
+			float2 _VertexOffest_speed;
+			float _VertexOffset_ST;
+			float4 _TextureSample0_ST;
+			float2 _map_speed;
+			float2 _map_tiling;
+			float _Bloom;
+			float _Step;
 			float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
@@ -1449,8 +1460,8 @@ Shader "powerup"
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, outputPackedVaryingsMeshToPS);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( outputPackedVaryingsMeshToPS );
 
-				half2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				half2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
+				float2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
 				
 				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				outputPackedVaryingsMeshToPS.ase_texcoord1.xy = inputMesh.ase_texcoord.xy;
@@ -1524,11 +1535,11 @@ Shader "powerup"
 				float3 V = GetWorldSpaceNormalizeViewDir(input.positionRWS);
 
 				AlphaSurfaceDescription surfaceDescription = (AlphaSurfaceDescription)0;
-				half4 temp_cast_0 = (_Step).xxxx;
-				half2 uv03 = packedInput.ase_texcoord1.xy * _map_tiling + float2( 0,0 );
-				half2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
-				half4 tex2DNode2 = tex2D( _map, panner4 );
-				half4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( packedInput.ase_color.a * tex2DNode2 ));
+				float4 temp_cast_0 = (_Step).xxxx;
+				float2 uv03 = packedInput.ase_texcoord1.xy * _map_tiling + float2( 0,0 );
+				float2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
+				float4 tex2DNode2 = tex2D( _map, panner4 );
+				float4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( packedInput.ase_color.a * tex2DNode2 ));
 				
 				surfaceDescription.Alpha = smoothstepResult22.r;
 
@@ -1577,9 +1588,9 @@ Shader "powerup"
 
 			HLSLPROGRAM
 
+			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define _SPECULAR_OCCLUSION_FROM_AO 1
 			#pragma instancing_options renderinglayer
-			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define HAVE_MESH_MODIFICATION
 			#define ASE_SRP_VERSION 999999
 
@@ -1632,7 +1643,7 @@ Shader "powerup"
 				float3 positionOS : POSITION;
 				float3 normalOS : NORMAL;
 				float4 ase_texcoord : TEXCOORD0;
-				half4 ase_color : COLOR;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1653,12 +1664,13 @@ Shader "powerup"
 			int _PassValue;
 
 			CBUFFER_START( UnityPerMaterial )
-			half2 _VertexOffest_speed;
-			half _VertexOffset_ST;
-			half2 _map_speed;
-			half2 _map_tiling;
-			half _Bloom;
-			half _Step;
+			float2 _VertexOffest_speed;
+			float _VertexOffset_ST;
+			float4 _TextureSample0_ST;
+			float2 _map_speed;
+			float2 _map_tiling;
+			float _Bloom;
+			float _Step;
 			float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
@@ -1843,8 +1855,8 @@ Shader "powerup"
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, outputPackedVaryingsMeshToPS);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( outputPackedVaryingsMeshToPS );
 
-				half2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				half2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
+				float2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
 				
 				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				outputPackedVaryingsMeshToPS.ase_texcoord1.xy = inputMesh.ase_texcoord.xy;
@@ -1918,11 +1930,11 @@ Shader "powerup"
 				float3 V = GetWorldSpaceNormalizeViewDir(input.positionRWS);
 
 				SceneSurfaceDescription surfaceDescription = (SceneSurfaceDescription)0;
-				half4 temp_cast_0 = (_Step).xxxx;
-				half2 uv03 = packedInput.ase_texcoord1.xy * _map_tiling + float2( 0,0 );
-				half2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
-				half4 tex2DNode2 = tex2D( _map, panner4 );
-				half4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( packedInput.ase_color.a * tex2DNode2 ));
+				float4 temp_cast_0 = (_Step).xxxx;
+				float2 uv03 = packedInput.ase_texcoord1.xy * _map_tiling + float2( 0,0 );
+				float2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
+				float4 tex2DNode2 = tex2D( _map, panner4 );
+				float4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( packedInput.ase_color.a * tex2DNode2 ));
 				
 				surfaceDescription.Alpha = smoothstepResult22.r;
 
@@ -1981,9 +1993,9 @@ Shader "powerup"
 
 			HLSLPROGRAM
 
+			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define _SPECULAR_OCCLUSION_FROM_AO 1
 			#pragma instancing_options renderinglayer
-			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define HAVE_MESH_MODIFICATION
 			#define ASE_SRP_VERSION 999999
 
@@ -2037,7 +2049,7 @@ Shader "powerup"
 				float3 normalOS : NORMAL;
 				float4 tangentOS : TANGENT;
 				float4 ase_texcoord : TEXCOORD0;
-				half4 ase_color : COLOR;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2057,12 +2069,13 @@ Shader "powerup"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
-			half2 _VertexOffest_speed;
-			half _VertexOffset_ST;
-			half2 _map_speed;
-			half2 _map_tiling;
-			half _Bloom;
-			half _Step;
+			float2 _VertexOffest_speed;
+			float _VertexOffset_ST;
+			float4 _TextureSample0_ST;
+			float2 _map_speed;
+			float2 _map_tiling;
+			float _Bloom;
+			float _Step;
 			float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
@@ -2247,8 +2260,8 @@ Shader "powerup"
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, outputPackedVaryingsMeshToPS);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( outputPackedVaryingsMeshToPS );
 
-				half2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				half2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
+				float2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
 				
 				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				outputPackedVaryingsMeshToPS.ase_texcoord3.xy = inputMesh.ase_texcoord.xy;
@@ -2331,11 +2344,11 @@ Shader "powerup"
 				float3 V = GetWorldSpaceNormalizeViewDir(input.positionRWS);
 
 				SmoothSurfaceDescription surfaceDescription = (SmoothSurfaceDescription)0;
-				half4 temp_cast_0 = (_Step).xxxx;
-				half2 uv03 = packedInput.ase_texcoord3.xy * _map_tiling + float2( 0,0 );
-				half2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
-				half4 tex2DNode2 = tex2D( _map, panner4 );
-				half4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( packedInput.ase_color.a * tex2DNode2 ));
+				float4 temp_cast_0 = (_Step).xxxx;
+				float2 uv03 = packedInput.ase_texcoord3.xy * _map_tiling + float2( 0,0 );
+				float2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
+				float4 tex2DNode2 = tex2D( _map, panner4 );
+				float4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( packedInput.ase_color.a * tex2DNode2 ));
 				
 				surfaceDescription.Normal = float3( 0, 0, 1 );
 				surfaceDescription.Smoothness = 1;
@@ -2397,9 +2410,9 @@ Shader "powerup"
 
 			HLSLPROGRAM
 
+			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define _SPECULAR_OCCLUSION_FROM_AO 1
 			#pragma instancing_options renderinglayer
-			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define HAVE_MESH_MODIFICATION
 			#define ASE_SRP_VERSION 999999
 
@@ -2458,7 +2471,7 @@ Shader "powerup"
 					float3 precomputedVelocity : TEXCOORD5;
 				#endif
 				float4 ase_texcoord : TEXCOORD0;
-				half4 ase_color : COLOR;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2478,12 +2491,13 @@ Shader "powerup"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
-			half2 _VertexOffest_speed;
-			half _VertexOffset_ST;
-			half2 _map_speed;
-			half2 _map_tiling;
-			half _Bloom;
-			half _Step;
+			float2 _VertexOffest_speed;
+			float _VertexOffset_ST;
+			float4 _TextureSample0_ST;
+			float2 _map_speed;
+			float2 _map_tiling;
+			float _Bloom;
+			float _Step;
 			float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
@@ -2665,8 +2679,8 @@ Shader "powerup"
 			AttributesMesh ApplyMeshModification(AttributesMesh inputMesh, float3 timeParameters, inout PackedVaryingsToPS outputPackedVaryingsToPS )
 			{
 				_TimeParameters.xyz = timeParameters;
-				half2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				half2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
+				float2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
 				
 				outputPackedVaryingsToPS.ase_color = inputMesh.ase_color;
 				outputPackedVaryingsToPS.ase_texcoord3.xy = inputMesh.ase_texcoord.xy;
@@ -2790,11 +2804,11 @@ Shader "powerup"
 				BuiltinData builtinData;
 
 				SmoothSurfaceDescription surfaceDescription = (SmoothSurfaceDescription)0;
-				half4 temp_cast_0 = (_Step).xxxx;
-				half2 uv03 = packedInput.ase_texcoord3.xy * _map_tiling + float2( 0,0 );
-				half2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
-				half4 tex2DNode2 = tex2D( _map, panner4 );
-				half4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( packedInput.ase_color.a * tex2DNode2 ));
+				float4 temp_cast_0 = (_Step).xxxx;
+				float2 uv03 = packedInput.ase_texcoord3.xy * _map_tiling + float2( 0,0 );
+				float2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
+				float4 tex2DNode2 = tex2D( _map, panner4 );
+				float4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( packedInput.ase_color.a * tex2DNode2 ));
 				
 				surfaceDescription.Normal = float3( 0, 0, 1 );
 				surfaceDescription.Smoothness = 1;
@@ -2871,9 +2885,9 @@ Shader "powerup"
 
 			HLSLPROGRAM
 
+			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define _SPECULAR_OCCLUSION_FROM_AO 1
 			#pragma instancing_options renderinglayer
-			#define _BLENDMODE_PRESERVE_SPECULAR_LIGHTING 1
 			#define HAVE_MESH_MODIFICATION
 			#define ASE_SRP_VERSION 999999
 
@@ -2950,7 +2964,7 @@ Shader "powerup"
 					#endif
 				#endif
 				float4 ase_texcoord : TEXCOORD0;
-				half4 ase_color : COLOR;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2966,8 +2980,8 @@ Shader "powerup"
 					float3 vpassPositionCS : TEXCOORD5;
 					float3 vpassPreviousPositionCS : TEXCOORD6;
 				#endif
-				float4 ase_color : COLOR;
 				float4 ase_texcoord7 : TEXCOORD7;
+				float4 ase_color : COLOR;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 				#if defined(SHADER_STAGE_FRAGMENT) && defined(ASE_NEED_CULLFACE)
@@ -2976,12 +2990,13 @@ Shader "powerup"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
-			half2 _VertexOffest_speed;
-			half _VertexOffset_ST;
-			half2 _map_speed;
-			half2 _map_tiling;
-			half _Bloom;
-			half _Step;
+			float2 _VertexOffest_speed;
+			float _VertexOffset_ST;
+			float4 _TextureSample0_ST;
+			float2 _map_speed;
+			float2 _map_tiling;
+			float _Bloom;
+			float _Step;
 			float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
@@ -3024,6 +3039,7 @@ Shader "powerup"
 			float4 _DoubleSidedConstants;
 			CBUFFER_END
 			sampler2D _VertexOffset_map;
+			sampler2D _TextureSample0;
 			sampler2D _map;
 
 
@@ -3213,11 +3229,11 @@ Shader "powerup"
 			AttributesMesh ApplyMeshModification(AttributesMesh inputMesh, float3 timeParameters, inout PackedVaryingsMeshToPS outputPackedVaryingsMeshToPS )
 			{
 				_TimeParameters.xyz = timeParameters;
-				half2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				half2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
+				float2 uv015 = inputMesh.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner16 = ( 1.0 * _Time.y * _VertexOffest_speed + uv015);
 				
-				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				outputPackedVaryingsMeshToPS.ase_texcoord7.xy = inputMesh.ase_texcoord.xy;
+				outputPackedVaryingsMeshToPS.ase_color = inputMesh.ase_color;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
 				outputPackedVaryingsMeshToPS.ase_texcoord7.zw = 0;
@@ -3364,14 +3380,16 @@ Shader "powerup"
 				float3 V = GetWorldSpaceNormalizeViewDir(input.positionRWS);
 
 				GlobalSurfaceDescription surfaceDescription = (GlobalSurfaceDescription)0;
-				half2 uv03 = packedInput.ase_texcoord7.xy * _map_tiling + float2( 0,0 );
-				half2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
-				half4 tex2DNode2 = tex2D( _map, panner4 );
+				float2 uv_TextureSample0 = packedInput.ase_texcoord7.xy * _TextureSample0_ST.xy + _TextureSample0_ST.zw;
 				
-				half4 temp_cast_1 = (_Step).xxxx;
-				half4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_1 , ( packedInput.ase_color.a * tex2DNode2 ));
+				float2 uv03 = packedInput.ase_texcoord7.xy * _map_tiling + float2( 0,0 );
+				float2 panner4 = ( 1.0 * _Time.y * _map_speed + uv03);
+				float4 tex2DNode2 = tex2D( _map, panner4 );
 				
-				surfaceDescription.Albedo = float3( 0.5, 0.5, 0.5 );
+				float4 temp_cast_2 = (_Step).xxxx;
+				float4 smoothstepResult22 = smoothstep( float4( 0,0,0,0 ) , temp_cast_2 , ( packedInput.ase_color.a * tex2DNode2 ));
+				
+				surfaceDescription.Albedo = tex2D( _TextureSample0, uv_TextureSample0 ).rgb;
 				surfaceDescription.Normal = float3( 0, 0, 1 );
 				surfaceDescription.BentNormal = float3( 0, 0, 1 );
 				surfaceDescription.CoatMask = 0;
@@ -3562,7 +3580,7 @@ Shader "powerup"
 }
 /*ASEBEGIN
 Version=18000
--142;313;1906;881;283.649;106.7433;1;True;True
+0;0;1920;1019;729.6968;86.06284;1;True;True
 Node;AmplifyShaderEditor.Vector2Node;21;-1328.696,153.315;Inherit;False;Property;_map_tiling;map_tiling;5;0;Create;True;0;0;False;0;2,2;2,2;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.TextureCoordinatesNode;15;-706.4991,328.0114;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.Vector2Node;19;-953.6959,232.315;Inherit;False;Property;_map_speed;map_speed;6;0;Create;True;0;0;False;0;0,0;0.1,-1;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
@@ -3578,22 +3596,23 @@ Node;AmplifyShaderEditor.RangedFloatNode;18;185.3041,313.8151;Inherit;False;Prop
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;11;197.039,476.9173;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.RangedFloatNode;14;161.9478,648.9832;Inherit;False;Property;_VertexOffset_ST;VertexOffset_ST;3;0;Create;True;0;0;False;0;0;1.03;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;9;213.905,164.199;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;6;-92.12174,94.48755;Inherit;False;Property;_Bloom;Bloom;1;0;Create;True;0;0;False;0;0;3.29;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;7;6.978271,-90.71243;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;6;-92.12174,94.48755;Inherit;False;Property;_Bloom;Bloom;1;0;Create;True;0;0;False;0;0;3.29;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;8;303.328,55.00481;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.SamplerNode;86;421.7914,-64.61652;Inherit;True;Property;_TextureSample0;Texture Sample 0;8;0;Create;True;0;0;False;0;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;13;408.1478,577.7831;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.SmoothstepOpNode;22;607.304,257.315;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;1,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;8;303.328,55.00481;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;84;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;TransparentDepthPostpass;0;9;TransparentDepthPostpass;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;True;0;True;-25;True;False;False;False;False;0;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=TransparentDepthPostpass;False;0;;0;0;Standard;0;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;75;882.6,66.89999;Half;False;True;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;2;powerup;53b46d85872c5b24c8f4f0a1c3fe4c87;True;GBuffer;0;0;GBuffer;35;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;5;0;False;False;False;True;0;True;-25;False;True;True;0;True;-13;255;False;-1;255;True;-12;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;0;True;-14;False;True;1;LightMode=GBuffer;False;0;;0;0;Standard;32;Surface Type;1;  Rendering Pass;1;  Refraction Model;0;    Blending Mode;0;    Blend Preserves Specular;1;  Receive Fog;1;  Back Then Front Rendering;0;  Transparent Depth Prepass;0;  Transparent Depth Postpass;0;  Transparent Writes Motion Vector;0;  Distortion;0;    Distortion Mode;0;    Distortion Depth Test;1;  ZWrite;0;  Z Test;4;Double-Sided;0;Alpha Clipping;0;  Use Shadow Threshold;0;Material Type,InvertActionOnDeselection;0;  Energy Conserving Specular;1;  Transmission;1;Receive Decals;1;Receives SSR;1;Motion Vectors;1;  Add Precomputed Velocity;0;Specular AA;0;Specular Occlusion Mode;1;Override Baked GI;0;Depth Offset;0;DOTS Instancing;0;LOD CrossFade;0;Vertex Position;1;0;11;True;True;True;True;True;True;False;False;False;False;True;False;;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;76;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;META;0;1;META;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;True;2;False;-1;False;False;False;False;False;True;1;LightMode=Meta;False;0;;0;0;Standard;0;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;77;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;True;0;True;-25;True;False;False;False;False;0;False;-1;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=ShadowCaster;False;0;;0;0;Standard;0;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;78;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;SceneSelectionPass;0;3;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;0;;0;0;Standard;0;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;79;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;DepthOnly;0;4;DepthOnly;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;True;0;True;-25;False;True;True;0;True;-6;255;False;-1;255;True;-7;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;False;False;True;1;LightMode=DepthOnly;False;0;;0;0;Standard;0;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;80;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;Motion Vectors;0;5;Motion Vectors;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;True;0;True;-25;False;True;True;0;True;-8;255;False;-1;255;True;-9;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;False;False;True;1;LightMode=MotionVectors;False;0;;0;0;Standard;0;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;81;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;Distortion;0;6;Distortion;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;True;4;1;False;-1;1;False;-1;4;1;False;-1;1;False;-1;True;1;False;-1;1;False;-1;False;False;False;True;True;0;True;-10;255;False;-1;255;True;-11;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;2;False;-1;True;3;False;-1;False;True;1;LightMode=DistortionVectors;False;0;;0;0;Standard;0;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;82;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;TransparentBackface;0;7;TransparentBackface;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;True;1;0;True;-19;0;True;-20;1;0;True;-21;0;True;-22;False;False;True;1;False;-1;False;False;True;0;True;-23;True;0;True;-31;False;True;1;LightMode=TransparentBackface;False;0;;0;0;Standard;0;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;83;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;TransparentDepthPrepass;0;8;TransparentDepthPrepass;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;True;0;True;-25;True;False;False;False;False;0;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=TransparentDepthPrepass;False;0;;0;0;Standard;0;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;81;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;Distortion;0;6;Distortion;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;True;4;1;False;-1;1;False;-1;4;1;False;-1;1;False;-1;True;1;False;-1;1;False;-1;False;False;False;True;True;0;True;-10;255;False;-1;255;True;-11;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;2;False;-1;True;3;False;-1;False;True;1;LightMode=DistortionVectors;False;0;;0;0;Standard;0;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;80;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;Motion Vectors;0;5;Motion Vectors;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;True;0;True;-25;False;True;True;0;True;-8;255;False;-1;255;True;-9;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;False;False;True;1;LightMode=MotionVectors;False;0;;0;0;Standard;0;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;79;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;DepthOnly;0;4;DepthOnly;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;True;0;True;-25;False;True;True;0;True;-6;255;False;-1;255;True;-7;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;False;False;True;1;LightMode=DepthOnly;False;0;;0;0;Standard;0;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;75;882.6,66.89999;Half;False;True;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;2;powerup;53b46d85872c5b24c8f4f0a1c3fe4c87;True;GBuffer;0;0;GBuffer;35;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;5;0;False;False;False;True;0;True;-25;False;True;True;0;True;-13;255;False;-1;255;True;-12;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;0;True;-14;False;True;1;LightMode=GBuffer;False;0;;0;0;Standard;32;Surface Type;1;  Rendering Pass;1;  Refraction Model;0;    Blending Mode;0;    Blend Preserves Specular;1;  Receive Fog;1;  Back Then Front Rendering;0;  Transparent Depth Prepass;0;  Transparent Depth Postpass;0;  Transparent Writes Motion Vector;0;  Distortion;0;    Distortion Mode;0;    Distortion Depth Test;1;  ZWrite;0;  Z Test;4;Double-Sided;0;Alpha Clipping;0;  Use Shadow Threshold;0;Material Type,InvertActionOnDeselection;0;  Energy Conserving Specular;1;  Transmission;1;Receive Decals;1;Receives SSR;1;Motion Vectors;1;  Add Precomputed Velocity;0;Specular AA;0;Specular Occlusion Mode;1;Override Baked GI;0;Depth Offset;0;DOTS Instancing;0;LOD CrossFade;0;Vertex Position;1;0;11;True;True;True;True;True;True;False;False;False;False;True;False;;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;77;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;True;0;True;-25;True;False;False;False;False;0;False;-1;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=ShadowCaster;False;0;;0;0;Standard;0;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;85;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;Forward;0;10;Forward;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;True;1;0;True;-19;0;True;-20;1;0;True;-21;0;True;-22;False;False;True;0;True;-28;False;True;True;0;True;-4;255;False;-1;255;True;-5;7;False;-1;3;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;0;True;-23;True;0;True;-30;False;True;1;LightMode=Forward;False;0;;0;0;Standard;0;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;84;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;TransparentDepthPostpass;0;9;TransparentDepthPostpass;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;True;0;True;-25;True;False;False;False;False;0;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=TransparentDepthPostpass;False;0;;0;0;Standard;0;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;83;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;TransparentDepthPrepass;0;8;TransparentDepthPrepass;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;True;0;True;-25;True;False;False;False;False;0;False;-1;False;True;1;False;-1;False;False;True;1;LightMode=TransparentDepthPrepass;False;0;;0;0;Standard;0;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;78;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;SceneSelectionPass;0;3;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;False;True;False;False;False;False;0;False;-1;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;0;;0;0;Standard;0;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;76;882.6,66.89999;Float;False;False;-1;2;UnityEditor.Rendering.HighDefinition.HDLitGUI;0;1;New Amplify Shader;53b46d85872c5b24c8f4f0a1c3fe4c87;True;META;0;1;META;0;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;0;False;False;False;True;2;False;-1;False;False;False;False;False;True;1;LightMode=Meta;False;0;;0;0;Standard;0;0
 WireConnection;3;0;21;0
 WireConnection;4;0;3;0
 WireConnection;4;2;19;0
@@ -3607,14 +3626,15 @@ WireConnection;9;0;5;4
 WireConnection;9;1;2;0
 WireConnection;7;0;5;0
 WireConnection;7;1;2;0
+WireConnection;8;0;7;0
+WireConnection;8;1;6;0
 WireConnection;13;0;11;0
 WireConnection;13;1;14;0
 WireConnection;22;0;9;0
 WireConnection;22;2;18;0
-WireConnection;8;0;7;0
-WireConnection;8;1;6;0
+WireConnection;75;0;86;0
 WireConnection;75;6;8;0
 WireConnection;75;9;22;0
 WireConnection;75;11;13;0
 ASEEND*/
-//CHKSM=D95124961E79227E2C928C00338784897ACC92D3
+//CHKSM=5314BB5D7DA3764EC0BC24F5CC9F4332C7D4807D
