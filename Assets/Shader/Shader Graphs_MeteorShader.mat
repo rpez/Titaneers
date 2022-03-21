@@ -104,9 +104,9 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FresnelColor: {r: 5.5908804, g: 1.0245069, b: 0.26344463, a: 0}
-    - _MainColor: {r: 0.9622642, g: 0.37477985, b: 0.086240634, a: 0}
-    - _VoronoiColor: {r: 51.377876, g: 17.753613, b: 0, a: 0}
+    - _FresnelColor: {r: 0, g: 1.4415036, b: 33.442886, a: 0}
+    - _MainColor: {r: 0.08627448, g: 0.15695474, b: 0.9607843, a: 0}
+    - _VoronoiColor: {r: 11.90679, g: 15.739473, b: 68.593475, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5242329741100619288
 MonoBehaviour:
