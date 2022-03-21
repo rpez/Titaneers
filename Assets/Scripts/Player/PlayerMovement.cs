@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     public float BoostRechargeCooldown = 1f;
     public float BoostRechargeRate = 0.5f;
     public float BoostRechargeCap = 2f;
+    public float BoostPowerUpAmount = 1f;
     public float CurrentBoostAmount { get => _currentBoostAmount; }
 
     [Header("Jumping")]
@@ -609,8 +610,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_currentBoostAmount < MaxBoostAmount)
         {
-            _currentBoostAmount += 1f;
+            _currentBoostAmount += BoostPowerUpAmount;
             if (_currentBoostAmount > MaxBoostAmount) _currentBoostAmount = MaxBoostAmount;
         }
+        Debug.LogFormat("Current Boost {0}", _currentBoostAmount);
     }
 }

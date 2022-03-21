@@ -9,7 +9,13 @@ public class BoosterBarUI : MonoBehaviour
     private PlayerMovement playerMovement;
 
     [SerializeField]
-    private Image[] boosterBarCells;
+    private BarUI boostBar;
+
+    [SerializeField]
+    private float maxUIBoost;
+
+    //[SerializeField]
+    //private Image[] boosterBarCells;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +25,10 @@ public class BoosterBarUI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        int enabledCellAmount = Mathf.FloorToInt(Mathf.Min(playerMovement.CurrentBoostAmount, boosterBarCells.Length));
-        for (int i = boosterBarCells.Length - 1; i >= 0; --i)
-            boosterBarCells[i].enabled = i < enabledCellAmount;
+        float currentBoost = playerMovement.CurrentBoostAmount;
+        boostBar.SetValue(currentBoost < maxUIBoost ? currentBoost / maxUIBoost : 1f);
+        //int enabledCellAmount = Mathf.FloorToInt(Mathf.Min(playerMovement.CurrentBoostAmount, boosterBarCells.Length));
+        //for (int i = boosterBarCells.Length - 1; i >= 0; --i)
+        //    boosterBarCells[i].enabled = i < enabledCellAmount;
     }
 }
