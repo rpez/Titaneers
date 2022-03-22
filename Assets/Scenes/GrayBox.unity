@@ -1401,14 +1401,6 @@ PrefabInstance:
       propertyPath: solver.target
       value: 
       objectReference: {fileID: 2496024928203559706}
-    - target: {fileID: 4903018787723136007, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048362714557169136, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Name
       value: Titan
