@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,12 @@ public class HitBox : MonoBehaviour
 
     //private Rigidbody _rb;
     private Collider _trigger;
+    private Action _onHitCallback;
 
-    public void SetDamage(float damage)
+    public void Initialize(float damage, Action onHitCallback = null)
     {
         _damage = damage;
+        _onHitCallback = onHitCallback;
     }
 
     private void Awake()
@@ -57,6 +60,7 @@ public class HitBox : MonoBehaviour
                 {
                     Debug.Log(other.name + "2");
                     DealDamage(hurtBox);
+                    if (_onHitCallback != null) _onHitCallback.Invoke();
                 }
             }
         }
