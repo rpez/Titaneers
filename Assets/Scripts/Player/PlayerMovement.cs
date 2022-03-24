@@ -156,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.useGravity = true;
         _pulling = false;
 
-        _onReachtarget.Invoke();
+        if(_onReachtarget!=null)_onReachtarget.Invoke();
     }
 
     private void AttackImpact()

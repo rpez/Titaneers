@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6596.6064, g: 5576.7666, b: 4483.039, a: 1}
+  m_IndirectSpecularColor: {r: 6596.621, g: 5576.747, b: 4483.078, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1489,6 +1489,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _serializedBlackboard
+      value: '{"_variables":{"stage":{"_name":"stage","_id":"36b0c125-f6aa-4749-bb6c-6ae90020f3c2","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"target":{"_propertyPath":"TitanSensor._target","_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"transform":{"_value":1,"_name":"transform","_id":"1af787e3-61f6-4444-8721-8d61118397ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"attackingRange":{"_value":400.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"animator":{"_value":2,"_name":"animator","_id":"15654e1a-2817-40f5-8958-fe9030deb8f6","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Animator,
+        UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"HorizontalDistance":{"_propertyPath":"TitanSensor.HorizontalDistance","_name":"HorizontalDistance","_id":"6ee2db6e-7261-4685-a461-ffe6ed68034e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"VerticalDistance":{"_propertyPath":"TitanSensor.VerticalDistance","_name":"VerticalDistance","_id":"aa0e04c7-f829-4261-a232-8eb870e65605","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"DirectionAngle":{"_propertyPath":"TitanSensor.DirectionAngle","_name":"DirectionAngle","_id":"43d08ab7-7a19-41cc-9afa-2c50da420bf2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentHealthPoint":{"_propertyPath":"Health.CurrentHealthPoint","_name":"CurrentHealthPoint","_id":"bd8eacaa-e28a-4233-babd-c1af5a51b7e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _serializedVariables.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _serializedVariables.Array.data[8]._json
+      value: '{"_propertyPath":"Health.CurrentHealthPoint","_name":"CurrentHealthPoint","_id":"bd8eacaa-e28a-4233-babd-c1af5a51b7e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+      objectReference: {fileID: 0}
     - target: {fileID: 1633277555, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _target
       value: 
