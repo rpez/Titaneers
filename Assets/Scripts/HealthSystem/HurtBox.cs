@@ -14,12 +14,12 @@ public class HurtBox : MonoBehaviour
     {
         if (!(GetComponent<Rigidbody>()||GetComponentInParent<Rigidbody>()))
         {
-            Debug.LogError("Hit Box object doesn't have rigidbody");
+            Debug.LogError("Hurt Box object doesn't have rigidbody");
         }
 
         if (!GetComponent<Collider>())
         {
-            Debug.LogError("Hit Box object doesn't have Trigger:"+gameObject.name);
+            Debug.LogError("Hurt Box object doesn't have Collider:" + gameObject.name);
         }
     }
 
