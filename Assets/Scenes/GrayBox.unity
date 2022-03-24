@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 6596.6064, g: 5576.7666, b: 4483.039, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1500,10 +1500,6 @@ PrefabInstance:
     - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Name
       value: Titan
-      objectReference: {fileID: 0}
-    - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8119981910988450899, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_RootOrder
