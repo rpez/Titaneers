@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2018170290002378460}
   - component: {fileID: 5688026480875795397}
   - component: {fileID: 5055017988842749163}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weakness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 2018170290059258042}
   - component: {fileID: 2018170290059258041}
   - component: {fileID: 3905427348810247761}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 3481151373188735595}
   - component: {fileID: 5066377925093736300}
   - component: {fileID: 527454337381485079}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1689075978962252026}
   - component: {fileID: 3579860065411994796}
   - component: {fileID: 8795386539420680240}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: WHealthUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 2149683075609643137}
   - component: {fileID: 5327324812339750482}
   - component: {fileID: 3920696413879004945}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,9 +540,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2018170290002378460}
     m_Modifications:
+    - target: {fileID: 5620354954225961387, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620354954251293753, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620354954290728943, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620354954730618911, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620354954810934487, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5620354954947950730, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
       propertyPath: m_Name
       value: Missile_explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620354954947950730, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5620354954947950730, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
       propertyPath: m_IsActive
@@ -603,6 +627,14 @@ PrefabInstance:
     - target: {fileID: 5620354954947950731, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620354955423833358, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620354956117607533, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20dce2ccae8eca849a1dbd81436cb13c, type: 3}
