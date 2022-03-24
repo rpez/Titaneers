@@ -26,7 +26,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5492c2fa2295967439d52484c68882f4, type: 3}
+        m_Texture: {fileID: 2800000, guid: f9bd85ea2601b824c87556c13e852933, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -105,7 +105,7 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 33.44289, g: 3.8292093, b: 0, a: 0}
-    - _MainColor: {r: 0.9607843, g: 0.54924136, b: 0.08627448, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
     - _VoronoiColor: {r: 219.4227, g: 49.597515, b: 7.0380726, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5242329741100619288

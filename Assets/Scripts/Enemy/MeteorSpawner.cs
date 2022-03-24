@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MeteorSpawner : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MeteorSpawner : MonoBehaviour
     public Transform StartPoint;
     public Transform EndPoint;
     public GameObject Titan;
+    public Renderer TitanMat;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,9 @@ public class MeteorSpawner : MonoBehaviour
     {
         Debug.Log("OnMeteorExplode");
         Titan.SetActive(true);
+        //TitanMat.GetColor("VoronoiColor");
+        DOTween.To(() => TitanMat.material.GetColor("_VoronoiColor"), x => TitanMat.material.SetColor("_VoronoiColor", x), Color.black, 5);
+        DOTween.To(() => TitanMat.material.GetColor("_FresnelColor"), x => TitanMat.material.SetColor("_FresnelColor", x), Color.black, 5);
     }
 
     void RotateTo(GameObject obj, Vector3 dest)
