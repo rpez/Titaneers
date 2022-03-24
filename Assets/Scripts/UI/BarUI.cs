@@ -6,26 +6,18 @@ using UnityEngine.UI;
 public class BarUI : MonoBehaviour
 {
     [SerializeField]
-    private Slider slider;
-
-    [SerializeField]
     private Gradient gradient;
 
     [SerializeField]
     private Image fillImage;
 
     [SerializeField]
-    private float initialValue;
-
-    private void Start()
-    {
-        slider.value = initialValue;
-        fillImage.color = gradient.Evaluate(initialValue);
-    }
+    private float maxRatio = 0.25f;
 
     public void SetValue(float _value)
     {
-        slider.value = _value;
+        _value *= maxRatio;
         fillImage.color = gradient.Evaluate(_value);
+        fillImage.fillAmount = _value;
     }
 }

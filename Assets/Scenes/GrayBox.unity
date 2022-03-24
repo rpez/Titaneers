@@ -1624,17 +1624,6 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 2048
---- !u!114 &1899977372 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 566537039, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-  m_PrefabInstance: {fileID: 2273668857808839331}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed50f51ebc330845a5af62882781948, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1924871438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,14 +1906,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 566537040, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 2496024928203559711}
-    - target: {fileID: 566537040, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: speedBar
-      value: 
-      objectReference: {fileID: 1899977372}
     - target: {fileID: 647984829, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1937,30 +1918,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 2085104702}
-    - target: {fileID: 1693151813, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1693151813, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 586266588002637720, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: maxUIBoost
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 586266588002637720, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
+    - target: {fileID: 2213354223143229743, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 2496024928203559711}
-    - target: {fileID: 2248185185071746843, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2248185185071746843, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2273668857808839334, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: Player
       value: 
@@ -2057,10 +2018,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2867824139017086611, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 7.300049
-      objectReference: {fileID: 0}
+    - target: {fileID: 8165488305652282141, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 2496024928203559711}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
 --- !u!1001 &2496024928203559705
