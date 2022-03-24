@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1691826801}
   - component: {fileID: 1691826802}
+  - component: {fileID: 1691826803}
   m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
@@ -45,6 +46,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.408844, y: 2.7633667, z: 3.3671875}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1691826803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691826800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055a64f95ef6f8847a87420f1f5ff1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _continuous: 0
+  _damage: 100
+  _layers:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &2248262134983563429
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +336,8 @@ MonoBehaviour:
   PlayerAvatar: {fileID: 3342445681655914074}
   Animator: {fileID: 1101589508}
   Grapple: {fileID: 2496024928567296264}
+  Sword: {fileID: 2248262134983563429}
+  SwordHitbox: {fileID: 1691826803}
   DashVFX: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
   AttackVFX: {fileID: 3668409308039402410, guid: 1b7c882bdddf3cf44803276a6a7b9f9c, type: 3}
   GroundLayer:
@@ -335,16 +355,19 @@ MonoBehaviour:
   SlideForce: 400
   SlideCounterMovement: 0.2
   BoosterStrength: 20000
-  MaxBoostAmount: 1
+  MaxBoostAmount: 10
   BoostRechargeCooldown: 5
-  BoostRechargeRate: 0.1
-  BoostRechargeCap: 0.5
+  BoostRechargeRate: 10
+  BoostRechargeCap: 2
+  BoostPowerUpAmount: 2.5
   JumpForce: 550
   SlowScale: 0.1
   MaxSlowTime: 2
   ChargeDelay: 0.5
   ZoomIncrement: 1
   ExplosionShakingRange: 20
+  AttackTime: 0.5
+  RecoverTime: 0.5
 --- !u!54 &6965098877999748812
 Rigidbody:
   m_ObjectHideFlags: 0

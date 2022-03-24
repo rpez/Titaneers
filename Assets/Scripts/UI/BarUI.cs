@@ -16,8 +16,8 @@ public class BarUI : MonoBehaviour
 
     public void SetValue(float _value)
     {
-        _value *= maxRatio;
         fillImage.color = gradient.Evaluate(_value);
+        _value *= maxRatio;
         fillImage.fillAmount = _value;
     }
 }
