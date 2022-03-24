@@ -2,20 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestMeteor : MonoBehaviour
+public class MeteorSpawner : MonoBehaviour
 {
     public GameObject Vfx;
     public Transform StartPoint;
     public Transform EndPoint;
+    public GameObject Titan;
     // Start is called before the first frame update
     void Start()
     {
+        Titan.SetActive(false);
         var starPos = StartPoint.position;
-        GameObject objVfx = Instantiate(Vfx, starPos, Quaternion.identity) as GameObject;
+        GameObject objVfx = Instantiate(Vfx, starPos, Quaternion.identity);
+        MeteorMove meteor = objVfx.GetComponent<MeteorMove>();
+        meteor.OnExplode.AddListener(OnMeteorExplode);
         var endPos = EndPoint.position;
         RotateTo(objVfx, endPos);
     }
 
+    void OnMeteorExplode()
+    {
+        Debug.Log("OnMeteorExplode");
+        Titan.SetActive(true);
+    }
 
     void RotateTo(GameObject obj, Vector3 dest)
     {

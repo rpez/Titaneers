@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class ProjectileMove : MonoBehaviour
+public class MeteorMove : MonoBehaviour
 {
     [SerializeField] private float _speed = 15;
     [SerializeField] private GameObject _explosionPrefab;
+    public UnityEvent OnExplode;
 
     private Rigidbody _rb;
     void Start()
@@ -34,6 +36,7 @@ public class ProjectileMove : MonoBehaviour
             Destroy(explosion, 3);
         }
 
+        OnExplode.Invoke();
         Destroy(gameObject);
     }
 }
