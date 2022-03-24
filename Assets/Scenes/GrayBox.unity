@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6596.6064, g: 5576.7666, b: 4483.039, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -650,6 +650,11 @@ Transform:
   m_Father: {fileID: 1924871439}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &604674613 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 90861605061739289, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+  m_PrefabInstance: {fileID: 1350924250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &715425321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,6 +1352,11 @@ Transform:
   m_Father: {fileID: 441592498}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &866452971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+  m_PrefabInstance: {fileID: 1350924250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &997435890 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1101589508, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
@@ -1408,6 +1418,8 @@ MonoBehaviour:
   Vfx: {fileID: 7011102562776099488, guid: d2ae5a5787989d84f94095a3dfd62d1f, type: 3}
   StartPoint: {fileID: 850822192}
   EndPoint: {fileID: 1204075815}
+  Titan: {fileID: 866452971}
+  TitanMat: {fileID: 604674613}
 --- !u!1001 &1244137815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1491,7 +1503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8119981910988450899, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_RootOrder
@@ -1896,7 +1908,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8783759227444261981, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
   m_PrefabInstance: {fileID: 1350924250}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 866452971}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1de87fcb5546fb428eb5cfbd272b846, type: 3}
