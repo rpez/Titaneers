@@ -545,7 +545,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 27dac9a5f951c44e887b5f1fed6c1c22
       Path: Events/Player/PlayerGrapple/Play_player_grapple_shoot
-      maxAttenuation: 20
+      maxAttenuation: 100
       maxDuration: 1.633705
       minDuration: 1.474931
   - PhysicalPath: Events/PlayerJump.wwu
