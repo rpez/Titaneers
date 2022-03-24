@@ -275,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (_pulling)
+        if (_pulling && _target != null)
         {
             Vector3 distance = _target.transform.position - transform.position;
             transform.Translate(distance.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);

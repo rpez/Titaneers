@@ -155,7 +155,7 @@ public class GrapplingGun : MonoBehaviour
             {
                 StopGrapple();
             }
-            else _joint.connectedAnchor = _grapplePoint.transform.position;
+            else if (_joint != null) _joint.connectedAnchor = _grapplePoint.transform.position;
 
             if (_capturedMissile != null && !_capturedMissile.gameObject.GetComponent<ObjectPoolUnit>().Active)
             {
