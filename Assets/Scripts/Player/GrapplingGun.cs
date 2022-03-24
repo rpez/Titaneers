@@ -62,6 +62,7 @@ public class GrapplingGun : MonoBehaviour
     private Missile _capturedMissile;
     private UI _ui;
     private TimeManager _timeManager;
+    private PlayerMovement _playerScript;
 
     // State booleans
     bool _isGrappling, _isLaunched, _controlling, _redirecting, _reeling;
@@ -94,6 +95,7 @@ public class GrapplingGun : MonoBehaviour
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
         _defaultCameraPos = PlayerCamera.transform.localPosition;
         _controlMapping = _controls.GroundMovement;
+        _playerScript = Player.GetComponent<PlayerMovement>();
 
         AkSoundEngine.RegisterGameObj(gameObject);
     }
@@ -130,7 +132,22 @@ public class GrapplingGun : MonoBehaviour
             }
         }
 
-        if (_reeling) return;
+        _controlMapping.GrapplePull.performed += _ =>
+        {
+            if (_reeling)
+            {
+                _playerScript.StopPull();
+                return;
+            }
+            else
+            {
+                if (_capturedMissile != null) GainProjectileControl();
+                else if (_isGrappling)
+                {
+                    StartReelIn();
+                }
+            }
+        };
 
         if (_isGrappling)
         {
@@ -138,7 +155,7 @@ public class GrapplingGun : MonoBehaviour
             {
                 StopGrapple();
             }
-            else _joint.connectedAnchor = _grapplePoint.transform.position;
+            else if (_joint != null) _joint.connectedAnchor = _grapplePoint.transform.position;
 
             if (_capturedMissile != null && !_capturedMissile.gameObject.GetComponent<ObjectPoolUnit>().Active)
             {
@@ -156,14 +173,6 @@ public class GrapplingGun : MonoBehaviour
 
         }
 
-        _controlMapping.GrapplePull.performed += _ =>
-        {
-            if (_capturedMissile != null) GainProjectileControl();
-            else if (_isGrappling)
-            {
-                StartReelIn();
-            }
-        };
         if (_controlMapping.GrapplePull.WasReleasedThisFrame())
         {
             if (_capturedMissile != null) _redirecting = true;
@@ -273,7 +282,7 @@ public class GrapplingGun : MonoBehaviour
     {
         if (_grapplePoint != null)
         {
-            Player.GetComponent<PlayerMovement>().StartPullTowards(_grapplePoint, StopReelIn);
+            _playerScript.StartPullTowards(_grapplePoint, StopReelIn);
             Destroy(_joint);
             _reeling = true;
         }

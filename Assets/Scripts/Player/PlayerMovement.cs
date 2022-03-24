@@ -150,17 +150,26 @@ public class PlayerMovement : MonoBehaviour
         _pulling = true;
     }
 
+    public void StopPull()
+    {
+        _rigidbody.velocity = _pullVelocity;
+        _rigidbody.useGravity = true;
+        _pulling = false;
+
+        _onReachtarget.Invoke();
+    }
+
     private void AttackImpact()
     {
         GameObject hitEffect = GameObject.Instantiate(DashVFX, transform.position, Quaternion.identity);
         hitEffect.transform.localScale = hitEffect.transform.localScale * 10f;
         Destroy(hitEffect, 5f);
 
-        _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
-        _rigidbody.useGravity = true;
-        _pulling = false;
+        StopPull();
 
-        _onReachtarget.Invoke();
+        _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
+
+        _timeManager.FreezeFrame(0.3f);
     }
 
     private void Attack()
@@ -171,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(vfx, 5f);
 
             SwordHitbox.gameObject.SetActive(true);
-            SwordHitbox.SetDamage(CurrentVelocity.magnitude);
+            SwordHitbox.Initialize(CurrentVelocity.magnitude, AttackImpact);
             _attacking = true;
             StartCoroutine(Delay(AttackTime, EndAttack));
         }
@@ -266,13 +275,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (_pulling)
+        if (_pulling && _target != null)
         {
             Vector3 distance = _target.transform.position - transform.position;
             transform.Translate(distance.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
             if (distance.magnitude < 5f)
             {
-                AttackImpact();
+                StopPull();
             } 
             return;
         }
