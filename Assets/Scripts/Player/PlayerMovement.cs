@@ -50,9 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float MouseSensitivity = 3;
-    public float MoveSpeed = 4500;
+    public float MoveForce = 90;
     public float MaxSpeed = 20;
-    public float CounterMovementForce = 0.175f;
+    public float DragForceCoefficient = 0.175f;
     public float MaxSlopeAngle = 35f;
     public float ResitanceThreshold = 200f;
     public float AirResistance = 500f;
@@ -291,7 +291,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Extra gravity
-        _rigidbody.AddForce(Vector3.down * Time.deltaTime * 10);
+        _rigidbody.AddForce(Vector3.down * 10);
 
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
@@ -319,21 +319,17 @@ public class PlayerMovement : MonoBehaviour
         if (_yInput < 0 && yMag < -maxSpeed) _yInput = 0;
 
         //Some multipliers
-        float multiplier = 1f, multiplierV = 1f;
+        float multiplier = 1f;
 
         // Movement in air
         if (!_grounded)
         {
             multiplier = 0.5f;
-            multiplierV = 0.5f;
         }
 
-        // Movement while sliding
-        if (_grounded && _crouching) multiplierV = 0f;
-
         //Apply forces to move player
-        _rigidbody.AddForce(Orientation.transform.forward * _yInput * MoveSpeed * Time.deltaTime * multiplier * multiplierV);
-        _rigidbody.AddForce(Orientation.transform.right * _xInput * MoveSpeed * Time.deltaTime * multiplier);
+        _rigidbody.AddForce(Orientation.transform.forward * _yInput * MoveForce * multiplier);
+        _rigidbody.AddForce(Orientation.transform.right * _xInput * MoveForce * multiplier);
 
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
         if (_crouching && _grounded && _readyToJump)
@@ -489,20 +485,18 @@ public class PlayerMovement : MonoBehaviour
         // Slow down sliding
         if (_crouching)
         {
-            _rigidbody.AddForce(MoveSpeed * Time.deltaTime * -_rigidbody.velocity.normalized * SlideCounterMovement);
+            _rigidbody.AddForce(MoveForce * -_rigidbody.velocity.normalized * SlideCounterMovement);
             return;
         }
 
-        // Counter movement
-        if (Math.Abs(mag.x) > _minMovementThreshold && Math.Abs(x) < 0.05f
-            || (mag.x < -_minMovementThreshold && x > 0) || (mag.x > _minMovementThreshold && x < 0))
+        // Air resistance, F_d = C * v^2
+        if (Math.Abs(mag.x) > _minMovementThreshold && Math.Abs(x) < 0.05f)
         {
-            _rigidbody.AddForce(MoveSpeed * Orientation.transform.right * Time.deltaTime * -mag.x * CounterMovementForce);
+            _rigidbody.AddForce(MoveForce * Orientation.transform.right * -mag.x * Math.Abs(mag.x) * DragForceCoefficient);
         }
-        if (Math.Abs(mag.y) > _minMovementThreshold && Math.Abs(y) < 0.05f
-            || (mag.y < -_minMovementThreshold && y > 0) || (mag.y > _minMovementThreshold && y < 0))
+        if (Math.Abs(mag.y) > _minMovementThreshold && Math.Abs(y) < 0.05f)
         {
-            _rigidbody.AddForce(MoveSpeed * Orientation.transform.forward * Time.deltaTime * -mag.y * CounterMovementForce);
+            _rigidbody.AddForce(MoveForce * Orientation.transform.forward * -mag.y * Math.Abs(mag.x) * DragForceCoefficient);
         }
 
         // Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
@@ -586,7 +580,7 @@ public class PlayerMovement : MonoBehaviour
                     if (_crouching)
                     {
                         // If landing on a floor, boost slide
-                        _rigidbody.AddForce(MoveSpeed * Orientation.transform.forward * Time.deltaTime * SlideLandingBoost);
+                        _rigidbody.AddForce(MoveForce * Orientation.transform.forward * SlideLandingBoost);
                     }
                 }
                 if (_jumping) _jumping = false;
