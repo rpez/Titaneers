@@ -51,11 +51,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float MouseSensitivity = 3;
     public float MoveForce = 90;
-    public float MaxSpeed = 20;
-    public float DragForceCoefficient = 0.175f;
+    public float MaxGroundSpeed = 50;
+    public float MaxAirSpeed = 100;
+    public float GroundResistance = 0.175f;
     public float MaxSlopeAngle = 35f;
     public float ResitanceThreshold = 200f;
-    public float AirResistance = 500f;
+    public float AirResistanceCoefficient = 10f;
     public float MinPullVelocity = 20f;
 
     [Header("Sliding")]
@@ -290,9 +291,6 @@ public class PlayerMovement : MonoBehaviour
             CurrentVelocity = _rigidbody.velocity;
         }
 
-        //Extra gravity
-        _rigidbody.AddForce(Vector3.down * 10);
-
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
         float xMag = mag.x, yMag = mag.y;
@@ -304,13 +302,14 @@ public class PlayerMovement : MonoBehaviour
         if (_readyToJump && _jumping) Jump();
 
         //Set max speed
-        float maxSpeed = this.MaxSpeed;
+        float maxSpeed = _grounded ? MaxGroundSpeed : MaxAirSpeed;
 
         if (_boosting)
         {
             Vector3 parallelComponent = Vector3.Project(_rigidbody.velocity, PlayerCamera.transform.forward);
             _rigidbody.velocity = parallelComponent;
-            _rigidbody.AddForce(PlayerCamera.transform.forward * BoosterStrength * Time.unscaledDeltaTime, ForceMode.Force);
+            _rigidbody.AddForce(PlayerCamera.transform.forward * BoosterStrength);
+            Debug.Log("Boosting");
         }
         //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
@@ -324,13 +323,18 @@ public class PlayerMovement : MonoBehaviour
         // Movement in air
         if (!_grounded)
         {
-            multiplier = 0.5f;
+            multiplier = 2f;
         }
 
         //Apply forces to move player
-        _rigidbody.AddForce(Orientation.transform.forward * _yInput * MoveForce * multiplier);
-        _rigidbody.AddForce(Orientation.transform.right * _xInput * MoveForce * multiplier);
-
+        //not on y axis direction
+        Vector3 forward = Orientation.transform.forward;
+        Vector3 right = Orientation.transform.right;
+        forward.y = 0; forward.Normalize();
+        right.y = 0; right.Normalize();
+        _rigidbody.AddForce(forward * _yInput * MoveForce * multiplier);
+        _rigidbody.AddForce(right * _xInput * MoveForce * multiplier);
+        Debug.LogFormat("Forward force {0} {1} {2}", forward * _yInput * MoveForce * multiplier, _xInput, _yInput);
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
         if (_crouching && _grounded && _readyToJump)
         {
@@ -416,7 +420,7 @@ public class PlayerMovement : MonoBehaviour
             _boosting = true;
             _rigidbody.useGravity = false;
 
-            GameObject vfx =  GameObject.Instantiate(DashVFX, Orientation.transform);
+            GameObject vfx = GameObject.Instantiate(DashVFX, Orientation.transform);
             Destroy(vfx, 5f);
         }
     }
@@ -463,22 +467,14 @@ public class PlayerMovement : MonoBehaviour
     private void CounterMovement(float x, float y, Vector2 mag)
     {
         // If dashing, no forces affect the player
-        if (_boosting) return;
+        //if (_boosting) return;
 
-        // If airborne
+        // If airborne, Air Resistance F_d = C * v^2
         if (!_grounded || _jumping)
         {
-            float horizontalSpeed = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z).magnitude;
-            if (!Grapple.IsGrappling() && horizontalSpeed >= _minMovementThreshold)
-            {
-                // Start applying air resistance after velocity exceeds 100
-                // Cap the resitance at AirResistance
-                float resistance = (_rigidbody.velocity.magnitude - ResitanceThreshold) * 0.005f;
-                if (resistance < 0f) return;
-                if (resistance > 1f) resistance = 1f;
-                _rigidbody.AddForce(-resistance * _rigidbody.velocity.normalized * AirResistance);
-            }
-
+            float resistance = AirResistanceCoefficient * _rigidbody.velocity.magnitude * _rigidbody.velocity.magnitude;
+            _rigidbody.AddForce(-resistance * _rigidbody.velocity.normalized);
+            Debug.LogFormat("Air Force {0}", resistance * _rigidbody.velocity.normalized);
             return;
         }
 
@@ -489,23 +485,24 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        // Air resistance, F_d = C * v^2
+        //// Move resistance
         if (Math.Abs(mag.x) > _minMovementThreshold && Math.Abs(x) < 0.05f)
         {
-            _rigidbody.AddForce(MoveForce * Orientation.transform.right * -mag.x * Math.Abs(mag.x) * DragForceCoefficient);
+            _rigidbody.AddForce(MoveForce * Orientation.transform.right * -mag.x * GroundResistance);
         }
         if (Math.Abs(mag.y) > _minMovementThreshold && Math.Abs(y) < 0.05f)
         {
-            _rigidbody.AddForce(MoveForce * Orientation.transform.forward * -mag.y * Math.Abs(mag.x) * DragForceCoefficient);
+            _rigidbody.AddForce(MoveForce * Orientation.transform.forward * -mag.y * GroundResistance);
         }
+        Debug.LogFormat("Move resistance {0}", MoveForce * Orientation.transform.forward * -mag.y * GroundResistance);
 
-        // Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
-        if (Mathf.Sqrt((Mathf.Pow(_rigidbody.velocity.x, 2) + Mathf.Pow(_rigidbody.velocity.z, 2))) > MaxSpeed)
-        {
-            float fallspeed = _rigidbody.velocity.y;
-            Vector3 n = _rigidbody.velocity.normalized * MaxSpeed;
-            _rigidbody.velocity = new Vector3(n.x, fallspeed, n.z);
-        }
+        //// Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
+        //if (Mathf.Sqrt((Mathf.Pow(_rigidbody.velocity.x, 2) + Mathf.Pow(_rigidbody.velocity.z, 2))) > MaxGroundSpeed)
+        //{
+        //    float fallspeed = _rigidbody.velocity.y;
+        //    Vector3 n = _rigidbody.velocity.normalized * MaxGroundSpeed;
+        //    _rigidbody.velocity = new Vector3(n.x, fallspeed, n.z);
+        //}
     }
 
     private void Animate()
