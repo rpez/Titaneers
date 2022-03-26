@@ -112,8 +112,7 @@ public class GrapplingGun : MonoBehaviour
         {
             _ui.ActiveIndicator(true);
             float distanceRatio = hit.distance / Range;
-            float anchorX = Mathf.Clamp(distanceRatio / indicatorRange, 0.5f, 1);
-            _ui.ChangeIndicator(anchorX);
+            _ui.ChangeIndicator(distanceRatio / indicatorRange);
             bool withinRange = distanceRatio <= 1 ? true : false;
             if (((1 << hit.collider.gameObject.layer) & GrappleLayer.value) <= 0)
             {

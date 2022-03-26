@@ -117,7 +117,7 @@ public class UI : MonoBehaviour
     {
         _topRangeIndicator.SetActive(true);
         Color color = Color.red;
-        if (!withInRange) color.a = 0.5f;
+        if (!withInRange) color.a = 0.3f;
         foreach (Image image in _rangeImage)
         {
             image.color = color;
@@ -131,6 +131,8 @@ public class UI : MonoBehaviour
 
     public void ChangeIndicator(float anchorX)
     {
+        if (anchorX > 0.5f) anchorX += 0.1f;        // reserver margin if without range
+        anchorX = Mathf.Clamp(anchorX, 0.5f, 1);
         foreach (RectTransform indicator in _rangeIndicators)
         {
             indicator.pivot = new Vector2(anchorX, indicator.pivot.y);
@@ -141,7 +143,7 @@ public class UI : MonoBehaviour
     {
         _topRangeIndicator.SetActive(false);
         Color color = _defaultCrosshairColor;
-        if (!withInRange) color.a = 0.5f;
+        if (!withInRange) color.a = 0.3f;
         foreach (Image image in _rangeImage)
         {
             image.color = color;
