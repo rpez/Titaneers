@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1691826801}
   - component: {fileID: 1691826802}
   - component: {fileID: 1691826803}
+  - component: {fileID: 6370058870413628874}
   m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
@@ -47,6 +48,23 @@ BoxCollider:
   m_Size: {x: 2.408844, y: 2.7633667, z: 3.3671875}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1691826803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691826800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055a64f95ef6f8847a87420f1f5ff1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _continuous: 0
+  _damage: 100
+  _layers:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!114 &6370058870413628874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,28 +355,31 @@ MonoBehaviour:
   Animator: {fileID: 1101589508}
   Grapple: {fileID: 2496024928567296264}
   Sword: {fileID: 2248262134983563429}
-  SwordHitbox: {fileID: 1691826803}
+  SwordHitbox: {fileID: 6370058870413628874}
   DashVFX: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
   AttackVFX: {fileID: 3668409308039402410, guid: 1b7c882bdddf3cf44803276a6a7b9f9c, type: 3}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 128
   MouseSensitivity: 5
-  MoveSpeed: 4500
-  MaxSpeed: 20
-  CounterMovementForce: 0.175
+  MoveForce: 50
+  MaxGroundSpeed: 50
+  MaxAirSpeed: 100
+  GroundResistance: 0.15
   MaxSlopeAngle: 35
-  ResitanceThreshold: 200
-  AirResistance: 500
+  ResitanceThreshold: 0
+  AirResistanceCoefficient: 0.005
+  AirResistFreeTimeWindow: 1
   MinPullVelocity: 50
+  AirExtraGravity: 50
   SlideLandingBoost: 1.5
   SlideForce: 400
   SlideCounterMovement: 0.2
-  BoosterStrength: 20000
-  MaxBoostAmount: 10
+  BoosterStrength: 500
+  MaxBoostAmount: 5000000
   BoostRechargeCooldown: 5
-  BoostRechargeRate: 10
-  BoostRechargeCap: 2
+  BoostRechargeRate: 0.1
+  BoostRechargeCap: 0.5
   BoostPowerUpAmount: 2.5
   JumpForce: 550
   SlowScale: 0.1
@@ -814,12 +835,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: Range
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 8002697790043786536}
+    - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
+      propertyPath: Dampening
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: GrappleSpeed
       value: 1500

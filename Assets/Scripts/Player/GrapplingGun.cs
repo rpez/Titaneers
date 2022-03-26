@@ -70,6 +70,8 @@ public class GrapplingGun : MonoBehaviour
     // Other variables
     private int _currentCharges;
     private float _currentTime;
+    private float _stopTimeStamp;
+    public float StopTimeStamp { get => _stopTimeStamp; }
     private Vector3 _defaultCameraPos;
     private Coroutine _launchRoutine;
 
@@ -322,6 +324,7 @@ public class GrapplingGun : MonoBehaviour
         if (_grapplePoint != null) Destroy(_grapplePoint);
         _isGrappling = false;
         _isLaunched = false;
+        _stopTimeStamp = Time.time;
         Destroy(_joint);
     }
 

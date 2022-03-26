@@ -57,7 +57,10 @@ public class PlayerMovement : MonoBehaviour
     public float MaxSlopeAngle = 35f;
     public float ResitanceThreshold = 200f;
     public float AirResistanceCoefficient = 10f;
+    public float AirResistFreeTimeWindow = 0.5f;     // free from air resist after grappling
     public float MinPullVelocity = 20f;
+    public float AirExtraGravity = 50f;
+    
 
     [Header("Sliding")]
     public float SlideLandingBoost = 10f;
@@ -291,6 +294,9 @@ public class PlayerMovement : MonoBehaviour
             CurrentVelocity = _rigidbody.velocity;
         }
 
+        if (!_grounded)
+            _rigidbody.AddForce(Vector3.down * AirExtraGravity);
+
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
         float xMag = mag.x, yMag = mag.y;
@@ -334,7 +340,6 @@ public class PlayerMovement : MonoBehaviour
         right.y = 0; right.Normalize();
         _rigidbody.AddForce(forward * _yInput * MoveForce * multiplier);
         _rigidbody.AddForce(right * _xInput * MoveForce * multiplier);
-        Debug.LogFormat("Forward force {0} {1} {2}", forward * _yInput * MoveForce * multiplier, _xInput, _yInput);
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
         if (_crouching && _grounded && _readyToJump)
         {
@@ -472,9 +477,12 @@ public class PlayerMovement : MonoBehaviour
         // If airborne, Air Resistance F_d = C * v^2
         if (!_grounded || _jumping)
         {
-            float resistance = AirResistanceCoefficient * _rigidbody.velocity.magnitude * _rigidbody.velocity.magnitude;
-            _rigidbody.AddForce(-resistance * _rigidbody.velocity.normalized);
-            Debug.LogFormat("Air Force {0}", resistance * _rigidbody.velocity.normalized);
+            if (!Grapple.IsGrappling())
+            {
+                float ratio = Mathf.Min((Time.time - Grapple.StopTimeStamp) / AirResistFreeTimeWindow, 1.0f);
+                float resistance = AirResistanceCoefficient * _rigidbody.velocity.magnitude * _rigidbody.velocity.magnitude;
+                _rigidbody.AddForce(-resistance * _rigidbody.velocity.normalized * ratio);
+            }
             return;
         }
 
@@ -494,7 +502,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _rigidbody.AddForce(MoveForce * Orientation.transform.forward * -mag.y * GroundResistance);
         }
-        Debug.LogFormat("Move resistance {0}", MoveForce * Orientation.transform.forward * -mag.y * GroundResistance);
 
         //// Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
         //if (Mathf.Sqrt((Mathf.Pow(_rigidbody.velocity.x, 2) + Mathf.Pow(_rigidbody.velocity.z, 2))) > MaxGroundSpeed)
