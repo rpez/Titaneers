@@ -358,7 +358,7 @@ MonoBehaviour:
   SwordHitbox: {fileID: 6370058870413628874}
   DashVFX: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
   AttackVFX: {fileID: 3668409308039402410, guid: 1b7c882bdddf3cf44803276a6a7b9f9c, type: 3}
-  VolumeProfile: {fileID: 0}
+  Camera: {fileID: 0}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -390,16 +390,6 @@ MonoBehaviour:
   ExplosionShakingRange: 20
   AttackTime: 0.5
   RecoverTime: 0.5
-  MotionBlurSettings:
-  - Speed: 0
-    Intensity: 0
-  - Speed: 200
-    Intensity: 30
-  - Speed: 250
-    Intensity: 50
-  - Speed: 300
-    Intensity: 300
-  VignetteIntensity: 0.2
 --- !u!54 &6965098877999748812
 Rigidbody:
   m_ObjectHideFlags: 0

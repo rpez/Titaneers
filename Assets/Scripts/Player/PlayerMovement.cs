@@ -47,7 +47,8 @@ public class PlayerMovement : MonoBehaviour
     public HitBox SwordHitbox;
     public GameObject DashVFX;
     public GameObject AttackVFX;
-    public Volume VolumeProfile;
+    public CameraBehaviour Camera;
+
     [Header("Layers")]
     public LayerMask GroundLayer;
 
@@ -97,11 +98,10 @@ public class PlayerMovement : MonoBehaviour
     public float AttackTime = 0.5f;
     public float RecoverTime = 0.5f;
 
-    [Header("Camera")]
-    public MotionBlurThreshold[] MotionBlurSettings;
-    public float VignetteIntensity = 2.0f;
+
 
     public Vector3 CurrentVelocity { get; private set; }
+    public bool IsBoosting { get => _boosting; }
 
     // Player state booleans
     private bool _grounded;
@@ -149,9 +149,6 @@ public class PlayerMovement : MonoBehaviour
 
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
     private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
-    private MotionBlur _motionBlurProfile;
-    private Vignette _vignetteProfile;
-    private float _curVignetteIntensity = 0f;
 
     public void StartPullTowards(GameObject target, Action onEnd)
     {
@@ -184,6 +181,8 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
 
         _timeManager.FreezeFrame(0.3f);
+
+        Camera.OnAttack();
     }
 
     private void Attack()
@@ -241,8 +240,7 @@ public class PlayerMovement : MonoBehaviour
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
         _currentBoostAmount = MaxBoostAmount * 0.2f;
         _currentSlowTime = MaxSlowTime;
-        VolumeProfile.profile.TryGet<MotionBlur>(out _motionBlurProfile);
-        VolumeProfile.profile.TryGet<Vignette>(out _vignetteProfile);
+        
     }
 
     private void FixedUpdate()
@@ -256,32 +254,6 @@ public class PlayerMovement : MonoBehaviour
         Look();
         Animate();
         UpdateCooldowns();
-        CameraPostProcessing();
-    }
-
-    private void CameraPostProcessing()
-    {
-        //motion blur
-        for (int i = MotionBlurSettings.Length - 1; i >= 0; i--)
-        {
-            if (CurrentVelocity.magnitude > MotionBlurSettings[i].Speed)
-            {
-                _motionBlurProfile.intensity.Override(MotionBlurSettings[i].Intensity);
-                break;
-            }
-        }
-
-        //vignette
-        if (_boosting)
-        {
-            _curVignetteIntensity = Mathf.Lerp(_curVignetteIntensity, VignetteIntensity, Time.deltaTime);
-            _vignetteProfile.intensity.Override(_curVignetteIntensity);
-        }
-        else
-        {
-            _curVignetteIntensity = Mathf.Lerp(_curVignetteIntensity, 0, Time.deltaTime);
-            _vignetteProfile.intensity.Override(_curVignetteIntensity);
-        }
     }
 
     /// <summary>
