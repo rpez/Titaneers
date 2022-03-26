@@ -31,6 +31,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -44,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     public HitBox SwordHitbox;
     public GameObject DashVFX;
     public GameObject AttackVFX;
-
+    public Volume VolumeProfile;
     [Header("Layers")]
     public LayerMask GroundLayer;
 
@@ -94,6 +97,10 @@ public class PlayerMovement : MonoBehaviour
     public float AttackTime = 0.5f;
     public float RecoverTime = 0.5f;
 
+    [Header("Camera")]
+    public MotionBlurThreshold[] MotionBlurSettings;
+    public float VignetteIntensity = 2.0f;
+
     public Vector3 CurrentVelocity { get; private set; }
 
     // Player state booleans
@@ -142,6 +149,9 @@ public class PlayerMovement : MonoBehaviour
 
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
     private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
+    private MotionBlur _motionBlurProfile;
+    private Vignette _vignetteProfile;
+    private float _curVignetteIntensity = 0f;
 
     public void StartPullTowards(GameObject target, Action onEnd)
     {
@@ -231,6 +241,8 @@ public class PlayerMovement : MonoBehaviour
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
         _currentBoostAmount = MaxBoostAmount * 0.2f;
         _currentSlowTime = MaxSlowTime;
+        VolumeProfile.profile.TryGet<MotionBlur>(out _motionBlurProfile);
+        VolumeProfile.profile.TryGet<Vignette>(out _vignetteProfile);
     }
 
     private void FixedUpdate()
@@ -244,6 +256,32 @@ public class PlayerMovement : MonoBehaviour
         Look();
         Animate();
         UpdateCooldowns();
+        CameraPostProcessing();
+    }
+
+    private void CameraPostProcessing()
+    {
+        //motion blur
+        for (int i = MotionBlurSettings.Length - 1; i >= 0; i--)
+        {
+            if (CurrentVelocity.magnitude > MotionBlurSettings[i].Speed)
+            {
+                _motionBlurProfile.intensity.Override(MotionBlurSettings[i].Intensity);
+                break;
+            }
+        }
+
+        //vignette
+        if (_boosting)
+        {
+            _curVignetteIntensity = Mathf.Lerp(_curVignetteIntensity, VignetteIntensity, Time.deltaTime);
+            _vignetteProfile.intensity.Override(_curVignetteIntensity);
+        }
+        else
+        {
+            _curVignetteIntensity = Mathf.Lerp(_curVignetteIntensity, 0, Time.deltaTime);
+            _vignetteProfile.intensity.Override(_curVignetteIntensity);
+        }
     }
 
     /// <summary>
@@ -294,7 +332,7 @@ public class PlayerMovement : MonoBehaviour
             CurrentVelocity = _rigidbody.velocity;
         }
 
-        if (!_grounded)
+        if (!_grounded && _rigidbody.useGravity)
             _rigidbody.AddForce(Vector3.down * AirExtraGravity);
 
         //Find actual velocity relative to where player is looking
@@ -315,7 +353,6 @@ public class PlayerMovement : MonoBehaviour
             Vector3 parallelComponent = Vector3.Project(_rigidbody.velocity, PlayerCamera.transform.forward);
             _rigidbody.velocity = parallelComponent;
             _rigidbody.AddForce(PlayerCamera.transform.forward * BoosterStrength);
-            Debug.Log("Boosting");
         }
         //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
@@ -622,4 +659,13 @@ public class PlayerMovement : MonoBehaviour
         }
         Debug.LogFormat("Current Boost {0}", _currentBoostAmount);
     }
+}
+
+[System.Serializable]
+public class MotionBlurThreshold
+{
+    [SerializeField]
+    public float Speed;
+    [SerializeField]
+    public float Intensity;
 }
