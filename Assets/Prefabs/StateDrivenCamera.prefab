@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2823984391702224856}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 755.15796, y: -482.58826, z: 485.366}
+  m_LocalPosition: {x: 755.15796, y: -394.68826, z: 485.366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -63,7 +63,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7632836, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2823984393222907339}
   - component: {fileID: 2823984393222907336}
+  - component: {fileID: 4719864560176342259}
   m_Layer: 0
   m_Name: StateDrivenCamera
   m_TagString: Untagged
@@ -190,6 +191,30 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: 788460410
     m_ParentHash: 756556552
+--- !u!114 &4719864560176342259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2823984393222907337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99e6a7324b4322429165bb31ac58b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerControl: {fileID: 0}
+  VolumeProfile: {fileID: 0}
+  MotionBlurSettings:
+  - Speed: 200
+    Intensity: 10
+  - Speed: 250
+    Intensity: 50
+  - Speed: 300
+    Intensity: 300
+  VignetteIntensity: 0.5
+  ImpactFilter: {r: 0.9411765, g: 0.9587264, b: 1, a: 1}
+  ImpactFilterTime: 0.3
 --- !u!1 &2823984393433517015
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7436427320389803074, guid: db3a62195a3f2c344a057403f6873965, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -482.58826
+      value: -394.68826
       objectReference: {fileID: 0}
     - target: {fileID: 7436427320389803074, guid: db3a62195a3f2c344a057403f6873965, type: 3}
       propertyPath: m_LocalPosition.z
@@ -340,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7436427320389803085, guid: db3a62195a3f2c344a057403f6873965, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7632836
+      value: 1.7777778
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3a62195a3f2c344a057403f6873965, type: 3}
