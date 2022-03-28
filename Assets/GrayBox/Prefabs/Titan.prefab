@@ -1556,6 +1556,7 @@ MonoBehaviour:
     UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"HorizontalDistance":{"_propertyPath":"TitanSensor.HorizontalDistance","_name":"HorizontalDistance","_id":"6ee2db6e-7261-4685-a461-ffe6ed68034e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"VerticalDistance":{"_propertyPath":"TitanSensor.VerticalDistance","_name":"VerticalDistance","_id":"aa0e04c7-f829-4261-a232-8eb870e65605","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"DirectionAngle":{"_propertyPath":"TitanSensor.DirectionAngle","_name":"DirectionAngle","_id":"43d08ab7-7a19-41cc-9afa-2c50da420bf2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentHealthPoint":{"_propertyPath":"Health.CurrentHealthPoint","_name":"CurrentHealthPoint","_id":"1988434b-1c83-4dcc-9874-7d26fadb24d2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences:
   - {fileID: 0}
@@ -1588,6 +1589,9 @@ MonoBehaviour:
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
   - _json: '{"_propertyPath":"TitanSensor.DirectionAngle","_name":"DirectionAngle","_id":"43d08ab7-7a19-41cc-9afa-2c50da420bf2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_propertyPath":"Health.CurrentHealthPoint","_name":"CurrentHealthPoint","_id":"1988434b-1c83-4dcc-9874-7d26fadb24d2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
 --- !u!114 &1350924253
