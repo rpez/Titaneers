@@ -2299,13 +2299,17 @@ PrefabInstance:
       propertyPath: _size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4930662339800858348, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4930662339800858349, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
       propertyPath: m_Name
       value: PowerUpSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 4930662339800858349, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4930662339800858350, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
       propertyPath: m_RootOrder
@@ -2349,6 +2353,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4930662339800858350, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4930662339800858351, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4930662339800858351, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}

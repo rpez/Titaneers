@@ -523,13 +523,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Animate()
     {
+        // [Note:wesley] Better to use animator with trigger
         if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
         {
             Animator.Play("Run");
         }
-        else if(!_grounded)
+        else if(!_grounded && !_jumping)
         {
             Animator.Play("Grappling");
+        }
+        else if(!_grounded)
+        {
+            Animator.Play("Jump");
         }
         else
         {
