@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2823984391702224859}
   - component: {fileID: 2823984391702224861}
   m_Layer: 0
-  m_Name: GrappleCamera
+  m_Name: AttackCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,12 +50,12 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 9
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 80
+    FieldOfView: 45
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -111,7 +111,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2823984393222907339}
-  - component: {fileID: 2823984393222907336}
   - component: {fileID: 4719864560176342259}
   m_Layer: 0
   m_Name: StateDrivenCamera
@@ -137,60 +136,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2823984393222907336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2823984393222907337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325a6a3050a061e4b8aa51386c30e8e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
-  m_AnimatedTarget: {fileID: 0}
-  m_LayerIndex: 0
-  m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 2823984392549550022}
-  - {fileID: 2823984391702224859}
-  m_Instructions:
-  - m_FullHash: 0
-    m_VirtualCamera: {fileID: 2823984392549550022}
-    m_ActivateAfter: 0
-    m_MinDuration: 0
-  - m_FullHash: -1905750017
-    m_VirtualCamera: {fileID: 2823984391702224859}
-    m_ActivateAfter: 0
-    m_MinDuration: 0
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 0.5
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_ParentHash:
-  - m_Hash: 1432961145
-    m_ParentHash: 756556552
-  - m_Hash: -827840423
-    m_ParentHash: 756556552
-  - m_Hash: -1905750017
-    m_ParentHash: 756556552
-  - m_Hash: 788460410
-    m_ParentHash: 756556552
 --- !u!114 &4719864560176342259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerControl: {fileID: 0}
   VolumeProfile: {fileID: 0}
+  FastMoveCamera: {fileID: 2823984392549550022}
+  AttackCamera: {fileID: 2823984391702224859}
   MotionBlurSettings:
   - Speed: 200
     Intensity: 10
@@ -215,6 +162,9 @@ MonoBehaviour:
   VignetteIntensity: 0.5
   ImpactFilter: {r: 0.9411765, g: 0.9587264, b: 1, a: 1}
   ImpactFilterTime: 0.3
+  minFov: 70
+  maxFov: 90
+  maxSpeed: 300
 --- !u!1 &2823984393433517015
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +226,7 @@ MonoBehaviour:
   ShoulderOffset: {x: 1.5, y: 0.4, z: 0}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 8
+  CameraDistance: 5
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 192

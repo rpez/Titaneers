@@ -204,6 +204,7 @@ public class PlayerMovement : MonoBehaviour
         _attacking = false;
         _recovering = true;
         SwordHitbox.gameObject.SetActive(false);
+        Camera.OnAttackEnd();
         StartCoroutine(Delay(RecoverTime, Recover));
     }
 
@@ -437,7 +438,7 @@ public class PlayerMovement : MonoBehaviour
             GameObject vfx = GameObject.Instantiate(DashVFX, Orientation.transform);
             Destroy(vfx, 5f);
         }
-    }
+    }   
 
     private void CancelBoost()
     {
@@ -528,13 +529,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Animator.Play("Run");
         }
-        else if(!_grounded && !_jumping)
-        {
-            Animator.Play("Grappling");
-        }
         else if(!_grounded)
         {
-            Animator.Play("Jump");
+            Animator.Play("Grappling");
         }
         else
         {
