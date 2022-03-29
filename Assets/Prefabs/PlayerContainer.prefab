@@ -835,6 +835,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
+      propertyPath: Rope
+      value: 
+      objectReference: {fileID: 4780982141628093127}
+    - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: Range
       value: 250
       objectReference: {fileID: 0}
@@ -870,6 +874,10 @@ PrefabInstance:
       propertyPath: GrappleLayer.m_Bits
       value: 1216
       objectReference: {fileID: 0}
+    - target: {fileID: 7729264469756827567, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2289ab151538abc43940fd095d32c637, type: 2}
     - target: {fileID: 7729264469756827568, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: m_Name
       value: Weapon
@@ -938,5 +946,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ff48f502a925b842a1d6694de18cc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4780982141628093127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 844708099777086563, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
+  m_PrefabInstance: {fileID: 5323382748623230628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadce7ed6247857488b61efa8981c5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

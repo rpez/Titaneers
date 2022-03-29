@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using DG.Tweening;
 // Script from: https://github.com/affaxltd/rope-tutorial
 
 public class GrapplingRope : MonoBehaviour
@@ -15,6 +15,7 @@ public class GrapplingRope : MonoBehaviour
     public float Velocity;
     public float WaveCount;
     public float WaveHeight;
+
     
     // other references
     private Spring _spring;
@@ -32,6 +33,16 @@ public class GrapplingRope : MonoBehaviour
     void Update()
     {
         DrawRope();
+    }
+
+    public void OnGrapplePowerUp()
+    {
+        Debug.Log("OnGrapplePowerUp");
+        Color originalColor = _lr.material.GetColor("_EmissiveColor");
+        Debug.Log(originalColor);
+        _lr.material.SetColor("_EmissiveColor", Color.blue * Mathf.Pow(2, 20));
+        // rope shining
+        DOTween.To(() => _lr.material.GetColor("_EmissiveColor"), x => _lr.material.SetColor("_EmissiveColor", x), Color.white, 2);
     }
 
     void DrawRope()

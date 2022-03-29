@@ -622,11 +622,11 @@ public class PlayerMovement : MonoBehaviour
         callback.Invoke();
     }
 
-    public void OnPowerUpCollected()
+    public void OnPowerUpCollected(float amount = 2.0f)
     {
         if (_currentBoostAmount < MaxBoostAmount)
         {
-            _currentBoostAmount += BoostPowerUpAmount;
+            _currentBoostAmount += amount;
             if (_currentBoostAmount > MaxBoostAmount) _currentBoostAmount = MaxBoostAmount;
         }
         Debug.LogFormat("Current Boost {0}", _currentBoostAmount);

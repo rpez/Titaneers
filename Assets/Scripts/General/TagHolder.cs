@@ -21,5 +21,6 @@ public class Tags
     public const string CROSSHAIR = "CrossHair";
     public const string PLAYER_TAG = "Player";
     public const string ENEMY_TAG = "Enemy";
+    public const string POWERUP_TAG = "PowerUp";
 
 }

@@ -39,6 +39,7 @@ public class GrapplingGun : MonoBehaviour
     [Header("Assign in editor")]
     public GameObject HitpointPrefab;
     public GameObject RedirectEffect;
+    public GrapplingRope Rope;
     public Transform GunTip, PlayerCamera, Player;
 
     [Header("Layers")]
@@ -227,11 +228,27 @@ public class GrapplingGun : MonoBehaviour
         {
             _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
         }
+
         _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
         _grapplePoint.transform.parent = hit.collider.transform;
         AkSoundEngine.PostEvent(GrappleShoot, gameObject);
         float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
         _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
+
+        if (hit.transform.gameObject.tag == Tags.POWERUP_TAG)
+        {
+            var powerUp = hit.transform.gameObject.GetComponent<NewPowerUp>();
+            StartCoroutine(OnGrapplePowerUp(powerUp));
+        }
+    }
+
+    private IEnumerator OnGrapplePowerUp(NewPowerUp powerup)
+    {
+        if (powerup == null) yield return null;
+        float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
+        yield return new WaitForSeconds(distance / GrappleSpeed);
+        Rope.OnGrapplePowerUp();
+        _playerScript.OnPowerUpCollected(powerup.ChargeAmount);
     }
 
     private void ConnectGrapple()
@@ -254,6 +271,8 @@ public class GrapplingGun : MonoBehaviour
         _joint.massScale = MassScale;
 
         _currentCharges--;
+
+
     }
 
     private void GainProjectileControl()
