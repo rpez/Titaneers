@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Projectile
   - Exploded
+  - PowerUp
   layers:
   - Default
   - TransparentFX
