@@ -145,10 +145,15 @@ public class UI : MonoBehaviour
         Color color = _defaultCrosshairColor;
         if (!withInRange)
         {
+            color = Color.red;
             color.a = 0.3f;
             _topRangeIndicator.SetActive(false);
         }
-        else _topRangeIndicator.SetActive(true);
+        else
+        {
+            _topRangeIndicator.SetActive(true);
+        } 
+            
         foreach (Image image in _rangeImage)
         {
             image.color = color;

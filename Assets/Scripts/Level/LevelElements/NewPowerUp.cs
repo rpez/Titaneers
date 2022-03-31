@@ -12,6 +12,7 @@ public class NewPowerUp : MonoBehaviour
     private Material _lightMat;
     private Color _originalColor;
 
+    public bool IsCharged { get => _isCharged; }
     // Start is called before the first frame update
     void Start()
     {

@@ -248,8 +248,11 @@ public class GrapplingGun : MonoBehaviour
         float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
         yield return new WaitForSeconds(distance / GrappleSpeed);
         Rope.OnGrapplePowerUp();
-        powerup.OnGrapple();
-        _playerScript.OnPowerUpCollected(powerup.ChargeAmount);
+        if (powerup.IsCharged)
+        {
+            powerup.OnGrapple();
+            _playerScript.OnPowerUpCollected(powerup.ChargeAmount);
+        }
     }
 
     private void ConnectGrapple()
