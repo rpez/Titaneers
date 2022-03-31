@@ -58,8 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af4b9cee94047e42bd3f0f4b812b926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChargeAmount: 2.5
-  RechargeCD: 10
+  ChargeAmount: 0.7
+  RechargeCD: 20
 --- !u!64 &3654708456412763073
 MeshCollider:
   m_ObjectHideFlags: 0

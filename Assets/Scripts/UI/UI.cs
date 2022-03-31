@@ -115,13 +115,14 @@ public class UI : MonoBehaviour
 
     public void ChangeCrosshairIleagal(bool withInRange)
     {
-        _topRangeIndicator.SetActive(true);
-        Color color = Color.red;
-        if (!withInRange) color.a = 0.3f;
-        foreach (Image image in _rangeImage)
-        {
-            image.color = color;
-        }
+        _rangeIndicator.SetActive(false);
+        //_topRangeIndicator.SetActive(true);
+        //Color color = Color.red;
+        //if (!withInRange) color.a = 0.3f;
+        //foreach (Image image in _rangeImage)
+        //{
+        //    image.color = color;
+        //}
     }
 
     public void ActiveIndicator(bool active)
@@ -141,9 +142,13 @@ public class UI : MonoBehaviour
 
     public void ResetCrosshairColor(bool withInRange)
     {
-        _topRangeIndicator.SetActive(false);
         Color color = _defaultCrosshairColor;
-        if (!withInRange) color.a = 0.3f;
+        if (!withInRange)
+        {
+            color.a = 0.3f;
+            _topRangeIndicator.SetActive(false);
+        }
+        else _topRangeIndicator.SetActive(true);
         foreach (Image image in _rangeImage)
         {
             image.color = color;
