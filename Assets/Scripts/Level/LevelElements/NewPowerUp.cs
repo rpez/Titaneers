@@ -9,10 +9,15 @@ public class NewPowerUp : MonoBehaviour
     public float RechargeCD = 10f;
 
     private bool _isCharged = true;
-    
+    private Material _lightMat;
+    private Color _originalColor;
+
     // Start is called before the first frame update
     void Start()
     {
+        _lightMat = GetComponent<MeshRenderer>().material;
+        _originalColor = _lightMat.GetColor("_EmissiveColor");
+        _lightMat.SetColor("_EmissiveColor", _originalColor * Mathf.Pow(2, 6));
     }
 
     public void OnGrapple()
@@ -22,10 +27,13 @@ public class NewPowerUp : MonoBehaviour
 
     public IEnumerator OnGrappleEx()
     {
+        Debug.Log("OnGrappleEx");
         _isCharged = false;
         // disable VFX
+        _lightMat.SetColor("_EmissiveColor", _originalColor);
         yield return new WaitForSeconds(RechargeCD);
         // enable VFX
+        _lightMat.SetColor("_EmissiveColor", _originalColor * Mathf.Pow(2, 6));
         _isCharged = true;
     }
 }
