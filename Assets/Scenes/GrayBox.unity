@@ -6722,6 +6722,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1950363726270861325, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 22.699951
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950363726270861325, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 168.15002
+      objectReference: {fileID: 0}
     - target: {fileID: 2213354223143229743, guid: 32c3e0565179f8c4f9ba7df9f5c4dbd3, type: 3}
       propertyPath: playerMovement
       value: 
@@ -6839,6 +6847,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1691826800, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691826802, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_Size.x
+      value: 3.7165833
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691826802, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_Size.y
+      value: 3.0751038
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691826802, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_Size.z
+      value: 6.083374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691826802, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691826802, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691826802, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2496024928567296264, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: PlayerCamera
       value: 

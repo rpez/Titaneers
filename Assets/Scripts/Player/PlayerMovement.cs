@@ -95,10 +95,9 @@ public class PlayerMovement : MonoBehaviour
     public float ExplosionShakingRange = 20f;
 
     [Header("Attacking")]
+    public float AttackWindup = 0.2f;
     public float AttackTime = 0.5f;
     public float RecoverTime = 0.5f;
-
-
 
     public Vector3 CurrentVelocity { get; private set; }
     public bool IsBoosting { get => _boosting; }
@@ -185,18 +184,25 @@ public class PlayerMovement : MonoBehaviour
         Camera.OnAttack();
     }
 
-    private void Attack()
+    private void StartAttack()
     {
         if (!_attacking && !_recovering)
         {
-            GameObject vfx = GameObject.Instantiate(AttackVFX, Sword.transform);
-            Destroy(vfx, 5f);
-
-            SwordHitbox.gameObject.SetActive(true);
-            SwordHitbox.Initialize(CurrentVelocity.magnitude, AttackImpact);
             _attacking = true;
-            StartCoroutine(Delay(AttackTime, EndAttack));
+            Animator.Play("attack");
+            StartCoroutine(Delay(AttackWindup, AttackDamage));
         }
+    }
+
+    private void AttackDamage()
+    {
+        GameObject vfx = GameObject.Instantiate(AttackVFX, Sword.transform);
+        Destroy(vfx, 5f);
+
+        SwordHitbox.gameObject.SetActive(true);
+        SwordHitbox.Initialize(CurrentVelocity.magnitude, AttackImpact);
+
+        StartCoroutine(Delay(AttackTime, EndAttack));
     }
 
     private void EndAttack()
@@ -284,7 +290,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Attack();
+            StartAttack();
         }
     }
 
@@ -525,18 +531,18 @@ public class PlayerMovement : MonoBehaviour
     private void Animate()
     {
         // [Note:wesley] Better to use animator with trigger
-        if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
-        {
-            Animator.Play("Run");
-        }
-        else if(!_grounded)
-        {
-            Animator.Play("Grappling");
-        }
-        else
-        {
-            Animator.Play("Idle");
-        }
+        //if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
+        //{
+        //    Animator.Play("Run");
+        //}
+        //else if(!_grounded)
+        //{
+        //    Animator.Play("Grappling");
+        //}
+        //else
+        //{
+        //    Animator.Play("Idle");
+        //}
         PlayerAvatar.transform.eulerAngles = new Vector3(
             PlayerAvatar.transform.eulerAngles.x,
             Orientation.eulerAngles.y,
