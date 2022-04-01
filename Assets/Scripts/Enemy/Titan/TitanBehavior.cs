@@ -1,23 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RootMotion.FinalIK;
 
 public class TitanBehavior : MonoBehaviour
 {
-    [SerializeField]
-    private AnimationCurve _lanternLightRangeCurve;
-    [SerializeField]
-    private GameObject _lanternLight;
+    public bool SwordExist { get; set; }
 
-    public IEnumerator LanternAttack()
+    [SerializeField]
+    private float _normalPlaySpeed;
+    [SerializeField]
+    private Animator _animator;
+
+    [SerializeField]
+    private LookAtIK _ik;
+
+    [Header("Hitboxs")]
+    [SerializeField]
+    private Transform _swordHitbox;
+    [SerializeField]
+    private Transform _lanternHitbox;
+
+    private void Start()
     {
-        float length = _lanternLightRangeCurve.keys[_lanternLightRangeCurve.length - 1].time;
-        float timer = 0;
-        while(timer<length)
+        SwordExist = true;
+    }
+
+    private void Update()
+    {
+        //IK
+        _ik.solver.SetLookAtWeight(_animator.GetFloat("IKWeight"));
+
+        //Play Speed
+        _animator.speed = _normalPlaySpeed * _animator.GetFloat("PlaySpeed");
+
+        //Hitbox
+        if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Sword"))
         {
-            _lanternLight.transform.localScale = Vector3.one * _lanternLightRangeCurve.Evaluate(timer);
-            timer += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            _swordHitbox.transform.localScale = Vector3.one* _animator.GetFloat("HitboxSize");
+        }
+        else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Lantern"))
+        {
+            _lanternHitbox.transform.localScale = Vector3.one * _animator.GetFloat("HitboxSize");
+        }
+        else
+        {
+            _swordHitbox.transform.localScale = Vector3.zero;
+            _lanternHitbox.transform.localScale = Vector3.zero;
         }
     }
 }

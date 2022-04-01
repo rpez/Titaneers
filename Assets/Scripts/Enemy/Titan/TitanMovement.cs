@@ -50,5 +50,6 @@ public class TitanMovement : MonoBehaviour
     public void Stop()
     {
         _agent.isStopped = _isStopped = true;
+        _agent.SetDestination(transform.position);
     }
 }

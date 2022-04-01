@@ -48,4 +48,9 @@ public class Health : MonoBehaviour
     {
         return _currentHealthPoint <= 0;
     }
+
+    private void Update()
+    {
+        Debug.Log(_currentHealthPoint);
+    }
 }

@@ -9,8 +9,6 @@ public class Weakness : MonoBehaviour
     private Health _mainHealth;
     [SerializeField]
     private float _damage;
-    [SerializeField]
-    private UnityEvent _destroiedEvent;
 
     public void SetDamage(float damage)
     {
@@ -20,6 +18,5 @@ public class Weakness : MonoBehaviour
     public void Destroied()
     {
         _mainHealth.ReduceHealthPoint(_damage);
-        _destroiedEvent.Invoke();
     }
 }
