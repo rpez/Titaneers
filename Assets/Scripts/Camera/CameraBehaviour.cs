@@ -23,28 +23,43 @@ public class CameraBehaviour : MonoBehaviour
     //public CinemachineVirtualCamera FollowCamera;
     public CinemachineVirtualCamera FastMoveCamera;
     public CinemachineVirtualCamera AttackCamera;
+    public ParticleSystem SpeedLine;
 
     [Header("Setting")]
-    public MotionBlurThreshold[] MotionBlurSettings;
     public float VignetteIntensity = 0.3f;
     public Color ImpactFilter = Color.blue;
     public float ImpactFilterTime = 0.3f;
     public float minFov = 70f;
     public float maxFov = 90f;
+    public float minDistortion = 0f;
+    public float maxDistortion = 0.6f;
     public float maxSpeed = 300f;
+    public float minSpeedlineThredhold = 200f;
+    public float maxSpeedlineThredhold = 300f;
+    public float minSpeedlineRate = 0f;
+    public float maxSpeedlineRate = 50f;
+    public float minShakeThredhold = 290f;
+    public float maxShakeThredhold = 320f;
+    public float minShakeIntensity = 0f;
+    public float maxShakeIntensity = 5f;
 
-    private MotionBlur _motionBlurProfile;
+
+    private LensDistortion _lensDistortionProfile;
     private Vignette _vignetteProfile;
     private ColorAdjustments _colorProfile;
     private float _curVignetteIntensity = 0f;
     private Color _curColor;
+    private CinemachineBasicMultiChannelPerlin _noise;
+
     // Start is called before the first frame update
     void Start()
     {
-        VolumeProfile.profile.TryGet<MotionBlur>(out _motionBlurProfile);
+        VolumeProfile.profile.TryGet<LensDistortion>(out _lensDistortionProfile);
         VolumeProfile.profile.TryGet<Vignette>(out _vignetteProfile);
         VolumeProfile.profile.TryGet<ColorAdjustments>(out _colorProfile);
         _curColor = _colorProfile.colorFilter.value;
+        _noise = FastMoveCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
         SwitchCamera(CameraType.FastMove);
     }
 
@@ -55,15 +70,10 @@ public class CameraBehaviour : MonoBehaviour
         float targetFov = Mathf.Lerp(minFov, maxFov, PlayerControl.CurrentVelocity.magnitude / maxSpeed);
         FastMoveCamera.m_Lens.FieldOfView = Mathf.Lerp(FastMoveCamera.m_Lens.FieldOfView, targetFov, 2 * Time.deltaTime);
 
-        //motion blur
-        for (int i = MotionBlurSettings.Length - 1; i >= 0; i--)
-        {
-            if (PlayerControl.CurrentVelocity.magnitude > MotionBlurSettings[i].Speed)
-            {
-                _motionBlurProfile.intensity.Override(MotionBlurSettings[i].Intensity);
-                break;
-            }
-        }
+        //lensDistortion
+        float targetDistortion = Mathf.Lerp(minDistortion, maxDistortion, PlayerControl.CurrentVelocity.magnitude / maxSpeed);
+        targetDistortion = Mathf.Lerp(Mathf.Abs(_lensDistortionProfile.intensity.value), targetDistortion, 2 * Time.deltaTime);
+        _lensDistortionProfile.intensity.Override(-targetDistortion);
 
         //vignette
         if (PlayerControl.IsBoosting)
@@ -76,6 +86,20 @@ public class CameraBehaviour : MonoBehaviour
             _curVignetteIntensity = Mathf.Lerp(_curVignetteIntensity, 0, Time.deltaTime);
             _vignetteProfile.intensity.Override(_curVignetteIntensity);
         }
+
+        // Camera Shake
+        float shakeRatio = (PlayerControl.CurrentVelocity.magnitude - minShakeThredhold) / (maxShakeThredhold - minShakeThredhold);
+        shakeRatio = Mathf.Clamp(shakeRatio, 0, 1.0f);
+        float shakeIntensity = Mathf.Lerp(minShakeIntensity, maxShakeIntensity, shakeRatio);
+        Noise(shakeIntensity, 2.0f);
+
+        // Speed Line
+        float ratio = (PlayerControl.CurrentVelocity.magnitude - minSpeedlineThredhold) / (maxSpeedlineThredhold - minSpeedlineThredhold);
+        ratio = Mathf.Clamp(ratio, 0, 1.0f);
+        var emission = SpeedLine.emission;
+        emission.rateOverTime = Mathf.Lerp(minSpeedlineRate, maxSpeedlineRate, ratio);
+
+
     }
 
     public void OnAttack()
@@ -133,5 +157,19 @@ public class CameraBehaviour : MonoBehaviour
         _colorProfile.colorFilter.Override(Color.white);
     }
 
+    public void Noise(float amplitudeGain, float frequencyGain)
+    {
+        // not good
+        _noise.m_AmplitudeGain = amplitudeGain;
+        _noise.m_FrequencyGain = frequencyGain;
+    }
 }
 
+[System.Serializable]
+public class ThresholdSetting
+{
+    [SerializeField]
+    public float Speed;
+    [SerializeField]
+    public float Intensity;
+}

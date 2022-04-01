@@ -635,11 +635,3 @@ public class PlayerMovement : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class MotionBlurThreshold
-{
-    [SerializeField]
-    public float Speed;
-    [SerializeField]
-    public float Intensity;
-}
