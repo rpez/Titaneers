@@ -100,6 +100,6 @@ public class TimeManager : MonoBehaviour
 
     private void ResetFreeze()
     {
-        Time.timeScale = _currentTimeScale;
+        Time.timeScale = 1f;
     }
 }
