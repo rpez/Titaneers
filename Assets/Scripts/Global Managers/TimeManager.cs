@@ -27,6 +27,7 @@ public class TimeManager : MonoBehaviour
     {
         _defaultFixedDeltaTime = Time.fixedDeltaTime;
         _postProcessingManager = GameObject.Find("Volumes").GetComponent<PostProcessingManager>();
+        Time.timeScale = 1f;
     }
 
     private void Update()
