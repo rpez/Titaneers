@@ -6315,6 +6315,26 @@ PrefabInstance:
       propertyPath: solver.target
       value: 
       objectReference: {fileID: 2496024928203559706}
+    - target: {fileID: 1056978924292957039, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: m_Height
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056978924292957039, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: m_Radius
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056978924292957039, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: m_Center.y
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056978924292957039, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775114635599618069, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Name
       value: Titan
