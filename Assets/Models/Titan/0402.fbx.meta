@@ -7,11 +7,20 @@ ModelImporter:
       74: 8524704711037568912
     second: metarig|dead
   - first:
+      74: -1191259657499039299
+    second: metarig|IDEL
+  - first:
       74: -3629419861476897854
     second: metarig|Melee
   - first:
+      74: -1378042463595896253
+    second: metarig|MISSILE
+  - first:
       74: -3314873423197340184
     second: metarig|swing the sword
+  - first:
+      74: -2285588546750935442
+    second: metarig|swing the sword 0403
   - first:
       74: 2933577835342229695
     second: metarig|Walk

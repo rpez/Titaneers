@@ -601,6 +601,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &511003886 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4805554264778525811, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+  m_PrefabInstance: {fileID: 1350924250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &581876909
 GameObject:
   m_ObjectHideFlags: 0
@@ -6322,10 +6327,18 @@ PrefabInstance:
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _objectReferences.Array.data[2]
+      value: 
+      objectReference: {fileID: 511003886}
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _serializedVariables.Array.data[9]._json
       value: '{"_propertyPath":"TitanBehavior.SwordExist","_name":"SwordExist","_id":"60163a8b-dd37-4f27-b1e4-560ec3208f10","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
       objectReference: {fileID: 0}
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _serializedVariables.Array.data[4]._references.Array.data[1]
+      value: 
+      objectReference: {fileID: 511003886}
     - target: {fileID: 1633277555, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _target
       value: 
@@ -6334,6 +6347,10 @@ PrefabInstance:
       propertyPath: solver.target
       value: 
       objectReference: {fileID: 2496024928203559706}
+    - target: {fileID: 1249713179210354304, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4293620713577165773, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: swordExist
       value: 0
