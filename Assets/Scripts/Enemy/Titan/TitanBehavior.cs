@@ -32,7 +32,7 @@ public class TitanBehavior : MonoBehaviour
         _ik.solver.SetLookAtWeight(_animator.GetFloat("IKWeight"));
 
         //Play Speed
-        _animator.speed = _normalPlaySpeed * _animator.GetFloat("PlaySpeed");
+        _animator.speed = _normalPlaySpeed;// * _animator.GetFloat("PlaySpeed");
 
         //Hitbox
         if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Sword"))
