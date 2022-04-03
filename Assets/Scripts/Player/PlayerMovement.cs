@@ -331,8 +331,13 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (_pulling && _target != null)
+        if (_pulling)
         {
+            if (_target == null)
+            {
+                StopPull();
+                return;
+            }
             _pullDirection = _target.transform.position - transform.position;
             transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
             if (_pullDirection.magnitude < 5f)
