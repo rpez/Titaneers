@@ -145,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject _target;
     private Action _onReachtarget;
     private Vector3 _pullVelocity;
+    private Vector3 _pullDirection;
 
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
     private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
@@ -162,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopPull()
     {
-        _rigidbody.velocity = _pullVelocity;
+        _rigidbody.velocity = _pullVelocity.magnitude * _pullDirection.normalized;
         _rigidbody.useGravity = true;
         _pulling = false;
 
@@ -177,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
 
         StopPull();
 
-        _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
+        _rigidbody.velocity = -_pullDirection.normalized * _pullVelocity.magnitude + Vector3.up * _pullVelocity.magnitude;
 
         EventManager.OnFreezeFrame(0.5f);
 
@@ -187,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator FreezeCharacter(float time)
     {
         Animator.speed = 0.01f;
-        Vector3 velocity = _rigidbody.velocity;
+        Vector3 velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
         _rigidbody.velocity = Vector3.zero;
         _frozen = true;
 
@@ -332,9 +333,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (_pulling && _target != null)
         {
-            Vector3 distance = _target.transform.position - transform.position;
-            transform.Translate(distance.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
-            if (distance.magnitude < 5f)
+            _pullDirection = _target.transform.position - transform.position;
+            transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
+            if (_pullDirection.magnitude < 5f)
             {
                 StopPull();
             } 
