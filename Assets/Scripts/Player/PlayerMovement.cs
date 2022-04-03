@@ -31,9 +31,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
-
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -48,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject DashVFX;
     public GameObject AttackVFX;
     public CameraBehaviour Camera;
+    public Collider PlayerCollider;
 
     [Header("Layers")]
     public LayerMask GroundLayer;
@@ -183,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
         EventManager.OnFreezeFrame(0.5f);
 
         Camera.OnAttack();
+        Camera.NoiseImpulse(_pullVelocity.magnitude * 0.04f, 6f, 0.7f);
     }
 
     private IEnumerator FreezeCharacter(float time)

@@ -50,6 +50,8 @@ public class CameraBehaviour : MonoBehaviour
     private float _curVignetteIntensity = 0f;
     private Color _curColor;
     private CinemachineBasicMultiChannelPerlin _noise;
+    private CinemachineBasicMultiChannelPerlin _attackNoise;
+    private bool _overrideNoise;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,7 @@ public class CameraBehaviour : MonoBehaviour
         VolumeProfile.profile.TryGet<ColorAdjustments>(out _colorProfile);
         _curColor = _colorProfile.colorFilter.value;
         _noise = FastMoveCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _attackNoise = AttackCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         SwitchCamera(CameraType.FastMove);
     }
@@ -88,11 +91,14 @@ public class CameraBehaviour : MonoBehaviour
         }
 
         // Camera Shake
-        float shakeRatio = (PlayerControl.CurrentVelocity.magnitude - minShakeThredhold) / (maxShakeThredhold - minShakeThredhold);
-        shakeRatio = Mathf.Clamp(shakeRatio, 0, 1.0f);
-        float shakeIntensity = Mathf.Lerp(minShakeIntensity, maxShakeIntensity, shakeRatio);
-        Noise(shakeIntensity, 2.0f);
-
+        if (!_overrideNoise)
+        {
+            float shakeRatio = (PlayerControl.CurrentVelocity.magnitude - minShakeThredhold) / (maxShakeThredhold - minShakeThredhold);
+            shakeRatio = Mathf.Clamp(shakeRatio, 0, 1.0f);
+            float shakeIntensity = Mathf.Lerp(minShakeIntensity, maxShakeIntensity, shakeRatio);
+            Noise(shakeIntensity, 2.0f);
+        }
+        
         // Speed Line
         float ratio = (PlayerControl.CurrentVelocity.magnitude - minSpeedlineThredhold) / (maxSpeedlineThredhold - minSpeedlineThredhold);
         ratio = Mathf.Clamp(ratio, 0, 1.0f);
@@ -106,6 +112,7 @@ public class CameraBehaviour : MonoBehaviour
     {
         StartCoroutine(AddColorFilter());
         SwitchCamera(CameraType.Attack);
+
     }
     public void OnAttackEnd()
     {
@@ -162,6 +169,22 @@ public class CameraBehaviour : MonoBehaviour
         // not good
         _noise.m_AmplitudeGain = amplitudeGain;
         _noise.m_FrequencyGain = frequencyGain;
+
+        _attackNoise.m_AmplitudeGain = amplitudeGain;
+        _attackNoise.m_FrequencyGain = frequencyGain;
+    }
+
+    public void NoiseImpulse(float amplitudeGain, float frequencyGain, float time)
+    {
+        Noise(amplitudeGain, frequencyGain);
+        _overrideNoise = true;
+        StartCoroutine(Delay(time, () => _overrideNoise = false));
+    }
+
+    private IEnumerator Delay(float time, Action callback)
+    {
+        yield return new WaitForSeconds(time);
+        callback.Invoke();
     }
 }
 

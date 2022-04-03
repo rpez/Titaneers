@@ -416,6 +416,7 @@ MonoBehaviour:
   DashVFX: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
   AttackVFX: {fileID: 3668409308039402410, guid: 1b7c882bdddf3cf44803276a6a7b9f9c, type: 3}
   Camera: {fileID: 0}
+  PlayerCollider: {fileID: 6965098877999748811}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 128
