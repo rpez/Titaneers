@@ -5,8 +5,32 @@ using UnityEngine.AI;
 
 public class TitanMovement : MonoBehaviour
 {
+    public Animator Anim;
+
     private NavMeshAgent _agent;
     private bool _isStopped;
+
+    private void Awake()
+    {
+        EventManager.FreezeFrame += FreezeForSeconds;
+    }
+
+    private void FreezeForSeconds(float time)
+    {
+        Debug.Log("FREEZE");
+        StartCoroutine(Freeze(time));
+    }
+
+    private IEnumerator Freeze(float time)
+    {
+        _isStopped = true;
+        Anim.speed = 0.01f;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        _isStopped = false;
+        Anim.speed = 1f;
+    }
 
     private void Update()
     {

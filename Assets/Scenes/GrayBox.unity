@@ -1317,6 +1317,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9031446a757894947af8fb28d97a1e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &830195790 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1217747169587841198, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+  m_PrefabInstance: {fileID: 1350924250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &850822191
 GameObject:
   m_ObjectHideFlags: 0
@@ -6315,26 +6320,10 @@ PrefabInstance:
       propertyPath: solver.target
       value: 
       objectReference: {fileID: 2496024928203559706}
-    - target: {fileID: 1056978924292957039, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_Height
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1056978924292957039, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_Radius
-      value: 0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 1056978924292957039, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_Center.y
-      value: -0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 1056978924292957039, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775114635599618069, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4326231144614824156, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: Anim
+      value: 
+      objectReference: {fileID: 830195790}
     - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Name
       value: Titan
@@ -6382,10 +6371,6 @@ PrefabInstance:
     - target: {fileID: 8119981910988450899, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783759227444261981, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _maxHealthPoint
-      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}

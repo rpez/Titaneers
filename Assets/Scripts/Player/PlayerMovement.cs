@@ -179,8 +179,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
 
-        //_timeManager.FreezeFrame(0.3f);
-        StartCoroutine(FreezeCharacter(0.5f));
+        EventManager.OnFreezeFrame(0.5f);
 
         Camera.OnAttack();
     }
@@ -229,6 +228,11 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Delay(RecoverTime, Recover));
     }
 
+    private void Freeze(float time)
+    {
+        StartCoroutine(FreezeCharacter(time));
+    }
+
     private void Recover()
     {
         _recovering = false;
@@ -249,6 +253,8 @@ public class PlayerMovement : MonoBehaviour
         _controls = new PlayerControls();
         _controlMapping = _controls.GroundMovement;
         _rigidbody = GetComponent<Rigidbody>();
+
+        EventManager.FreezeFrame += Freeze;
     }
 
     void Start()
