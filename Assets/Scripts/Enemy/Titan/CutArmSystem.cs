@@ -29,6 +29,7 @@ public class CutArmSystem : MonoBehaviour
 
         MeshCollider armMC = fallArm.AddComponent<MeshCollider>();
         armMC.sharedMesh = _fallArmMesh;
+        armMC.convex = true;
     }
 
     private void OnDestroy()
