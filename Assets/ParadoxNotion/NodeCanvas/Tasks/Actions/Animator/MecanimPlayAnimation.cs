@@ -41,18 +41,21 @@ namespace NodeCanvas.Tasks.Actions
 
             if ( waitUntilFinish ) {
 
-                if ( stateInfo.IsName(stateName.value) ) {
+                if (stateInfo.IsName(stateName.value))
+                {
 
                     played = true;
-                    if ( elapsedTime >= ( stateInfo.length / agent.speed ) ) {
+                    if (elapsedTime >= (stateInfo.length / agent.speed))
+                    {
                         EndAction();
                     }
 
-                } else if ( played ) {
+                }
+                else if (played)
+                {
 
                     EndAction();
                 }
-
             } else {
 
                 if ( elapsedTime >= transitTime ) {

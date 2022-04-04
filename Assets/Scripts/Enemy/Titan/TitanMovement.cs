@@ -8,6 +8,14 @@ public class TitanMovement : MonoBehaviour
     private NavMeshAgent _agent;
     private bool _isStopped;
 
+    public float MoveSpeed
+    {
+        get
+        {
+            return _agent.velocity.magnitude;
+        }
+    }
+
     private void Update()
     {
         if(!_isStopped)
@@ -51,5 +59,6 @@ public class TitanMovement : MonoBehaviour
     {
         _agent.isStopped = _isStopped = true;
         _agent.SetDestination(transform.position);
+        _agent.velocity = Vector3.zero;
     }
 }
