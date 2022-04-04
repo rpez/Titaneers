@@ -174,20 +174,20 @@ public class PlayerMovement : MonoBehaviour
         hitEffect.transform.localScale = hitEffect.transform.localScale * 10f;
         Destroy(hitEffect, 5f);
 
-        StopPull();
+        if (_pulling) StopPull();
 
-        _rigidbody.velocity = -_pullDirection.normalized * _pullVelocity.magnitude + Vector3.up * _pullVelocity.magnitude;
+        _rigidbody.velocity = -_rigidbody.velocity + Vector3.up * _rigidbody.velocity.magnitude;
 
         EventManager.OnFreezeFrame(0.5f);
 
         Camera.OnAttack();
-        Camera.NoiseImpulse(_pullVelocity.magnitude * 0.04f, 6f, 0.7f);
+        Camera.NoiseImpulse(_rigidbody.velocity.magnitude * 0.04f, 6f, 0.7f);
     }
 
     private IEnumerator FreezeCharacter(float time)
     {
         Animator.speed = 0.01f;
-        Vector3 velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
+        Vector3 velocity = _rigidbody.velocity;
         _rigidbody.velocity = Vector3.zero;
         _frozen = true;
 
@@ -260,8 +260,6 @@ public class PlayerMovement : MonoBehaviour
         _controls = new PlayerControls();
         _controlMapping = _controls.GroundMovement;
         _rigidbody = GetComponent<Rigidbody>();
-
-        EventManager.FreezeFrame += Freeze;
     }
 
     void Start()
