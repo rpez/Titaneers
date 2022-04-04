@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewPowerUp : MonoBehaviour
 {
-
+    public bool IsPowerUp = true;
     public float ChargeAmount = 2.5f;
     public float RechargeCD = 10f;
 
@@ -18,17 +18,18 @@ public class NewPowerUp : MonoBehaviour
     {
         _lightMat = GetComponent<MeshRenderer>().material;
         _originalColor = _lightMat.GetColor("_EmissiveColor");
-        _lightMat.SetColor("_EmissiveColor", _originalColor * Mathf.Pow(2, 6));
+        if (IsPowerUp)
+            _lightMat.SetColor("_EmissiveColor", _originalColor * Mathf.Pow(2, 6));
     }
 
     public void OnGrapple()
     {
+        if (!IsPowerUp) return;
         StartCoroutine(OnGrappleEx());
     }
 
     public IEnumerator OnGrappleEx()
     {
-        Debug.Log("OnGrappleEx");
         _isCharged = false;
         // disable VFX
         _lightMat.SetColor("_EmissiveColor", _originalColor);
