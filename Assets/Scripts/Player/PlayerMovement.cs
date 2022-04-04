@@ -181,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         EventManager.OnFreezeFrame(0.5f);
 
         Camera.OnAttack();
-        Camera.NoiseImpulse(_rigidbody.velocity.magnitude * 0.04f, 6f, 0.7f);
+        Camera.NoiseImpulse(30f, 6f, 0.7f);
     }
 
     private IEnumerator FreezeCharacter(float time)
