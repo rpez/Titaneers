@@ -90,11 +90,14 @@ public class CameraBehaviour : MonoBehaviour
             _vignetteProfile.intensity.Override(_curVignetteIntensity);
         }
 
-        // Camera Shake
-        float shakeRatio = (PlayerControl.CurrentVelocity.magnitude - minShakeThredhold) / (maxShakeThredhold - minShakeThredhold);
-        shakeRatio = Mathf.Clamp(shakeRatio, 0, 1.0f);
-        float shakeIntensity = Mathf.Lerp(minShakeIntensity, maxShakeIntensity, shakeRatio);
-        Noise(shakeIntensity, 2.0f);
+        if (!_overrideNoise)
+        {
+            // Camera Shake
+            float shakeRatio = (PlayerControl.CurrentVelocity.magnitude - minShakeThredhold) / (maxShakeThredhold - minShakeThredhold);
+            shakeRatio = Mathf.Clamp(shakeRatio, 0, 1.0f);
+            float shakeIntensity = Mathf.Lerp(minShakeIntensity, maxShakeIntensity, shakeRatio);
+            Noise(shakeIntensity, 2.0f);
+        }
 
         // Speed Line
         float ratio = (PlayerControl.CurrentVelocity.magnitude - minSpeedlineThredhold) / (maxSpeedlineThredhold - minSpeedlineThredhold);
