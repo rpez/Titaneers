@@ -31,9 +31,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
-
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -95,10 +92,9 @@ public class PlayerMovement : MonoBehaviour
     public float ExplosionShakingRange = 20f;
 
     [Header("Attacking")]
+    public float AttackWindup = 0.2f;
     public float AttackTime = 0.5f;
     public float RecoverTime = 0.5f;
-
-
 
     public Vector3 CurrentVelocity { get; private set; }
     public bool IsBoosting { get => _boosting; }
@@ -107,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _grounded;
     private bool _readyToJump = true;
     private bool _slowTime;
-    private bool _jumping, _sprinting, _crouching, _boosting, _pulling, _attacking, _recovering;
+    private bool _jumping, _sprinting, _crouching, _boosting, _pulling, _attacking, _recovering, _frozen;
     private bool _timeSlowChargeDelayed;
 
     // Other references
@@ -146,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject _target;
     private Action _onReachtarget;
     private Vector3 _pullVelocity;
+    private Vector3 _pullDirection;
 
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
     private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
@@ -163,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopPull()
     {
-        _rigidbody.velocity = _pullVelocity;
+        _rigidbody.velocity = _pullVelocity.magnitude * _pullDirection.normalized;
         _rigidbody.useGravity = true;
         _pulling = false;
 
@@ -176,27 +173,49 @@ public class PlayerMovement : MonoBehaviour
         hitEffect.transform.localScale = hitEffect.transform.localScale * 10f;
         Destroy(hitEffect, 5f);
 
-        StopPull();
+        if (_pulling) StopPull();
 
-        _rigidbody.velocity = -_pullVelocity + Vector3.up * _pullVelocity.magnitude;
+        _rigidbody.velocity = -_rigidbody.velocity + Vector3.up * _rigidbody.velocity.magnitude;
 
-        _timeManager.FreezeFrame(0.3f);
+        EventManager.OnFreezeFrame(0.5f);
 
         Camera.OnAttack();
+        Camera.NoiseImpulse(30f, 6f, 0.7f);
     }
 
-    private void Attack()
+    private IEnumerator FreezeCharacter(float time)
+    {
+        Animator.speed = 0.01f;
+        Vector3 velocity = _rigidbody.velocity;
+        _rigidbody.velocity = Vector3.zero;
+        _frozen = true;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        Animator.speed = 1.0f;
+        _rigidbody.velocity = velocity;
+        _frozen = false;
+    }
+
+    private void StartAttack()
     {
         if (!_attacking && !_recovering)
         {
-            GameObject vfx = GameObject.Instantiate(AttackVFX, Sword.transform);
-            Destroy(vfx, 5f);
-
-            SwordHitbox.gameObject.SetActive(true);
-            SwordHitbox.Initialize(CurrentVelocity.magnitude, AttackImpact);
             _attacking = true;
-            StartCoroutine(Delay(AttackTime, EndAttack));
+            Animator.Play("attack");
+            StartCoroutine(Delay(AttackWindup, AttackDamage));
         }
+    }
+
+    private void AttackDamage()
+    {
+        GameObject vfx = GameObject.Instantiate(AttackVFX, Sword.transform);
+        Destroy(vfx, 5f);
+
+        SwordHitbox.gameObject.SetActive(true);
+        SwordHitbox.Initialize(CurrentVelocity.magnitude, AttackImpact);
+
+        StartCoroutine(Delay(AttackTime, EndAttack));
     }
 
     private void EndAttack()
@@ -208,6 +227,11 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Delay(RecoverTime, Recover));
     }
 
+    private void Freeze(float time)
+    {
+        StartCoroutine(FreezeCharacter(time));
+    }
+
     private void Recover()
     {
         _recovering = false;
@@ -216,6 +240,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         _controls.Enable();
+        EventManager.FreezeFrame += Freeze;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.FreezeFrame -= Freeze;
     }
 
     private void OnDestroy()
@@ -284,17 +314,28 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Attack();
+            StartAttack();
         }
     }
 
     private void Movement()
     {
-        if (_pulling && _target != null)
+        if (_frozen)
         {
-            Vector3 distance = _target.transform.position - transform.position;
-            transform.Translate(distance.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
-            if (distance.magnitude < 5f)
+            _rigidbody.velocity = Vector3.zero;
+            return;
+        }
+
+        if (_pulling)
+        {
+            if (_target == null)
+            {
+                StopPull();
+                return;
+            }
+            _pullDirection = _target.transform.position - transform.position;
+            transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
+            if (_pullDirection.magnitude < 5f)
             {
                 StopPull();
             } 
@@ -525,18 +566,18 @@ public class PlayerMovement : MonoBehaviour
     private void Animate()
     {
         // [Note:wesley] Better to use animator with trigger
-        if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
-        {
-            Animator.Play("Run");
-        }
-        else if(!_grounded)
-        {
-            Animator.Play("Grappling");
-        }
-        else
-        {
-            Animator.Play("Idle");
-        }
+        //if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
+        //{
+        //    Animator.Play("Run");
+        //}
+        //else if(!_grounded)
+        //{
+        //    Animator.Play("Grappling");
+        //}
+        //else
+        //{
+        //    Animator.Play("Idle");
+        //}
         PlayerAvatar.transform.eulerAngles = new Vector3(
             PlayerAvatar.transform.eulerAngles.x,
             Orientation.eulerAngles.y,
