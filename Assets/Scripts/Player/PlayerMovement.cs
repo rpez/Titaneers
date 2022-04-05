@@ -566,18 +566,21 @@ public class PlayerMovement : MonoBehaviour
     private void Animate()
     {
         // [Note:wesley] Better to use animator with trigger
-        //if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
-        //{
-        //    Animator.Play("Run");
-        //}
-        //else if(!_grounded)
-        //{
-        //    Animator.Play("Grappling");
-        //}
-        //else
-        //{
-        //    Animator.Play("Idle");
-        //}
+        if (!_attacking)
+        {
+            if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
+            {
+                Animator.Play("run");
+            }
+            else if (!_grounded)
+            {
+                Animator.Play("grapple");
+            }
+            else
+            {
+                Animator.Play("idle");
+            }
+        }
         PlayerAvatar.transform.eulerAngles = new Vector3(
             PlayerAvatar.transform.eulerAngles.x,
             Orientation.eulerAngles.y,
