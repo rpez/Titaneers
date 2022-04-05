@@ -202,7 +202,7 @@ public class PlayerMovement : MonoBehaviour
         if (!_attacking && !_recovering)
         {
             _attacking = true;
-            Animator.Play("attack");
+            Animator.SetInteger("state", 3);
             StartCoroutine(Delay(AttackWindup, AttackDamage));
         }
     }
@@ -570,15 +570,15 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
             {
-                Animator.Play("run");
+                Animator.SetInteger("state", 1);
             }
             else if (!_grounded)
             {
-                Animator.Play("grapple");
+                Animator.SetInteger("state", 2);
             }
             else
             {
-                Animator.Play("idle");
+                Animator.SetInteger("state", 0);
             }
         }
         PlayerAvatar.transform.eulerAngles = new Vector3(
