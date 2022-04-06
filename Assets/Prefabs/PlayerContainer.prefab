@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &918715861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 918715862}
+  m_Layer: 12
+  m_Name: tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &918715862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918715861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 7.406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2832841484620274531}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691826800
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,8 +76,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.408844, y: 2.7633667, z: 3.3671875}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.61, y: 3.49, z: 8.32}
+  m_Center: {x: 0, y: 0, z: 1.8936768}
 --- !u!114 &1691826803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +141,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1691826801}
+  - {fileID: 918715862}
   m_Father: {fileID: 2496024927849926546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -354,9 +386,11 @@ MonoBehaviour:
   Animator: {fileID: 1288588383}
   Grapple: {fileID: 2496024928567296264}
   Sword: {fileID: 2248262134983563429}
+  SwordTip: {fileID: 918715861}
   SwordHitbox: {fileID: 6370058870413628874}
   DashVFX: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
   AttackVFX: {fileID: 3668409308039402410, guid: 1b7c882bdddf3cf44803276a6a7b9f9c, type: 3}
+  ImpactVFX: {fileID: 9065892664890786847, guid: 7e49746688621ba4789905e3d766442d, type: 3}
   Camera: {fileID: 0}
   GroundLayer:
     serializedVersion: 2

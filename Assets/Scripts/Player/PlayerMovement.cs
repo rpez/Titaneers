@@ -41,9 +41,11 @@ public class PlayerMovement : MonoBehaviour
     public Animator Animator;
     public GrapplingGun Grapple;
     public GameObject Sword;
+    public GameObject SwordTip;
     public HitBox SwordHitbox;
     public GameObject DashVFX;
     public GameObject AttackVFX;
+    public GameObject ImpactVFX;
     public CameraBehaviour Camera;
 
     [Header("Layers")]
@@ -167,10 +169,20 @@ public class PlayerMovement : MonoBehaviour
         if(_onReachtarget!=null)_onReachtarget.Invoke();
     }
 
-    private void AttackImpact()
+    private void AttackImpact(GameObject hitObject)
     {
-        GameObject hitEffect = GameObject.Instantiate(DashVFX, transform.position, Quaternion.identity);
-        hitEffect.transform.localScale = hitEffect.transform.localScale * 10f;
+        Vector3 hitDir = (hitObject.transform.position - SwordTip.transform.position).normalized;
+        GameObject hitEffect;
+        RaycastHit hit;
+        if (Physics.Raycast(SwordTip.transform.position, hitDir, out hit, 100f))
+        {
+            hitEffect = GameObject.Instantiate(ImpactVFX, hit.point, Quaternion.LookRotation(hit.transform.right, hit.normal));
+        }
+        else
+        {
+            hitEffect = GameObject.Instantiate(ImpactVFX, SwordTip.transform.position, Quaternion.identity);
+        }
+        //hitEffect = GameObject.Instantiate(ImpactVFX, SwordTip.transform.position + hitDir * 3f, Quaternion.identity);
         Destroy(hitEffect, 5f);
 
         if (_pulling) StopPull();
