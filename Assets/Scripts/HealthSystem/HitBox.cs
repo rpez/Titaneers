@@ -60,7 +60,7 @@ public class HitBox : MonoBehaviour
                     DealDamage(hurtBox);
                     if (_onHitCallback != null)
                     {
-                        _onHitCallback.Invoke();
+                        _onHitCallback.Invoke(other.gameObject);
                         _onHitCallback = null;
                     }
                 }
