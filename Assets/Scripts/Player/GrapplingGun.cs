@@ -41,6 +41,7 @@ public class GrapplingGun : MonoBehaviour
     public GameObject RedirectEffect;
     public GrapplingRope Rope;
     public Transform GunTip, PlayerCamera, Player;
+    public UI UIRef;
 
     [Header("Layers")]
     public LayerMask GrappleLayer;
@@ -61,7 +62,7 @@ public class GrapplingGun : MonoBehaviour
     private GameObject _grapplePoint;
     private SpringJoint _joint;
     private Missile _capturedMissile;
-    private UI _ui;
+    
     private TimeManager _timeManager;
     private PlayerMovement _playerScript;
 
@@ -94,7 +95,6 @@ public class GrapplingGun : MonoBehaviour
         _controls = new PlayerControls();
         _controlMapping = _controls.GroundMovement;
         _currentCharges = MaxCharges;
-        _ui = GameObject.Find("Canvas").GetComponent<UI>();
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
         _defaultCameraPos = PlayerCamera.transform.localPosition;
         _controlMapping = _controls.GroundMovement;
@@ -108,19 +108,19 @@ public class GrapplingGun : MonoBehaviour
         // UI update
         RaycastHit hit;
         bool intersect = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range * indicatorRange);
-        if (!intersect) _ui.ActiveIndicator(false);
+        if (!intersect) UIRef.ActiveIndicator(false);
         else
         {
-            _ui.ActiveIndicator(true);
+            UIRef.ActiveIndicator(true);
             float distanceRatio = hit.distance / Range;
-            _ui.ChangeIndicator(distanceRatio / indicatorRange);
+            UIRef.ChangeIndicator(distanceRatio / indicatorRange);
             bool withinRange = distanceRatio <= 1 ? true : false;
             if (((1 << hit.collider.gameObject.layer) & GrappleLayer.value) <= 0)
             {
                 // not grapplable area
-                _ui.ChangeCrosshairIleagal(withinRange);
+                UIRef.ChangeCrosshairIleagal(withinRange);
             }
-            else _ui.ResetCrosshairColor(withinRange);
+            else UIRef.ResetCrosshairColor(withinRange);
         }
 
 
@@ -200,7 +200,7 @@ public class GrapplingGun : MonoBehaviour
 
         RaycastHit hit;
         bool rayHit = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer);
-        GameObject crosshairTarget = _ui.GetCrosshairTarget();
+        GameObject crosshairTarget = UIRef.GetCrosshairTarget();
 
         // Check whether raycast or crosshair hit is closer
         if (crosshairTarget != null)
@@ -247,9 +247,9 @@ public class GrapplingGun : MonoBehaviour
         if (powerup == null) yield return null;
         float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
         yield return new WaitForSeconds(distance / GrappleSpeed);
-        Rope.OnGrapplePowerUp();
         if (powerup.IsCharged)
         {
+            Rope.OnGrapplePowerUp();
             powerup.OnGrapple();
             _playerScript.OnPowerUpCollected(powerup.ChargeAmount);
         }
@@ -282,7 +282,7 @@ public class GrapplingGun : MonoBehaviour
     private void GainProjectileControl()
     {
         _capturedMissile.GainControl(gameObject);
-        _ui.ChangeCrosshairStyle(true);
+        UIRef.ChangeCrosshairStyle(true);
         _controlling = true;
     }
 
@@ -331,7 +331,7 @@ public class GrapplingGun : MonoBehaviour
     private void ResetAfterRedirect()
     {
         StopGrapple();
-        _ui.ChangeCrosshairStyle(false);
+        UIRef.ChangeCrosshairStyle(false);
         _controlling = false;
 
         _capturedMissile = null;

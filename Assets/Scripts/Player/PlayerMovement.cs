@@ -335,7 +335,7 @@ public class PlayerMovement : MonoBehaviour
             }
             _pullDirection = _target.transform.position - transform.position;
             transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
-            if (_pullDirection.magnitude < 5f)
+            if (_pullDirection.magnitude < CurrentVelocity.magnitude * Time.deltaTime * 5)
             {
                 StopPull();
             } 
