@@ -877,8 +877,8 @@ MonoBehaviour:
   TextRef: {fileID: 1591548759144304761}
   Director: {fileID: 8863480911606917348}
   paths:
-  - Video/land_tu.mp4
-  - Video/attack_tu.mp4
+  - StreamingAssets/Video/land_tu.mp4
+  - StreamingAssets/Video/attack_tu.mp4
   hintMsg:
   - Press <b><i><color="blue">Space</color></i></b> button will pull you towards
     grappling point.
