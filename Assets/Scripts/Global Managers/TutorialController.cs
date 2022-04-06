@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.Playables;
 
 public class TutorialController : MonoBehaviour
 {
@@ -10,18 +12,38 @@ public class TutorialController : MonoBehaviour
     public VideoPlayer VideoPlayerRef;
     public Canvas TutorialCanvas;
     public Text TextRef;
+    public PlayableDirector Director;
     public string[] paths;
     public string[] hintMsg;
 
 
     private void Start()
     {
+        GameObject titan = GameObject.Find("Titan");
+        titan.SetActive(false);
+        Director.played += OnCutScenePlayed;
+        Director.stopped += OnCutSceneStopped;
     }
 
+
+    private void OnCutSceneStopped(PlayableDirector obj)
+    {
+        //throw new NotImplementedException();
+    }
+
+    private void OnCutScenePlayed(PlayableDirector obj)
+    {
+        //throw new NotImplementedException();
+    }
 
     public void OnCollisionBox(int idx)
     {
         PlayTutorial(idx);
+    }
+
+    internal void OnEnterCutScene(int cutSceneIdx)
+    {
+        Director.Play();
     }
 
     // Start is called before the first frame update
