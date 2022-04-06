@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 8bd613bd4fdccf45a54520a04ea11cfa
     GuidInternal: 
-    m_lastTime: -8585545940706063202
+    m_lastTime: -8585534761049151235
     List:
     - name: 2DAmbience
       guid: ab2dae2fec0c344c82616f5c3f472ccd
@@ -425,8 +425,100 @@ MonoBehaviour:
     ParentPath: Events/Player
     guid: f056f3278b069d4594dd75872401e966
     GuidInternal: 
-    m_lastTime: -8585561545688865438
+    m_lastTime: -8585523794298374982
     List: []
+  - PhysicalPath: Events/PlayerAttack.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerAttack
+      ObjectType: 12
+      guid: 23a78c06a5796441a2e7cb20cfec1792
+    ParentPath: Events/Player/PlayerAttack
+    guid: 23a78c06a5796441a2e7cb20cfec1792
+    GuidInternal: 
+    m_lastTime: -8585523794298115690
+    List:
+    - name: Play_player_sword_hit
+      guid: 4bdeca61df99e5428a2868e1a03df397
+      id: 2116655569
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 23a78c06a5796441a2e7cb20cfec1792
+      - ElementName: Play_player_sword_hit
+        ObjectType: 3
+        guid: 4bdeca61df99e5428a2868e1a03df397
+      Path: Events/Player/PlayerAttack/Play_player_sword_hit
+      maxAttenuation: 10
+      maxDuration: 1.213323
+      minDuration: 0.936715
+    - name: Play_player_sword_slash
+      guid: 98a4624d85dc844f8601680649f5284a
+      id: 4003404733
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 23a78c06a5796441a2e7cb20cfec1792
+      - ElementName: Play_player_sword_slash
+        ObjectType: 3
+        guid: 98a4624d85dc844f8601680649f5284a
+      Path: Events/Player/PlayerAttack/Play_player_sword_slash
+      maxAttenuation: 20
+      maxDuration: 0.935314
+      minDuration: 0.767795
+  - PhysicalPath: Events/PlayerBooster.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerBooster
+      ObjectType: 12
+      guid: 604dfbc0d1dd3f499fa1f0510655c320
+    ParentPath: Events/Player/PlayerBooster
+    guid: 604dfbc0d1dd3f499fa1f0510655c320
+    GuidInternal: 
+    m_lastTime: -8585523794297834804
+    List:
+    - name: Play_player_booster
+      guid: 78344c2b2364ee409662193c12e4c217
+      id: 142245832
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerBooster
+        ObjectType: 12
+        guid: 604dfbc0d1dd3f499fa1f0510655c320
+      - ElementName: Play_player_booster
+        ObjectType: 3
+        guid: 78344c2b2364ee409662193c12e4c217
+      Path: Events/Player/PlayerBooster/Play_player_booster
+      maxAttenuation: 20
+      maxDuration: 1.918741
+      minDuration: 1.549675
   - PhysicalPath: Events/PlayerFootsteps.wwu
     PathAndIcons:
     - ElementName: Events
@@ -767,7 +859,7 @@ MonoBehaviour:
     ParentPath: Events/Titan/TitanTrample
     guid: 990923041e89e54693c1a22979595819
     GuidInternal: 
-    m_lastTime: -8585559601894413674
+    m_lastTime: -8585534767016574948
     List:
     - name: Play_titan_trample_foot
       guid: 1798d363e93069409b5641958da5701f
@@ -929,7 +1021,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 050000000b0000000c000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

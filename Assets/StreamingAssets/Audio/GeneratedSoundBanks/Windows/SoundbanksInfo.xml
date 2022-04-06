@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="4159063206">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2657134375">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2773386270">
+		<SoundBank Id="3161908922" Language="SFX" Hash="236572219">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -52,6 +52,22 @@
 					<ActionSetSwitch>
 						<ActionSetSwitchEntry Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one"/>
 					</ActionSetSwitch>
+				</Event>
+				<Event Id="142245832" Name="Play_player_booster" ObjectPath="\Events\Player\PlayerBooster\Play_player_booster" MaxAttenuation="20." DurationType="OneShot" DurationMin="1.549675" DurationMax="1.918741">
+					<IncludedMemoryFiles>
+						<File Id="541344607" Language="SFX">
+							<ShortName>sfx_player_booster_1.wav</ShortName>
+							<Path>SFX/sfx_player_booster_1_10C4C929.wem</Path>
+						</File>
+						<File Id="730213433" Language="SFX">
+							<ShortName>sfx_player_booster_2.wav</ShortName>
+							<Path>SFX/sfx_player_booster_2_10C4C929.wem</Path>
+						</File>
+						<File Id="927044007" Language="SFX">
+							<ShortName>sfx_player_booster.wav</ShortName>
+							<Path>SFX/sfx_player_booster_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3625340534" Name="Play_player_fs_run_L" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_L" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
 					<IncludedMemoryFiles>
@@ -298,6 +314,38 @@
 						<File Id="807502362" Language="SFX">
 							<ShortName>sfx_player_jump_placeholder_1.wav</ShortName>
 							<Path>SFX/sfx_player_jump_placeholder_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
+					<IncludedMemoryFiles>
+						<File Id="260314807" Language="SFX">
+							<ShortName>sfx_player_sword_hit_4.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_4_10C4C929.wem</Path>
+						</File>
+						<File Id="507994656" Language="SFX">
+							<ShortName>sfx_player_sword_hit_5.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_5_10C4C929.wem</Path>
+						</File>
+						<File Id="937718784" Language="SFX">
+							<ShortName>sfx_player_sword_hit_3.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
+					<IncludedMemoryFiles>
+						<File Id="257300301" Language="SFX">
+							<ShortName>sfx_player_sword_slash_2.wav</ShortName>
+							<Path>SFX/sfx_player_sword_slash_2_10C4C929.wem</Path>
+						</File>
+						<File Id="305052931" Language="SFX">
+							<ShortName>sfx_player_sword_slash.wav</ShortName>
+							<Path>SFX/sfx_player_sword_slash_10C4C929.wem</Path>
+						</File>
+						<File Id="616774092" Language="SFX">
+							<ShortName>sfx_player_sword_slash_1.wav</ShortName>
+							<Path>SFX/sfx_player_sword_slash_1_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
