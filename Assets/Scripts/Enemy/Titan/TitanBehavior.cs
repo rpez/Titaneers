@@ -59,7 +59,7 @@ public class TitanBehavior : MonoBehaviour
     private void Update()
     {
         //IK
-        _ik.solver.SetLookAtWeight(_animator.GetFloat("IKWeight"));
+        _ik.solver.SetLookAtWeight(Mathf.Lerp(_ik.solver.IKPositionWeight, _animator.GetFloat("IKWeight"),0.5f));
 
         //Play Speed
         _animator.speed = _playSpeedMultiplier * _normalPlaySpeed * _animator.GetFloat("PlaySpeed");
