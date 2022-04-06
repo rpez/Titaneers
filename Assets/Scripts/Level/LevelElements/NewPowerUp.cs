@@ -8,7 +8,7 @@ public class NewPowerUp : MonoBehaviour
     public float ChargeAmount = 2.5f;
     public float RechargeCD = 10f;
 
-    private bool _isCharged = true;
+    private bool _isCharged = false;
     private Material _lightMat;
     private Color _originalColor;
 
@@ -19,7 +19,10 @@ public class NewPowerUp : MonoBehaviour
         _lightMat = GetComponent<MeshRenderer>().material;
         _originalColor = _lightMat.GetColor("_EmissiveColor");
         if (IsPowerUp)
+        {
             _lightMat.SetColor("_EmissiveColor", _originalColor * Mathf.Pow(2, 6));
+            _isCharged = true;
+        }
     }
 
     public void OnGrapple()
