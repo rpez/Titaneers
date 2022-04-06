@@ -40,7 +40,7 @@ public class MissileEmitter : ProjectileEmitterBase
     void Start()
     {
         _target = GameObject.FindWithTag(Tags.PLAYER_TAG);
-        _ui = GameObject.Find("Canvas").GetComponent<UI>();
+        //_ui = GameObject.Find("Canvas").GetComponent<UI>();
     }
 
     // Update is called once per frame
@@ -75,7 +75,7 @@ public class MissileEmitter : ProjectileEmitterBase
                                     missile.SetMovementParam(_speed, _rotateSpeed, _timeToLive,
                                         _isHoming, _maxDistancePredict, _minDistancePredict,
                                         _maxTimePrediction, _deviationAmount, _deviationSpeed, _damage);
-                                    _ui.AddThreat(missileUnit.gameObject);
+                                    //_ui.AddThreat(missileUnit.gameObject);
                                 }
                             }
                             else
