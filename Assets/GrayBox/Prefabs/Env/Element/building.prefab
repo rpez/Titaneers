@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4181398790667951943}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 7822260400793719024}
   - component: {fileID: 3862932149994139192}
   - component: {fileID: 7149880275570989197}
-  m_Layer: 6
+  - component: {fileID: 476231185743246958}
+  m_Layer: 7
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,6 +117,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &476231185743246958
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470068831314605467}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4207443722817456029, guid: c4440f794ec7d5041a24197c34cfa086, type: 3}
 --- !u!1 &6569640862873247697
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +142,7 @@ GameObject:
   - component: {fileID: 3719073931033371901}
   - component: {fileID: 7027839434278070389}
   - component: {fileID: 6345078452476514978}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Lens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +192,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2773451168606178991, guid: c4440f794ec7d5041a24197c34cfa086, type: 3}
+  - {fileID: 2100000, guid: c73f6d8181e8aad47a368bc42ee395b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
