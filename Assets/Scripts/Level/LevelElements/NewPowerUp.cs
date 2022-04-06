@@ -5,9 +5,9 @@ using UnityEngine;
 public class NewPowerUp : MonoBehaviour
 {
     public bool IsPowerUp = true;
+    public bool IsSupper = false;
     public float ChargeAmount = 2.5f;
     public float RechargeCD = 10f;
-
     private bool _isCharged = false;
     private Material _lightMat;
     private Color _originalColor;
@@ -20,7 +20,7 @@ public class NewPowerUp : MonoBehaviour
         _originalColor = _lightMat.GetColor("_EmissiveColor");
         if (IsPowerUp)
         {
-            _lightMat.SetColor("_EmissiveColor", _originalColor * Mathf.Pow(2, 6));
+            _lightMat.SetColor("_EmissiveColor", _originalColor * Mathf.Pow(2, 8));
             _isCharged = true;
         }
     }

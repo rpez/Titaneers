@@ -14448,8 +14448,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 6243975127601604965}
     m_Modifications:
     - target: {fileID: 2914701266268649167, guid: 59483492da5b8144b85f9bf0cf76e9ef, type: 3}
+      propertyPath: IsSupper
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914701266268649167, guid: 59483492da5b8144b85f9bf0cf76e9ef, type: 3}
       propertyPath: IsPowerUp
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914701266268649167, guid: 59483492da5b8144b85f9bf0cf76e9ef, type: 3}
+      propertyPath: ChargeAmount
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3205809263203870523, guid: 59483492da5b8144b85f9bf0cf76e9ef, type: 3}
       propertyPath: m_RootOrder
