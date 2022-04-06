@@ -24,10 +24,13 @@ namespace AK
         static const AkUniqueID PLAY_PLAYER_SWORD_SLASH = 4003404733U;
         static const AkUniqueID PLAY_TEST_SOUND = 3211564518U;
         static const AkUniqueID PLAY_TITAN_FS = 487948562U;
+        static const AkUniqueID PLAY_TITAN_FS_L = 2390231879U;
+        static const AkUniqueID PLAY_TITAN_FS_R = 2390231897U;
         static const AkUniqueID PLAY_TITAN_MISSILE_EXPLODE = 3892312811U;
         static const AkUniqueID PLAY_TITAN_MISSILE_SHOT = 3166948436U;
         static const AkUniqueID PLAY_TITAN_TRAMPLE_FOOT = 1282535387U;
         static const AkUniqueID PLAY_TITAN_TRAMPLE_VOC = 3060992713U;
+        static const AkUniqueID PLAY_TITAN_VOC_GENERIC = 3131183803U;
         static const AkUniqueID STOP_COMBAT_MUSIC = 970928956U;
         static const AkUniqueID STOP_TITAN_MISSILE_LOOP = 930574960U;
     } // namespace EVENTS
