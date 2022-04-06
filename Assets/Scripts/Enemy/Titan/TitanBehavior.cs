@@ -23,6 +23,10 @@ public class TitanBehavior : MonoBehaviour
     [SerializeField]
     private Transform _lanternHitbox;
 
+    [Header("VFX")]
+    [SerializeField]
+    private GameObject _lanternChargeVFX;
+
     private void OnEnable()
     {
         EventManager.FreezeFrame += FreezeForSeconds;
@@ -61,18 +65,10 @@ public class TitanBehavior : MonoBehaviour
         _animator.speed = _playSpeedMultiplier * _normalPlaySpeed * _animator.GetFloat("PlaySpeed");
 
         //Hitbox
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Sword"))
-        {
-            _swordHitbox.transform.localScale = Vector3.one * _animator.GetFloat("HitboxSize");
-        }
-        else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Lantern"))
-        {
-            _lanternHitbox.transform.localScale = Vector3.one * _animator.GetFloat("HitboxSize");
-        }
-        else
-        {
-            _swordHitbox.transform.localScale = Vector3.zero;
-            _lanternHitbox.transform.localScale = Vector3.zero;
-        }
+        _swordHitbox.transform.localScale = Vector3.one * _animator.GetFloat("SwordHitboxSize");
+        _lanternHitbox.transform.localScale = Vector3.one * _animator.GetFloat("LanternHitboxSize");
+
+        //VFX
+        _lanternChargeVFX.SetActive((_animator.GetFloat("LanternChargeVFX") > 0.99 ? true : false));
     }
 }
