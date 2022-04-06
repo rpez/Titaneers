@@ -8,7 +8,10 @@ Event	ID	Name			Wwise Object Path	Notes
 	1282535387	Play_titan_trample_foot			\Titan\TitanTrample\Play_titan_trample_foot	
 	1884037509	Play_player_grapple_shoot			\Player\PlayerGrapple\Play_player_grapple_shoot	
 	2116655569	Play_player_sword_hit			\Player\PlayerAttack\Play_player_sword_hit	
+	2390231879	Play_titan_fs_L			\Titan\TitanLocomotion\TitanFS\Play_titan_fs_L	
+	2390231897	Play_titan_fs_R			\Titan\TitanLocomotion\TitanFS\Play_titan_fs_R	
 	3060992713	Play_titan_trample_voc			\Titan\TitanTrample\Play_titan_trample_voc	
+	3131183803	Play_titan_voc_generic			\Titan\TitanVoc\Play_titan_voc_generic	
 	3155474038	Play_combat_music			\Music\Play_combat_music	
 	3166948436	Play_titan_missile_shot			\Titan\TitanMissile\Play_titan_missile_shot	
 	3211564518	Play_test_sound			\Default Work Unit\Play_test_sound	

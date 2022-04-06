@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="88217042">
+		<SoundBank Id="3161908922" Language="SFX" Hash="3791968452">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -385,6 +385,62 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2390231879" Name="Play_titan_fs_L" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs_L" MaxAttenuation="1000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
+					<IncludedMemoryFiles>
+						<File Id="149432959" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_5.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_5_10C4C929.wem</Path>
+						</File>
+						<File Id="215379498" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_10C4C929.wem</Path>
+						</File>
+						<File Id="605551748" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_4.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_4_10C4C929.wem</Path>
+						</File>
+						<File Id="744968238" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_2.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_2_10C4C929.wem</Path>
+						</File>
+						<File Id="927414989" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_1.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_1_10C4C929.wem</Path>
+						</File>
+						<File Id="940748144" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_3.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2390231897" Name="Play_titan_fs_R" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs_R" MaxAttenuation="1000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
+					<IncludedMemoryFiles>
+						<File Id="149432959" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_5.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_5_10C4C929.wem</Path>
+						</File>
+						<File Id="215379498" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_10C4C929.wem</Path>
+						</File>
+						<File Id="605551748" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_4.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_4_10C4C929.wem</Path>
+						</File>
+						<File Id="744968238" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_2.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_2_10C4C929.wem</Path>
+						</File>
+						<File Id="927414989" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_1.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_1_10C4C929.wem</Path>
+						</File>
+						<File Id="940748144" Language="SFX">
+							<ShortName>sfx_placeholder_titan_fs_3.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_fs_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3892312811" Name="Play_titan_missile_explode" ObjectPath="\Events\Titan\TitanMissile\Play_titan_missile_explode" MaxAttenuation="200." DurationType="OneShot" DurationMin="1.597392" DurationMax="3.831089">
 					<IncludedMemoryFiles>
 						<File Id="88342394" Language="SFX">
@@ -446,6 +502,22 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3060992713" Name="Play_titan_trample_voc" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_voc" MaxAttenuation="1000." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
+					<IncludedMemoryFiles>
+						<File Id="144898128" Language="SFX">
+							<ShortName>sfx_placeholder_titan_voc_1.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_voc_1_10C4C929.wem</Path>
+						</File>
+						<File Id="372510468" Language="SFX">
+							<ShortName>sfx_placeholder_titan_voc.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_voc_10C4C929.wem</Path>
+						</File>
+						<File Id="760990608" Language="SFX">
+							<ShortName>sfx_placeholder_titan_voc_2.wav</ShortName>
+							<Path>SFX/sfx_placeholder_titan_voc_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3131183803" Name="Play_titan_voc_generic" ObjectPath="\Events\Titan\TitanVoc\Play_titan_voc_generic" MaxAttenuation="1000." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
 					<IncludedMemoryFiles>
 						<File Id="144898128" Language="SFX">
 							<ShortName>sfx_placeholder_titan_voc_1.wav</ShortName>

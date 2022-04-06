@@ -460,7 +460,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 4bdeca61df99e5428a2868e1a03df397
       Path: Events/Player/PlayerAttack/Play_player_sword_hit
-      maxAttenuation: 10
+      maxAttenuation: 20
       maxDuration: 1.213323
       minDuration: 0.936715
     - name: Play_player_sword_slash
@@ -709,7 +709,7 @@ MonoBehaviour:
     ParentPath: Events/Titan
     guid: ea1f2569fa752f4eb51884dd2111927e
     GuidInternal: 
-    m_lastTime: -8585559616047932779
+    m_lastTime: -8585523673436614725
     List: []
   - PhysicalPath: Events/TitanFS.wwu
     PathAndIcons:
@@ -728,7 +728,7 @@ MonoBehaviour:
     ParentPath: Events/Titan/TitanLocomotion/TitanFS
     guid: 6bb2c0ae8cd710419ce963835b86054b
     GuidInternal: 
-    m_lastTime: -8585559612023518752
+    m_lastTime: -8585523665747457066
     List:
     - name: Play_titan_fs
       guid: a86029b531610a479404ccf3eb9e2427
@@ -750,6 +750,52 @@ MonoBehaviour:
         ObjectType: 3
         guid: a86029b531610a479404ccf3eb9e2427
       Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs
+      maxAttenuation: 1000
+      maxDuration: 5.247766
+      minDuration: 3.57746
+    - name: Play_titan_fs_L
+      guid: 13cb4e89d52d894e8c50d7ba815c4705
+      id: 2390231879
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanLocomotion
+        ObjectType: 12
+        guid: 61822860d16c0145bb7e7c2c5f686fe0
+      - ElementName: TitanFS
+        ObjectType: 12
+        guid: 6bb2c0ae8cd710419ce963835b86054b
+      - ElementName: Play_titan_fs_L
+        ObjectType: 3
+        guid: 13cb4e89d52d894e8c50d7ba815c4705
+      Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs_L
+      maxAttenuation: 1000
+      maxDuration: 5.247766
+      minDuration: 3.57746
+    - name: Play_titan_fs_R
+      guid: 57f975061355b8479b072c588abb45a9
+      id: 2390231897
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanLocomotion
+        ObjectType: 12
+        guid: 61822860d16c0145bb7e7c2c5f686fe0
+      - ElementName: TitanFS
+        ObjectType: 12
+        guid: 6bb2c0ae8cd710419ce963835b86054b
+      - ElementName: Play_titan_fs_R
+        ObjectType: 3
+        guid: 57f975061355b8479b072c588abb45a9
+      Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs_R
       maxAttenuation: 1000
       maxDuration: 5.247766
       minDuration: 3.57746
@@ -901,6 +947,42 @@ MonoBehaviour:
       maxAttenuation: 1000
       maxDuration: 8.24533
       minDuration: 5.238572
+  - PhysicalPath: Events/TitanVoc.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanVoc
+      ObjectType: 12
+      guid: 4f218650ffb9094e88ee1952b5e33881
+    ParentPath: Events/Titan/TitanVoc
+    guid: 4f218650ffb9094e88ee1952b5e33881
+    GuidInternal: 
+    m_lastTime: -8585523673436348189
+    List:
+    - name: Play_titan_voc_generic
+      guid: 2387d8a138b1a44888ac5e687d989df4
+      id: 3131183803
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanVoc
+        ObjectType: 12
+        guid: 4f218650ffb9094e88ee1952b5e33881
+      - ElementName: Play_titan_voc_generic
+        ObjectType: 3
+        guid: 2387d8a138b1a44888ac5e687d989df4
+      Path: Events/Titan/TitanVoc/Play_titan_voc_generic
+      maxAttenuation: 1000
+      maxDuration: 8.24533
+      minDuration: 5.238572
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     PathAndIcons:
@@ -1021,7 +1103,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000b0000000c0000000e000000
+  ExpandedWaapiItemIds: 050000000b0000000c0000000e0000004b0000004c000000d0030000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
