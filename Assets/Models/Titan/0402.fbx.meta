@@ -102,7 +102,49 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.49764788
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.53771555
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.71356785
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.96434283
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9836017
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -156,7 +198,21 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5025126
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -393,7 +449,49 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.23894769
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2702856
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7965663
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.81728876
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.49497485
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -447,7 +545,35 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4086444
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.43718594
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.79528534
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -476,7 +602,42 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.29469547
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.48038077
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.76291823
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -652,7 +813,49 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.20100503
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.38567838
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.54280734
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.84799
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9155206
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -706,7 +909,28 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.11394892
+        functionName: Play_titan_fs_L
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.60528827
+        functionName: Play_titan_fs_R
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.35552767
+        functionName: Play_titan_voc_generic
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

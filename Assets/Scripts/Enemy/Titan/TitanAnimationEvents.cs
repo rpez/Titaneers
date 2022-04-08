@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TitanAnimationEvents : MonoBehaviour
 {
+    public bool Debug_Enabled = false;
     public string TitanFsL = "Play_titan_fs_L";
     public string TitanFsR = "Play_titan_fs_R";
     public string TitanVocGeneric = "Play_titan_voc_generic";
@@ -24,16 +25,19 @@ public class TitanAnimationEvents : MonoBehaviour
 
     void Play_titan_fs_L()
     {
+        if (Debug_Enabled) { Debug.Log("Titan Left Foot Triggered"); }
         AkSoundEngine.PostEvent(TitanFsL,LeftFoot);
     }
 
     void Play_titan_fs_R()
     {
+        if (Debug_Enabled) { Debug.Log("Titan Right Foot Triggered"); }
         AkSoundEngine.PostEvent(TitanFsR, RightFoot);
     }
 
     void Play_titan_voc_generic()
     {
+        if (Debug_Enabled) { Debug.Log("Titan Generic Voc Triggered"); }
         AkSoundEngine.PostEvent(TitanVocGeneric, Head);
     }
 
