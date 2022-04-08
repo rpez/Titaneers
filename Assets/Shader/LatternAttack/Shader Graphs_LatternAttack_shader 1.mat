@@ -76,7 +76,7 @@ Material:
     - _DstBlend: 1
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
-    - _Fresnel_power: 4.96
+    - _Fresnel_power: 5.4
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
     - _SrcBlend: 1
@@ -104,10 +104,10 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0, g: 25.786715, b: 57.0379, a: 1}
+    - _Color: {r: 14.259474, g: 0.1456641, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Fresnel_color: {r: 0, g: 127.05865, b: 145.31857, a: 1}
+    - _Fresnel_color: {r: 36.329643, g: 3.582279, b: 0, a: 1}
     - _Vector4: {r: 0, g: 0, b: 0, a: 0}
     - _property: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
