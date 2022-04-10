@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
 
     public void ReduceHealthPoint(float num)
     {
+        if (IsDead()) return;
         _currentHealthPoint -= num;
         _reduceHealthPointEvents.Invoke();
         if (_currentHealthPoint <= 0)
@@ -51,10 +52,5 @@ public class Health : MonoBehaviour
     public bool IsDead()
     {
         return _currentHealthPoint <= 0;
-    }
-
-    private void Update()
-    {
-        Debug.Log(_currentHealthPoint);
     }
 }

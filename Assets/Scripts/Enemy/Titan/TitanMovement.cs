@@ -8,6 +8,39 @@ public class TitanMovement : MonoBehaviour
     private NavMeshAgent _agent;
     private bool _isStopped;
 
+    private void OnEnable()
+    {
+        EventManager.FreezeFrame += FreezeForSeconds;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.FreezeFrame -= FreezeForSeconds;
+    }
+
+    private void FreezeForSeconds(float time)
+    {
+        StartCoroutine(Freeze(time));
+    }
+
+    private IEnumerator Freeze(float time)
+    {
+        _isStopped = true;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        _isStopped = false;
+    }
+
+
+    public float MoveSpeed
+    {
+        get
+        {
+            return _agent.velocity.magnitude;
+        }
+    }
+
     private void Update()
     {
         if(!_isStopped)
@@ -51,5 +84,6 @@ public class TitanMovement : MonoBehaviour
     {
         _agent.isStopped = _isStopped = true;
         _agent.SetDestination(transform.position);
+        _agent.velocity = Vector3.zero;
     }
 }

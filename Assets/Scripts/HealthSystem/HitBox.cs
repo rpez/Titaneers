@@ -15,9 +15,9 @@ public class HitBox : MonoBehaviour
 
     //private Rigidbody _rb;
     private Collider _trigger;
-    private Action _onHitCallback;
+    private Action<GameObject> _onHitCallback;
 
-    public void Initialize(float damage, Action onHitCallback = null)
+    public void Initialize(float damage, Action<GameObject> onHitCallback = null)
     {
         _damage = damage;
         _onHitCallback = onHitCallback;
@@ -58,7 +58,11 @@ public class HitBox : MonoBehaviour
                 if (hurtBox = other.GetComponent<HurtBox>())
                 {
                     DealDamage(hurtBox);
-                    if (_onHitCallback != null) _onHitCallback.Invoke();
+                    if (_onHitCallback != null)
+                    {
+                        _onHitCallback.Invoke(other.gameObject);
+                        _onHitCallback = null;
+                    }
                 }
             }
         }

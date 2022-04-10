@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 8bd613bd4fdccf45a54520a04ea11cfa
     GuidInternal: 
-    m_lastTime: -8585545940706063202
+    m_lastTime: -8585534761049151235
     List:
     - name: 2DAmbience
       guid: ab2dae2fec0c344c82616f5c3f472ccd
@@ -425,8 +425,100 @@ MonoBehaviour:
     ParentPath: Events/Player
     guid: f056f3278b069d4594dd75872401e966
     GuidInternal: 
-    m_lastTime: -8585561545688865438
+    m_lastTime: -8585523794298374982
     List: []
+  - PhysicalPath: Events/PlayerAttack.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerAttack
+      ObjectType: 12
+      guid: 23a78c06a5796441a2e7cb20cfec1792
+    ParentPath: Events/Player/PlayerAttack
+    guid: 23a78c06a5796441a2e7cb20cfec1792
+    GuidInternal: 
+    m_lastTime: -8585523794298115690
+    List:
+    - name: Play_player_sword_hit
+      guid: 4bdeca61df99e5428a2868e1a03df397
+      id: 2116655569
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 23a78c06a5796441a2e7cb20cfec1792
+      - ElementName: Play_player_sword_hit
+        ObjectType: 3
+        guid: 4bdeca61df99e5428a2868e1a03df397
+      Path: Events/Player/PlayerAttack/Play_player_sword_hit
+      maxAttenuation: 20
+      maxDuration: 1.213323
+      minDuration: 0.936715
+    - name: Play_player_sword_slash
+      guid: 98a4624d85dc844f8601680649f5284a
+      id: 4003404733
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 23a78c06a5796441a2e7cb20cfec1792
+      - ElementName: Play_player_sword_slash
+        ObjectType: 3
+        guid: 98a4624d85dc844f8601680649f5284a
+      Path: Events/Player/PlayerAttack/Play_player_sword_slash
+      maxAttenuation: 20
+      maxDuration: 0.935314
+      minDuration: 0.767795
+  - PhysicalPath: Events/PlayerBooster.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerBooster
+      ObjectType: 12
+      guid: 604dfbc0d1dd3f499fa1f0510655c320
+    ParentPath: Events/Player/PlayerBooster
+    guid: 604dfbc0d1dd3f499fa1f0510655c320
+    GuidInternal: 
+    m_lastTime: -8585523794297834804
+    List:
+    - name: Play_player_booster
+      guid: 78344c2b2364ee409662193c12e4c217
+      id: 142245832
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerBooster
+        ObjectType: 12
+        guid: 604dfbc0d1dd3f499fa1f0510655c320
+      - ElementName: Play_player_booster
+        ObjectType: 3
+        guid: 78344c2b2364ee409662193c12e4c217
+      Path: Events/Player/PlayerBooster/Play_player_booster
+      maxAttenuation: 20
+      maxDuration: 1.918741
+      minDuration: 1.549675
   - PhysicalPath: Events/PlayerFootsteps.wwu
     PathAndIcons:
     - ElementName: Events
@@ -617,7 +709,7 @@ MonoBehaviour:
     ParentPath: Events/Titan
     guid: ea1f2569fa752f4eb51884dd2111927e
     GuidInternal: 
-    m_lastTime: -8585559616047932779
+    m_lastTime: -8585523673436614725
     List: []
   - PhysicalPath: Events/TitanFS.wwu
     PathAndIcons:
@@ -636,7 +728,7 @@ MonoBehaviour:
     ParentPath: Events/Titan/TitanLocomotion/TitanFS
     guid: 6bb2c0ae8cd710419ce963835b86054b
     GuidInternal: 
-    m_lastTime: -8585559612023518752
+    m_lastTime: -8585523665747457066
     List:
     - name: Play_titan_fs
       guid: a86029b531610a479404ccf3eb9e2427
@@ -658,6 +750,52 @@ MonoBehaviour:
         ObjectType: 3
         guid: a86029b531610a479404ccf3eb9e2427
       Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs
+      maxAttenuation: 1000
+      maxDuration: 5.247766
+      minDuration: 3.57746
+    - name: Play_titan_fs_L
+      guid: 13cb4e89d52d894e8c50d7ba815c4705
+      id: 2390231879
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanLocomotion
+        ObjectType: 12
+        guid: 61822860d16c0145bb7e7c2c5f686fe0
+      - ElementName: TitanFS
+        ObjectType: 12
+        guid: 6bb2c0ae8cd710419ce963835b86054b
+      - ElementName: Play_titan_fs_L
+        ObjectType: 3
+        guid: 13cb4e89d52d894e8c50d7ba815c4705
+      Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs_L
+      maxAttenuation: 1000
+      maxDuration: 5.247766
+      minDuration: 3.57746
+    - name: Play_titan_fs_R
+      guid: 57f975061355b8479b072c588abb45a9
+      id: 2390231897
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanLocomotion
+        ObjectType: 12
+        guid: 61822860d16c0145bb7e7c2c5f686fe0
+      - ElementName: TitanFS
+        ObjectType: 12
+        guid: 6bb2c0ae8cd710419ce963835b86054b
+      - ElementName: Play_titan_fs_R
+        ObjectType: 3
+        guid: 57f975061355b8479b072c588abb45a9
+      Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs_R
       maxAttenuation: 1000
       maxDuration: 5.247766
       minDuration: 3.57746
@@ -767,7 +905,7 @@ MonoBehaviour:
     ParentPath: Events/Titan/TitanTrample
     guid: 990923041e89e54693c1a22979595819
     GuidInternal: 
-    m_lastTime: -8585559601894413674
+    m_lastTime: -8585534767016574948
     List:
     - name: Play_titan_trample_foot
       guid: 1798d363e93069409b5641958da5701f
@@ -806,6 +944,42 @@ MonoBehaviour:
         ObjectType: 3
         guid: 49fc5af124365747a0331be329c7a96f
       Path: Events/Titan/TitanTrample/Play_titan_trample_voc
+      maxAttenuation: 1000
+      maxDuration: 8.24533
+      minDuration: 5.238572
+  - PhysicalPath: Events/TitanVoc.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanVoc
+      ObjectType: 12
+      guid: 4f218650ffb9094e88ee1952b5e33881
+    ParentPath: Events/Titan/TitanVoc
+    guid: 4f218650ffb9094e88ee1952b5e33881
+    GuidInternal: 
+    m_lastTime: -8585523673436348189
+    List:
+    - name: Play_titan_voc_generic
+      guid: 2387d8a138b1a44888ac5e687d989df4
+      id: 3131183803
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanVoc
+        ObjectType: 12
+        guid: 4f218650ffb9094e88ee1952b5e33881
+      - ElementName: Play_titan_voc_generic
+        ObjectType: 3
+        guid: 2387d8a138b1a44888ac5e687d989df4
+      Path: Events/Titan/TitanVoc/Play_titan_voc_generic
       maxAttenuation: 1000
       maxDuration: 8.24533
       minDuration: 5.238572
@@ -929,7 +1103,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 02000000060000000b0000000e00000011000000120000001700000018000000190000001d000000330000004b0000004c000000d0030000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

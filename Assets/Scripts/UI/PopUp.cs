@@ -16,8 +16,11 @@ public class PopUp : MonoBehaviour
 
     public void PopUI()
     {
-        if (popCoroutine != null) StopCoroutine(popCoroutine);
-        popCoroutine = StartCoroutine("Pop");
+        if (gameObject.activeInHierarchy)
+        {
+            if (popCoroutine != null) StopCoroutine(popCoroutine);
+            popCoroutine = StartCoroutine("Pop");
+        }
     }
 
     private IEnumerator Pop()
