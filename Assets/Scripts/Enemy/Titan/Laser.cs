@@ -18,11 +18,12 @@ public class Laser : MonoBehaviour
     private float _aimRayWidth;
 
     [SerializeField]
+    private float _interval = 0.5f;
+
+    [SerializeField]
     private float _shootTime;
     [SerializeField]
-    private float _shootRayWidth;
-    [SerializeField]
-    private CapsuleCollider _hitbox;
+    private Transform _hitbox;
 
     [SerializeField]
     private LayerMask _layers;
@@ -36,7 +37,6 @@ public class Laser : MonoBehaviour
 
     private  IEnumerator ShootLaser()
     {
-        _lineRenderer.SetPosition(0, _shootPoint.position);
 
         //Aim
         float timer = _aimTime;
@@ -44,6 +44,7 @@ public class Laser : MonoBehaviour
         {
             timer -= Time.deltaTime;
             _shootPoint.LookAt(_target);
+            _lineRenderer.SetPosition(0, _shootPoint.position);
 
             RaycastHit hit;
             if (Physics.Raycast(_shootPoint.position, _shootPoint.forward, out hit, maxLength, _layers))
@@ -58,6 +59,10 @@ public class Laser : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+        _lineRenderer.SetPosition(1, _shootPoint.position);
+        _lineRenderer.startWidth = _lineRenderer.endWidth = 0f;
+
+        yield return new WaitForSeconds(_interval);
 
         timer = _shootTime;
 
@@ -65,14 +70,9 @@ public class Laser : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            _lineRenderer.SetPosition(1, _shootPoint.position + _shootPoint.forward * maxLength);
-            _lineRenderer.startWidth = _lineRenderer.endWidth = _shootRayWidth;
-
-            _hitbox.radius = _shootRayWidth / 2;
-            _hitbox.height = maxLength;
+            _hitbox.localScale = Vector3.one;
+            yield return new WaitForEndOfFrame();
         }
-
-        _hitbox.radius = _hitbox.height = 0f;
-        _lineRenderer.SetPosition(1, _shootPoint.position);
+        _hitbox.localScale = Vector3.zero;
     }
 }
