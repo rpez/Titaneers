@@ -57,6 +57,7 @@ public class GrapplingGun : MonoBehaviour
     public float GrappleSpeed = 100f;
     public float Cooldown = 3f;
     public int MaxCharges = 2;
+    public float AimTimeWindow = 0.2f;
 
     // Other references
     private GameObject _grapplePoint;
@@ -79,6 +80,8 @@ public class GrapplingGun : MonoBehaviour
 
     private PlayerControls _controls;
     private PlayerControls.GroundMovementActions _controlMapping;
+    private Vector2Int[] _raycastOffsets = new Vector2Int[9];
+    private (bool, RaycastHit, float)[] _raycastBuffer = new (bool, RaycastHit, float)[9];
 
     private void OnEnable()
     {
@@ -101,6 +104,16 @@ public class GrapplingGun : MonoBehaviour
         _playerScript = Player.GetComponent<PlayerMovement>();
 
         AkSoundEngine.RegisterGameObj(gameObject);
+
+        _raycastOffsets[0] = new Vector2Int(-32, -32);
+        _raycastOffsets[1] = new Vector2Int(-32, 32);
+        _raycastOffsets[2] = new Vector2Int(32, -32);
+        _raycastOffsets[3] = new Vector2Int(32, 32);
+        _raycastOffsets[4] = new Vector2Int(0, 32);
+        _raycastOffsets[5] = new Vector2Int(0, -32);
+        _raycastOffsets[6] = new Vector2Int(32, 0);
+        _raycastOffsets[7] = new Vector2Int(-32, 0);
+        _raycastOffsets[8] = new Vector2Int(0, 0);
     }
 
     void Update()
@@ -123,6 +136,24 @@ public class GrapplingGun : MonoBehaviour
             else UIRef.ResetCrosshairColor(withinRange);
         }
 
+        RaycastHit currentHit = new RaycastHit();
+        bool rayHit = false;
+        Vector2 center = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        for (int i = 0; i < _raycastOffsets.Length; i++)
+        {
+            rayHit = Physics.Raycast(Camera.main.ScreenPointToRay(center + _raycastOffsets[i]), out currentHit, Range, GrappleLayer);
+            if (rayHit)
+            {
+                _raycastBuffer[i] = (true, currentHit, Time.realtimeSinceStartup);
+            }
+            else
+            {
+                if (Time.realtimeSinceStartup - _raycastBuffer[i].Item3 > AimTimeWindow)
+                {
+                    _raycastBuffer[i] = (false, new RaycastHit(), 0f);
+                }
+            }
+        }
 
         if (_currentCharges < MaxCharges)
         {
@@ -190,6 +221,33 @@ public class GrapplingGun : MonoBehaviour
         }
     }
 
+    private bool RaycastGrappleTarget(ref RaycastHit hit)
+    {
+        RaycastHit resultHit = new RaycastHit();
+        bool rayHit = false;
+
+        Vector2 center = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        for (int i = 0; i < _raycastOffsets.Length; i++)
+        {
+            RaycastHit currentHit = new RaycastHit();
+            rayHit = Physics.Raycast(Camera.main.ScreenPointToRay(center + _raycastOffsets[i]), out currentHit, Range, GrappleLayer);
+            if (rayHit)
+            {
+                resultHit = currentHit;
+            }
+            else
+            {
+                if (_raycastBuffer[i].Item1)
+                {
+                    resultHit = _raycastBuffer[i].Item2;
+                }
+            }
+        }
+
+        hit = resultHit;
+        return rayHit;
+    }
+
     /// <summary>
     /// Call whenever we want to start a grapple
     /// </summary>
@@ -198,8 +256,8 @@ public class GrapplingGun : MonoBehaviour
         if (_currentCharges <= 0) return;
         _isLaunched = true;
 
-        RaycastHit hit;
-        bool rayHit = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range, GrappleLayer);
+        RaycastHit hit = new RaycastHit();
+        bool rayHit = RaycastGrappleTarget(ref hit);
         GameObject crosshairTarget = UIRef.GetCrosshairTarget();
 
         // Check whether raycast or crosshair hit is closer
@@ -275,8 +333,6 @@ public class GrapplingGun : MonoBehaviour
         _joint.massScale = MassScale;
 
         _currentCharges--;
-
-
     }
 
     private void GainProjectileControl()
