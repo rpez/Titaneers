@@ -199,8 +199,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_pulling) StopPull();
 
-        if (_rigidbody.velocity.magnitude <= 10f) _rigidbody.velocity = Vector3.up * _velocityBuffer.magnitude;
-        else _rigidbody.velocity = Vector3.up * _rigidbody.velocity.magnitude;
+        _rigidbody.velocity = Vector3.up * hitVelocity.magnitude;
 
         EventManager.OnFreezeFrame(0.5f);
 
