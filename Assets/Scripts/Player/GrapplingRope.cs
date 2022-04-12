@@ -21,6 +21,8 @@ public class GrapplingRope : MonoBehaviour
     private Spring _spring;
     private LineRenderer _lr;
     private Vector3 _currentGrapplePosition;
+    private bool _ricochet;
+    private float _ricochetTimer;
 
     void Awake()
     {
@@ -37,12 +39,16 @@ public class GrapplingRope : MonoBehaviour
 
     public void OnGrapplePowerUp()
     {
-        Debug.Log("OnGrapplePowerUp");
         Color originalColor = _lr.material.GetColor("_EmissiveColor");
-        Debug.Log(originalColor);
         _lr.material.SetColor("_EmissiveColor", Color.blue * Mathf.Pow(2, 20));
         // rope shining
         DOTween.To(() => _lr.material.GetColor("_EmissiveColor"), x => _lr.material.SetColor("_EmissiveColor", x), Color.white, 2);
+    }
+
+    public void SetGrappleStaticColor(Color color)
+    {
+        _lr.material.SetColor("_BaseColor", color);
+        _lr.material.SetColor("_EmissiveColor", color * Mathf.Pow(2, 19));
     }
 
     void DrawRope()
@@ -61,6 +67,9 @@ public class GrapplingRope : MonoBehaviour
         {
             _spring.SetVelocity(Velocity);
             _lr.positionCount = Quality + 1;
+            _ricochet = GrapplingGun.IsRicochet();
+            _ricochetTimer = 0;
+            SetGrappleStaticColor(_ricochet ? Color.black : Color.white);
         }
 
         _spring.SetDamper(Damper);
@@ -81,6 +90,22 @@ public class GrapplingRope : MonoBehaviour
                          AffectCurve.Evaluate(delta);
 
             _lr.SetPosition(i, Vector3.Lerp(gunTipPosition, _currentGrapplePosition, delta) + offset);
+        }
+
+        if (_ricochet)
+        {
+            _ricochetTimer += Time.deltaTime;
+            if (_ricochetTimer > 0.2f)
+            {
+                for (var i = 0; i < Quality + 1; i++)
+                {
+                    var delta = i / (float)Quality - _ricochetTimer * 2f;
+                    var offset = up * WaveHeight * Mathf.Sin(delta * WaveCount * Mathf.PI) * _spring.Value *
+                                 AffectCurve.Evaluate(delta);
+
+                    _lr.SetPosition(i, Vector3.Lerp(gunTipPosition, _currentGrapplePosition, delta) + offset);
+                }
+            }
         }
     }
 }

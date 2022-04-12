@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
     public Image AttackCrosshair;
     public Camera Camera;
     public ObjectPool IndicatorPool;
+    public Image[] GrappleCharges;
 
     [SerializeField] private float _maxThreatDist;
     [SerializeField] private GameObject _rangeIndicator;
@@ -164,6 +165,19 @@ public class UI : MonoBehaviour
     {
         _rangeIndicator.SetActive(!attack);
         AttackCrosshair.enabled = attack;
+    }
+
+    public void UpdateGrappleCharges(int amount)
+    {
+        amount = Mathf.Min(amount, GrappleCharges.Length);
+        foreach (Image img in GrappleCharges)
+        {
+            img.color = new Color(1f, 1f, 1f, 0.3f);
+        }
+        for (int i = 0; i < amount; i++)
+        {
+            GrappleCharges[i].color = Color.white;
+        }
     }
 
     public GameObject GetCrosshairTarget()

@@ -694,7 +694,7 @@ public class PlayerMovement : MonoBehaviour
             _currentBoostAmount += amount;
             if (_currentBoostAmount > MaxBoostAmount) _currentBoostAmount = MaxBoostAmount;
         }
-        Debug.LogFormat("Current Boost {0}", _currentBoostAmount);
+        //Debug.LogFormat("Current Boost {0}", _currentBoostAmount);
     }
 }
 
