@@ -116,28 +116,6 @@ public class GrapplingGun : MonoBehaviour
         _raycastOffsets[8] = new Vector2Int(0, 0);
     }
 
-    private void FixedUpdate()
-    {
-        RaycastHit currentHit = new RaycastHit();
-        bool rayHit = false;
-        Vector2 center = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
-        for (int i = 0; i < _raycastOffsets.Length; i++)
-        {
-            rayHit = Physics.Raycast(Camera.main.ScreenPointToRay(center + _raycastOffsets[i]), out currentHit, Range, GrappleLayer);
-            if (rayHit)
-            {
-                _raycastBuffer[i] = (true, currentHit, Time.realtimeSinceStartup);
-            }
-            else
-            {
-                if (Time.realtimeSinceStartup - _raycastBuffer[i].Item3 > AimTimeWindow)
-                {
-                    _raycastBuffer[i] = (false, new RaycastHit(), 0f);
-                }
-            }
-        }
-    }
-
     void Update()
     {
         // UI update
@@ -156,6 +134,25 @@ public class GrapplingGun : MonoBehaviour
                 UIRef.ChangeCrosshairIleagal(withinRange);
             }
             else UIRef.ResetCrosshairColor(withinRange);
+        }
+
+        RaycastHit currentHit = new RaycastHit();
+        bool rayHit = false;
+        Vector2 center = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        for (int i = 0; i < _raycastOffsets.Length; i++)
+        {
+            rayHit = Physics.Raycast(Camera.main.ScreenPointToRay(center + _raycastOffsets[i]), out currentHit, Range, GrappleLayer);
+            if (rayHit)
+            {
+                _raycastBuffer[i] = (true, currentHit, Time.realtimeSinceStartup);
+            }
+            else
+            {
+                if (Time.realtimeSinceStartup - _raycastBuffer[i].Item3 > AimTimeWindow)
+                {
+                    _raycastBuffer[i] = (false, new RaycastHit(), 0f);
+                }
+            }
         }
 
         if (_currentCharges < MaxCharges)
