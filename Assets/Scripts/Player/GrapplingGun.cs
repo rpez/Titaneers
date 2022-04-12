@@ -68,7 +68,7 @@ public class GrapplingGun : MonoBehaviour
     private PlayerMovement _playerScript;
 
     // State booleans
-    bool _isGrappling, _isLaunched, _controlling, _redirecting, _reeling;
+    bool _isGrappling, _isLaunched, _controlling, _redirecting, _reeling, _ricochet;
 
     // Other variables
     private int _currentCharges;
@@ -284,23 +284,31 @@ public class GrapplingGun : MonoBehaviour
         }
 
         // If still no hit
-        if (!rayHit) return;
-
-        if (hit.transform.gameObject.tag == "Projectile")
+        if (!rayHit)
         {
-            _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
+            _grapplePoint = GameObject.Instantiate(HitpointPrefab, transform.position + PlayerCamera.transform.forward * Range, Quaternion.identity);
+            _grapplePoint.GetComponent<Renderer>().enabled = false;
+            _ricochet = true;
         }
-
-        _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
-        _grapplePoint.transform.parent = hit.collider.transform;
-        AkSoundEngine.PostEvent(GrappleShoot, gameObject);
-        float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
-        _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
-
-        if (hit.transform.gameObject.tag == Tags.POWERUP_TAG)
+        else
         {
-            var powerUp = hit.transform.gameObject.GetComponent<NewPowerUp>();
-            StartCoroutine(OnGrapplePowerUp(powerUp));
+            _ricochet = false;
+            if (hit.transform.gameObject.tag == "Projectile")
+            {
+                _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
+            }
+
+            _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
+            _grapplePoint.transform.parent = hit.collider.transform;
+            AkSoundEngine.PostEvent(GrappleShoot, gameObject);
+            float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
+            _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
+
+            if (hit.transform.gameObject.tag == Tags.POWERUP_TAG)
+            {
+                var powerUp = hit.transform.gameObject.GetComponent<NewPowerUp>();
+                StartCoroutine(OnGrapplePowerUp(powerUp));
+            }
         }
     }
 
@@ -338,6 +346,11 @@ public class GrapplingGun : MonoBehaviour
 
         _currentCharges--;
         UIRef.UpdateGrappleCharges(_currentCharges);
+    }
+
+    private void GrappleRicochet()
+    {
+
     }
 
     private void GainProjectileControl()
@@ -419,6 +432,11 @@ public class GrapplingGun : MonoBehaviour
     public bool IsLaunched()
     {
         return _isLaunched;
+    }
+
+    public bool IsRicochet()
+    {
+        return _ricochet;
     }
 
     public Transform GetGrapplePoint()
