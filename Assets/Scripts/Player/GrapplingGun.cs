@@ -105,6 +105,7 @@ public class GrapplingGun : MonoBehaviour
 
         AkSoundEngine.RegisterGameObj(gameObject);
 
+        // Hardcoded additional rays
         _raycastOffsets[0] = new Vector2Int(-32, -32);
         _raycastOffsets[1] = new Vector2Int(-32, 32);
         _raycastOffsets[2] = new Vector2Int(32, -32);
@@ -162,6 +163,7 @@ public class GrapplingGun : MonoBehaviour
             {
                 _currentCharges += 1;
                 _currentTime = 0;
+                UIRef.UpdateGrappleCharges(_currentCharges);
             }
         }
 
@@ -335,6 +337,7 @@ public class GrapplingGun : MonoBehaviour
         _joint.massScale = MassScale;
 
         _currentCharges--;
+        UIRef.UpdateGrappleCharges(_currentCharges);
     }
 
     private void GainProjectileControl()
