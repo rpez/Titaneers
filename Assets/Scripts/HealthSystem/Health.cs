@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using UnityEngine.SceneManagement;
+
 public class Health : MonoBehaviour
 {
     [Header("Health")]
@@ -42,6 +44,8 @@ public class Health : MonoBehaviour
         {
             _currentHealthPoint = 0f;
             _deathEvents.Invoke();
+            // Return to main menu if the player or the titan has been killed
+            SceneManager.LoadScene("menu");
         }
     }
 
