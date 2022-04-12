@@ -140,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 _normalVector = Vector3.up;
     private Vector3 _wallNormalVector;
+    private Vector3 _velocityBuffer;
 
     // Grapple reel in
     private GameObject _target;
@@ -188,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_pulling) StopPull();
 
-        _rigidbody.velocity = -_rigidbody.velocity + Vector3.up * _rigidbody.velocity.magnitude;
+        _rigidbody.velocity = -_velocityBuffer + Vector3.up * _velocityBuffer.magnitude;
 
         EventManager.OnFreezeFrame(0.5f);
 
@@ -631,6 +632,15 @@ public class PlayerMovement : MonoBehaviour
     {
         float angle = Vector3.Angle(Vector3.up, v);
         return angle < MaxSlopeAngle;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Grappleable")
+        {
+            if (collision.relativeVelocity.magnitude >= 10f) _velocityBuffer = collision.relativeVelocity;
+            StartCoroutine(Delay(0.2f, () => _velocityBuffer = Vector3.zero));
+        }
     }
 
     /// <summary>
