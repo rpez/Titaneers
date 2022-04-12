@@ -60,11 +60,11 @@ Material:
     - _AlbedoAffectEmissive: 0
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
-    - _AlphaDstBlend: 10
+    - _AlphaDstBlend: 1
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
-    - _BlendMode: 0
+    - _BlendMode: 1
     - _CullMode: 0
     - _Cutoff: 0.5
     - _DistortionBlendMode: 0
@@ -84,7 +84,7 @@ Material:
     - _DistortionVectorScale: 2
     - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
-    - _DstBlend: 10
+    - _DstBlend: 1
     - _EmissiveExposureWeight: 0
     - _EmissiveIntensity: 1
     - _EmissiveIntensityUnit: 0
@@ -112,7 +112,7 @@ Material:
     m_Colors:
     - _Color: {r: 0, g: 0.3203245, b: 0.74509805, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0, g: 1.2020899, b: 3.5648696, a: 1}
+    - _EmissiveColor: {r: 0, g: 1.2131755, b: 3.5648696, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _UnlitColor: {r: 0, g: 0.32032454, b: 0.74509805, a: 1}
     - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
