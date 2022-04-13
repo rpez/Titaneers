@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2657134375">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2775081148">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -20,11 +20,19 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="320726689">
+		<SoundBank Id="3161908922" Language="SFX" Hash="2818996027">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
+				<Event Id="706595652" Name="Play_2d_ambience_loop" ObjectPath="\Events\Ambience\Play_2d_ambience_loop" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="532088990" Language="SFX">
+							<ShortName>sfx_ambience_wind_tone_loop.wav</ShortName>
+							<Path>SFX/sfx_ambience_wind_tone_loop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3155474038" Name="Play_combat_music" ObjectPath="\Events\Music\Play_combat_music" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="1021980294" Language="SFX">
@@ -53,7 +61,7 @@
 						<ActionSetSwitchEntry Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one"/>
 					</ActionSetSwitch>
 				</Event>
-				<Event Id="142245832" Name="Play_player_booster" ObjectPath="\Events\Player\PlayerBooster\Play_player_booster" MaxAttenuation="20." DurationType="OneShot" DurationMin="1.549675" DurationMax="1.918741">
+				<Event Id="142245832" Name="Play_player_booster" ObjectPath="\Events\Player\PlayerBooster\Play_player_booster" MaxAttenuation="50." DurationType="OneShot" DurationMin="1.549675" DurationMax="1.918741">
 					<IncludedMemoryFiles>
 						<File Id="541344607" Language="SFX">
 							<ShortName>sfx_player_booster_1.wav</ShortName>
@@ -333,7 +341,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
+				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
 					<IncludedMemoryFiles>
 						<File Id="257300301" Language="SFX">
 							<ShortName>sfx_player_sword_slash_2.wav</ShortName>
@@ -441,7 +449,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3892312811" Name="Play_titan_missile_explode" ObjectPath="\Events\Titan\TitanMissile\Play_titan_missile_explode" MaxAttenuation="200." DurationType="OneShot" DurationMin="1.597392" DurationMax="3.831089">
+				<Event Id="3892312811" Name="Play_titan_missile_explode" ObjectPath="\Events\Titan\TitanMissile\Play_titan_missile_explode" MaxAttenuation="100." DurationType="OneShot" DurationMin="1.597392" DurationMax="3.831089">
 					<IncludedMemoryFiles>
 						<File Id="88342394" Language="SFX">
 							<ShortName>sfx_placeholder_missile_explosion.wav</ShortName>
@@ -460,8 +468,11 @@
 							<Path>SFX/sfx_placeholder_missile_explosion_1_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
+					<AuxBusSends>
+						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
+					</AuxBusSends>
 				</Event>
-				<Event Id="3166948436" Name="Play_titan_missile_shot" ObjectPath="\Events\Titan\TitanMissile\Play_titan_missile_shot" MaxAttenuation="1000." DurationType="Infinite">
+				<Event Id="3166948436" Name="Play_titan_missile_shot" ObjectPath="\Events\Titan\TitanMissile\Play_titan_missile_shot" MaxAttenuation="200." DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="286775973" Language="SFX">
 							<ShortName>sfx_placeholder_missile_shot.wav</ShortName>
@@ -472,6 +483,9 @@
 							<Path>SFX/sfx_placeholder_missile_flight_loop_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
+					<AuxBusSends>
+						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
+					</AuxBusSends>
 				</Event>
 				<Event Id="1282535387" Name="Play_titan_trample_foot" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_foot" MaxAttenuation="1000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
 					<IncludedMemoryFiles>
@@ -516,6 +530,9 @@
 							<Path>SFX/sfx_placeholder_titan_voc_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
+					<AuxBusSends>
+						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
+					</AuxBusSends>
 				</Event>
 				<Event Id="3131183803" Name="Play_titan_voc_generic" ObjectPath="\Events\Titan\TitanVoc\Play_titan_voc_generic" MaxAttenuation="1000." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
 					<IncludedMemoryFiles>
@@ -532,7 +549,11 @@
 							<Path>SFX/sfx_placeholder_titan_voc_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
+					<AuxBusSends>
+						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
+					</AuxBusSends>
 				</Event>
+				<Event Id="1752755706" Name="Stop_2d_ambience_loop" ObjectPath="\Events\Ambience\Stop_2d_ambience_loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="970928956" Name="Stop_combat_music" ObjectPath="\Events\Music\Stop_combat_music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<ActionSetSwitch>
 						<ActionSetSwitchEntry Id="678209053" Name="two" ObjectPath="\Switches\Music\Music_Progress\two"/>

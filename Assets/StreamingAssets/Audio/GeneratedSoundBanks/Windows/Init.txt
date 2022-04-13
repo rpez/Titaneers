@@ -17,6 +17,7 @@ Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	3545700988	Reverbs			\Default Work Unit\Master Audio Bus\Reverbs	
 
 Effect plug-ins	ID	Name	Type				Notes
+	48620415	Have_U_Ever_Been_Outside	Wwise RoomVerb			
 	2156497161	master_compressor	Wwise Compressor			
 	3134687450	master_limiter	Wwise Peak Limiter			
 

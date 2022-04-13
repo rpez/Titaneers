@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 8bd613bd4fdccf45a54520a04ea11cfa
     GuidInternal: 
-    m_lastTime: -8585534761049151235
+    m_lastTime: -8585517551288584911
     List:
     - name: 2DAmbience
       guid: ab2dae2fec0c344c82616f5c3f472ccd
@@ -320,7 +320,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: 442162c52f26e344bd4a00fa05b17c8d
     GuidInternal: 
-    m_lastTime: -8585545961764120904
+    m_lastTime: -8585517596101107278
     List:
     - name: Main
       guid: 1201e1abfa63ae47b2be1014f3a86b45
@@ -337,6 +337,53 @@ MonoBehaviour:
         guid: 1201e1abfa63ae47b2be1014f3a86b45
       Path: SoundBanks/Default Work Unit/Main
   EventWwu:
+  - PhysicalPath: Events/Ambience.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Ambience
+      ObjectType: 12
+      guid: 7bd23b2b9f895248ae77ecf034effd9f
+    ParentPath: Events/Ambience
+    guid: 7bd23b2b9f895248ae77ecf034effd9f
+    GuidInternal: 
+    m_lastTime: -8585517591325351474
+    List:
+    - name: Play_2d_ambience_loop
+      guid: 1383d2d710d96149b54b3173d3011e6e
+      id: 706595652
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Ambience
+        ObjectType: 12
+        guid: 7bd23b2b9f895248ae77ecf034effd9f
+      - ElementName: Play_2d_ambience_loop
+        ObjectType: 3
+        guid: 1383d2d710d96149b54b3173d3011e6e
+      Path: Events/Ambience/Play_2d_ambience_loop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_2d_ambience_loop
+      guid: 27cd9ca4be4c9b4baa989ecfab3b9d5a
+      id: 1752755706
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Ambience
+        ObjectType: 12
+        guid: 7bd23b2b9f895248ae77ecf034effd9f
+      - ElementName: Stop_2d_ambience_loop
+        ObjectType: 3
+        guid: 27cd9ca4be4c9b4baa989ecfab3b9d5a
+      Path: Events/Ambience/Stop_2d_ambience_loop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Events
@@ -480,7 +527,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 98a4624d85dc844f8601680649f5284a
       Path: Events/Player/PlayerAttack/Play_player_sword_slash
-      maxAttenuation: 20
+      maxAttenuation: 10
       maxDuration: 0.935314
       minDuration: 0.767795
   - PhysicalPath: Events/PlayerBooster.wwu
@@ -516,7 +563,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 78344c2b2364ee409662193c12e4c217
       Path: Events/Player/PlayerBooster/Play_player_booster
-      maxAttenuation: 20
+      maxAttenuation: 50
       maxDuration: 1.918741
       minDuration: 1.549675
   - PhysicalPath: Events/PlayerFootsteps.wwu
@@ -848,7 +895,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 5c2111ba05d0cc4e8eef187db28462ff
       Path: Events/Titan/TitanMissile/Play_titan_missile_explode
-      maxAttenuation: 200
+      maxAttenuation: 100
       maxDuration: 3.831089
       minDuration: 1.597392
     - name: Play_titan_missile_shot
@@ -868,7 +915,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 20a9f6527f4f7d4298cf9baa173308ad
       Path: Events/Titan/TitanMissile/Play_titan_missile_shot
-      maxAttenuation: 1000
+      maxAttenuation: 200
       maxDuration: -1
       minDuration: -1
     - name: Stop_titan_missile_loop
@@ -1103,7 +1150,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 02000000060000000b0000000e00000011000000120000001700000018000000190000001d000000330000004b0000004c000000d0030000
+  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000b0000000e00000011000000120000001700000018000000190000001d000000330000004b0000004c000000d0030000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
