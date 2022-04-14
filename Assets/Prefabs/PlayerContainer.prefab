@@ -396,8 +396,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   MouseSensitivity: 5
-  MoveForce: 50
-  MaxGroundSpeed: 50
+  MoveForce: 70
+  MaxGroundSpeed: 70
   MaxAirSpeed: 100
   GroundResistance: 0.15
   MaxSlopeAngle: 35
@@ -411,11 +411,12 @@ MonoBehaviour:
   SlideCounterMovement: 0.2
   BoosterStrength: 500
   MaxBoostAmount: 5
+  InitBoostRatio: 0.8
   BoostRechargeCooldown: 5
   BoostRechargeRate: 0.1
   BoostRechargeCap: 0.5
   BoostPowerUpAmount: 2.5
-  JumpForce: 550
+  JumpForce: 2000
   SlowScale: 0.1
   MaxSlowTime: 2
   ChargeDelay: 0.5
@@ -673,14 +674,26 @@ PrefabInstance:
       objectReference: {fileID: 4780982141628093127}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: Range
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 8002697790043786536}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: Dampening
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
+      propertyPath: MaxCharges
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
+      propertyPath: SpringForce
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
@@ -705,7 +718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827564, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: GrappleLayer.m_Bits
-      value: 1216
+      value: 3264
       objectReference: {fileID: 0}
     - target: {fileID: 7729264469756827567, guid: e50870a8011bbcf40adb7304b829edf1, type: 3}
       propertyPath: m_Materials.Array.data[0]

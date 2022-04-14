@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Boosting")]
     public float BoosterStrength = 20f;
     public float MaxBoostAmount = 5f;
+    public float InitBoostRatio = 0.8f;
     public float BoostRechargeCooldown = 1f;
     public float BoostRechargeRate = 0.5f;
     public float BoostRechargeCap = 2f;
@@ -281,7 +282,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
-        _currentBoostAmount = MaxBoostAmount * 0.2f;
+        _currentBoostAmount = MaxBoostAmount * InitBoostRatio;
         _currentSlowTime = MaxSlowTime;
 
         MainMenu _mainMenu = FindObjectOfType<MainMenu>();
