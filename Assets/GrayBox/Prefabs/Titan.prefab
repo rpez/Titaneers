@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 246763448356908543}
   m_LocalRotation: {x: -0.053043116, y: -0.038410924, z: 0.5852546, w: -0.80820054}
   m_LocalPosition: {x: 0.0012, y: 0.02157, z: -0.01204}
-  m_LocalScale: {x: 1.01, y: 1.01, z: 1.1}
+  m_LocalScale: {x: 1, y: 1.011, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3372663551669001774}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localPosition: {x: 0.0012, y: 0.02157, z: -0.01204}
   localRotation: {x: -0.053043116, y: -0.038410924, z: 0.5852546, w: -0.80820054}
-  localScale: {x: 1.01, y: 1.01, z: 1.1}
+  localScale: {x: 1, y: 1.011, z: 2}
 --- !u!33 &929568213526007791
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7564,6 +7564,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RocksPerSec: 5
   FloatSpeed: 50
+  MinScale: 1
+  MaxScale: 3
   _rocksPool: {fileID: 9204662535179879535}
   _spawnArea: {fileID: 9220045430620716172}
   _destoryArea: {fileID: 5257966419046104662}
@@ -17555,6 +17557,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6191389306590295919, guid: 2c499152c3b9e0f4c87b6611c411c7cf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0a2067a857afc54a8ab846f053c65b3, type: 2}
     - target: {fileID: 8335789865311860747, guid: 2c499152c3b9e0f4c87b6611c411c7cf, type: 3}
       propertyPath: m_Height
       value: 1

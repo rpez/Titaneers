@@ -27,8 +27,8 @@ public class MeteorSpawner : MonoBehaviour
         Debug.Log("OnMeteorExplode");
         Titan.SetActive(true);
         //TitanMat.GetColor("VoronoiColor");
-        DOTween.To(() => TitanMat.material.GetColor("_VoronoiColor"), x => TitanMat.material.SetColor("_VoronoiColor", x), Color.black, 5);
-        DOTween.To(() => TitanMat.material.GetColor("_FresnelColor"), x => TitanMat.material.SetColor("_FresnelColor", x), Color.black, 5);
+        //DOTween.To(() => TitanMat.material.GetColor("_VoronoiColor"), x => TitanMat.material.SetColor("_VoronoiColor", x), Color.black, 5);
+        //DOTween.To(() => TitanMat.material.GetColor("_FresnelColor"), x => TitanMat.material.SetColor("_FresnelColor", x), Color.black, 5);
     }
 
     void RotateTo(GameObject obj, Vector3 dest)
