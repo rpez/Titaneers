@@ -57,7 +57,7 @@ public class Laser : MonoBehaviour
                 _lineRenderer.SetPosition(1, _shootPoint.position + _shootPoint.forward * maxLength);
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
         _lineRenderer.SetPosition(1, _shootPoint.position);
         _lineRenderer.startWidth = _lineRenderer.endWidth = 0f;
