@@ -189,12 +189,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (_pulling) StopPull();
 
-        _rigidbody.velocity = -_velocityBuffer + Vector3.up * _velocityBuffer.magnitude;
+        if (_rigidbody.velocity.magnitude <= 10f) _rigidbody.velocity = -_velocityBuffer + Vector3.up * _velocityBuffer.magnitude;
+        else _rigidbody.velocity = -_rigidbody.velocity + Vector3.up * _rigidbody.velocity.magnitude;
 
         EventManager.OnFreezeFrame(0.5f);
 
         Camera.OnAttack();
         Camera.NoiseImpulse(30f, 6f, 0.7f);
+
+        _collider.enabled = false;
+        StartCoroutine(Delay(1f, () => _collider.enabled = true));
     }
 
     private IEnumerator FreezeCharacter(float time)
@@ -636,11 +640,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Grappleable")
-        {
-            if (collision.relativeVelocity.magnitude >= 10f) _velocityBuffer = collision.relativeVelocity;
-            StartCoroutine(Delay(0.2f, () => _velocityBuffer = Vector3.zero));
-        }
+        Debug.Log(collision.gameObject.name);
+        Debug.Log(collision.relativeVelocity);
+        if (collision.relativeVelocity.magnitude >= 10f) _velocityBuffer = collision.relativeVelocity;
+        StartCoroutine(Delay(0.2f, () => _velocityBuffer = Vector3.zero));
     }
 
     /// <summary>
