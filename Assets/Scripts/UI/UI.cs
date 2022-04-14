@@ -12,12 +12,15 @@ public class UI : MonoBehaviour
     public Camera Camera;
     public ObjectPool IndicatorPool;
     public Image[] GrappleCharges;
+    public GameObject FuelGauge;
+    public Image AimCircle;
 
     [SerializeField] private float _maxThreatDist;
     [SerializeField] private GameObject _rangeIndicator;
     [SerializeField] private GameObject _topRangeIndicator;
     [SerializeField] private RectTransform[] _rangeIndicators;
     [SerializeField] private Image[] _rangeImage;
+
     // Private variables
     private Color _defaultCrosshairColor;
 
@@ -128,7 +131,8 @@ public class UI : MonoBehaviour
 
     public void ActiveIndicator(bool active)
     {
-        _rangeIndicator.SetActive(active);
+        //_rangeIndicator.SetActive(active);
+        AimCircle.enabled = active;
     }
 
     public void ChangeIndicator(float anchorX)

@@ -120,22 +120,29 @@ public class GrapplingGun : MonoBehaviour
     void Update()
     {
         // UI update
-        RaycastHit hit;
-        bool intersect = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range * indicatorRange);
-        if (!intersect) UIRef.ActiveIndicator(false);
-        else
+        RaycastHit hit = new RaycastHit();
+        //bool intersect = Physics.Raycast(PlayerCamera.position, PlayerCamera.forward, out hit, Range * indicatorRange);
+        //if (!intersect) UIRef.ActiveIndicator(false);
+        //else
+        //{
+        //    UIRef.ActiveIndicator(true);
+        //    float distanceRatio = hit.distance / Range;
+        //    UIRef.ChangeIndicator(distanceRatio / indicatorRange);
+        //    bool withinRange = distanceRatio <= 1 ? true : false;
+        //    if (((1 << hit.collider.gameObject.layer) & GrappleLayer.value) <= 0)
+        //    {
+        //        // not grapplable area
+        //        UIRef.ChangeCrosshairIleagal(withinRange);
+        //    }
+        //    else UIRef.ResetCrosshairColor(withinRange);
+        //}
+
+        bool intersect = RaycastGrappleTarget(ref hit);
+        if (intersect)
         {
             UIRef.ActiveIndicator(true);
-            float distanceRatio = hit.distance / Range;
-            UIRef.ChangeIndicator(distanceRatio / indicatorRange);
-            bool withinRange = distanceRatio <= 1 ? true : false;
-            if (((1 << hit.collider.gameObject.layer) & GrappleLayer.value) <= 0)
-            {
-                // not grapplable area
-                UIRef.ChangeCrosshairIleagal(withinRange);
-            }
-            else UIRef.ResetCrosshairColor(withinRange);
         }
+        else UIRef.ActiveIndicator(false);
 
         RaycastHit currentHit = new RaycastHit();
         bool rayHit = false;
@@ -263,7 +270,6 @@ public class GrapplingGun : MonoBehaviour
         RaycastHit hit = new RaycastHit();
         bool rayHit = RaycastGrappleTarget(ref hit);
         GameObject crosshairTarget = UIRef.GetCrosshairTarget();
-
         // Check whether raycast or crosshair hit is closer
         if (crosshairTarget != null)
         {
@@ -293,20 +299,20 @@ public class GrapplingGun : MonoBehaviour
         else
         {
             _ricochet = false;
-            if (hit.transform.gameObject.tag == "Projectile")
+            if (hit.collider.gameObject.tag == "Projectile")
             {
-                _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
+                _capturedMissile = hit.collider.gameObject.GetComponent<Missile>();
             }
 
-            _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
+            _grapplePoint = Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
             _grapplePoint.transform.parent = hit.collider.transform;
             AkSoundEngine.PostEvent(GrappleShoot, gameObject);
             float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
             _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
-
-            if (hit.transform.gameObject.tag == Tags.POWERUP_TAG)
+            Debug.Log(hit.collider.gameObject.tag);
+            if (hit.collider.gameObject.tag == Tags.POWERUP_TAG)
             {
-                var powerUp = hit.transform.gameObject.GetComponent<NewPowerUp>();
+                var powerUp = hit.collider.gameObject.GetComponent<NewPowerUp>();
                 StartCoroutine(OnGrapplePowerUp(powerUp));
             }
         }
