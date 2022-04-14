@@ -61,6 +61,7 @@ public class Laser : MonoBehaviour
         }
         _lineRenderer.SetPosition(1, _shootPoint.position);
         _lineRenderer.startWidth = _lineRenderer.endWidth = 0f;
+        Quaternion shootDir = _shootPoint.rotation;
 
         yield return new WaitForSeconds(_interval);
 
@@ -70,8 +71,9 @@ public class Laser : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
+            _shootPoint.rotation = shootDir;
             _hitbox.localScale = Vector3.one;
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
         _hitbox.localScale = Vector3.zero;
     }
