@@ -28,6 +28,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class GrapplingGun : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class GrapplingGun : MonoBehaviour
     public GrapplingRope Rope;
     public Transform GunTip, PlayerCamera, Player;
     public UI UIRef;
+    public CameraBehaviour Camera;
+    public CinemachineTargetGroup TargetGroup;
+    public Transform BossTransform;
 
     [Header("Layers")]
     public LayerMask GrappleLayer;
@@ -79,6 +83,7 @@ public class GrapplingGun : MonoBehaviour
 
     private PlayerControls _controls;
     private PlayerControls.GroundMovementActions _controlMapping;
+    private Transform targetTransform;
 
     private void OnEnable()
     {
@@ -229,6 +234,17 @@ public class GrapplingGun : MonoBehaviour
             _capturedMissile = hit.transform.gameObject.GetComponent<Missile>();
         }
 
+        //if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Titan"))
+        {
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Titan"))
+            {
+                Debug.Log("Grapple Titan");
+                targetTransform = BossTransform;
+                TargetGroup.AddMember(targetTransform, 1.0f, 500f);
+                Camera.SwitchCamera(CameraType.FastMove);
+            }
+            //else TargetGroup.AddMember(hit.transform, 1.0f, 10f);
+        }
         _grapplePoint = GameObject.Instantiate(HitpointPrefab, hit.point, Quaternion.identity);
         _grapplePoint.transform.parent = hit.collider.transform;
         AkSoundEngine.PostEvent(GrappleShoot, gameObject);
@@ -275,7 +291,6 @@ public class GrapplingGun : MonoBehaviour
         _joint.massScale = MassScale;
 
         _currentCharges--;
-
 
     }
 
@@ -348,6 +363,8 @@ public class GrapplingGun : MonoBehaviour
         _isLaunched = false;
         _stopTimeStamp = Time.time;
         Destroy(_joint);
+        Camera.SwitchCamera(CameraType.Follow);
+        TargetGroup.RemoveMember(BossTransform);
     }
 
     public bool IsGrappling()

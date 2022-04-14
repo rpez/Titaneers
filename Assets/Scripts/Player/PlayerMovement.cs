@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
     public float AirResistFreeTimeWindow = 0.5f;     // free from air resist after grappling
     public float MinPullVelocity = 20f;
     public float AirExtraGravity = 50f;
+    public float MoveForceMultiplyer = 4.0f;
     
 
     [Header("Sliding")]
@@ -323,6 +324,10 @@ public class PlayerMovement : MonoBehaviour
         {
             CancelBoost();
         };
+        if (_controlMapping.Jump.WasReleasedThisFrame())
+        {
+            _jumping = false;
+        };
         _controlMapping.TimeSlow.performed += _ =>
         {
             SetTimeSlow(!_slowTime);
@@ -399,7 +404,7 @@ public class PlayerMovement : MonoBehaviour
         // Movement in air
         if (!_grounded)
         {
-            multiplier = 2f;
+            multiplier = MoveForceMultiplyer;
         }
 
         //Apply forces to move player
@@ -469,9 +474,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (_grounded && _readyToJump)
+        //if (_grounded && _readyToJump)
         {
-            _readyToJump = false;
+            _readyToJump = true;
 
             //Add jump forces
             _rigidbody.AddForce(Vector2.up * JumpForce * 1.5f);

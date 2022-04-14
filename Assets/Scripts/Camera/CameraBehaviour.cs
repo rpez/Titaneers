@@ -9,7 +9,7 @@ using System;
 
 public enum CameraType
 {
-    //Follow,
+    Follow,
     FastMove,
     Attack,
 }
@@ -20,7 +20,7 @@ public class CameraBehaviour : MonoBehaviour
     [Header("Reference")]
     public PlayerMovement PlayerControl;
     public Volume VolumeProfile;
-    //public CinemachineVirtualCamera FollowCamera;
+    public CinemachineVirtualCamera FollowCamera;
     public CinemachineVirtualCamera FastMoveCamera;
     public CinemachineVirtualCamera AttackCamera;
     public ParticleSystem SpeedLine;
@@ -60,10 +60,10 @@ public class CameraBehaviour : MonoBehaviour
         VolumeProfile.profile.TryGet<Vignette>(out _vignetteProfile);
         VolumeProfile.profile.TryGet<ColorAdjustments>(out _colorProfile);
         _curColor = _colorProfile.colorFilter.value;
-        _noise = FastMoveCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _noise = FollowCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _attackNoise = AttackCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
-        SwitchCamera(CameraType.FastMove);
+        SwitchCamera(CameraType.Follow);
     }
 
     // Update is called once per frame
@@ -115,25 +115,25 @@ public class CameraBehaviour : MonoBehaviour
     }
     public void OnAttackEnd()
     {
-        SwitchCamera(CameraType.FastMove);
+        SwitchCamera(CameraType.Follow);
     }
 
     public void SwitchCamera(CameraType type)
     {
         switch (type)
         {
-            //case CameraType.Follow:
-            //    FollowCamera.Priority = 1;
-            //    FastMoveCamera.Priority = 0;
-            //    AttackCamera.Priority = 0;
-            //    break;
+            case CameraType.Follow:
+                FollowCamera.Priority = 1;
+                FastMoveCamera.Priority = 0;
+                AttackCamera.Priority = 0;
+                break;
             case CameraType.FastMove:
-                //FollowCamera.Priority = 0;
+                FollowCamera.Priority = 0;
                 FastMoveCamera.Priority = 1;
                 AttackCamera.Priority = 0;
                 break;
             case CameraType.Attack:
-                //FollowCamera.Priority = 0;
+                FollowCamera.Priority = 0;
                 FastMoveCamera.Priority = 0;
                 AttackCamera.Priority = 1;
                 break;
