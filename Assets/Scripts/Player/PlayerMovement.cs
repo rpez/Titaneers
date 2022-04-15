@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject AttackVFX;
     public GameObject ImpactVFX;
     public CameraBehaviour Camera;
+    public VisualEffect SwordPower;
 
     [Header("Layers")]
     public LayerMask GroundLayer;
@@ -98,6 +100,8 @@ public class PlayerMovement : MonoBehaviour
     public float AttackWindup = 0.2f;
     public float AttackTime = 0.5f;
     public float RecoverTime = 0.5f;
+    public float PowerVFXScaler = 0.05f;
+    public float ImpactVFXScaler = 0.3f;
 
     public Vector3 CurrentVelocity { get; private set; }
     public bool IsBoosting { get => _boosting; }
@@ -187,6 +191,12 @@ public class PlayerMovement : MonoBehaviour
         //hitEffect = GameObject.Instantiate(ImpactVFX, SwordTip.transform.position + hitDir * 3f, Quaternion.identity);
         Destroy(hitEffect, 5f);
 
+        Vector3 hitVelocity = Vector3.zero;
+        if (_rigidbody.velocity.magnitude <= 10f) hitVelocity = _velocityBuffer;
+        else hitVelocity = _rigidbody.velocity;
+
+        ScaleVFX(hitEffect, hitVelocity.magnitude);
+
         if (_pulling) StopPull();
 
         if (_rigidbody.velocity.magnitude <= 10f) _rigidbody.velocity = Vector3.up * _velocityBuffer.magnitude;
@@ -199,6 +209,14 @@ public class PlayerMovement : MonoBehaviour
 
         _collider.enabled = false;
         StartCoroutine(Delay(1f, () => _collider.enabled = true));
+    }
+
+    private void ScaleVFX(GameObject vfx, float scale)
+    {
+        for (int i = 0; i < vfx.transform.childCount; i++)
+        {
+            vfx.transform.GetChild(i).transform.localScale *= scale * ImpactVFXScaler;
+        }
     }
 
     private IEnumerator FreezeCharacter(float time)
@@ -229,6 +247,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject vfx = GameObject.Instantiate(AttackVFX, Sword.transform);
         Destroy(vfx, 5f);
+        ScaleVFX(vfx, CurrentVelocity.magnitude);
 
         SwordHitbox.gameObject.SetActive(true);
         SwordHitbox.Initialize(CurrentVelocity.magnitude, AttackImpact);
@@ -345,6 +364,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
+        SwordPower.SetFloat("Strength", Mathf.Max(1f, CurrentVelocity.magnitude * PowerVFXScaler));
+
         if (_frozen)
         {
             _rigidbody.velocity = Vector3.zero;
