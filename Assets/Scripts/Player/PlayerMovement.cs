@@ -640,8 +640,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
-        Debug.Log(collision.relativeVelocity);
         if (collision.relativeVelocity.magnitude >= 10f) _velocityBuffer = collision.relativeVelocity;
         StartCoroutine(Delay(0.2f, () => _velocityBuffer = Vector3.zero));
     }
