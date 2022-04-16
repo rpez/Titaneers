@@ -24,7 +24,7 @@ public class MeteorSpawner : MonoBehaviour
 
     void OnMeteorExplode()
     {
-        Debug.Log("OnMeteorExplode");
+        //Debug.Log("OnMeteorExplode");
         Titan.SetActive(true);
         //TitanMat.GetColor("VoronoiColor");
         //DOTween.To(() => TitanMat.material.GetColor("_VoronoiColor"), x => TitanMat.material.SetColor("_VoronoiColor", x), Color.black, 5);

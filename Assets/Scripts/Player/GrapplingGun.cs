@@ -309,7 +309,7 @@ public class GrapplingGun : MonoBehaviour
             AkSoundEngine.PostEvent(GrappleShoot, gameObject);
             float distance = (_grapplePoint.transform.position - GunTip.transform.position).magnitude;
             _launchRoutine = StartCoroutine(Delay(distance / GrappleSpeed, ConnectGrapple));
-            Debug.Log(hit.collider.gameObject.tag);
+            //Debug.Log(hit.collider.gameObject.tag);
             if (hit.collider.gameObject.tag == Tags.POWERUP_TAG)
             {
                 var powerUp = hit.collider.gameObject.GetComponent<NewPowerUp>();
