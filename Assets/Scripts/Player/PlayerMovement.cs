@@ -101,7 +101,8 @@ public class PlayerMovement : MonoBehaviour
     public float AttackTime = 0.5f;
     public float RecoverTime = 0.5f;
     public float PowerVFXScaler = 0.05f;
-    public float ImpactVFXScaler = 0.3f;
+    public float ImpactVFXScaler = 0.05f;
+    public float HitBoxScaler = 0.005f;
 
     public Vector3 CurrentVelocity { get; private set; }
     public bool IsBoosting { get => _boosting; }
@@ -214,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
     {
         for (int i = 0; i < vfx.transform.childCount; i++)
         {
-            vfx.transform.GetChild(i).transform.localScale *= scale * ImpactVFXScaler;
+            vfx.transform.GetChild(i).transform.localScale *= Mathf.Max(1f, scale * ImpactVFXScaler);
         }
     }
 
@@ -251,6 +252,8 @@ public class PlayerMovement : MonoBehaviour
         SwordHitbox.gameObject.SetActive(true);
         SwordHitbox.Initialize(CurrentVelocity.magnitude, AttackImpact);
 
+        Sword.transform.localScale *= Mathf.Max(1f, CurrentVelocity.magnitude * HitBoxScaler);
+
         StartCoroutine(Delay(AttackTime, EndAttack));
     }
 
@@ -260,6 +263,7 @@ public class PlayerMovement : MonoBehaviour
         _recovering = true;
         SwordHitbox.gameObject.SetActive(false);
         Camera.OnAttackEnd();
+        Sword.transform.localScale = Vector3.one;
         StartCoroutine(Delay(RecoverTime, Recover));
     }
 
