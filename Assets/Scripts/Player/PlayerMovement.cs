@@ -178,10 +178,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void AttackImpact(GameObject hitObject)
     {
-        Vector3 hitDir = (hitObject.transform.position - SwordTip.transform.position).normalized;
+        Vector3 hitDir = (hitObject.transform.position - transform.position).normalized;
         GameObject hitEffect;
         RaycastHit hit;
-        if (Physics.Raycast(SwordTip.transform.position, hitDir, out hit, 100f))
+        if (Physics.Raycast(transform.position, hitDir, out hit, 100f))
         {
             hitEffect = GameObject.Instantiate(ImpactVFX, hit.point, Quaternion.identity);
             hitEffect.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal) * hitEffect.transform.rotation;
