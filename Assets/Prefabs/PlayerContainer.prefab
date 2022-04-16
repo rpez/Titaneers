@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 1691826801}
   - component: {fileID: 1691826802}
   - component: {fileID: 1691826803}
-  - component: {fileID: 6370058870413628874}
   m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
@@ -79,23 +78,6 @@ BoxCollider:
   m_Size: {x: 4.61, y: 3.49, z: 8.32}
   m_Center: {x: 0, y: 0, z: 1.8936768}
 --- !u!114 &1691826803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691826800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 055a64f95ef6f8847a87420f1f5ff1f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _continuous: 0
-  _damage: 100
-  _layers:
-    serializedVersion: 2
-    m_Bits: 2048
---- !u!114 &6370058870413628874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,7 +369,7 @@ MonoBehaviour:
   Grapple: {fileID: 2496024928567296264}
   Sword: {fileID: 2248262134983563429}
   SwordTip: {fileID: 918715861}
-  SwordHitbox: {fileID: 6370058870413628874}
+  SwordHitbox: {fileID: 1691826803}
   DashVFX: {fileID: 8710899579908760787, guid: ad1ab9b0134e9de488bdf32f38d9f782, type: 3}
   AttackVFX: {fileID: 5649737019155367537, guid: a5f4ca091e35d1044ab7f4c5c2f75003, type: 3}
   ImpactVFX: {fileID: 9065892664890786847, guid: 7e49746688621ba4789905e3d766442d, type: 3}
