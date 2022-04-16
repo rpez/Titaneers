@@ -409,7 +409,7 @@ MonoBehaviour:
   AttackTime: 0.5
   RecoverTime: 0.2
   PowerVFXScaler: 0.05
-  ImpactVFXScaler: 0.005
+  ImpactVFXScaler: 0.01
   HitBoxScaler: 0.005
 --- !u!54 &6965098877999748812
 Rigidbody:
