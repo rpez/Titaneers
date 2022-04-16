@@ -183,7 +183,8 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(SwordTip.transform.position, hitDir, out hit, 100f))
         {
-            hitEffect = GameObject.Instantiate(ImpactVFX, hit.point, Quaternion.LookRotation(hit.transform.right, hit.normal));
+            hitEffect = GameObject.Instantiate(ImpactVFX, hit.point, Quaternion.identity);
+            hitEffect.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal) * hitEffect.transform.rotation;
         }
         else
         {
