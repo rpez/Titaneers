@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -19,37 +20,36 @@ public class MainMenu : MonoBehaviour
     public GameObject GrapplingRangeAdjustment;
     public float GrapplingRange { get => _grapplingRange; }
 
-    private GameObject _mouseSensitivityUp;
-    private GameObject _mouseSensitivityDown;
-    private TextMeshProUGUI _mouseSensitivityButtonTextUGUI;
+    //private TextMeshProUGUI _mouseSensitivityButtonTextUGUI;
+    private TMP_InputField _mouseSensitivityButtonText;
+    private TMP_InputField _grapplingRangeButtonText;
 
-    private GameObject _grapplingRangeUp;
-    private GameObject _grapplingRangeDown;
-    private TextMeshProUGUI _grapplingRangeButtonTextUGUI;
-
-    private bool _mouseSensitivityAdjustmentActivated;
     private float _mouseSensitivity;
-    private bool _grapplingRangeAdjustmentActivated;
     private float _grapplingRange;
 
     // Start is called before the first frame update
     void Start()
     {
-        _mouseSensitivityAdjustmentActivated = false;
-        _mouseSensitivity = DefaultMouseSensitivity;
-        _mouseSensitivityUp = MouseSensitivityAdjustment.transform.Find("Up").gameObject;
-        _mouseSensitivityDown = MouseSensitivityAdjustment.transform.Find("Down").gameObject;
-        _mouseSensitivityButtonTextUGUI = MouseSensitivityAdjustment.transform.Find("Text").gameObject.GetComponent<TextMeshProUGUI>();
-        _mouseSensitivityUp.SetActive(false);
-        _mouseSensitivityDown.SetActive(false);
+        // Must unlock the cursor when main menu launched
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
 
-        _grapplingRangeAdjustmentActivated = false;
-        _grapplingRange = DefaultGrapplingRange;
-        _grapplingRangeUp = GrapplingRangeAdjustment.transform.Find("Up").gameObject;
-        _grapplingRangeDown = GrapplingRangeAdjustment.transform.Find("Down").gameObject;
-        _grapplingRangeButtonTextUGUI = GrapplingRangeAdjustment.transform.Find("Text").gameObject.GetComponent<TextMeshProUGUI>();
-        _grapplingRangeUp.SetActive(false);
-        _grapplingRangeDown.SetActive(false);
+        if (DefaultMouseSensitivity < MinimumMouseSensitivity)
+            DefaultMouseSensitivity = MinimumMouseSensitivity;
+        else if (DefaultMouseSensitivity > MaximumMouseSensitivity)
+            DefaultMouseSensitivity = MaximumMouseSensitivity;
+        _mouseSensitivity = Mathf.Round(DefaultMouseSensitivity * 10f) * 0.1f;
+        _mouseSensitivityButtonText = MouseSensitivityAdjustment.GetComponent<TMP_InputField>();
+        _mouseSensitivityButtonText.interactable = false;
+        _mouseSensitivityButtonText.text = _mouseSensitivity.ToString("0.0");
+
+        if (DefaultGrapplingRange < MinimumGrapplingRange)
+            DefaultGrapplingRange = MinimumGrapplingRange;
+        else if (DefaultGrapplingRange > MaximumGrapplingRange)
+            DefaultGrapplingRange = MaximumGrapplingRange;
+        _grapplingRange = Mathf.Round(DefaultGrapplingRange);
+        _grapplingRangeButtonText = GrapplingRangeAdjustment.GetComponent<TMP_InputField>();
+        _grapplingRangeButtonText.interactable = false;
+        _grapplingRangeButtonText.text = _grapplingRange.ToString("0");
     }
 
     // Update is called once per frame
@@ -64,54 +64,60 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void AdjustMouseSensitivity(float _delta)
-    {
-        _mouseSensitivity += _delta;
-        if (_mouseSensitivity < MinimumMouseSensitivity)
-            _mouseSensitivity = MinimumMouseSensitivity;
-        else if (_mouseSensitivity > MaximumMouseSensitivity)
-            _mouseSensitivity = MaximumMouseSensitivity;
-        _mouseSensitivityButtonTextUGUI.text = _mouseSensitivity.ToString("0.0");
-    }
-
     public void AdjustMouseSensitivity()
     {
-        if (_mouseSensitivityAdjustmentActivated)
+        if (_mouseSensitivityButtonText.interactable)
         {
-            _mouseSensitivityButtonTextUGUI.text = "MOUSE SENSITIVITY";
+            _mouseSensitivityButtonText.interactable = false;
+            float val;
+            try
+            {
+                val = float.Parse(_mouseSensitivityButtonText.text);
+            }
+            catch (FormatException e)
+            {
+                val = DefaultMouseSensitivity;
+            }
+            if (val < MinimumMouseSensitivity)
+                _mouseSensitivity = MinimumMouseSensitivity;
+            else if (val > MaximumMouseSensitivity)
+                _mouseSensitivity = MaximumMouseSensitivity;
+            else
+                _mouseSensitivity = val;
+            _mouseSensitivity = Mathf.Round(_mouseSensitivity * 10f) * 0.1f;
+            _mouseSensitivityButtonText.text = _mouseSensitivity.ToString("0.0");
         } else
         {
-            _mouseSensitivityButtonTextUGUI.text = _mouseSensitivity.ToString("0.0");
+            _mouseSensitivityButtonText.interactable = true;
         }
-
-        _mouseSensitivityAdjustmentActivated = !_mouseSensitivityAdjustmentActivated;
-        _mouseSensitivityUp.SetActive(_mouseSensitivityAdjustmentActivated);
-        _mouseSensitivityDown.SetActive(_mouseSensitivityAdjustmentActivated);
-    }
-
-    public void AdjustGrapplingRange(float _delta)
-    {
-        _grapplingRange += _delta;
-        if (_grapplingRange < MinimumGrapplingRange)
-            _grapplingRange = MinimumGrapplingRange;
-        else if (_grapplingRange > MaximumGrapplingRange)
-            _grapplingRange = MaximumGrapplingRange;
-        _grapplingRangeButtonTextUGUI.text = _grapplingRange.ToString("0");
     }
 
     public void AdjustGrapplingRange()
     {
-        if (_grapplingRangeAdjustmentActivated)
+        if (_grapplingRangeButtonText.interactable)
         {
-            _grapplingRangeButtonTextUGUI.text = "GRAPPLING RANGE";
+            _grapplingRangeButtonText.interactable = false;
+            float val;
+            try
+            {
+                val = float.Parse(_grapplingRangeButtonText.text);
+            }
+            catch (FormatException e)
+            {
+                val = DefaultGrapplingRange;
+            }
+            if (val < MinimumGrapplingRange)
+                _grapplingRange = MinimumGrapplingRange;
+            else if (val > MaximumGrapplingRange)
+                _grapplingRange = MaximumGrapplingRange;
+            else
+                _grapplingRange = val;
+            _grapplingRange = Mathf.Round(_grapplingRange);
+            _grapplingRangeButtonText.text = _grapplingRange.ToString("0");
         }
         else
         {
-            _grapplingRangeButtonTextUGUI.text = _grapplingRange.ToString("0");
+            _grapplingRangeButtonText.interactable = true;
         }
-
-        _grapplingRangeAdjustmentActivated = !_grapplingRangeAdjustmentActivated;
-        _grapplingRangeUp.SetActive(_grapplingRangeAdjustmentActivated);
-        _grapplingRangeDown.SetActive(_grapplingRangeAdjustmentActivated);
     }
 }
