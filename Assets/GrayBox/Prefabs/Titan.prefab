@@ -171,7 +171,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246763448356908543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16048,6 +16048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleableArea
       objectReference: {fileID: 0}
+    - target: {fileID: 5775472539768219769, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7743073901679840655, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -17329,6 +17333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleableArea
       objectReference: {fileID: 0}
+    - target: {fileID: 5775472539768219769, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7743073901679840655, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -17705,6 +17713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleableArea
       objectReference: {fileID: 0}
+    - target: {fileID: 5775472539768219769, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7743073901679840655, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -17798,6 +17810,10 @@ PrefabInstance:
     - target: {fileID: 5775472539768219769, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
       propertyPath: m_Name
       value: GrappleableArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775472539768219769, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7743073901679840655, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
       propertyPath: m_RootOrder
@@ -18057,6 +18073,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleableArea
       objectReference: {fileID: 0}
+    - target: {fileID: 5775472539768219769, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7743073901679840655, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -18232,6 +18252,10 @@ PrefabInstance:
     - target: {fileID: 5775472539768219769, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
       propertyPath: m_Name
       value: GrappleableArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775472539768219769, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7743073901679840655, guid: 85ce227e2e6f82e4a9788a5156a9dd0c, type: 3}
       propertyPath: m_RootOrder
