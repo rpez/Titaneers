@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject ImpactVFX;
     public CameraBehaviour Camera;
     public VisualEffect SwordPower;
+    public Material DeathMat;
 
     [Header("Layers")]
     public LayerMask GroundLayer;
@@ -545,6 +546,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Look()
     {
+        if (_frozen) return;
         float mouseX = 0, mouseY = 0;
 
         if (Mouse.current != null)
@@ -732,6 +734,31 @@ public class PlayerMovement : MonoBehaviour
             if (_currentBoostAmount > MaxBoostAmount) _currentBoostAmount = MaxBoostAmount;
         }
         //Debug.LogFormat("Current Boost {0}", _currentBoostAmount);
+    }
+
+    public void OnDeath()
+    {
+        SkinnedMeshRenderer[] skinMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach (var renderer in skinMeshRenderers)
+        {
+            renderer.material = DeathMat;
+        }
+        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (var renderer in meshRenderers)
+        {
+            renderer.material = DeathMat;
+        }
+        _controlMapping.Grappling.Disable();
+        _controlMapping.Jump.Disable();
+        _controlMapping.TimeSlow.Disable();
+        _controlMapping.Booster.Disable();
+        _controlMapping.Move.Disable();
+        StartCoroutine(FreezeCharacter(3.0f));
+        StartCoroutine(Delay(3.0f, () => {
+            gameObject.SetActive(false);
+        }));
+
+
     }
 }
 

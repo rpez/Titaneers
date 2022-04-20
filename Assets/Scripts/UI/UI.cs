@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,7 @@ public class UI : MonoBehaviour
     public Image[] GrappleCharges;
     public GameObject FuelGauge;
     public Image AimCircle;
+    public GameObject RestartBtn;
 
     [SerializeField] private float _maxThreatDist;
     [SerializeField] private GameObject _rangeIndicator;
@@ -199,5 +201,24 @@ public class UI : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void OnRestart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OnDead()
+    {
+        StartCoroutine(Delay(5.0f, () =>
+        {
+            RestartBtn.SetActive(true);
+        }));
+    }
+
+    private IEnumerator Delay(float delay, Action callback)
+    {
+        yield return new WaitForSeconds(delay);
+        callback.Invoke();
     }
 }
