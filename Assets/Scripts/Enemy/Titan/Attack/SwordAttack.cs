@@ -10,6 +10,8 @@ public class SwordAttack : MonoBehaviour
     private float _maxTime;
 
     [SerializeField]
+    private float startOffset = 400f;
+    [SerializeField]
     private float _randomAreaWidth;
     [SerializeField]
     private float _randomAreaLength;
@@ -24,7 +26,7 @@ public class SwordAttack : MonoBehaviour
         float timer = 0;
         float speed = _maxDistance / _maxTime;
         float interval = _maxTime / _swordNumber;
-        Vector3 pos = transform.position;
+        Vector3 pos = transform.position + transform.forward * startOffset;
         while(timer<_maxTime)
         {
             timer += interval;
@@ -34,7 +36,7 @@ public class SwordAttack : MonoBehaviour
             Vector3 swordPos = new Vector3(
                 Random.Range(pos.x - _randomAreaWidth / 2, pos.x + _randomAreaWidth / 2),
                 pos.y,
-                pos.z + Mathf.Pow(Random.Range(0, 1), 2) * _randomAreaLength
+                pos.z + Mathf.Sqrt(Random.Range(0, 1)) * _randomAreaLength
                 );
 
             _swordPool.InitiateFromObjectPool(swordPos, transform.rotation);
