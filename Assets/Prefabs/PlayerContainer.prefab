@@ -375,6 +375,7 @@ MonoBehaviour:
   ImpactVFX: {fileID: 9065892664890786847, guid: 7e49746688621ba4789905e3d766442d, type: 3}
   Camera: {fileID: 0}
   SwordPower: {fileID: 5597530965254911608}
+  DeathMat: {fileID: 2100000, guid: bd251d9b5dbb23641a09096442ae5dd2, type: 2}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -463,10 +464,10 @@ MonoBehaviour:
   _deathEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4758802823799522771}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 6965098877999748813}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
