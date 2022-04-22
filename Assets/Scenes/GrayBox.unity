@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6596.6064, g: 5576.7666, b: 4483.039, a: 1}
+  m_IndirectSpecularColor: {r: 6596.621, g: 5576.747, b: 4483.078, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -833,11 +833,6 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
---- !u!95 &438120881 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4805554264778525811, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-  m_PrefabInstance: {fileID: 1350924250}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &441592495
 GameObject:
   m_ObjectHideFlags: 0
@@ -6718,132 +6713,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedBlackboard
-      value: '{"_variables":{"target":{"_propertyPath":"TitanSensor._target","_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"transform":{"_value":1,"_name":"transform","_id":"1af787e3-61f6-4444-8721-8d61118397ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"attackingRange":{"_value":600.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"animator":{"_value":2,"_name":"animator","_id":"15654e1a-2817-40f5-8958-fe9030deb8f6","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Animator,
-        UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"HorizontalDistance":{"_propertyPath":"TitanSensor.HorizontalDistance","_name":"HorizontalDistance","_id":"6ee2db6e-7261-4685-a461-ffe6ed68034e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"VerticalDistance":{"_propertyPath":"TitanSensor.VerticalDistance","_name":"VerticalDistance","_id":"aa0e04c7-f829-4261-a232-8eb870e65605","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"DirectionAngle":{"_propertyPath":"TitanSensor.DirectionAngle","_name":"DirectionAngle","_id":"43d08ab7-7a19-41cc-9afa-2c50da420bf2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentHealthPoint":{"_propertyPath":"Health.CurrentHealthPoint","_name":"CurrentHealthPoint","_id":"bd8eacaa-e28a-4233-babd-c1af5a51b7e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"SwordExist":{"_propertyPath":"TitanBehavior.SwordExist","_name":"SwordExist","_id":"60163a8b-dd37-4f27-b1e4-560ec3208f10","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"MoveSpeed":{"_propertyPath":"TitanMovement.MoveSpeed","_name":"MoveSpeed","_id":"ba5bbfee-8c3c-40be-a5b6-fec0334b7290","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentTimer":{"_propertyPath":"Timer.CurrentTimer","_name":"CurrentTimer","_id":"686b8408-f4cd-43ec-a987-4a61ece31d46","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[0]._json
-      value: '{"_propertyPath":"TitanSensor._target","_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[1]._json
-      value: '{"_value":1,"_name":"transform","_id":"1af787e3-61f6-4444-8721-8d61118397ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[2]._json
-      value: '{"_value":600.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[3]._json
-      value: '{"_value":1,"_name":"animator","_id":"15654e1a-2817-40f5-8958-fe9030deb8f6","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Animator,
-        UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[4]._json
-      value: '{"_propertyPath":"TitanSensor.HorizontalDistance","_name":"HorizontalDistance","_id":"6ee2db6e-7261-4685-a461-ffe6ed68034e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[5]._json
-      value: '{"_propertyPath":"TitanSensor.VerticalDistance","_name":"VerticalDistance","_id":"aa0e04c7-f829-4261-a232-8eb870e65605","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[6]._json
-      value: '{"_propertyPath":"TitanSensor.DirectionAngle","_name":"DirectionAngle","_id":"43d08ab7-7a19-41cc-9afa-2c50da420bf2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[7]._json
-      value: '{"_propertyPath":"Health.CurrentHealthPoint","_name":"CurrentHealthPoint","_id":"bd8eacaa-e28a-4233-babd-c1af5a51b7e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[8]._json
-      value: '{"_propertyPath":"TitanBehavior.SwordExist","_name":"SwordExist","_id":"60163a8b-dd37-4f27-b1e4-560ec3208f10","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[9]._json
-      value: '{"_propertyPath":"TitanMovement.MoveSpeed","_name":"MoveSpeed","_id":"ba5bbfee-8c3c-40be-a5b6-fec0334b7290","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[10]._json
-      value: '{"_propertyPath":"Timer.CurrentTimer","_name":"CurrentTimer","_id":"686b8408-f4cd-43ec-a987-4a61ece31d46","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[1]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[2]._references.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[3]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[4]._references.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[1]._references.Array.data[1]
-      value: 
-      objectReference: {fileID: 2085104703}
-    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _serializedVariables.Array.data[3]._references.Array.data[1]
-      value: 
-      objectReference: {fileID: 438120881}
     - target: {fileID: 1633277555, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 2496024928203559706}
-    - target: {fileID: 629898909909019284, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: MaxScale
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 629898909909019284, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: MinScale
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 629898909909019284, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: RocksPerSec
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 690933696601752221, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _maxDistance
-      value: 2000
-      objectReference: {fileID: 0}
     - target: {fileID: 696950573917220970, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: solver.target
       value: 
       objectReference: {fileID: 2496024928203559706}
-    - target: {fileID: 4706023577281574256, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Name
       value: Titan
@@ -7530,11 +7407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1de87fcb5546fb428eb5cfbd272b846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2085104703 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8119981910988450899, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-  m_PrefabInstance: {fileID: 1350924250}
-  m_PrefabAsset: {fileID: 0}
 --- !u!137 &2097384583 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 49073745835764481, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
