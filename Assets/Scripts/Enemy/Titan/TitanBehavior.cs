@@ -29,8 +29,6 @@ public class TitanBehavior : MonoBehaviour
     [SerializeField]
     private SwordAttack _swordAttack;
 
-    private Coroutine _swordAttackCor;
-
     private void OnEnable()
     {
         EventManager.FreezeFrame += FreezeForSeconds;
@@ -74,9 +72,9 @@ public class TitanBehavior : MonoBehaviour
 
         //VFX
         _lanternChargeVFX.SetActive((_animator.GetFloat("LanternChargeVFX") > 0.99 ? true : false));
-        if(_animator.GetFloat("SwordAttack") > 0.99 && _swordAttackCor==null)
+        if(_animator.GetFloat("SwordAttack") > 0.99)
         {
-            _swordAttackCor = StartCoroutine(_swordAttack.SwordWave());
+            StartCoroutine(_swordAttack.SwordWave());
         }
     }
 }
