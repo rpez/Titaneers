@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738d530cef0000c488d7d9d8d2dc5826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 1
-  _activateOnAwake: 1
+  _time: 0
+  _activateOnAwake: 0
   _autoRestart: 0
   _CountZeroEvents:
     m_PersistentCalls:
@@ -295,13 +295,13 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 8794618789370315644}
         m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: Restart
-        m_Mode: 1
+        m_MethodName: ActivateTimer
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2

@@ -21,27 +21,39 @@ public class SwordAttack : MonoBehaviour
     [SerializeField]
     private ObjectPool _swordPool;
 
+    private bool _corLock;
+
+    private void Start()
+    {
+        _corLock = false;
+    }
+
     public IEnumerator SwordWave()
     {
-        float timer = 0;
-        float speed = _maxDistance / _maxTime;
-        float interval = _maxTime / _swordNumber;
-        Vector3 pos = transform.position + transform.forward * startOffset;
-        while(timer<_maxTime)
+        if (!_corLock)
         {
-            timer += interval;
+            _corLock = true;
+            float timer = 0;
+            float speed = _maxDistance / _maxTime;
+            float interval = _maxTime / _swordNumber;
+            Vector3 pos = transform.position + transform.forward * startOffset;
+            while (timer < _maxTime)
+            {
+                timer += interval;
 
-            pos += transform.forward * speed * Time.deltaTime;
+                pos += transform.forward * speed * Time.deltaTime;
 
-            Vector3 swordPos = new Vector3(
-                Random.Range(pos.x - _randomAreaWidth / 2, pos.x + _randomAreaWidth / 2),
-                pos.y,
-                pos.z + Mathf.Sqrt(Random.Range(0, 1)) * _randomAreaLength
-                );
+                Vector3 swordPos = new Vector3(
+                    Random.Range(pos.x - _randomAreaWidth / 2, pos.x + _randomAreaWidth / 2),
+                    pos.y,
+                    pos.z + Mathf.Sqrt(Random.Range(0, 1)) * _randomAreaLength
+                    );
 
-            _swordPool.InitiateFromObjectPool(swordPos, transform.rotation);
+                _swordPool.InitiateFromObjectPool(swordPos, transform.rotation);
 
-            yield return new WaitForSeconds(interval);
+                yield return new WaitForSeconds(interval);
+            }
+            _corLock = false;
         }
     }
 }
