@@ -6713,10 +6713,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1633277555, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 2496024928203559706}
     - target: {fileID: 696950573917220970, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: solver.target
       value: 
