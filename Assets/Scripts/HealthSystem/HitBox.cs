@@ -57,7 +57,7 @@ public class HitBox : MonoBehaviour
                 HurtBox hurtBox;
                 if (hurtBox = other.GetComponent<HurtBox>())
                 {
-                    DealDamage(hurtBox);
+                    DealDamage(hurtBox,_damage);
                     if (_onHitCallback != null)
                     {
                         _onHitCallback.Invoke(other.gameObject);
@@ -78,14 +78,14 @@ public class HitBox : MonoBehaviour
                 HurtBox hurtBox;
                 if (hurtBox = other.GetComponent<HurtBox>())
                 {
-                    DealDamage(hurtBox);
+                    DealDamage(hurtBox,_damage*Time.deltaTime);
                 }
             }
         }
     }
 
-    private void DealDamage(HurtBox hurtBox)
+    private void DealDamage(HurtBox hurtBox,float damage)
     {
-        hurtBox.ReceiveDamage(_damage);
+        hurtBox.ReceiveDamage(damage);
     }
 }

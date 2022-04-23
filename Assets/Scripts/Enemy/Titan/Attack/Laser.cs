@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    public bool isAiming { get; private set; }
+
     [SerializeField]
     private Transform _shootPoint;
 
@@ -39,6 +41,8 @@ public class Laser : MonoBehaviour
     {
 
         //Aim
+        isAiming = true;
+
         float timer = _aimTime;
         while (timer > 0)
         {
@@ -46,21 +50,16 @@ public class Laser : MonoBehaviour
             _shootPoint.LookAt(_target);
             _lineRenderer.SetPosition(0, _shootPoint.position);
 
-            RaycastHit hit;
-            if (Physics.Raycast(_shootPoint.position, _shootPoint.forward, out hit, maxLength, _layers))
-            {
-                _lineRenderer.SetPosition(1, hit.point);
-                _lineRenderer.startWidth = _lineRenderer.endWidth = _aimRayWidth;
-            }
-            else
-            {
-                _lineRenderer.SetPosition(1, _shootPoint.position + _shootPoint.forward * maxLength);
-            }
+            _lineRenderer.SetPosition(1, _target.position);
+            _lineRenderer.startWidth = _lineRenderer.endWidth = _aimRayWidth;
 
             yield return new WaitForFixedUpdate();
         }
         _lineRenderer.SetPosition(1, _shootPoint.position);
         _lineRenderer.startWidth = _lineRenderer.endWidth = 0f;
+        
+        isAiming = false;
+
         Quaternion shootDir = _shootPoint.rotation;
 
         yield return new WaitForSeconds(_interval);
