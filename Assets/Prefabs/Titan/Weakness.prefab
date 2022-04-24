@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41844663, g: 0.7796888, b: 0.8584906, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.015686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -452,11 +452,11 @@ MonoBehaviour:
   _health: {fileID: 5688026480875795397}
   _barColor:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0.015686275, a: 1}
-    key1: {r: 1, g: 0, b: 0.015867233, a: 1}
-    key2: {r: 0.57490814, g: 0.8391544, b: 0.8965993, a: 0}
-    key3: {r: 0.41960785, g: 0.78039217, b: 0.85882354, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.50980395, g: 0, b: 0.007843138, a: 1}
+    key1: {r: 0.50980395, g: 0, b: 0.007843138, a: 1}
+    key2: {r: 1, g: 0, b: 0.015686275, a: 0}
+    key3: {r: 1, g: 0, b: 0.015686275, a: 0}
+    key4: {r: 1, g: 0, b: 0.015686275, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
@@ -464,7 +464,7 @@ MonoBehaviour:
     ctime1: 13056
     ctime2: 30144
     ctime3: 65535
-    ctime4: 0
+    ctime4: 65535
     ctime5: 0
     ctime6: 0
     ctime7: 0
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41844663, g: 0.7796888, b: 0.8584906, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.015686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

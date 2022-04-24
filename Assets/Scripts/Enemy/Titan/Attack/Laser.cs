@@ -28,7 +28,7 @@ public class Laser : MonoBehaviour
     private Transform _hitbox;
 
     [SerializeField]
-    private LayerMask _layers;
+    private Transform _laserTrackTarget;
 
     private Transform _target;
 
@@ -60,9 +60,8 @@ public class Laser : MonoBehaviour
         
         isAiming = false;
 
-        Quaternion shootDir = _shootPoint.rotation;
-
         yield return new WaitForSeconds(_interval);
+        _shootPoint.LookAt(_laserTrackTarget);
 
         timer = _shootTime;
 
@@ -70,7 +69,6 @@ public class Laser : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            _shootPoint.rotation = shootDir;
             _hitbox.localScale = Vector3.one;
             yield return new WaitForFixedUpdate();
         }

@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Sword;
     public GameObject SwordTip;
     public HitBox SwordHitbox;
+    public float MaxDamage;
     public GameObject DashVFX;
     public GameObject AttackVFX;
     public GameObject ImpactVFX;
@@ -252,7 +253,7 @@ public class PlayerMovement : MonoBehaviour
         ScaleVFX(vfx, CurrentVelocity.magnitude);
 
         SwordHitbox.gameObject.SetActive(true);
-        SwordHitbox.Initialize(CurrentVelocity.magnitude, AttackImpact);
+        SwordHitbox.Initialize(MaxDamage * CurrentVelocity.magnitude / MaxAirSpeed, AttackImpact);
 
         Sword.transform.localScale *= Mathf.Max(1f, CurrentVelocity.magnitude * HitBoxScaler);
 

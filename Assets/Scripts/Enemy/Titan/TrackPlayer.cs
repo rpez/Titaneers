@@ -6,6 +6,8 @@ public class TrackPlayer : MonoBehaviour
 {
     [SerializeField]
     private float _speed;
+    [SerializeField]
+    private float _maxDistance;
 
     private Transform _target;
 
@@ -14,9 +16,12 @@ public class TrackPlayer : MonoBehaviour
         _target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 distance = _target.position - transform.position;
-        transform.position += distance.normalized * Mathf.Min(_speed * Time.deltaTime, distance.magnitude);
+        if (distance.magnitude <= _maxDistance)
+            transform.position += distance.normalized * Mathf.Min(_speed * Time.deltaTime, distance.magnitude);
+        else
+            transform.position = _target.position - distance.normalized * _maxDistance;
     }
 }
