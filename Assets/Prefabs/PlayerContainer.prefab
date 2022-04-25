@@ -413,6 +413,8 @@ MonoBehaviour:
   PowerVFXScaler: 0.05
   ImpactVFXScaler: 0.01
   HitBoxScaler: 0.005
+  VelocityBufferDelay: 0.2
+  MinReboundVelocity: 200
 --- !u!54 &6965098877999748812
 Rigidbody:
   m_ObjectHideFlags: 0
