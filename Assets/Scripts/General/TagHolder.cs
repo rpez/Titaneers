@@ -22,5 +22,5 @@ public class Tags
     public const string PLAYER_TAG = "Player";
     public const string ENEMY_TAG = "Enemy";
     public const string POWERUP_TAG = "PowerUp";
-
+    public const string WEAKNESS_TAG = "Weakness";
 }

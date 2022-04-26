@@ -31,8 +31,12 @@ public class AttackAbility : AbilityBase
     public float MinRebounceSpeed = 10.0f;
     public float RebounceUpRatio = 0.2f;
 
+
+    private bool _impactFlag = false;
+
     public override void Ability()
     {
+        _impactFlag = false;
         Sequence dash = DOTween.Sequence()
         .AppendInterval(AttackWindUp)
         .AppendCallback(OnStartAttack)
@@ -68,6 +72,16 @@ public class AttackAbility : AbilityBase
 
     private void AttackImpact(GameObject hitObject)
     {
+        if (hitObject.tag == Tags.WEAKNESS_TAG)
+        {
+            OnHitWeakness(hitObject);
+        }
+        
+        if (_impactFlag)
+            return;
+        _impactFlag = true;
+        Debug.Log(hitObject.name + hitObject.tag);
+
         Vector3 hitDir = (hitObject.transform.position - transform.position).normalized;
         GameObject hitEffect;
         RaycastHit hit;
@@ -97,11 +111,6 @@ public class AttackAbility : AbilityBase
         playerRigidbody.velocity = (hit.normal + Vector3.up * RebounceUpRatio) * rebounceVelocity;
         Debug.DrawLine(hit.point, hit.point + hit.normal * 20, Color.red);
 
-        EventManager.OnFreezeFrame(0.5f);
-
-        _camera.OnAttack();
-        _camera.NoiseImpulse(30f, 6f, 0.7f);
-
         CapsuleCollider collider = GetComponent<CapsuleCollider>();
         DOTween.Sequence().AppendCallback(() => collider.enabled = false)
             .AppendCallback(() => _playerControl.SetMoveInputActive(false))
@@ -111,6 +120,14 @@ public class AttackAbility : AbilityBase
             .AppendCallback(() => collider.enabled = true);
 
     }
+
+    private void OnHitWeakness(GameObject hitObject)
+    {
+        EventManager.OnFreezeFrame(0.5f);
+        _camera.OnAttack();
+        _camera.NoiseImpulse(30f, 6f, 0.7f);
+    }
+
     //void SetVolumeWeight(float weight)
     //{
     //    Volume.weight = weight;
