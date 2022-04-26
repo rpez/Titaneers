@@ -8214,10 +8214,6 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1722413016}
-    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: MinReboundVelocity
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
       value: 10
