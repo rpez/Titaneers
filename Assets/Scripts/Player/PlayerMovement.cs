@@ -683,14 +683,28 @@ public class PlayerMovement : MonoBehaviour
         _controlMapping.Grappling.Disable();
         _controlMapping.Jump.Disable();
         _controlMapping.TimeSlow.Disable();
-        _controlMapping.Booster.Disable();
-        _controlMapping.Move.Disable();
+        SetMoveInputActive(false);
         StartCoroutine(FreezeCharacter(3.0f));
         StartCoroutine(Delay(3.0f, () => {
             gameObject.SetActive(false);
         }));
 
-
     }
+
+    public void SetMoveInputActive(bool active)
+    {
+        if (active)
+        {
+            _controlMapping.Booster.Enable();
+            _controlMapping.Move.Enable();
+        }
+        else
+        {
+            _controlMapping.Booster.Disable();
+            _controlMapping.Move.Disable();
+        }
+    }
+
+
 }
 

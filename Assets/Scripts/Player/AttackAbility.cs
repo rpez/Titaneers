@@ -27,6 +27,9 @@ public class AttackAbility : AbilityBase
     public float MaxDamage = 10.0f;
     public float HitBoxScaler = 0.005f;
     public float ImpactVFXScaler = 0.01f;
+    public float RebounceScalar = 2.0f;
+    public float MinRebounceSpeed = 10.0f;
+    public float RebounceUpRatio = 0.2f;
 
     public override void Ability()
     {
@@ -87,10 +90,12 @@ public class AttackAbility : AbilityBase
         ScaleVFX(hitEffect, hitVelocity.magnitude);
 
         _playerControl.StopPull();
-
+        
         // Rebounce
         Rigidbody playerRigidbody = GetComponent<Rigidbody>();
-        playerRigidbody.velocity = Vector3.up * hitVelocity.magnitude;
+        float rebounceVelocity = Mathf.Max(hitVelocity.magnitude * RebounceScalar, MinRebounceSpeed);
+        playerRigidbody.velocity = (hit.normal + Vector3.up * RebounceUpRatio) * rebounceVelocity;
+        Debug.DrawLine(hit.point, hit.point + hit.normal * 20, Color.red);
 
         EventManager.OnFreezeFrame(0.5f);
 
@@ -99,8 +104,12 @@ public class AttackAbility : AbilityBase
 
         CapsuleCollider collider = GetComponent<CapsuleCollider>();
         DOTween.Sequence().AppendCallback(() => collider.enabled = false)
-            .AppendInterval(1.0f)
+            .AppendCallback(() => _playerControl.SetMoveInputActive(false))
+            .AppendInterval(0.5f)
+            .AppendCallback(() => _playerControl.SetMoveInputActive(true))
+            .AppendInterval(0.5f)
             .AppendCallback(() => collider.enabled = true);
+
     }
     //void SetVolumeWeight(float weight)
     //{
