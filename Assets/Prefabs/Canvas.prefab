@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   boostBar: {fileID: 3319396522291333706}
-  maxUIBoost: 5
+  maxUIBoost: 10
 --- !u!1 &5312592712405493082
 GameObject:
   m_ObjectHideFlags: 0
