@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     public float AirResistFreeTimeWindow = 0.5f;     // free from air resist after grappling
     public float MinPullVelocity = 20f;
     public float AirExtraGravity = 50f;
+    
 
     [Header("Sliding")]
     public float SlideLandingBoost = 10f;
@@ -104,9 +105,6 @@ public class PlayerMovement : MonoBehaviour
     public float PowerVFXScaler = 0.05f;
     public float ImpactVFXScaler = 0.05f;
     public float HitBoxScaler = 0.005f;
-    public float VelocityBufferDelay = 0.2f;
-    public float MinReboundVelocity = 50f;
-    public float ReboundVelocityScaler = 3f;
 
     public Vector3 CurrentVelocity { get; private set; }
     public bool IsBoosting { get => _boosting; }
@@ -206,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_pulling) StopPull();
 
-        _rigidbody.velocity = Vector3.up * Mathf.Max(MinReboundVelocity, hitVelocity.magnitude * ReboundVelocityScaler);
+        _rigidbody.velocity = Vector3.up * hitVelocity.magnitude;
 
         EventManager.OnFreezeFrame(0.5f);
 
@@ -684,7 +682,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.relativeVelocity.magnitude >= 10f) _velocityBuffer = collision.relativeVelocity;
-        StartCoroutine(Delay(VelocityBufferDelay, () => _velocityBuffer = Vector3.zero));
+        StartCoroutine(Delay(0.2f, () => _velocityBuffer = Vector3.zero));
     }
 
     /// <summary>
