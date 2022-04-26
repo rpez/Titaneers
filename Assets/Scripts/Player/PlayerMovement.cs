@@ -106,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
     public float HitBoxScaler = 0.005f;
     public float VelocityBufferDelay = 0.2f;
     public float MinReboundVelocity = 50f;
+    public float ReboundVelocityScaler = 3f;
 
     public Vector3 CurrentVelocity { get; private set; }
     public bool IsBoosting { get => _boosting; }
@@ -205,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_pulling) StopPull();
 
-        _rigidbody.velocity = Vector3.up * Mathf.Max(MinReboundVelocity, hitVelocity.magnitude * 3f);
+        _rigidbody.velocity = Vector3.up * Mathf.Max(MinReboundVelocity, hitVelocity.magnitude * ReboundVelocityScaler);
 
         EventManager.OnFreezeFrame(0.5f);
 
