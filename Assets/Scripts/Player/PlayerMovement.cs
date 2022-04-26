@@ -130,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
     private float _minMovementThreshold = 0.1f;
     private float _targetXRotation;
     private float _scrollingInput;
+    public Vector3 DashDirection { get; private set; }
 
     private Vector3 _boostDirection;
     private float _currentBoostAmount;
@@ -345,6 +346,8 @@ public class PlayerMovement : MonoBehaviour
         _controlMapping.Move.performed += context => _horizontalInput = context.ReadValue<Vector2>();
         _xInput = _horizontalInput.x;
         _yInput = _horizontalInput.y;
+        DashDirection = PlayerCamera.transform.forward * _yInput + PlayerCamera.transform.right * _xInput;
+
         _controlMapping.Jump.performed += _ => _jumping = true;
         _controlMapping.Booster.performed += _ =>
         {
@@ -416,9 +419,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (_boosting)
         {
-            Vector3 parallelComponent = Vector3.Project(_rigidbody.velocity, PlayerCamera.transform.forward);
-            _rigidbody.velocity = parallelComponent;
-            _rigidbody.AddForce(PlayerCamera.transform.forward * BoosterStrength);
+            //Vector3 parallelComponent = Vector3.Project(_rigidbody.velocity, PlayerCamera.transform.forward);
+            //_rigidbody.AddForce(PlayerCamera.transform.forward * BoosterStrength);
+            if (DashDirection.magnitude < 0.1f) // default direction is current moving direction
+                _rigidbody.AddForce(_rigidbody.velocity.normalized * BoosterStrength);
+            else
+                _rigidbody.AddForce(DashDirection * BoosterStrength);
         }
         //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (_xInput > 0 && xMag > maxSpeed) _xInput = 0;
@@ -634,10 +640,17 @@ public class PlayerMovement : MonoBehaviour
                 Animator.SetInteger("state", 0);
             }
         }
-        PlayerAvatar.transform.eulerAngles = new Vector3(
-            PlayerAvatar.transform.eulerAngles.x,
-            Orientation.eulerAngles.y,
-            PlayerAvatar.transform.eulerAngles.z);
+
+        Vector3 facingDirection = CurrentVelocity;
+        facingDirection.y = 0;  // freeze z axis
+        if (facingDirection.magnitude > 0.1f)
+        {
+            PlayerAvatar.transform.forward = facingDirection.normalized;
+        }
+        //PlayerAvatar.transform.eulerAngles = new Vector3(
+        //    PlayerAvatar.transform.eulerAngles.x,
+        //    Orientation.eulerAngles.y,
+        //    PlayerAvatar.transform.eulerAngles.z);
     }
 
     /// <summary>
