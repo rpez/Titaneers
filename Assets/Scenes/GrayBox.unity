@@ -1784,11 +1784,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &761904094 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7811323340121249435, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-  m_PrefabInstance: {fileID: 2496024928203559705}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &820497205
 GameObject:
   m_ObjectHideFlags: 0
@@ -8203,10 +8198,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1288588383, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2496024928567296264, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: UIRef
       value: 
@@ -8223,14 +8214,6 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1722413016}
-    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: Animator
-      value: 
-      objectReference: {fileID: 761904094}
-    - target: {fileID: 7811323340121249435, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4b004396702867347a683c4a73ebdcda, type: 2}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
       value: 10
