@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
     public float BoostRechargeRate = 0.5f;
     public float BoostRechargeCap = 2f;
     public float BoostPowerUpAmount = 1f;
+    public float GrapplePullBoostStrength = 1.1f;
     public float CurrentBoostAmount { get => _currentBoostAmount; }
 
     [Header("Jumping")]
@@ -399,7 +400,11 @@ public class PlayerMovement : MonoBehaviour
             }
             _pullDirection = _target.transform.position - transform.position;
             transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * _currentPullSpeedScale * Time.deltaTime, Space.World);
-            if (_currentPullSpeedScale < MaxPullSpeedScale) _currentPullSpeedScale *= PullAcceleration;
+            if (_currentPullSpeedScale < MaxPullSpeedScale && !_boosting)
+                _currentPullSpeedScale *= PullAcceleration;
+
+            if (_boosting) _currentPullSpeedScale *= GrapplePullBoostStrength;
+
             if (_pullDirection.magnitude < CurrentVelocity.magnitude * Time.deltaTime * 5)
             {
                 StopPull();
