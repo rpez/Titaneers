@@ -16,6 +16,7 @@ namespace AK
         static const AkUniqueID PLAY_2D_AMBIENCE_LOOP = 706595652U;
         static const AkUniqueID PLAY_COMBAT_MUSIC = 3155474038U;
         static const AkUniqueID PLAY_PLAYER_BOOSTER = 142245832U;
+        static const AkUniqueID PLAY_PLAYER_FS = 4078825889U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_L = 3625340534U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_R = 3625340520U;
         static const AkUniqueID PLAY_PLAYER_GRAPPLE_HIT = 780547719U;
