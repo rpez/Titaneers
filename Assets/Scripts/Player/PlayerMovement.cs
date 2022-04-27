@@ -67,7 +67,8 @@ public class PlayerMovement : MonoBehaviour
     public float AirResistFreeTimeWindow = 0.5f;     // free from air resist after grappling
     public float MinPullVelocity = 20f;
     public float AirExtraGravity = 50f;
-    
+    public float MaxPullSpeedScale = 2f;
+    public float PullAcceleration = 1.2f;
 
     [Header("Sliding")]
     public float SlideLandingBoost = 10f;
@@ -154,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject _target;
     private Action _onReachtarget;
     private Vector3 _pullVelocity;
+    private float _currentPullSpeedScale;
     private Vector3 _pullDirection;
 
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
@@ -168,6 +170,13 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.useGravity = false;
         _pulling = true;
+
+        GameObject vfx = GameObject.Instantiate(DashVFX, Orientation.transform);
+        vfx.transform.position = Grapple.GunTip.transform.position;
+        Destroy(vfx, 5f);
+        EventManager.OnFreezeFrame(0.2f);
+        _currentPullSpeedScale = 0.1f;
+        Camera.NoiseImpulse(15f, 3f, 0.5f);
     }
 
     public void StopPull()
@@ -389,7 +398,8 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
             _pullDirection = _target.transform.position - transform.position;
-            transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
+            transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * _currentPullSpeedScale * Time.deltaTime, Space.World);
+            if (_currentPullSpeedScale < MaxPullSpeedScale) _currentPullSpeedScale *= PullAcceleration;
             if (_pullDirection.magnitude < CurrentVelocity.magnitude * Time.deltaTime * 5)
             {
                 StopPull();
