@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 8bd613bd4fdccf45a54520a04ea11cfa
     GuidInternal: 
-    m_lastTime: -8585517551288584911
+    m_lastTime: -8585505217815841066
     List:
     - name: 2DAmbience
       guid: ab2dae2fec0c344c82616f5c3f472ccd
@@ -507,7 +507,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 4bdeca61df99e5428a2868e1a03df397
       Path: Events/Player/PlayerAttack/Play_player_sword_hit
-      maxAttenuation: 20
+      maxAttenuation: 10
       maxDuration: 1.213323
       minDuration: 0.936715
     - name: Play_player_sword_slash
@@ -527,7 +527,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 98a4624d85dc844f8601680649f5284a
       Path: Events/Player/PlayerAttack/Play_player_sword_slash
-      maxAttenuation: 10
+      maxAttenuation: 20
       maxDuration: 0.935314
       minDuration: 0.767795
   - PhysicalPath: Events/PlayerBooster.wwu
@@ -583,8 +583,31 @@ MonoBehaviour:
     ParentPath: Events/Player/PlayerLocomotion/PlayerFootsteps
     guid: cf1f6711e706574591b719b49eae25ea
     GuidInternal: 
-    m_lastTime: -8585561534063597501
+    m_lastTime: -8585505239222279227
     List:
+    - name: Play_player_fs
+      guid: bca014b301bde04cb65a58f2dff38e13
+      id: 4078825889
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerLocomotion
+        ObjectType: 12
+        guid: 4fb2bfb7636190458852293dc25d07f1
+      - ElementName: PlayerFootsteps
+        ObjectType: 12
+        guid: cf1f6711e706574591b719b49eae25ea
+      - ElementName: Play_player_fs
+        ObjectType: 3
+        guid: bca014b301bde04cb65a58f2dff38e13
+      Path: Events/Player/PlayerLocomotion/PlayerFootsteps/Play_player_fs
+      maxAttenuation: 20
+      maxDuration: 0.370483
+      minDuration: 0.314443
     - name: Play_player_fs_run_L
       guid: 3966b8f55db7964cb1077ab7af2123b5
       id: 3625340534
