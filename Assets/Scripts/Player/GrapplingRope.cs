@@ -48,7 +48,7 @@ public class GrapplingRope : MonoBehaviour
     public void SetGrappleStaticColor(Color color)
     {
         _lr.material.SetColor("_BaseColor", color);
-        _lr.material.SetColor("_EmissiveColor", color * Mathf.Pow(2, 19));
+        _lr.material.SetColor("_EmissiveColor", color * Mathf.Pow(2, 14));
     }
 
     void DrawRope()
