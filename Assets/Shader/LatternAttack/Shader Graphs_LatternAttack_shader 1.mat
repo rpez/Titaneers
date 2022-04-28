@@ -104,7 +104,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 2.1185474, g: 0.022183742, b: 0, a: 1}
+    - _Color: {r: 0.18678287, g: 0.0019558414, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Fresnel_color: {r: 5.5908804, g: 0.87814873, b: 0, a: 1}
