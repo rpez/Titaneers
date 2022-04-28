@@ -96,7 +96,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0.44935137, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 2.9960785, g: 2.1997168, b: 0, a: 1}
+    - _EmissiveColor: {r: 3.9999995, g: 0.08376963, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _UnlitColor: {r: 1, g: 0.44935146, b: 0, a: 1}
     - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
