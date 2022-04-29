@@ -26,7 +26,7 @@ public class RaisingSword : MonoBehaviour
         if (_timer < _raisingTime)
         {
             _timer += Time.deltaTime;
-            float y = Mathf.Lerp(_lowestY, _highestY, _raisingCurve.Evaluate(_timer / _raisingTime));
+            float y = Mathf.Lerp(_lowestY, _highestY, _raisingCurve.Evaluate(Mathf.Min(_timer / _raisingTime, 1)));
             transform.position = new Vector3(transform.position.x, y, transform.position.z);
         }
     }
