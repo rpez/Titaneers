@@ -34,5 +34,6 @@ public class RaisingSword : MonoBehaviour
     public void Init()
     {
         _timer = 0f;
+        transform.position = new Vector3(transform.position.x, _lowestY, transform.position.z);
     }
 }
