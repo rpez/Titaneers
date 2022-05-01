@@ -506,7 +506,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // If dashing, no forces affect the player
         //if (_boosting) return;
-        Debug.LogFormat("Rebouncing {0}", _rebouncing);
         // If airborne, Air Resistance F_d = C * v^2
         if (!_grounded || _jumping)
         {

@@ -525,6 +525,8 @@ MonoBehaviour:
   BigRebounceDuration: 2
   RebounceDuration: 0.75
   BigRebounceSpeed: 700
+  SlowTime: 0.5
+  SlowScale: 0.333
 --- !u!1001 &2496024929088675652
 PrefabInstance:
   m_ObjectHideFlags: 0

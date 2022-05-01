@@ -33,6 +33,8 @@ public class AttackAbility : AbilityBase
     public float BigRebounceDuration = 2.0f;
     public float RebounceDuration = 0.5f;
     public float BigRebounceSpeed = 100.0f;
+    public float SlowTime = 0.5f;
+    public float SlowScale = 0.1f;
 
     private bool _impactFlag = false;
 
@@ -77,10 +79,10 @@ public class AttackAbility : AbilityBase
         Vector3 hitDir = (hitObject.transform.position - transform.position).normalized;
         RaycastHit hit;
         bool raycast = Physics.Raycast(transform.position, hitDir, out hit, 100f);
-        if (hitObject.tag == Tags.WEAKNESS_TAG)
+        //if (hitObject.tag == Tags.WEAKNESS_TAG)
         {
-            OnHitWeakness(hitObject);
             BigRebounce(hit);
+            OnHitWeakness(hitObject);
         }
         
         // only generate VFX once
@@ -114,7 +116,7 @@ public class AttackAbility : AbilityBase
     private Vector3 GetHitVelocity()
     {
         Vector3 hitVelocity;
-        if (_playerControl.CurrentVelocity.magnitude <= 10f) hitVelocity = _playerControl.VelocityBuffer;
+        if (_playerControl.CurrentVelocity.magnitude <= 15f) hitVelocity = _playerControl.VelocityBuffer;
         else hitVelocity = _playerControl.CurrentVelocity;
         return hitVelocity;
     }
@@ -129,17 +131,17 @@ public class AttackAbility : AbilityBase
 
         Debug.DrawLine(hit.point, hit.point + rebounceDirection * 100, Color.red, 2, false);
         playerRigidbody.velocity = rebounceDirection.normalized * rebounceVelocity;
-        Debug.LogFormat("Rebounce velocity {0}", playerRigidbody.velocity);
+        //Debug.LogFormat("Rebounce velocity {0}", playerRigidbody.velocity);
 
         float rebounceDuration = RebounceDuration;
         CapsuleCollider collider = GetComponent<CapsuleCollider>();
-        DOTween.Sequence().AppendCallback(() => collider.enabled = false)
-           .AppendCallback(() => _playerControl.SetMoveInputActive(false))
-           .AppendCallback(() => _playerControl.IsRebouncing = true)
+        collider.enabled = false;
+        _playerControl.SetMoveInputActive(false);
+        _playerControl.IsRebouncing = true;
+        DOTween.Sequence()
            .AppendInterval(rebounceDuration)
            .AppendCallback(() => _playerControl.SetMoveInputActive(true))
            .AppendCallback(() => _playerControl.IsRebouncing = false)
-           .AppendInterval(0.5f)
            .AppendCallback(() => collider.enabled = true);
     }
 
@@ -153,15 +155,21 @@ public class AttackAbility : AbilityBase
         Rigidbody playerRigidbody = GetComponent<Rigidbody>();
         Debug.DrawLine(hit.point, hit.point + rebounceDirection * 100, Color.green, 20, false);
         playerRigidbody.velocity = rebounceDirection.normalized * rebounceVelocity;
-        Debug.LogFormat("Big Rebounce velocity {0}", playerRigidbody.velocity);
+        //Debug.LogFormat("Big Rebounce velocity {0}", playerRigidbody.velocity);
 
     }
 
     private void OnHitWeakness(GameObject hitObject)
     {
-        //EventManager.OnFreezeFrame(0.5f);
+        TimeManager timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
+        EventManager.OnFreezeFrame(SlowTime);
         _camera.OnAttack();
         _camera.NoiseImpulse(30f, 6f, 0.7f);
+        
+        //timeManager.ToggleTimeScale(SlowScale, true);
+        Time.timeScale = SlowScale;
+        DOTween.Sequence()
+           .InsertCallback(SlowTime * SlowScale, () => Time.timeScale = 1f);
     }
 
     //void SetVolumeWeight(float weight)
