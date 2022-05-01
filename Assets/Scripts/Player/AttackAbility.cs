@@ -166,7 +166,6 @@ public class AttackAbility : AbilityBase
         _camera.OnAttack();
         _camera.NoiseImpulse(30f, 6f, 0.7f);
         
-        //timeManager.ToggleTimeScale(SlowScale, true);
         Time.timeScale = SlowScale;
         DOTween.Sequence()
            .InsertCallback(SlowTime * SlowScale, () => Time.timeScale = 1f);

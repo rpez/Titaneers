@@ -153,9 +153,10 @@ MonoBehaviour:
   FastMoveCamera: {fileID: 2831833808723639294}
   AttackCamera: {fileID: 2823984391702224859}
   SpeedLine: {fileID: 0}
+  ScreenFlash: {fileID: 0}
   VignetteIntensity: 0.5
-  ImpactFilter: {r: 0.9411765, g: 0.9587264, b: 1, a: 1}
-  ImpactFilterTime: 0.3
+  ImpactFilter: {r: 0.877, g: 0.9098, b: 1, a: 1}
+  ImpactFilterTime: 0.4
   minFov: 70
   maxFov: 120
   minDistortion: 0
@@ -169,6 +170,7 @@ MonoBehaviour:
   maxShakeThredhold: 350
   minShakeIntensity: 0
   maxShakeIntensity: 6.5
+  flashDuration: 5
 --- !u!1 &2823984393433517015
 GameObject:
   m_ObjectHideFlags: 0
