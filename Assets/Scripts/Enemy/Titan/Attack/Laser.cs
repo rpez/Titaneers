@@ -16,6 +16,7 @@ public class Laser : MonoBehaviour
 
     [SerializeField]
     private float _aimTime;
+    public float AimTime { get => _aimTime; }
     [SerializeField]
     private float _aimRayWidth;
 

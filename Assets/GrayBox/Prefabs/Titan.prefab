@@ -9240,7 +9240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 4854444453309448202
+    rid: 5268145073207640260
   m_Size: {x: 1, y: 1, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -9252,7 +9252,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4854444453309448202
+    - rid: 5268145073207640260
       type: {class: Cylinder, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data:
         m_AxisDivisions: 30
@@ -15297,7 +15297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4895564917369410116}
   m_LocalRotation: {x: 0.019761024, y: -0, z: -0, w: 0.99980474}
-  m_LocalPosition: {x: 0, y: 8.513763, z: 0.7909832}
+  m_LocalPosition: {x: 0, y: 7.953, z: 0.708}
   m_LocalScale: {x: 100, y: 100, z: 99.99998}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18329,7 +18329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 80
-  _maxDistance: 5
+  _maxDistance: 2
 --- !u!1 &8775459767430022519
 GameObject:
   m_ObjectHideFlags: 0
