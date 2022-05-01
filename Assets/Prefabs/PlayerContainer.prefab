@@ -386,36 +386,33 @@ MonoBehaviour:
   MouseSensitivity: 5
   MoveForce: 70
   MaxGroundSpeed: 70
-  MaxAirSpeed: 100
+  MaxAirSpeed: 150
   GroundResistance: 0.15
   MaxSlopeAngle: 35
   ResitanceThreshold: 0
-  AirResistanceCoefficient: 0.005
+  AirResistanceCoefficient: 0.004
+  AirResistanceRebounce: 0.0025
   AirResistFreeTimeWindow: 2
   MinPullVelocity: 50
-  AirExtraGravity: 50
+  AirExtraGravity: 60
+  RotateSpeed: 3
   SlideLandingBoost: 1.5
   SlideForce: 400
   SlideCounterMovement: 0.2
-  BoosterStrength: 500
-  MaxBoostAmount: 10
+  BoosterStrength: 600
+  MaxBoostAmount: 8
   InitBoostRatio: 0.6
   BoostRechargeCooldown: 5
   BoostRechargeRate: 0.2
   BoostRechargeCap: 2
   BoostPowerUpAmount: 2.5
+  PowerVFXScaler: 0.05
   JumpForce: 2000
   SlowScale: 0.1
   MaxSlowTime: 2
   ChargeDelay: 0.5
   ZoomIncrement: 1
   ExplosionShakingRange: 20
-  AttackWindup: 0.3
-  AttackTime: 0.5
-  RecoverTime: 0.2
-  PowerVFXScaler: 0.05
-  ImpactVFXScaler: 0.01
-  HitBoxScaler: 0.005
 --- !u!54 &6965098877999748812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -522,6 +519,12 @@ MonoBehaviour:
   MaxDamage: 10
   HitBoxScaler: 0.005
   ImpactVFXScaler: 0.01
+  RebounceScalar: 2
+  MinRebounceSpeed: 30
+  RebounceUpRatio: 0.3
+  BigRebounceDuration: 2
+  RebounceDuration: 0.75
+  BigRebounceSpeed: 700
 --- !u!1001 &2496024929088675652
 PrefabInstance:
   m_ObjectHideFlags: 0
