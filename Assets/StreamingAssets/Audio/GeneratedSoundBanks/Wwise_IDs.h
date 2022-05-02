@@ -16,11 +16,13 @@ namespace AK
         static const AkUniqueID PLAY_2D_AMBIENCE_LOOP = 706595652U;
         static const AkUniqueID PLAY_COMBAT_MUSIC = 3155474038U;
         static const AkUniqueID PLAY_PLAYER_BOOSTER = 142245832U;
+        static const AkUniqueID PLAY_PLAYER_FS = 4078825889U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_L = 3625340534U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_R = 3625340520U;
         static const AkUniqueID PLAY_PLAYER_GRAPPLE_HIT = 780547719U;
         static const AkUniqueID PLAY_PLAYER_GRAPPLE_SHOOT = 1884037509U;
         static const AkUniqueID PLAY_PLAYER_JUMP = 562256996U;
+        static const AkUniqueID PLAY_PLAYER_SPIN_ATTACK = 213519327U;
         static const AkUniqueID PLAY_PLAYER_SWORD_HIT = 2116655569U;
         static const AkUniqueID PLAY_PLAYER_SWORD_SLASH = 4003404733U;
         static const AkUniqueID PLAY_TEST_SOUND = 3211564518U;
