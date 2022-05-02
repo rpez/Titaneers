@@ -7937,16 +7937,6 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
---- !u!1 &2067634416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9149312772062621439, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-  m_PrefabInstance: {fileID: 2496024928203559705}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2067634418 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7811323340121249435, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-  m_PrefabInstance: {fileID: 2496024928203559705}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2085104702 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8783759227444261981, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
@@ -8236,6 +8226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2496024928203559717, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1722413016}
     - target: {fileID: 2496024928567296264, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: UIRef
       value: 
@@ -8252,22 +8246,6 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1722413016}
-    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: Animator
-      value: 
-      objectReference: {fileID: 2067634418}
-    - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: PlayerAvatar
-      value: 
-      objectReference: {fileID: 2067634416}
-    - target: {fileID: 7226638933424971898, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: _camera
-      value: 
-      objectReference: {fileID: 1722413016}
-    - target: {fileID: 7811323340121249435, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4b004396702867347a683c4a73ebdcda, type: 2}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
       value: 16

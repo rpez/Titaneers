@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 6965098877999748811}
   - component: {fileID: 6420815478796252905}
   - component: {fileID: 8711674177799988773}
+  - component: {fileID: 2496024928203559717}
   m_Layer: 12
   m_Name: PlayerContainer
   m_TagString: Player
@@ -493,6 +494,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 6420815478796252905}
   _instantDeath: 0
+--- !u!114 &2496024928203559717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758802823799522771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8b16467cbb7a6409cf47f0013eaf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Title: 
+  Icon: {fileID: 0}
+  CooldownTime: 1
+  _animator: {fileID: 7811323340121249435}
+  _sword: {fileID: 2248262134983563429}
+  _swordTip: {fileID: 918715861}
+  _swordHitbox: {fileID: 1691826803}
+  _camera: {fileID: 0}
+  _swordVFX: {fileID: 5649737019155367537, guid: a5f4ca091e35d1044ab7f4c5c2f75003, type: 3}
+  _impactVFX: {fileID: 0}
+  _attackVolume: {fileID: 0}
+  AttackWindUp: 0.3
+  AttackTime: 0.5
+  MaxDamage: 10
+  HitBoxScaler: 0.005
+  ImpactVFXScaler: 0.01
+  RebounceScalar: 2
+  MinRebounceSpeed: 20
+  RebounceUpRatio: 0.2
+  BigRebounceDuration: 2
+  RebounceDuration: 0.5
+  BigRebounceSpeed: 100
+  SlowTime: 0.5
+  SlowScale: 0.1
 --- !u!95 &7811323340121249435
 Animator:
   serializedVersion: 4
