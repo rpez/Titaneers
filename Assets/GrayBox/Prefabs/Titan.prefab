@@ -19086,11 +19086,7 @@ PrefabInstance:
       objectReference: {fileID: 8783759227444261981}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _maxHealthPoint
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177709923339321642, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
@@ -19949,7 +19945,7 @@ PrefabInstance:
       objectReference: {fileID: 8783759227444261981}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _maxHealthPoint
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.size
@@ -20086,10 +20082,6 @@ PrefabInstance:
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[9].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177709923339321642, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
@@ -20755,7 +20747,7 @@ PrefabInstance:
       objectReference: {fileID: 8783759227444261981}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _maxHealthPoint
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.size
@@ -20868,10 +20860,6 @@ PrefabInstance:
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[8].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177709923339321642, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}

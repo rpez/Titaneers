@@ -11,6 +11,13 @@ public class PopUp : MonoBehaviour
     [SerializeField]
     private RectTransform _popUI;
 
+    [SerializeField]
+    private float _popSize;
+    [SerializeField]
+    private float _normalSize;
+    [SerializeField]
+    private float _popTime;
+
     private float _timer;
     private Coroutine popCoroutine;
 
@@ -26,12 +33,11 @@ public class PopUp : MonoBehaviour
     private IEnumerator Pop()
     {
         _timer = 0f;
-        float length = _popCurve.keys[_popCurve.length - 1].time;
-        while (_timer < length)
+        while (_timer < _popTime)
         {
-            _popUI.localScale = Vector3.one * _popCurve.Evaluate(_timer);
+            _popUI.localScale = Vector3.one * Mathf.Lerp(_normalSize, _popSize, _popCurve.Evaluate(_timer / _popTime));
             _timer += Time.fixedDeltaTime;
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
     }
 }
