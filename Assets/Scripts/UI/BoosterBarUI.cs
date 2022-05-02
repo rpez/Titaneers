@@ -11,7 +11,6 @@ public class BoosterBarUI : MonoBehaviour
     [SerializeField]
     private BarUI boostBar;
 
-    [SerializeField]
     private float maxUIBoost;
 
     //[SerializeField]
@@ -20,6 +19,7 @@ public class BoosterBarUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxUIBoost = playerMovement.MaxBoostAmount;
     }
 
     // Update is called once per frame
