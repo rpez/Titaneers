@@ -64,11 +64,16 @@ public class PlayerMovement : MonoBehaviour
     public float GroundResistance = 0.175f;
     public float MaxSlopeAngle = 35f;
     public float ResitanceThreshold = 200f;
-    public float AirResistanceCoefficient = 10f;
+    public float AirResistanceCoefficient = 0.004f;
+    public float AirResistanceRebounce = 0.002f;
     public float AirResistFreeTimeWindow = 0.5f;     // free from air resist after grappling
     public float MinPullVelocity = 20f;
     public float AirExtraGravity = 50f;
-    
+    public float MaxPullSpeedScale = 2f;
+    public float PullAcceleration = 1.2f;
+
+    public float RotateSpeed = 180f;
+
 
     [Header("Sliding")]
     public float SlideLandingBoost = 10f;
@@ -83,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
     public float BoostRechargeRate = 0.5f;
     public float BoostRechargeCap = 2f;
     public float BoostPowerUpAmount = 1f;
+    public float GrapplePullBoostStrength = 1.1f;
     public float CurrentBoostAmount { get => _currentBoostAmount; }
     public float PowerVFXScaler = 0.05f;
 
@@ -108,7 +114,10 @@ public class PlayerMovement : MonoBehaviour
     private bool _readyToJump = true;
     private bool _slowTime;
     private bool _jumping, _sprinting, _crouching, _boosting, _pulling, _attacking, _recovering, _frozen;
-    public bool IsAttacking { get => _attacking; set => _attacking = IsAttacking; }
+    private bool _rebouncing;
+    public bool IsRebouncing { get => _rebouncing; set => _rebouncing = value; }
+
+    public bool IsAttacking { get => _attacking; set => _attacking = value; }
 
     private bool _timeSlowChargeDelayed;
 
@@ -151,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject _target;
     private Action _onReachtarget;
     private Vector3 _pullVelocity;
+    private float _currentPullSpeedScale;
     private Vector3 _pullDirection;
 
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
@@ -165,6 +175,13 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.useGravity = false;
         _pulling = true;
+
+        GameObject vfx = GameObject.Instantiate(DashVFX, Orientation.transform);
+        vfx.transform.position = Grapple.GunTip.transform.position;
+        Destroy(vfx, 5f);
+        EventManager.OnFreezeFrame(0.2f);
+        _currentPullSpeedScale = 0.1f;
+        Camera.NoiseImpulse(15f, 3f, 0.5f);
     }
 
     public void StopPull()
@@ -307,7 +324,12 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
             _pullDirection = _target.transform.position - transform.position;
-            transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * Time.deltaTime, Space.World);
+            transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * _currentPullSpeedScale * Time.deltaTime, Space.World);
+            if (_currentPullSpeedScale < MaxPullSpeedScale && !_boosting)
+                _currentPullSpeedScale *= PullAcceleration;
+
+            if (_boosting) _currentPullSpeedScale *= GrapplePullBoostStrength;
+
             if (_pullDirection.magnitude < CurrentVelocity.magnitude * Time.deltaTime * 5)
             {
                 StopPull();
@@ -319,7 +341,7 @@ public class PlayerMovement : MonoBehaviour
             CurrentVelocity = _rigidbody.velocity;
         }
 
-        if (!_grounded && _rigidbody.useGravity)
+        if (!_grounded && !_rebouncing && _rigidbody.useGravity)
             _rigidbody.AddForce(Vector3.down * AirExtraGravity);
 
         //Find actual velocity relative to where player is looking
@@ -501,14 +523,14 @@ public class PlayerMovement : MonoBehaviour
     {
         // If dashing, no forces affect the player
         //if (_boosting) return;
-
         // If airborne, Air Resistance F_d = C * v^2
         if (!_grounded || _jumping)
         {
             if (!Grapple.IsGrappling())
             {
+                float coefficient = _rebouncing ? AirResistanceRebounce : AirResistanceCoefficient;
                 float ratio = Mathf.Min((Time.time - Grapple.StopTimeStamp) / AirResistFreeTimeWindow, 1.0f);
-                float resistance = AirResistanceCoefficient * _rigidbody.velocity.magnitude * _rigidbody.velocity.magnitude;
+                float resistance = coefficient * _rigidbody.velocity.magnitude * _rigidbody.velocity.magnitude;
                 _rigidbody.AddForce(-resistance * _rigidbody.velocity.normalized * ratio);
             }
             return;
@@ -559,16 +581,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        Vector3 facingDirection = CurrentVelocity;
-        facingDirection.y = 0;  // freeze z axis
-        if (facingDirection.magnitude > 0.1f)
+        Vector3 targetDirection = CurrentVelocity;
+        targetDirection.y = 0;  // freeze z axis
+        if (targetDirection.magnitude > 0.1f && !IsRebouncing)
         {
-            PlayerAvatar.transform.forward = facingDirection.normalized;
+            float rotateStep = RotateSpeed * Time.deltaTime;
+            Vector3 newDirection = Vector3.RotateTowards(PlayerAvatar.transform.forward, targetDirection, rotateStep, 0.0f);
+            PlayerAvatar.transform.rotation = Quaternion.LookRotation(newDirection);
         }
-        //PlayerAvatar.transform.eulerAngles = new Vector3(
-        //    PlayerAvatar.transform.eulerAngles.x,
-        //    Orientation.eulerAngles.y,
-        //    PlayerAvatar.transform.eulerAngles.z);
     }
 
     /// <summary>

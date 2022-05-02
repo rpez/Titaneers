@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2256782558">
+		<SoundBank Id="1355168291" Language="SFX" Hash="1083980619">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2818996027">
+		<SoundBank Id="3161908922" Language="SFX" Hash="1789024466">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -74,6 +74,114 @@
 						<File Id="927044007" Language="SFX">
 							<ShortName>sfx_player_booster.wav</ShortName>
 							<Path>SFX/sfx_player_booster_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4078825889" Name="Play_player_fs" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.314443" DurationMax="0.370483">
+					<IncludedMemoryFiles>
+						<File Id="79370748" Language="SFX">
+							<ShortName>sfx-player-fs-shoe_1.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_1_10C4C929.wem</Path>
+						</File>
+						<File Id="86772221" Language="SFX">
+							<ShortName>sfx-player-fs-equipment_3.wav</ShortName>
+							<Path>SFX/sfx-player-fs-equipment_3_10C4C929.wem</Path>
+						</File>
+						<File Id="141374321" Language="SFX">
+							<ShortName>sfx-player-fs-cloth.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_10C4C929.wem</Path>
+						</File>
+						<File Id="190114397" Language="SFX">
+							<ShortName>sfx-player-fs-shoe.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_10C4C929.wem</Path>
+						</File>
+						<File Id="238136293" Language="SFX">
+							<ShortName>sfx-player-fs-cloth_8.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_8_10C4C929.wem</Path>
+						</File>
+						<File Id="343109213" Language="SFX">
+							<ShortName>sfx-player-fs-shoe_3.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_3_10C4C929.wem</Path>
+						</File>
+						<File Id="350844826" Language="SFX">
+							<ShortName>sfx-player-fs-shoe_7.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_7_10C4C929.wem</Path>
+						</File>
+						<File Id="371649142" Language="SFX">
+							<ShortName>sfx-player-fs-gravel_2.wav</ShortName>
+							<Path>SFX/sfx-player-fs-gravel_2_10C4C929.wem</Path>
+						</File>
+						<File Id="415474525" Language="SFX">
+							<ShortName>sfx-player-fs-cloth_2.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_2_10C4C929.wem</Path>
+						</File>
+						<File Id="458237116" Language="SFX">
+							<ShortName>sfx-player-fs-gravel.wav</ShortName>
+							<Path>SFX/sfx-player-fs-gravel_10C4C929.wem</Path>
+						</File>
+						<File Id="479485943" Language="SFX">
+							<ShortName>sfx-player-fs-shoe_8.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_8_10C4C929.wem</Path>
+						</File>
+						<File Id="480190457" Language="SFX">
+							<ShortName>sfx-player-fs-gravel_3.wav</ShortName>
+							<Path>SFX/sfx-player-fs-gravel_3_10C4C929.wem</Path>
+						</File>
+						<File Id="489912540" Language="SFX">
+							<ShortName>sfx-player-fs-equipment_1.wav</ShortName>
+							<Path>SFX/sfx-player-fs-equipment_1_10C4C929.wem</Path>
+						</File>
+						<File Id="499576330" Language="SFX">
+							<ShortName>sfx-player-fs-gravel_1.wav</ShortName>
+							<Path>SFX/sfx-player-fs-gravel_1_10C4C929.wem</Path>
+						</File>
+						<File Id="520139496" Language="SFX">
+							<ShortName>sfx-player-fs-shoe_5.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_5_10C4C929.wem</Path>
+						</File>
+						<File Id="555037412" Language="SFX">
+							<ShortName>sfx-player-fs-cloth_6.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_6_10C4C929.wem</Path>
+						</File>
+						<File Id="560595885" Language="SFX">
+							<ShortName>sfx-player-fs-shoe_6.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_6_10C4C929.wem</Path>
+						</File>
+						<File Id="622157969" Language="SFX">
+							<ShortName>sfx-player-fs-cloth_7.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_7_10C4C929.wem</Path>
+						</File>
+						<File Id="645712479" Language="SFX">
+							<ShortName>sfx-player-fs-cloth_4.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_4_10C4C929.wem</Path>
+						</File>
+						<File Id="720587979" Language="SFX">
+							<ShortName>sfx-player-fs-shoe_4.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_4_10C4C929.wem</Path>
+						</File>
+						<File Id="745546945" Language="SFX">
+							<ShortName>sfx-player-fs-equipment_2.wav</ShortName>
+							<Path>SFX/sfx-player-fs-equipment_2_10C4C929.wem</Path>
+						</File>
+						<File Id="907615763" Language="SFX">
+							<ShortName>sfx-player-fs-cloth_5.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_5_10C4C929.wem</Path>
+						</File>
+						<File Id="956597510" Language="SFX">
+							<ShortName>sfx-player-fs-equipment.wav</ShortName>
+							<Path>SFX/sfx-player-fs-equipment_10C4C929.wem</Path>
+						</File>
+						<File Id="969031839" Language="SFX">
+							<ShortName>sfx-player-fs-cloth_1.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_1_10C4C929.wem</Path>
+						</File>
+						<File Id="977216482" Language="SFX">
+							<ShortName>sfx-player-fs-cloth_3.wav</ShortName>
+							<Path>SFX/sfx-player-fs-cloth_3_10C4C929.wem</Path>
+						</File>
+						<File Id="1011705202" Language="SFX">
+							<ShortName>sfx-player-fs-shoe_2.wav</ShortName>
+							<Path>SFX/sfx-player-fs-shoe_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -325,7 +433,79 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
+				<Event Id="213519327" Name="Play_player_spin_attack" ObjectPath="\Events\Player\PlayerAttack\Play_player_spin_attack" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.939148" DurationMax="0.994992">
+					<IncludedMemoryFiles>
+						<File Id="127346191" Language="SFX">
+							<ShortName>sfx-player-attack-spin-cloth-start.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-cloth-start_10C4C929.wem</Path>
+						</File>
+						<File Id="140924998" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-end_4.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-end_4_10C4C929.wem</Path>
+						</File>
+						<File Id="198164440" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-start_3.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-start_3_10C4C929.wem</Path>
+						</File>
+						<File Id="211086767" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-start_2.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-start_2_10C4C929.wem</Path>
+						</File>
+						<File Id="255842667" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-end_1.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-end_1_10C4C929.wem</Path>
+						</File>
+						<File Id="270198791" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-end_2.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-end_2_10C4C929.wem</Path>
+						</File>
+						<File Id="303995714" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-end_3.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-end_3_10C4C929.wem</Path>
+						</File>
+						<File Id="317828642" Language="SFX">
+							<ShortName>sfx-player-attack-spin-cloth-end_2.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-cloth-end_2_10C4C929.wem</Path>
+						</File>
+						<File Id="334934182" Language="SFX">
+							<ShortName>sfx-player-attack-spin-cloth-start_2.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-cloth-start_2_10C4C929.wem</Path>
+						</File>
+						<File Id="444610750" Language="SFX">
+							<ShortName>sfx-player-attack-spin-cloth-end_1.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-cloth-end_1_10C4C929.wem</Path>
+						</File>
+						<File Id="494187447" Language="SFX">
+							<ShortName>sfx-player-attack-spin-cloth-start_1.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-cloth-start_1_10C4C929.wem</Path>
+						</File>
+						<File Id="708478475" Language="SFX">
+							<ShortName>sfx-player-attack-spin-sword-layer.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-sword-layer_10C4C929.wem</Path>
+						</File>
+						<File Id="765919723" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-end.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-end_10C4C929.wem</Path>
+						</File>
+						<File Id="785053690" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-start.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-start_10C4C929.wem</Path>
+						</File>
+						<File Id="864508225" Language="SFX">
+							<ShortName>sfx-player-attack-spin-cloth-end.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-cloth-end_10C4C929.wem</Path>
+						</File>
+						<File Id="975812765" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-start_4.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-start_4_10C4C929.wem</Path>
+						</File>
+						<File Id="991411273" Language="SFX">
+							<ShortName>sfx-player-attack-spin-whosh-start_1.wav</ShortName>
+							<Path>SFX/sfx-player-attack-spin-whosh-start_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
 					<IncludedMemoryFiles>
 						<File Id="260314807" Language="SFX">
 							<ShortName>sfx_player_sword_hit_4.wav</ShortName>
@@ -341,22 +521,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
-					<IncludedMemoryFiles>
-						<File Id="257300301" Language="SFX">
-							<ShortName>sfx_player_sword_slash_2.wav</ShortName>
-							<Path>SFX/sfx_player_sword_slash_2_10C4C929.wem</Path>
-						</File>
-						<File Id="305052931" Language="SFX">
-							<ShortName>sfx_player_sword_slash.wav</ShortName>
-							<Path>SFX/sfx_player_sword_slash_10C4C929.wem</Path>
-						</File>
-						<File Id="616774092" Language="SFX">
-							<ShortName>sfx_player_sword_slash_1.wav</ShortName>
-							<Path>SFX/sfx_player_sword_slash_1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
+				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="20." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3211564518" Name="Play_test_sound" ObjectPath="\Events\Default Work Unit\Play_test_sound" DurationType="OneShot" DurationMin="4.46114" DurationMax="4.46114">
 					<IncludedMemoryFiles>
 						<File Id="300957545" Language="SFX">

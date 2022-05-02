@@ -6,6 +6,7 @@ using UnityEngine.Rendering.HighDefinition;
 using DG.Tweening;
 using Cinemachine;
 using System;
+using UnityEngine.UI;
 
 public enum CameraType
 {
@@ -24,6 +25,7 @@ public class CameraBehaviour : MonoBehaviour
     public CinemachineVirtualCamera FastMoveCamera;
     public CinemachineVirtualCamera AttackCamera;
     public ParticleSystem SpeedLine;
+    public RawImage ScreenFlash;
 
     [Header("Setting")]
     public float VignetteIntensity = 0.3f;
@@ -42,6 +44,8 @@ public class CameraBehaviour : MonoBehaviour
     public float maxShakeThredhold = 320f;
     public float minShakeIntensity = 0f;
     public float maxShakeIntensity = 5f;
+    public float flashDuration = 3; // in frames
+
 
 
     private LensDistortion _lensDistortionProfile;
@@ -111,8 +115,24 @@ public class CameraBehaviour : MonoBehaviour
     public void OnAttack()
     {
         StartCoroutine(AddColorFilter());
+        StartCoroutine(FlashScreen());
         SwitchCamera(CameraType.Attack);
     }
+
+    private IEnumerator FlashScreen()
+    {
+        ScreenFlash.enabled = true;
+        Color startColor = Color.white;
+        ScreenFlash.color = startColor;
+        for (int i = 0; i < flashDuration; i++)
+        {
+            startColor.a = 1.0f * (flashDuration - i) / flashDuration;
+            ScreenFlash.color = startColor;
+            yield return new WaitForFixedUpdate();
+        }
+        ScreenFlash.enabled = false;
+    }
+
     public void OnAttackEnd()
     {
         SwitchCamera(CameraType.FastMove);
