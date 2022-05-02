@@ -57,7 +57,7 @@ public class HitBox : MonoBehaviour
                 HurtBox hurtBox;
                 if (hurtBox = other.GetComponent<HurtBox>())
                 {
-                    _onHitCallback.Invoke(other.gameObject);    // always invoke
+                    if (_onHitCallback != null) _onHitCallback.Invoke(other.gameObject);    // always invoke
                     DealDamage(hurtBox,_damage);
                     //if (_onHitCallback != null)
                     //{
