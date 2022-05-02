@@ -79,7 +79,7 @@ public class AttackAbility : AbilityBase
         Vector3 hitDir = (hitObject.transform.position - transform.position).normalized;
         RaycastHit hit;
         bool raycast = Physics.Raycast(transform.position, hitDir, out hit, 100f);
-        //if (hitObject.tag == Tags.WEAKNESS_TAG)
+        if (hitObject.tag == Tags.WEAKNESS_TAG)
         {
             BigRebounce(hit);
             OnHitWeakness(hitObject);
