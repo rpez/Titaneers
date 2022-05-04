@@ -9729,7 +9729,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 15
+  m_VersionIndex: 225
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9747,7 +9747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 5268145073207640260
+    rid: 4623104548760453120
   m_Size: {x: 1, y: 1, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -9759,7 +9759,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 5268145073207640260
+    - rid: 4623104548760453120
       type: {class: Cylinder, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data:
         m_AxisDivisions: 30
@@ -17858,7 +17858,7 @@ MonoBehaviour:
     IKPosition: {x: 0, y: 633.44977, z: 8.909681}
     IKPositionWeight: 1
     root: {fileID: 8119981910988450899}
-    target: {fileID: 3921014694517801896}
+    target: {fileID: 0}
     spine:
     - transform: {fileID: 1136522423582223162}
       weight: 0

@@ -44,6 +44,13 @@ public class AttackAbility : AbilityBase
         Sequence dash = DOTween.Sequence()
         .AppendInterval(AttackWindUp)
         .AppendCallback(OnStartAttack)
+        .AppendInterval(0.3f)
+        .AppendCallback(() =>
+        {
+            GameObject swordTrail = Instantiate(_swordVFX, _sword.transform);
+            ScaleVFX(swordTrail, _playerControl.CurrentVelocity.magnitude);
+            Destroy(swordTrail, 5f);
+        })
         .AppendInterval(AttackTime)
         .AppendCallback(OnEndAttack);
 
@@ -66,8 +73,6 @@ public class AttackAbility : AbilityBase
     {
         _animator.SetInteger("state", 3);
         _playerControl.IsAttacking = true;
-        GameObject swordTrail = Instantiate(_swordVFX, _sword.transform);
-        ScaleVFX(swordTrail, _playerControl.CurrentVelocity.magnitude);
         _swordHitbox.gameObject.SetActive(true);
         _swordHitbox.Initialize(MaxDamage * _playerControl.CurrentVelocity.magnitude / _playerControl.MaxAirSpeed, AttackImpact);
         _sword.transform.localScale *= Mathf.Max(1f, _playerControl.CurrentVelocity.magnitude * HitBoxScaler);
