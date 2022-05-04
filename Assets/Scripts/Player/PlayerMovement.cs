@@ -285,7 +285,7 @@ public class PlayerMovement : MonoBehaviour
         _controlMapping.Jump.performed += _ => _jumping = true;
         _controlMapping.Booster.performed += _ =>
         {
-            Boost();
+            if (!_pulling) Boost();
         };
         if (_controlMapping.Booster.WasReleasedThisFrame())
         {
@@ -410,11 +410,11 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        else if (_currentBoostAmount <= 0f)
+        else if (_currentBoostAmount <= 0f || _pulling)
         {
             CancelBoost();
         }
-        else
+        else if (!_pulling)
         {
             _currentBoostAmount -= Time.deltaTime;
             _currentBoostRechargeTime = 0f;
