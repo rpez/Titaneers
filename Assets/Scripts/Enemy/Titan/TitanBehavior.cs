@@ -27,6 +27,10 @@ public class TitanBehavior : MonoBehaviour
     [SerializeField]
     private GameObject _lanternChargeVFX;
     [SerializeField]
+    private Material _bossFresnel;
+    [SerializeField]
+    private float _maxFresnelIntensity = 1000f;
+    [SerializeField]
     private SwordAttack _swordAttack;
 
     private void OnEnable()
@@ -72,6 +76,7 @@ public class TitanBehavior : MonoBehaviour
 
         //VFX
         _lanternChargeVFX.SetActive((_animator.GetFloat("LanternChargeVFX") > 0.99 ? true : false));
+        _bossFresnel.SetFloat("_Intensity", _animator.GetFloat("BossFresnelIntensity") * _maxFresnelIntensity);
         if(_animator.GetFloat("SwordAttack") > 0.99)
         {
             StartCoroutine(_swordAttack.SwordWave());

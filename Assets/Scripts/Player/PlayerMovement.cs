@@ -700,6 +700,7 @@ public class PlayerMovement : MonoBehaviour
         {
             renderer.material = DeathMat;
         }
+        StartCoroutine(Dissolve());
         _controlMapping.Grappling.Disable();
         _controlMapping.Jump.Disable();
         _controlMapping.TimeSlow.Disable();
@@ -725,6 +726,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private float _dissolveTime;
+    private IEnumerator Dissolve()
+    {
+        float timer = 0;
+        while (timer < _dissolveTime)
+        {
+            timer += Time.deltaTime;
+            DeathMat.SetFloat("_Progress", timer / _dissolveTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
 
 }
 

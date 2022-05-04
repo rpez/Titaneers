@@ -419,6 +419,7 @@ MonoBehaviour:
   ChargeDelay: 0.5
   ZoomIncrement: 1
   ExplosionShakingRange: 20
+  _dissolveTime: 2
 --- !u!54 &6965098877999748812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1013,6 +1014,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1091480015816740632, guid: b4801632008f63442b396073302cae64, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1091480015816740632, guid: b4801632008f63442b396073302cae64, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd251d9b5dbb23641a09096442ae5dd2, type: 2}
     - target: {fileID: 281855664364225751, guid: b4801632008f63442b396073302cae64, type: 3}
       propertyPath: m_IsActive
       value: 0
