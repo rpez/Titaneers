@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="1789024466">
+		<SoundBank Id="3161908922" Language="SFX" Hash="2169436831">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -611,6 +611,34 @@
 						<File Id="940748144" Language="SFX">
 							<ShortName>sfx_placeholder_titan_fs_3.wav</ShortName>
 							<Path>SFX/sfx_placeholder_titan_fs_3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1409958524" Name="Play_titan_lantern_attack" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack" MaxAttenuation="1000." DurationType="OneShot" DurationMin="11.503583" DurationMax="11.503583">
+					<IncludedMemoryFiles>
+						<File Id="207888603" Language="SFX">
+							<ShortName>sfx-titan-lantern-attack-attack.wav</ShortName>
+							<Path>SFX/sfx-titan-lantern-attack-attack_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1842908424" Name="Play_titan_lantern_attack_seq" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack_seq" MaxAttenuation="1000." DurationType="OneShot" DurationMin="15.403584" DurationMax="15.403584">
+					<IncludedMemoryFiles>
+						<File Id="207888603" Language="SFX">
+							<ShortName>sfx-titan-lantern-attack-attack.wav</ShortName>
+							<Path>SFX/sfx-titan-lantern-attack-attack_10C4C929.wem</Path>
+						</File>
+						<File Id="382169736" Language="SFX">
+							<ShortName>sfx-titan-lantern-attack-charge.wav</ShortName>
+							<Path>SFX/sfx-titan-lantern-attack-charge_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2713252876" Name="Play_titan_lantern_charge" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_charge" MaxAttenuation="1000." DurationType="OneShot" DurationMin="5.00975" DurationMax="5.00975">
+					<IncludedMemoryFiles>
+						<File Id="382169736" Language="SFX">
+							<ShortName>sfx-titan-lantern-attack-charge.wav</ShortName>
+							<Path>SFX/sfx-titan-lantern-attack-charge_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

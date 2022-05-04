@@ -29,6 +29,9 @@ namespace AK
         static const AkUniqueID PLAY_TITAN_FS = 487948562U;
         static const AkUniqueID PLAY_TITAN_FS_L = 2390231879U;
         static const AkUniqueID PLAY_TITAN_FS_R = 2390231897U;
+        static const AkUniqueID PLAY_TITAN_LANTERN_ATTACK = 1409958524U;
+        static const AkUniqueID PLAY_TITAN_LANTERN_ATTACK_SEQ = 1842908424U;
+        static const AkUniqueID PLAY_TITAN_LANTERN_CHARGE = 2713252876U;
         static const AkUniqueID PLAY_TITAN_MISSILE_EXPLODE = 3892312811U;
         static const AkUniqueID PLAY_TITAN_MISSILE_SHOT = 3166948436U;
         static const AkUniqueID PLAY_TITAN_TRAMPLE_FOOT = 1282535387U;

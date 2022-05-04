@@ -8,11 +8,14 @@ Event	ID	Name			Wwise Object Path	Notes
 	930574960	Stop_titan_missile_loop			\Titan\TitanMissile\Stop_titan_missile_loop	
 	970928956	Stop_combat_music			\Music\Stop_combat_music	
 	1282535387	Play_titan_trample_foot			\Titan\TitanTrample\Play_titan_trample_foot	
+	1409958524	Play_titan_lantern_attack			\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack	
 	1752755706	Stop_2d_ambience_loop			\Ambience\Stop_2d_ambience_loop	
+	1842908424	Play_titan_lantern_attack_seq			\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack_seq	
 	1884037509	Play_player_grapple_shoot			\Player\PlayerGrapple\Play_player_grapple_shoot	
 	2116655569	Play_player_sword_hit			\Player\PlayerAttack\Play_player_sword_hit	
 	2390231879	Play_titan_fs_L			\Titan\TitanLocomotion\TitanFS\Play_titan_fs_L	
 	2390231897	Play_titan_fs_R			\Titan\TitanLocomotion\TitanFS\Play_titan_fs_R	
+	2713252876	Play_titan_lantern_charge			\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_charge	
 	3060992713	Play_titan_trample_voc			\Titan\TitanTrample\Play_titan_trample_voc	
 	3131183803	Play_titan_voc_generic			\Titan\TitanVoc\Play_titan_voc_generic	
 	3155474038	Play_combat_music			\Music\Play_combat_music	
@@ -50,6 +53,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	168483571	sfx_player_jump_placeholder	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_jump_placeholder_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_Jump\sfx_player_jump_placeholder		116516
 	190114397	sfx-player-fs-shoe	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-fs-shoe_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe		26524
 	198164440	sfx-player-attack-spin-whosh-start_3	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-attack-spin-whosh-start_3_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_Start\sfx-player-attack-spin-whosh-start_3		41224
+	207888603	sfx-titan-lantern-attack-attack	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-titan-lantern-attack-attack_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\Titan-Lantern-Attack\Titan-lantern-attack-sequence\sfx-titan-lantern-attack-attack		2029296
 	211086767	sfx-player-attack-spin-whosh-start_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-attack-spin-whosh-start_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_Start\sfx-player-attack-spin-whosh-start_2		41224
 	215379498	sfx_placeholder_titan_fs	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_titan_fs_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanLocomotion\Titan_fs\sfx_placeholder_titan_fs		680792
 	238136293	sfx-player-fs-cloth_8	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-fs-cloth_8_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_cloth\sfx-player-fs-cloth_8		29464
@@ -68,6 +72,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	368867316	sfx_player_fs_placeholder_14	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_14_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_14		21860
 	371649142	sfx-player-fs-gravel_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-fs-gravel_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_gravel\sfx-player-fs-gravel_2		17704
 	372510468	sfx_placeholder_titan_voc	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_placeholder_titan_voc_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanVoc\TitanVoc\TitanPreAttackVoc\sfx_placeholder_titan_voc		1074240
+	382169736	sfx-titan-lantern-attack-charge	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-titan-lantern-attack-charge_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\Titan-Lantern-Attack\Titan-lantern-attack-sequence\sfx-titan-lantern-attack-charge		883784
 	383123120	sfx_player_fs_placeholder_12	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_12_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_12		26562
 	415474525	sfx-player-fs-cloth_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-fs-cloth_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_cloth\sfx-player-fs-cloth_2		29464
 	426936550	sfx_player_fs_placeholder_7	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_fs_placeholder_7_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_7		25904
