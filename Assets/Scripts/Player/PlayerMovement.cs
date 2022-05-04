@@ -180,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
         vfx.transform.position = Grapple.GunTip.transform.position;
         Destroy(vfx, 5f);
         EventManager.OnFreezeFrame(0.2f);
-        _currentPullSpeedScale = 0.1f;
+        _currentPullSpeedScale = 0.2f;
         Camera.NoiseImpulse(15f, 3f, 0.5f);
     }
 
@@ -328,7 +328,7 @@ public class PlayerMovement : MonoBehaviour
             if (_currentPullSpeedScale < MaxPullSpeedScale && !_boosting)
                 _currentPullSpeedScale *= PullAcceleration;
 
-            if (_boosting) _currentPullSpeedScale *= GrapplePullBoostStrength;
+            //if (_boosting) _currentPullSpeedScale *= GrapplePullBoostStrength;
 
             if (_pullDirection.magnitude < CurrentVelocity.magnitude * Time.deltaTime * 5)
             {

@@ -7562,10 +7562,6 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1722413016}
-    - target: {fileID: 2496024928203559717, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
-      propertyPath: MinRebounceSpeed
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 2496024928567296264, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: UIRef
       value: 

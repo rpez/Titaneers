@@ -247,6 +247,8 @@ MonoBehaviour:
   Debug_Enabled: 0
   LeftFootRun: Play_player_fs_run_L
   RightFootRun: Play_player_fs_run_R
+  SpinAttack: Play_player_spin_attack
+  FS: Play_player_fs
 --- !u!1 &3665619671043376067
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,8 +398,8 @@ MonoBehaviour:
   AirResistFreeTimeWindow: 2
   MinPullVelocity: 50
   AirExtraGravity: 50
-  MaxPullSpeedScale: 1
-  PullAcceleration: 1.05
+  MaxPullSpeedScale: 2
+  PullAcceleration: 1.1
   RotateSpeed: 180
   SlideLandingBoost: 1.5
   SlideForce: 400
@@ -524,7 +526,7 @@ MonoBehaviour:
   HitBoxScaler: 0.005
   ImpactVFXScaler: 0.01
   RebounceScalar: 2
-  MinRebounceSpeed: 30
+  MinRebounceSpeed: 300
   RebounceUpRatio: 0.3
   BigRebounceDuration: 2
   RebounceDuration: 0.75
@@ -566,6 +568,8 @@ MonoBehaviour:
   Debug_Enabled: 0
   LeftFootRun: Play_player_fs_run_L
   RightFootRun: Play_player_fs_run_R
+  SpinAttack: Play_player_spin_attack
+  FS: Play_player_fs
 --- !u!114 &3420363973357619274
 MonoBehaviour:
   m_ObjectHideFlags: 0
