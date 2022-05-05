@@ -27,13 +27,6 @@ Event	ID	Name			Wwise Object Path	Notes
 	4003404733	Play_player_sword_slash			\Player\PlayerAttack\Play_player_sword_slash	
 	4078825889	Play_player_fs			\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs	
 
-Switch Group	ID	Name			Wwise Object Path	Notes
-	4150154280	Music_Progress			\Music\Music_Progress	
-
-Switch	ID	Name	Switch Group			Notes
-	678209053	two	Music_Progress			
-	1064933119	one	Music_Progress			
-
 Effect plug-ins	ID	Name	Type				Notes
 	213763167	Wwise Flanger (Custom)	Wwise Flanger			
 	787701726	Wwise Flanger (Custom)	Wwise Flanger			
@@ -141,5 +134,4 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	977216482	sfx-player-fs-cloth_3	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-fs-cloth_3_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_cloth\sfx-player-fs-cloth_3		29464
 	991411273	sfx-player-attack-spin-whosh-start_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-attack-spin-whosh-start_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_Start\sfx-player-attack-spin-whosh-start_1		41224
 	1011705202	sfx-player-fs-shoe_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-fs-shoe_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe_2		26524
-	1021980294	music-combat	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\music-combat_D79FB2B7.wem		\Interactive Music Hierarchy\Music\CombatMusic\Music_Combat_Start\music_combat_intro\music-combat		40322552
 

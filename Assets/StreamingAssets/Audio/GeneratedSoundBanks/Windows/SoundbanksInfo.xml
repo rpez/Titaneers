@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2906581453">
+		<SoundBank Id="3161908922" Language="SFX" Hash="933524731">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -33,30 +33,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3155474038" Name="Play_combat_music" ObjectPath="\Events\Music\Play_combat_music" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="1021980294" Language="SFX">
-							<ShortName>music-combat.wav</ShortName>
-							<Path>SFX/music-combat_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-					<SwitchContainers>
-						<SwitchContainer SwitchValue="{3C1986C0-4AAD-4482-95E1-DF5A66B28F9E}">
-							<Media>
-								<File Id="1021980294"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{9A97CCE0-E26F-4C27-B161-8F8CBE5863F3}">
-							<Media>
-								<File Id="1021980294"/>
-							</Media>
-						</SwitchContainer>
-						<SwitchContainer SwitchValue="{CB0DB418-248B-4D71-85E7-8906A9893898}">
-							<Media>
-								<File Id="1021980294"/>
-							</Media>
-						</SwitchContainer>
-					</SwitchContainers>
+				<Event Id="3155474038" Name="Play_combat_music" ObjectPath="\Events\Music\Play_combat_music" DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<ActionSetSwitch>
 						<ActionSetSwitchEntry Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one"/>
 					</ActionSetSwitch>
@@ -775,12 +752,6 @@
 				</SwitchGroup>
 				<SwitchGroup Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one" GUID="{9A97CCE0-E26F-4C27-B161-8F8CBE5863F3}">
 					<Switches/>
-				</SwitchGroup>
-				<SwitchGroup Id="4150154280" Name="Music_Progress" ObjectPath="\Switches\Music\Music_Progress" GUID="{3C1986C0-4AAD-4482-95E1-DF5A66B28F9E}">
-					<Switches>
-						<Switch Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one" GUID="{9A97CCE0-E26F-4C27-B161-8F8CBE5863F3}"/>
-						<Switch Id="678209053" Name="two" ObjectPath="\Switches\Music\Music_Progress\two" GUID="{CB0DB418-248B-4D71-85E7-8906A9893898}"/>
-					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
