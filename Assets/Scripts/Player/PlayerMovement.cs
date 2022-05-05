@@ -43,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
     public GrapplingGun Grapple;
     public GameObject Sword;
     public GameObject SwordTip;
+    public GameObject LeftThruster;
+    public GameObject RightThruster;
     public HitBox SwordHitbox;
     public float MaxDamage;
     public GameObject PullVFX;
