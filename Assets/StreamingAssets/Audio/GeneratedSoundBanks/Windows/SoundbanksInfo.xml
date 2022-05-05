@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2587622877">
+		<SoundBank Id="1355168291" Language="SFX" Hash="1550753873">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2169436831">
+		<SoundBank Id="3161908922" Language="SFX" Hash="2906581453">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -61,7 +61,7 @@
 						<ActionSetSwitchEntry Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one"/>
 					</ActionSetSwitch>
 				</Event>
-				<Event Id="142245832" Name="Play_player_booster" ObjectPath="\Events\Player\PlayerBooster\Play_player_booster" MaxAttenuation="50." DurationType="OneShot" DurationMin="1.549675" DurationMax="1.918741">
+				<Event Id="142245832" Name="Play_player_booster" ObjectPath="\Events\Player\PlayerBooster\Play_player_booster" MaxAttenuation="100." DurationType="OneShot" DurationMin="1.549675" DurationMax="1.918741">
 					<IncludedMemoryFiles>
 						<File Id="541344607" Language="SFX">
 							<ShortName>sfx_player_booster_1.wav</ShortName>
@@ -77,7 +77,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4078825889" Name="Play_player_fs" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.314443" DurationMax="0.370483">
+				<Event Id="4078825889" Name="Play_player_fs" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs" MaxAttenuation="100." DurationType="OneShot" DurationMin="0.314443" DurationMax="0.370483">
 					<IncludedMemoryFiles>
 						<File Id="79370748" Language="SFX">
 							<ShortName>sfx-player-fs-shoe_1.wav</ShortName>
@@ -185,7 +185,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3625340534" Name="Play_player_fs_run_L" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_L" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
+				<Event Id="3625340534" Name="Play_player_fs_run_L" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_L" MaxAttenuation="100." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
 					<IncludedMemoryFiles>
 						<File Id="66095530" Language="SFX">
 							<ShortName>sfx_player_fs_placeholder_13.wav</ShortName>
@@ -293,7 +293,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3625340520" Name="Play_player_fs_run_R" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_R" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
+				<Event Id="3625340520" Name="Play_player_fs_run_R" ObjectPath="\Events\Player\PlayerLocomotion\PlayerFootsteps\Play_player_fs_run_R" MaxAttenuation="100." DurationType="OneShot" DurationMin="0.199666" DurationMax="0.432905">
 					<IncludedMemoryFiles>
 						<File Id="66095530" Language="SFX">
 							<ShortName>sfx_player_fs_placeholder_13.wav</ShortName>
@@ -417,7 +417,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="562256996" Name="Play_player_jump" ObjectPath="\Events\Player\PlayerLocomotion\PlayerJump\Play_player_jump" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.631805" DurationMax="0.719457">
+				<Event Id="562256996" Name="Play_player_jump" ObjectPath="\Events\Player\PlayerLocomotion\PlayerJump\Play_player_jump" MaxAttenuation="100." DurationType="OneShot" DurationMin="0.631805" DurationMax="0.719457">
 					<IncludedMemoryFiles>
 						<File Id="168483571" Language="SFX">
 							<ShortName>sfx_player_jump_placeholder.wav</ShortName>
@@ -433,7 +433,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="213519327" Name="Play_player_spin_attack" ObjectPath="\Events\Player\PlayerAttack\Play_player_spin_attack" MaxAttenuation="20." DurationType="OneShot" DurationMin="0.939148" DurationMax="0.994992">
+				<Event Id="213519327" Name="Play_player_spin_attack" ObjectPath="\Events\Player\PlayerAttack\Play_player_spin_attack" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.939148" DurationMax="0.994992">
 					<IncludedMemoryFiles>
 						<File Id="127346191" Language="SFX">
 							<ShortName>sfx-player-attack-spin-cloth-start.wav</ShortName>
@@ -505,7 +505,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" MaxAttenuation="10." DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
+				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
 					<IncludedMemoryFiles>
 						<File Id="260314807" Language="SFX">
 							<ShortName>sfx_player_sword_hit_4.wav</ShortName>
@@ -521,7 +521,22 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="20." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
+					<IncludedMemoryFiles>
+						<File Id="257300301" Language="SFX">
+							<ShortName>sfx_player_sword_slash_2.wav</ShortName>
+							<Path>SFX/sfx_player_sword_slash_2_10C4C929.wem</Path>
+						</File>
+						<File Id="305052931" Language="SFX">
+							<ShortName>sfx_player_sword_slash.wav</ShortName>
+							<Path>SFX/sfx_player_sword_slash_10C4C929.wem</Path>
+						</File>
+						<File Id="616774092" Language="SFX">
+							<ShortName>sfx_player_sword_slash_1.wav</ShortName>
+							<Path>SFX/sfx_player_sword_slash_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3211564518" Name="Play_test_sound" ObjectPath="\Events\Default Work Unit\Play_test_sound" DurationType="OneShot" DurationMin="4.46114" DurationMax="4.46114">
 					<IncludedMemoryFiles>
 						<File Id="300957545" Language="SFX">
@@ -530,7 +545,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="487948562" Name="Play_titan_fs" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs" MaxAttenuation="1000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
+				<Event Id="487948562" Name="Play_titan_fs" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs" MaxAttenuation="3500." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
 					<IncludedMemoryFiles>
 						<File Id="149432959" Language="SFX">
 							<ShortName>sfx_placeholder_titan_fs_5.wav</ShortName>
@@ -558,7 +573,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2390231879" Name="Play_titan_fs_L" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs_L" MaxAttenuation="1000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
+				<Event Id="2390231879" Name="Play_titan_fs_L" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs_L" MaxAttenuation="3500." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
 					<IncludedMemoryFiles>
 						<File Id="149432959" Language="SFX">
 							<ShortName>sfx_placeholder_titan_fs_5.wav</ShortName>
@@ -586,7 +601,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2390231897" Name="Play_titan_fs_R" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs_R" MaxAttenuation="1000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
+				<Event Id="2390231897" Name="Play_titan_fs_R" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs_R" MaxAttenuation="3500." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
 					<IncludedMemoryFiles>
 						<File Id="149432959" Language="SFX">
 							<ShortName>sfx_placeholder_titan_fs_5.wav</ShortName>
@@ -614,7 +629,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1409958524" Name="Play_titan_lantern_attack" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack" MaxAttenuation="1000." DurationType="OneShot" DurationMin="11.503583" DurationMax="11.503583">
+				<Event Id="1409958524" Name="Play_titan_lantern_attack" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack" MaxAttenuation="3500." DurationType="OneShot" DurationMin="11.503583" DurationMax="11.503583">
 					<IncludedMemoryFiles>
 						<File Id="207888603" Language="SFX">
 							<ShortName>sfx-titan-lantern-attack-attack.wav</ShortName>
@@ -622,7 +637,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1842908424" Name="Play_titan_lantern_attack_seq" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack_seq" MaxAttenuation="1000." DurationType="OneShot" DurationMin="15.403584" DurationMax="15.403584">
+				<Event Id="1842908424" Name="Play_titan_lantern_attack_seq" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack_seq" MaxAttenuation="3500." DurationType="OneShot" DurationMin="15.403584" DurationMax="15.403584">
 					<IncludedMemoryFiles>
 						<File Id="207888603" Language="SFX">
 							<ShortName>sfx-titan-lantern-attack-attack.wav</ShortName>
@@ -634,7 +649,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2713252876" Name="Play_titan_lantern_charge" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_charge" MaxAttenuation="1000." DurationType="OneShot" DurationMin="5.00975" DurationMax="5.00975">
+				<Event Id="2713252876" Name="Play_titan_lantern_charge" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_charge" MaxAttenuation="3500." DurationType="OneShot" DurationMin="5.00975" DurationMax="5.00975">
 					<IncludedMemoryFiles>
 						<File Id="382169736" Language="SFX">
 							<ShortName>sfx-titan-lantern-attack-charge.wav</ShortName>
@@ -680,7 +695,7 @@
 						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
 					</AuxBusSends>
 				</Event>
-				<Event Id="1282535387" Name="Play_titan_trample_foot" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_foot" MaxAttenuation="1000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
+				<Event Id="1282535387" Name="Play_titan_trample_foot" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_foot" MaxAttenuation="3500." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
 					<IncludedMemoryFiles>
 						<File Id="149432959" Language="SFX">
 							<ShortName>sfx_placeholder_titan_fs_5.wav</ShortName>
@@ -708,7 +723,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3060992713" Name="Play_titan_trample_voc" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_voc" MaxAttenuation="1000." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
+				<Event Id="3060992713" Name="Play_titan_trample_voc" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_voc" MaxAttenuation="3500." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
 					<IncludedMemoryFiles>
 						<File Id="144898128" Language="SFX">
 							<ShortName>sfx_placeholder_titan_voc_1.wav</ShortName>
@@ -727,7 +742,7 @@
 						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
 					</AuxBusSends>
 				</Event>
-				<Event Id="3131183803" Name="Play_titan_voc_generic" ObjectPath="\Events\Titan\TitanVoc\Play_titan_voc_generic" MaxAttenuation="1000." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
+				<Event Id="3131183803" Name="Play_titan_voc_generic" ObjectPath="\Events\Titan\TitanVoc\Play_titan_voc_generic" MaxAttenuation="3500." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
 					<IncludedMemoryFiles>
 						<File Id="144898128" Language="SFX">
 							<ShortName>sfx_placeholder_titan_voc_1.wav</ShortName>
