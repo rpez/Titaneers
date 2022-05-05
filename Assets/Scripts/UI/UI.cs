@@ -213,13 +213,9 @@ public class UI : MonoBehaviour
 
     public void ChangeLowHealthEffect(float transparency)
     {
+        Debug.Log(transparency);
         Color _color = LowHealthHue.color;
-        if (transparency <= 0f)
-            _color.a = 0f;
-        else if (transparency >= 1f)
-            _color.a = 255f;
-        else
-            _color.a = transparency * 255f;
+        _color.a = transparency;
         LowHealthHue.color = _color;
     }
 
