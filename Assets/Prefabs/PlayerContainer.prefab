@@ -513,7 +513,7 @@ MonoBehaviour:
   Title: SpinAttack
   Icon: {fileID: 0}
   CooldownTime: 1
-  _animator: {fileID: 0}
+  _animator: {fileID: 2496024928203559708}
   _sword: {fileID: 2248262134983563429}
   _swordTip: {fileID: 918715861}
   _swordHitbox: {fileID: 1691826803}
