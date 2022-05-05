@@ -23,6 +23,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject _topRangeIndicator;
     [SerializeField] private RectTransform[] _rangeIndicators;
     [SerializeField] private Image[] _rangeImage;
+    [SerializeField] private RawImage _controlGuide;
 
     // Private variables
     private Color _defaultCrosshairColor;
@@ -34,7 +35,7 @@ public class UI : MonoBehaviour
     private Vector2 _crosshairPos;
     private GameObject _inCrosshair;
     private bool _crosshairTargetSet;
-
+    private bool _guideActive = true;
     private Vector3 _indicatorOffset = new Vector3(-32f, -32f, 0f);
 
     private void Start()
@@ -136,6 +137,12 @@ public class UI : MonoBehaviour
     {
         //_rangeIndicator.SetActive(active);
         AimCircle.enabled = active;
+    }
+
+    public void SetControlGuide()
+    {
+        _guideActive = !_guideActive;
+        _controlGuide.enabled = _guideActive;
     }
 
     public void ChangeIndicator(float anchorX)
