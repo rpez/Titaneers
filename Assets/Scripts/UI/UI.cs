@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ public class UI : MonoBehaviour
     public GameObject FuelGauge;
     public Image AimCircle;
     public GameObject RestartBtn;
+    public GameObject WinningHint;
     public Image LowHealthHue;
 
     [SerializeField] private float _maxThreatDist;
@@ -226,12 +228,19 @@ public class UI : MonoBehaviour
 
     public void OnDead()
     {
-        StartCoroutine(Delay(5.0f, () =>
-        {
-            RestartBtn.SetActive(true);
-        }));
+        DOTween.Sequence().AppendInterval(5.0f)
+            .AppendCallback(() => RestartBtn.SetActive(true))
+            .AppendInterval(5.0f)
+            .AppendCallback(() => SceneManager.LoadScene("menu"));
     }
 
+    public void OnTitanDead()
+    {
+        DOTween.Sequence().AppendInterval(20.0f)
+            .AppendCallback(() => WinningHint.SetActive(true))
+            .AppendInterval(10.0f)
+            .AppendCallback(() => SceneManager.LoadScene("menu"));
+    }
     private IEnumerator Delay(float delay, Action callback)
     {
         yield return new WaitForSeconds(delay);
