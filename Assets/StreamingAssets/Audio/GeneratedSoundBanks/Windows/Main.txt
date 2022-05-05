@@ -34,6 +34,10 @@ Switch	ID	Name	Switch Group			Notes
 	678209053	two	Music_Progress			
 	1064933119	one	Music_Progress			
 
+Effect plug-ins	ID	Name	Type				Notes
+	213763167	Wwise Flanger (Custom)	Wwise Flanger			
+	787701726	Wwise Flanger (Custom)	Wwise Flanger			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	66095530	sfx_player_fs_placeholder_13	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_fs_placeholder_13_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_13		27250
 	79370748	sfx-player-fs-shoe_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-fs-shoe_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe_1		26524
@@ -60,11 +64,13 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	242702919	sfx_player_fs_placeholder_25	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_fs_placeholder_25_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_25		33614
 	254999833	sfx_player_fs_placeholder_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_fs_placeholder_4_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_4		21468
 	255842667	sfx-player-attack-spin-whosh-end_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-whosh-end_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_End\sfx-player-attack-spin-whosh-end_1		82384
+	257300301	sfx_player_sword_slash_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_sword_slash_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerSwordSlash\sfx_player_sword_slash_2		75844
 	260314807	sfx_player_sword_hit_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_sword_hit_4_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerSwordHit\sfx_player_sword_hit_4		196104
 	270198791	sfx-player-attack-spin-whosh-end_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-whosh-end_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_End\sfx-player-attack-spin-whosh-end_2		82384
 	286775973	sfx_placeholder_missile_shot	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_placeholder_missile_shot_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\sfx_placeholder_missile_shot		422408
 	300957545	test-sound	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\AardvarkRover1_7D92B217.wem		\Actor-Mixer Hierarchy\Default Work Unit\test-sound		856600
 	303995714	sfx-player-attack-spin-whosh-end_3	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-whosh-end_3_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_End\sfx-player-attack-spin-whosh-end_3		82384
+	305052931	sfx_player_sword_slash	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_sword_slash_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerSwordSlash\sfx_player_sword_slash		72896
 	317828642	sfx-player-attack-spin-cloth-end_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-cloth-end_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Cloth_End\sfx-player-attack-spin-cloth-end_2		85324
 	334934182	sfx-player-attack-spin-cloth-start_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-cloth-start_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Cloth_Start\sfx-player-attack-spin-cloth-start_2		52984
 	343109213	sfx-player-fs-shoe_3	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-fs-shoe_3_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe_3		26524
@@ -98,6 +104,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	560595885	sfx-player-fs-shoe_6	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-fs-shoe_6_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe_6		26524
 	578437323	sfx_placeholder_player_grapple_hit_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_placeholder_player_grapple_hit_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerGrapple\sfx_placeholder_player_grapple_hit_1		55746
 	605551748	sfx_placeholder_titan_fs_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_placeholder_titan_fs_4_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanLocomotion\Titan_fs\sfx_placeholder_titan_fs_4		651600
+	616774092	sfx_player_sword_slash_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_sword_slash_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerSwordSlash\sfx_player_sword_slash_1		76768
 	621091838	sfx_player_jump_placeholder_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_jump_placeholder_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_Jump\sfx_player_jump_placeholder_2		123292
 	622157969	sfx-player-fs-cloth_7	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-fs-cloth_7_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_cloth\sfx-player-fs-cloth_7		29464
 	635086670	sfx_player_fs_placeholder_22	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_fs_placeholder_22_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_22		35566
