@@ -45,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject SwordTip;
     public HitBox SwordHitbox;
     public float MaxDamage;
-    public GameObject DashVFX;
+    public GameObject PullVFX;
+    public GameObject BoostVFX;
     public GameObject AttackVFX;
     public GameObject ImpactVFX;
     public CameraBehaviour Camera;
@@ -176,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.useGravity = false;
         _pulling = true;
 
-        GameObject vfx = GameObject.Instantiate(DashVFX, Orientation.transform);
+        GameObject vfx = GameObject.Instantiate(PullVFX, Orientation.transform);
         vfx.transform.position = Grapple.GunTip.transform.position;
         Destroy(vfx, 5f);
         EventManager.OnFreezeFrame(0.2f);
@@ -474,7 +475,7 @@ public class PlayerMovement : MonoBehaviour
             _boosting = true;
             _rigidbody.useGravity = false;
 
-            GameObject vfx = GameObject.Instantiate(DashVFX, Orientation.transform);
+            GameObject vfx = GameObject.Instantiate(BoostVFX, PlayerAvatar.transform);
             Destroy(vfx, 5f);
         }
     }   
