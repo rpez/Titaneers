@@ -6950,7 +6950,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4108
+  m_Name: pb_Mesh-33686
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7586,6 +7586,10 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1722413016}
+    - target: {fileID: 7065763459028734582, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 754d4dcb74772474b84f66721bed2dfc, type: 2}
     - target: {fileID: 8002697790043786536, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: m_RootOrder
       value: 16
