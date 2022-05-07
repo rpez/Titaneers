@@ -28,5 +28,9 @@ public class HurtBox : MonoBehaviour
         if (_instantDeath) _health.ReduceHealthPoint(_health.MaxHealthPoint);
         else _health.ReduceHealthPoint(damage);
     }
-
+     
+    public void SetInstantDeath(bool value)
+    {
+        _instantDeath = value;
+    }
 }

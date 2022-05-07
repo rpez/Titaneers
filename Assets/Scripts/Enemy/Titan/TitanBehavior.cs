@@ -33,6 +33,10 @@ public class TitanBehavior : MonoBehaviour
     [SerializeField]
     private SwordAttack _swordAttack;
 
+    [Header("Function")]
+    [SerializeField]
+    private HurtBox[] _weaknessHurtBoxs;
+
     private void OnEnable()
     {
         EventManager.FreezeFrame += FreezeForSeconds;
@@ -75,11 +79,19 @@ public class TitanBehavior : MonoBehaviour
         _lanternHitbox.transform.localScale = Vector3.one * _animator.GetFloat("LanternHitboxSize");
 
         //VFX
-        _lanternChargeVFX.SetActive((_animator.GetFloat("LanternChargeVFX") > 0.99 ? true : false));
+        //Lantern charge
+        _lanternChargeVFX.SetActive((_animator.GetFloat("LanternChargeVFX") > 0.99));
         _bossFresnel.SetFloat("_Intensity", _animator.GetFloat("BossFresnelIntensity") * _maxFresnelIntensity);
+        //Sword
         if(_animator.GetFloat("SwordAttack") > 0.99)
         {
             StartCoroutine(_swordAttack.SwordWave());
+        }
+
+        //Function
+        for(int i=0;i<_weaknessHurtBoxs.Length;i++)
+        {
+            _weaknessHurtBoxs[i].SetInstantDeath((_animator.GetFloat("LanternChargeVFX") > 0.99));
         }
     }
 }

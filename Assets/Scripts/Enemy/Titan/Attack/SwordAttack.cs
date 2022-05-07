@@ -43,11 +43,12 @@ public class SwordAttack : MonoBehaviour
 
                 pos += transform.forward * speed * Time.deltaTime;
 
-                Vector3 swordPos = new Vector3(
-                    Random.Range(pos.x - _randomAreaWidth / 2, pos.x + _randomAreaWidth / 2),
-                    pos.y,
-                    pos.z + Mathf.Sqrt(Random.Range(0, 1)) * _randomAreaLength
-                    );
+                //Vector3 swordPos = new Vector3(
+                //    Random.Range(pos.x - _randomAreaWidth / 2, pos.x + _randomAreaWidth / 2),
+                //    pos.y,
+                //    pos.z + Mathf.Sqrt(Random.Range(0, 1)) * _randomAreaLength
+                //    );
+                Vector3 swordPos = pos + (transform.right * Random.Range(-_randomAreaWidth / 2, _randomAreaWidth / 2) + transform.forward * Mathf.Sqrt(Random.Range(0, 1)) * _randomAreaLength);
 
                 _swordPool.InitiateFromObjectPool(swordPos, transform.rotation);
 

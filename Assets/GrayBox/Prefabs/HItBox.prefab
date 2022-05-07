@@ -115,7 +115,7 @@ MonoBehaviour:
   _damage: 10
   _layers:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 4224
 --- !u!1 &8389694829767956799
 GameObject:
   m_ObjectHideFlags: 0
