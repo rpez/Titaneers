@@ -477,8 +477,10 @@ public class PlayerMovement : MonoBehaviour
             _boosting = true;
             _rigidbody.useGravity = false;
 
-            GameObject vfx = GameObject.Instantiate(BoostVFX, PlayerAvatar.transform);
+            GameObject vfx = GameObject.Instantiate(BoostVFX, LeftThruster.transform);
             Destroy(vfx, 5f);
+            GameObject vfx2 = GameObject.Instantiate(BoostVFX, RightThruster.transform);
+            Destroy(vfx2, 5f);
         }
     }   
 
