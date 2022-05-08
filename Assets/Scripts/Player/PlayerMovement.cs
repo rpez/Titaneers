@@ -48,7 +48,8 @@ public class PlayerMovement : MonoBehaviour
     public HitBox SwordHitbox;
     public float MaxDamage;
     public GameObject PullVFX;
-    public GameObject BoostVFX;
+    public GameObject BoostLeftVFX;
+    public GameObject BoostRightVFX;
     public GameObject AttackVFX;
     public GameObject ImpactVFX;
     public CameraBehaviour Camera;
@@ -479,8 +480,8 @@ public class PlayerMovement : MonoBehaviour
             _boosting = true;
             _rigidbody.useGravity = false;
 
-            _boosterVFXs[0] = GameObject.Instantiate(BoostVFX, LeftThruster.transform);
-            _boosterVFXs[1] = GameObject.Instantiate(BoostVFX, RightThruster.transform);
+            _boosterVFXs[0] = GameObject.Instantiate(BoostLeftVFX, LeftThruster.transform);
+            _boosterVFXs[1] = GameObject.Instantiate(BoostRightVFX, RightThruster.transform);
         }
     }   
 
