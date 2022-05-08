@@ -159,6 +159,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _velocityBuffer;
     public Vector3 VelocityBuffer { get => _velocityBuffer; }
 
+    private GameObject[] _boosterVFXs = new GameObject[2];
+
     // Grapple reel in
     private GameObject _target;
     private Action _onReachtarget;
@@ -477,10 +479,8 @@ public class PlayerMovement : MonoBehaviour
             _boosting = true;
             _rigidbody.useGravity = false;
 
-            GameObject vfx = GameObject.Instantiate(BoostVFX, LeftThruster.transform);
-            Destroy(vfx, 5f);
-            GameObject vfx2 = GameObject.Instantiate(BoostVFX, RightThruster.transform);
-            Destroy(vfx2, 5f);
+            _boosterVFXs[0] = GameObject.Instantiate(BoostVFX, LeftThruster.transform);
+            _boosterVFXs[1] = GameObject.Instantiate(BoostVFX, RightThruster.transform);
         }
     }   
 
@@ -489,6 +489,11 @@ public class PlayerMovement : MonoBehaviour
         _boosting = false;
         _rigidbody.useGravity = true;
         _currentBoostRechargeTime = 0f;
+
+        foreach (GameObject vfx in _boosterVFXs)
+        {
+            Destroy(vfx);
+        }
     }
 
     private void ResetJump()
