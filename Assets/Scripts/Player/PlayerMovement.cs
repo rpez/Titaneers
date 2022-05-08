@@ -185,6 +185,17 @@ public class PlayerMovement : MonoBehaviour
         GameObject vfx = GameObject.Instantiate(PullVFX, Orientation.transform);
         vfx.transform.position = Grapple.GunTip.transform.position;
         Destroy(vfx, 5f);
+
+        if (_currentBoostAmount > 0f)
+        {
+            StartCoroutine(Delay(0.2f, () =>
+            {
+                CancelBoost();
+                _boosterVFXs[0] = GameObject.Instantiate(BoostLeftVFX, LeftThruster.transform);
+                _boosterVFXs[1] = GameObject.Instantiate(BoostRightVFX, RightThruster.transform);
+            }));
+        }
+
         EventManager.OnFreezeFrame(0.2f);
         _currentPullSpeedScale = 0.2f;
         Camera.NoiseImpulse(15f, 3f, 0.5f);
@@ -192,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopPull()
     {
+        if (_currentBoostAmount > 0f) CancelBoost();
         if (_pulling == false) return;
         _rigidbody.velocity = _pullVelocity.magnitude * _pullDirection.normalized;
         _rigidbody.useGravity = true;
@@ -331,10 +343,13 @@ public class PlayerMovement : MonoBehaviour
             }
             _pullDirection = _target.transform.position - transform.position;
             transform.Translate(_pullDirection.normalized * _pullVelocity.magnitude * _currentPullSpeedScale * Time.deltaTime, Space.World);
-            if (_currentPullSpeedScale < MaxPullSpeedScale && !_boosting)
-                _currentPullSpeedScale *= PullAcceleration;
 
-            //if (_boosting) _currentPullSpeedScale *= GrapplePullBoostStrength;
+            if (_currentBoostAmount > 0f)
+            {
+                _currentPullSpeedScale *= GrapplePullBoostStrength;
+            }
+            else if (_currentPullSpeedScale < MaxPullSpeedScale)
+                _currentPullSpeedScale *= PullAcceleration;
 
             if (_pullDirection.magnitude < CurrentVelocity.magnitude * Time.deltaTime * 5)
             {
@@ -405,7 +420,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateCooldowns()
     {
-        if (!_boosting)
+        if (!_boosting && !_pulling)
         {
             if (_currentBoostAmount < BoostRechargeCap)
             {
@@ -416,11 +431,11 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        else if (_currentBoostAmount <= 0f || _pulling)
+        else if (_currentBoostAmount <= 0f)
         {
             CancelBoost();
         }
-        else if (!_pulling)
+        else if (_pulling || _boosting)
         {
             _currentBoostAmount -= Time.deltaTime;
             _currentBoostRechargeTime = 0f;
