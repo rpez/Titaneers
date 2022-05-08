@@ -512,7 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: SpinAttack
   Icon: {fileID: 0}
-  CooldownTime: 1
+  CooldownTime: 1.5
   _animator: {fileID: 7811323340121249435}
   _sword: {fileID: 2248262134983563429}
   _swordTip: {fileID: 918715861}
@@ -521,7 +521,7 @@ MonoBehaviour:
   _swordVFX: {fileID: 5649737019155367537, guid: a5f4ca091e35d1044ab7f4c5c2f75003, type: 3}
   _impactVFX: {fileID: 9065892664890786847, guid: 7e49746688621ba4789905e3d766442d, type: 3}
   _attackVolume: {fileID: 0}
-  AttackWindUp: 0.3
+  AttackWindUp: 0.2
   AttackTime: 0.5
   MaxDamage: 10
   HitBoxScaler: 0.005
@@ -534,6 +534,7 @@ MonoBehaviour:
   BigRebounceSpeed: 700
   SlowTime: 0.5
   SlowScale: 0.333
+  TrailDelay: 0.4
 --- !u!95 &7811323340121249435
 Animator:
   serializedVersion: 4

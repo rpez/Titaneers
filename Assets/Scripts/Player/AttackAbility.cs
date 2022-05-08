@@ -35,6 +35,7 @@ public class AttackAbility : AbilityBase
     public float BigRebounceSpeed = 100.0f;
     public float SlowTime = 0.5f;
     public float SlowScale = 0.1f;
+    public float TrailDelay = 0.4f;
 
     private bool _impactFlag = false;
 
@@ -42,9 +43,16 @@ public class AttackAbility : AbilityBase
     {
         _impactFlag = false;
         Sequence dash = DOTween.Sequence()
-        .AppendInterval(AttackWindUp)
         .AppendCallback(OnStartAttack)
-        .AppendInterval(0.3f)
+        .AppendInterval(AttackWindUp)
+        .AppendCallback(() =>
+        {
+            // active hit box
+            _swordHitbox.gameObject.SetActive(true);
+            _swordHitbox.Initialize(MaxDamage * _playerControl.CurrentVelocity.magnitude / _playerControl.MaxAirSpeed, AttackImpact);
+            _sword.transform.localScale *= Mathf.Max(1f, _playerControl.CurrentVelocity.magnitude * HitBoxScaler);
+        })
+        .AppendInterval(TrailDelay)
         .AppendCallback(() =>
         {
             GameObject swordTrail = Instantiate(_swordVFX, _sword.transform);
@@ -73,9 +81,6 @@ public class AttackAbility : AbilityBase
     {
         _animator.SetInteger("state", 3);
         _playerControl.IsAttacking = true;
-        _swordHitbox.gameObject.SetActive(true);
-        _swordHitbox.Initialize(MaxDamage * _playerControl.CurrentVelocity.magnitude / _playerControl.MaxAirSpeed, AttackImpact);
-        _sword.transform.localScale *= Mathf.Max(1f, _playerControl.CurrentVelocity.magnitude * HitBoxScaler);
     }
 
 
