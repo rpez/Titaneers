@@ -21,6 +21,9 @@ ModelImporter:
   - first:
       74: -5297019649661602221
     second: metarig|run
+  - first:
+      74: 6683231374873410141
+    second: metarig|pull
   externalObjects: {}
   materials:
     materialImportMode: 2
