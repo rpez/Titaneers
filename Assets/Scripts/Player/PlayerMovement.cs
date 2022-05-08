@@ -43,9 +43,12 @@ public class PlayerMovement : MonoBehaviour
     public GrapplingGun Grapple;
     public GameObject Sword;
     public GameObject SwordTip;
+    public GameObject LeftThruster;
+    public GameObject RightThruster;
     public HitBox SwordHitbox;
     public float MaxDamage;
-    public GameObject DashVFX;
+    public GameObject PullVFX;
+    public GameObject BoostVFX;
     public GameObject AttackVFX;
     public GameObject ImpactVFX;
     public CameraBehaviour Camera;
@@ -156,6 +159,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _velocityBuffer;
     public Vector3 VelocityBuffer { get => _velocityBuffer; }
 
+    private GameObject[] _boosterVFXs = new GameObject[2];
+
     // Grapple reel in
     private GameObject _target;
     private Action _onReachtarget;
@@ -176,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.useGravity = false;
         _pulling = true;
 
-        GameObject vfx = GameObject.Instantiate(DashVFX, Orientation.transform);
+        GameObject vfx = GameObject.Instantiate(PullVFX, Orientation.transform);
         vfx.transform.position = Grapple.GunTip.transform.position;
         Destroy(vfx, 5f);
         EventManager.OnFreezeFrame(0.2f);
@@ -474,8 +479,8 @@ public class PlayerMovement : MonoBehaviour
             _boosting = true;
             _rigidbody.useGravity = false;
 
-            GameObject vfx = GameObject.Instantiate(DashVFX, Orientation.transform);
-            Destroy(vfx, 5f);
+            _boosterVFXs[0] = GameObject.Instantiate(BoostVFX, LeftThruster.transform);
+            _boosterVFXs[1] = GameObject.Instantiate(BoostVFX, RightThruster.transform);
         }
     }   
 
@@ -484,6 +489,11 @@ public class PlayerMovement : MonoBehaviour
         _boosting = false;
         _rigidbody.useGravity = true;
         _currentBoostRechargeTime = 0f;
+
+        foreach (GameObject vfx in _boosterVFXs)
+        {
+            Destroy(vfx);
+        }
     }
 
     private void ResetJump()

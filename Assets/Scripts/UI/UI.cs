@@ -215,7 +215,7 @@ public class UI : MonoBehaviour
 
     public void ChangeLowHealthEffect(float transparency)
     {
-        Debug.Log(transparency);
+        //Debug.Log(transparency);
         Color _color = LowHealthHue.color;
         _color.a = transparency;
         LowHealthHue.color = _color;
