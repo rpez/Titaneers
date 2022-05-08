@@ -6,9 +6,12 @@ public class RockSpawner : MonoBehaviour
 {
 
     public int RocksPerSec;
+    public float BigRocksRatio = 0.1f;
     public float FloatSpeed;
     public float MinScale = 1.0f;
     public float MaxScale = 3.0f;
+    public float BigRocksMinScale = 5.0f;
+    public float BigRocksMaxScale = 9.0f;
     [SerializeField] protected ObjectPool _rocksPool;
     [SerializeField] protected Transform _spawnArea;
     [SerializeField] protected Transform _destoryArea;
@@ -32,11 +35,15 @@ public class RockSpawner : MonoBehaviour
             _bounds = new Bounds(_spawnArea.position, _spawnArea.localScale);
             for (int i = 0; i < RocksPerSec; i++)
             {
+                float scale = Random.Range(MinScale, MaxScale);
+                if (i < BigRocksRatio * RocksPerSec)
+                {
+                    scale = Random.Range(BigRocksMinScale, BigRocksMaxScale);
+                }
                 Vector3 pos = new Vector3(Random.Range(_bounds.min.x, _bounds.max.x),
                                             Random.Range(_bounds.min.y, _bounds.max.y),
                                             Random.Range(_bounds.min.z, _bounds.max.z));
                 ObjectPoolUnit rock = _rocksPool.InitiateFromObjectPool(pos, Random.rotation);
-                float scale = Random.Range(MinScale, MaxScale);
                 rock.transform.localScale = new Vector3(scale, scale, scale);
             }
         }
