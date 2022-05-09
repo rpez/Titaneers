@@ -193,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
                 CancelBoost();
                 _boosterVFXs[0] = GameObject.Instantiate(BoostLeftVFX, LeftThruster.transform);
                 _boosterVFXs[1] = GameObject.Instantiate(BoostRightVFX, RightThruster.transform);
+                Camera.NoiseImpulse(15f, 3f, 0.5f);
             }));
         }
 
@@ -202,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _currentPullSpeedScale = 0.2f;
         }));
-        Camera.NoiseImpulse(15f, 3f, 0.5f);
+        Camera.NoiseImpulse(10f, 2f, 0.3f);
     }
 
     public void StopPull()
