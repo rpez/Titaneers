@@ -35,6 +35,6 @@ public class CutArmSystem : MonoBehaviour
     private void OnDestroy()
     {
         DestroyImmediate(_fallArmMesh);
-        Debug.Log("falling arm mesh destroied");
+        //Debug.Log("falling arm mesh destroied");
     }
 }
