@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_currentBoostAmount > 0f)
         {
-            StartCoroutine(Delay(0.2f, () =>
+            StartCoroutine(Delay(1f, () =>
             {
                 CancelBoost();
                 _boosterVFXs[0] = GameObject.Instantiate(BoostLeftVFX, LeftThruster.transform);
@@ -196,8 +196,12 @@ public class PlayerMovement : MonoBehaviour
             }));
         }
 
-        EventManager.OnFreezeFrame(0.2f);
-        _currentPullSpeedScale = 0.2f;
+        //EventManager.OnFreezeFrame(0.2f);
+        _currentPullSpeedScale = 0.0f;
+        StartCoroutine(Delay(0.5f, () =>
+        {
+            _currentPullSpeedScale = 0.2f;
+        }));
         Camera.NoiseImpulse(15f, 3f, 0.5f);
     }
 
@@ -593,7 +597,11 @@ public class PlayerMovement : MonoBehaviour
         // [Note:wesley] Better to use animator with trigger
         if (!_attacking)
         {
-            if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
+            if (_pulling)
+            {
+                Animator.SetInteger("state", 4);
+            }
+            else if (_rigidbody.velocity.magnitude > 0.1f && _grounded)
             {
                 Animator.SetInteger("state", 1);
             }
