@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="1897752392">
+		<SoundBank Id="3161908922" Language="SFX" Hash="4111353134">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -33,10 +33,13 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3155474038" Name="Play_combat_music" ObjectPath="\Events\Music\Play_combat_music" DurationType="OneShot" DurationMin="0." DurationMax="0.">
-					<ActionSetSwitch>
-						<ActionSetSwitchEntry Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one"/>
-					</ActionSetSwitch>
+				<Event Id="3155474038" Name="Play_combat_music" ObjectPath="\Events\Music\Play_combat_music" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="1021980294" Language="SFX">
+							<ShortName>music-combat.wav</ShortName>
+							<Path>SFX/music-combat_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="142245832" Name="Play_player_booster" ObjectPath="\Events\Player\PlayerBooster\Play_player_booster" MaxAttenuation="100." DurationType="OneShot" DurationMin="1.549675" DurationMax="1.918741">
 					<IncludedMemoryFiles>
@@ -739,21 +742,9 @@
 					</AuxBusSends>
 				</Event>
 				<Event Id="1752755706" Name="Stop_2d_ambience_loop" ObjectPath="\Events\Ambience\Stop_2d_ambience_loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="970928956" Name="Stop_combat_music" ObjectPath="\Events\Music\Stop_combat_music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
-					<ActionSetSwitch>
-						<ActionSetSwitchEntry Id="678209053" Name="two" ObjectPath="\Switches\Music\Music_Progress\two"/>
-					</ActionSetSwitch>
-				</Event>
+				<Event Id="970928956" Name="Stop_combat_music" ObjectPath="\Events\Music\Stop_combat_music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="930574960" Name="Stop_titan_missile_loop" ObjectPath="\Events\Titan\TitanMissile\Stop_titan_missile_loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
-			<SwitchGroups>
-				<SwitchGroup Id="678209053" Name="two" ObjectPath="\Switches\Music\Music_Progress\two" GUID="{CB0DB418-248B-4D71-85E7-8906A9893898}">
-					<Switches/>
-				</SwitchGroup>
-				<SwitchGroup Id="1064933119" Name="one" ObjectPath="\Switches\Music\Music_Progress\one" GUID="{9A97CCE0-E26F-4C27-B161-8F8CBE5863F3}">
-					<Switches/>
-				</SwitchGroup>
-			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

@@ -134,4 +134,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	977216482	sfx-player-fs-cloth_3	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-fs-cloth_3_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_cloth\sfx-player-fs-cloth_3		29464
 	991411273	sfx-player-attack-spin-whosh-start_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-whosh-start_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_Start\sfx-player-attack-spin-whosh-start_1		41224
 	1011705202	sfx-player-fs-shoe_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-fs-shoe_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe_2		26524
+	1021980294	music-combat	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\music-combat_D79FB2B7.wem		\Interactive Music Hierarchy\Music\music-combat\music-combat\music-combat		40322552
 
