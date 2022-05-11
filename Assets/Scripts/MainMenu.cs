@@ -33,23 +33,23 @@ public class MainMenu : MonoBehaviour
         // Must unlock the cursor when main menu launched
         UnityEngine.Cursor.lockState = CursorLockMode.None;
 
-        if (DefaultMouseSensitivity < MinimumMouseSensitivity)
-            DefaultMouseSensitivity = MinimumMouseSensitivity;
-        else if (DefaultMouseSensitivity > MaximumMouseSensitivity)
-            DefaultMouseSensitivity = MaximumMouseSensitivity;
-        _mouseSensitivity = Mathf.Round(DefaultMouseSensitivity * 10f) * 0.1f;
-        _mouseSensitivityButtonText = MouseSensitivityAdjustment.GetComponent<TMP_InputField>();
-        _mouseSensitivityButtonText.interactable = false;
-        _mouseSensitivityButtonText.text = _mouseSensitivity.ToString("0.0");
+        //if (DefaultMouseSensitivity < MinimumMouseSensitivity)
+        //    DefaultMouseSensitivity = MinimumMouseSensitivity;
+        //else if (DefaultMouseSensitivity > MaximumMouseSensitivity)
+        //    DefaultMouseSensitivity = MaximumMouseSensitivity;
+        //_mouseSensitivity = Mathf.Round(DefaultMouseSensitivity * 10f) * 0.1f;
+        //_mouseSensitivityButtonText = MouseSensitivityAdjustment.GetComponent<TMP_InputField>();
+        //_mouseSensitivityButtonText.interactable = false;
+        //_mouseSensitivityButtonText.text = _mouseSensitivity.ToString("0.0");
 
-        if (DefaultGrapplingRange < MinimumGrapplingRange)
-            DefaultGrapplingRange = MinimumGrapplingRange;
-        else if (DefaultGrapplingRange > MaximumGrapplingRange)
-            DefaultGrapplingRange = MaximumGrapplingRange;
-        _grapplingRange = Mathf.Round(DefaultGrapplingRange);
-        _grapplingRangeButtonText = GrapplingRangeAdjustment.GetComponent<TMP_InputField>();
-        _grapplingRangeButtonText.interactable = false;
-        _grapplingRangeButtonText.text = _grapplingRange.ToString("0");
+        //if (DefaultGrapplingRange < MinimumGrapplingRange)
+        //    DefaultGrapplingRange = MinimumGrapplingRange;
+        //else if (DefaultGrapplingRange > MaximumGrapplingRange)
+        //    DefaultGrapplingRange = MaximumGrapplingRange;
+        //_grapplingRange = Mathf.Round(DefaultGrapplingRange);
+        //_grapplingRangeButtonText = GrapplingRangeAdjustment.GetComponent<TMP_InputField>();
+        //_grapplingRangeButtonText.interactable = false;
+        //_grapplingRangeButtonText.text = _grapplingRange.ToString("0");
     }
 
     // Update is called once per frame
@@ -60,8 +60,14 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame(string sceneName)
     {
-        DontDestroyOnLoad(this.gameObject);
+        Debug.Log("prööt");
+        //DontDestroyOnLoad(this.gameObject);
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void AdjustMouseSensitivity()
