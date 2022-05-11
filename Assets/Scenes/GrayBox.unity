@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.390806, g: 1.4183344, b: 1.4033499, a: 1}
+  m_IndirectSpecularColor: {r: 1.4647064, g: 1.5050716, b: 1.503994, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7517,9 +7517,37 @@ PrefabInstance:
       value: PlayerContainer
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1457485732}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1457485732}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DamageTakenEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: Camera
       value: 

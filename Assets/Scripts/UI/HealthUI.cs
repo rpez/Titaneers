@@ -27,7 +27,7 @@ public class HealthUI : MonoBehaviour
         if (mainUI)
         {
             //if (currentHealthPoint > 0f)
-            mainUI.ChangeLowHealthEffect(Mathf.Min(Mathf.Pow(1 - healthBarValue, 3f), 0.2f));
+            mainUI.ChangeLowHealthEffect(Mathf.Min(Mathf.Pow(1 - healthBarValue, 4f), 0.1f));
             //else
                 //mainUI.ChangeLowHealthEffect(0f);
         }
