@@ -86,7 +86,7 @@ Material:
     - _DoubleSidedGIMode: 0
     - _DstBlend: 1
     - _EmissiveExposureWeight: 0
-    - _EmissiveIntensity: 1
+    - _EmissiveIntensity: 5
     - _EmissiveIntensityUnit: 0
     - _EnableFogOnTransparent: 0
     - _IncludeIndirectLighting: 1
@@ -112,7 +112,7 @@ Material:
     m_Colors:
     - _Color: {r: 0.35377356, g: 0.94732803, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0.15292616, g: 0.3467041, b: 0.5209957, a: 0.5882353}
+    - _EmissiveColor: {r: 0.7646307, g: 1.7335205, b: 2.6049783, a: 2.9411767}
     - _EmissiveColorLDR: {r: 0.42745098, g: 0.62352943, b: 0.7490196, a: 0.5882353}
     - _UnlitColor: {r: 0.3537736, g: 0.94732803, b: 1, a: 1}
     - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}

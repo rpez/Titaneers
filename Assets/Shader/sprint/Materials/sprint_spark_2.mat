@@ -86,7 +86,7 @@ Material:
     - _DoubleSidedGIMode: 0
     - _DstBlend: 1
     - _EmissiveExposureWeight: 0
-    - _EmissiveIntensity: 1
+    - _EmissiveIntensity: 50
     - _EmissiveIntensityUnit: 0
     - _EnableFogOnTransparent: 0
     - _IncludeIndirectLighting: 1
@@ -104,7 +104,7 @@ Material:
     - _TransparentCullMode: 2
     - _TransparentSortPriority: 0
     - _TransparentZWrite: 0
-    - _UseEmissiveIntensity: 0
+    - _UseEmissiveIntensity: 1
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestModeDistortion: 4
     - _ZTestTransparent: 4
@@ -112,8 +112,8 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0.0627451, g: 0.39215687, b: 2.9960785, a: 1}
-    - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColor: {r: 3.1372533, g: 19.60784, b: 149.80396, a: 50}
+    - _EmissiveColorLDR: {r: 0.2778465, g: 0.6592671, b: 1.6467023, a: 1}
     - _UnlitColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
