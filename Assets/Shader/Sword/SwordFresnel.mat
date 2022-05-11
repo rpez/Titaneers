@@ -111,5 +111,5 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1.886792, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 30.188673, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
