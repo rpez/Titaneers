@@ -9,6 +9,8 @@ public class HitBox : MonoBehaviour
     [SerializeField]
     private bool _continuous = false;//make damage once or keep making damage
     [SerializeField]
+    private float _damageInterval = 0.5f;   // continuous damage interval
+    [SerializeField]
     private float _damage;
     [SerializeField]
     private LayerMask _layers;
@@ -16,7 +18,7 @@ public class HitBox : MonoBehaviour
     //private Rigidbody _rb;
     private Collider _trigger;
     private Action<GameObject> _onHitCallback;
-
+    private float _damageTimer;
     public void Initialize(float damage, Action<GameObject> onHitCallback = null)
     {
         _damage = damage;
@@ -74,11 +76,15 @@ public class HitBox : MonoBehaviour
         {
             if ((_layers.value & (int)Mathf.Pow(2, other.gameObject.layer)) == (int)Mathf.Pow(2, other.gameObject.layer))// if the other's layer is included in _layers
             {
-                Vector3 toOther = other.transform.position - transform.position;
-                HurtBox hurtBox;
-                if (hurtBox = other.GetComponent<HurtBox>())
+                if (Time.time - _damageTimer > _damageInterval)
                 {
-                    DealDamage(hurtBox,_damage*Time.deltaTime);
+                    Vector3 toOther = other.transform.position - transform.position;
+                    HurtBox hurtBox;
+                    if (hurtBox = other.GetComponent<HurtBox>())
+                    {
+                        DealDamage(hurtBox, _damage * _damageInterval);
+                    }
+                    _damageTimer = Time.time;
                 }
             }
         }

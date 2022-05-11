@@ -18,8 +18,10 @@ public class UI : MonoBehaviour
     public Image AimCircle;
     public GameObject RestartBtn;
     public GameObject WinningHint;
+    public Image BloodScreen;
     public Image LowHealthHue;
 
+    [SerializeField] private float _bloodScreenFadeSpeed = 0.1f;
     [SerializeField] private float _maxThreatDist;
     [SerializeField] private GameObject _rangeIndicator;
     [SerializeField] private GameObject _topRangeIndicator;
@@ -39,6 +41,7 @@ public class UI : MonoBehaviour
     private bool _crosshairTargetSet;
     private bool _guideActive = true;
     private Vector3 _indicatorOffset = new Vector3(-32f, -32f, 0f);
+    private float _damageTakenTimer;
 
     private void Start()
     {
@@ -121,6 +124,31 @@ public class UI : MonoBehaviour
         {
             _inCrosshair = null;
         }
+
+        // update blood screen
+        UpdateBloodScreen();
+    }
+
+
+    private void UpdateBloodScreen()
+    {
+        // recover
+        if (Time.time - _damageTakenTimer > 3.0f)
+        {
+            Color _color = BloodScreen.color;
+            _color.a -= _bloodScreenFadeSpeed * Time.deltaTime;
+            BloodScreen.color = _color;
+        }
+    }
+
+
+    public void DamageTakenEffect(float remainHealth)
+    {
+        Debug.LogFormat("Call DamageTakenEffect {0}", remainHealth);
+        Color _color = BloodScreen.color;
+        _color.a = 1 - remainHealth;
+        BloodScreen.color = _color;
+        _damageTakenTimer = Time.time;
     }
 
     public void ChangeCrosshairIleagal(bool withInRange)
