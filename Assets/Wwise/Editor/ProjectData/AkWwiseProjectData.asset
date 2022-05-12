@@ -425,7 +425,7 @@ MonoBehaviour:
     ParentPath: Events/Music
     guid: bbfb465c3e20624e99578ea3214e09d4
     GuidInternal: 
-    m_lastTime: -8585496908977584346
+    m_lastTime: -8585492322205445760
     List:
     - name: Play_combat_music
       guid: 86bbba142438e248bf2f062aaf330c81
@@ -472,7 +472,7 @@ MonoBehaviour:
     ParentPath: Events/Player
     guid: f056f3278b069d4594dd75872401e966
     GuidInternal: 
-    m_lastTime: -8585523794298374982
+    m_lastTime: -8585492429180567868
     List: []
   - PhysicalPath: Events/PlayerAttack.wwu
     PathAndIcons:
@@ -606,6 +606,42 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 1.918741
       minDuration: 1.549675
+  - PhysicalPath: Events/PlayerBreathe.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerBreathe
+      ObjectType: 12
+      guid: 0e9ed58881926c489b696482f1fadcd2
+    ParentPath: Events/Player/PlayerBreathe
+    guid: 0e9ed58881926c489b696482f1fadcd2
+    GuidInternal: 
+    m_lastTime: -8585492432069485035
+    List:
+    - name: Play_player_breathe
+      guid: 1add146e50563749a8a904572e35e2d2
+      id: 2118095383
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerBreathe
+        ObjectType: 12
+        guid: 0e9ed58881926c489b696482f1fadcd2
+      - ElementName: Play_player_breathe
+        ObjectType: 3
+        guid: 1add146e50563749a8a904572e35e2d2
+      Path: Events/Player/PlayerBreathe/Play_player_breathe
+      maxAttenuation: 50
+      maxDuration: 0.47225
+      minDuration: 0.284261
   - PhysicalPath: Events/PlayerFootsteps.wwu
     PathAndIcons:
     - ElementName: Events
@@ -808,6 +844,142 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8585564063207801482
     List: []
+  - PhysicalPath: Events/PlayerVoc.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: f056f3278b069d4594dd75872401e966
+    - ElementName: PlayerVoc
+      ObjectType: 12
+      guid: 94a88ea374b4394295b9ecbe39664788
+    ParentPath: Events/Player/PlayerVoc
+    guid: 94a88ea374b4394295b9ecbe39664788
+    GuidInternal: 
+    m_lastTime: -8585492316379488543
+    List:
+    - name: Play_player_voc_attack
+      guid: 35569d57c02bfe4c9aa9296b109f6eec
+      id: 1786226075
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerVoc
+        ObjectType: 12
+        guid: 94a88ea374b4394295b9ecbe39664788
+      - ElementName: Play_player_voc_attack
+        ObjectType: 3
+        guid: 35569d57c02bfe4c9aa9296b109f6eec
+      Path: Events/Player/PlayerVoc/Play_player_voc_attack
+      maxAttenuation: 50
+      maxDuration: 0.563001
+      minDuration: 0.381299
+    - name: Play_player_voc_death
+      guid: 54af69ba85201a4f9ae428f55abb097c
+      id: 1543233419
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerVoc
+        ObjectType: 12
+        guid: 94a88ea374b4394295b9ecbe39664788
+      - ElementName: Play_player_voc_death
+        ObjectType: 3
+        guid: 54af69ba85201a4f9ae428f55abb097c
+      Path: Events/Player/PlayerVoc/Play_player_voc_death
+      maxAttenuation: 0
+      maxDuration: 10.171813
+      minDuration: 10.171813
+    - name: Play_player_voc_grapple_pull
+      guid: 4622ba4f44c7254ca1a953d60f503f24
+      id: 1641970538
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerVoc
+        ObjectType: 12
+        guid: 94a88ea374b4394295b9ecbe39664788
+      - ElementName: Play_player_voc_grapple_pull
+        ObjectType: 3
+        guid: 4622ba4f44c7254ca1a953d60f503f24
+      Path: Events/Player/PlayerVoc/Play_player_voc_grapple_pull
+      maxAttenuation: 50
+      maxDuration: 0.541651
+      minDuration: 0.46608
+    - name: Play_player_voc_jump
+      guid: 96ae69216af70149bbb7cc8fecab2438
+      id: 3830010507
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerVoc
+        ObjectType: 12
+        guid: 94a88ea374b4394295b9ecbe39664788
+      - ElementName: Play_player_voc_jump
+        ObjectType: 3
+        guid: 96ae69216af70149bbb7cc8fecab2438
+      Path: Events/Player/PlayerVoc/Play_player_voc_jump
+      maxAttenuation: 50
+      maxDuration: 0.541651
+      minDuration: 0.46608
+    - name: Play_player_voc_take_hit
+      guid: fa3bba0a96b9fe4188fb1d93c4c3221b
+      id: 3730000400
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerVoc
+        ObjectType: 12
+        guid: 94a88ea374b4394295b9ecbe39664788
+      - ElementName: Play_player_voc_take_hit
+        ObjectType: 3
+        guid: fa3bba0a96b9fe4188fb1d93c4c3221b
+      Path: Events/Player/PlayerVoc/Play_player_voc_take_hit
+      maxAttenuation: 0
+      maxDuration: 0.717444
+      minDuration: 0.394285
+    - name: Play_player_voc_take_hit_soft
+      guid: aaefdcc13b292141ba33c2e435275614
+      id: 2806366063
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerVoc
+        ObjectType: 12
+        guid: 94a88ea374b4394295b9ecbe39664788
+      - ElementName: Play_player_voc_take_hit_soft
+        ObjectType: 3
+        guid: aaefdcc13b292141ba33c2e435275614
+      Path: Events/Player/PlayerVoc/Play_player_voc_take_hit_soft
+      maxAttenuation: 0
+      maxDuration: 0.472387
+      minDuration: 0.302381
   - PhysicalPath: Events/Titan.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1221,8 +1393,58 @@ MonoBehaviour:
     ParentPath: Switches/Default Work Unit
     guid: 8e57cd0a6da9734e81e04a7ad73856d5
     GuidInternal: 
-    m_lastTime: -8585546013713900210
-    List: []
+    m_lastTime: -8585492432069821471
+    List:
+    - name: BreatheInOut
+      guid: 628d2826528b6a4db9e79f07ca8a9f53
+      id: 3602124287
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8e57cd0a6da9734e81e04a7ad73856d5
+      - ElementName: BreatheInOut
+        ObjectType: 11
+        guid: 628d2826528b6a4db9e79f07ca8a9f53
+      Path: Switches/Default Work Unit/BreatheInOut
+      values:
+      - name: In
+        guid: 95b59373648d8b439de734ba4d6021de
+        id: 1752637612
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 8e57cd0a6da9734e81e04a7ad73856d5
+        - ElementName: BreatheInOut
+          ObjectType: 11
+          guid: 628d2826528b6a4db9e79f07ca8a9f53
+        - ElementName: In
+          ObjectType: 10
+          guid: 95b59373648d8b439de734ba4d6021de
+      - name: Out
+        guid: ebb2cf3d081caf47bc24587237be314a
+        id: 645492555
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 8e57cd0a6da9734e81e04a7ad73856d5
+        - ElementName: BreatheInOut
+          ObjectType: 11
+          guid: 628d2826528b6a4db9e79f07ca8a9f53
+        - ElementName: Out
+          ObjectType: 10
+          guid: ebb2cf3d081caf47bc24587237be314a
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   - PhysicalPath: Switches/Music.wwu
     PathAndIcons:
     - ElementName: Switches
@@ -1301,7 +1523,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 020000001c0000001d0000002200000025000000290000002c000000
-  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000b0000000e0000000f000000110000001200000013000000140000001700000018000000190000001c0000001d0000002200000033000000360000004b0000004c000000d0030000
+  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000b0000000c0000000e0000000f000000110000001200000013000000140000001700000018000000190000001c0000001d0000002200000033000000360000004b0000004c000000d0030000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
