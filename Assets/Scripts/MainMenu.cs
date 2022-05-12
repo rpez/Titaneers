@@ -62,9 +62,9 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame(string sceneName)
     {
-        float result = 3.0f;
-        float.TryParse(MouseSensitivityButtonText.text, out result);
-        Settings.MouseSensitivity = result;
+        float result;
+        bool hasValue = float.TryParse(MouseSensitivityButtonText.text, out result);
+        Settings.MouseSensitivity = hasValue ? result : 3.0f;
 
         //DontDestroyOnLoad(this.gameObject);
         SceneManager.LoadScene(sceneName);
