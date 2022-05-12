@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _continuous: 0
+  _damageInterval: 0.5
   _damage: 100
   _layers:
     serializedVersion: 2
@@ -506,6 +507,13 @@ MonoBehaviour:
   RightFootRun: Play_player_fs_run_R
   SpinAttack: Play_player_spin_attack
   FS: Play_player_fs
+  Breathe: Play_player_breathe
+  VocAttack: Play_player_voc_attack
+  VocJump: Play_player_voc_jump
+  VocTakeHit: Play_player_voc_take_hit
+  VocTakeHitSoft: Play_player_voc_take_hit_soft
+  VocDeath: Play_player_voc_death
+  VocGrapplePull: Play_player_voc_grapple_pull
 --- !u!114 &3532401185784324531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,6 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _continuous: 0
+  _damageInterval: 0.5
   _damage: 0
   _layers:
     serializedVersion: 2
@@ -745,12 +754,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealthPoint: 100
+  RecoverySpeed: 0
+  RecoveryCD: 3
   _addHealthPointEvents:
     m_PersistentCalls:
       m_Calls: []
   _reduceHealthPointEvents:
     m_PersistentCalls:
       m_Calls: []
+  _damageTakenEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
+        m_MethodName: DamageTakenEffect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2496024928203559709}
+        m_TargetAssemblyTypeName: PlayerAnimationEvents, Assembly-CSharp
+        m_MethodName: Play_player_voc_take_hit_soft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _deathEvents:
     m_PersistentCalls:
       m_Calls:
@@ -778,13 +816,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3342445681172514015}
-        m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2496024928203559709}
+        m_TargetAssemblyTypeName: PlayerAnimationEvents, Assembly-CSharp
+        m_MethodName: Play_player_voc_death
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -821,6 +859,7 @@ MonoBehaviour:
   CooldownTime: 1
   _animator: {fileID: 2496024928203559708}
   _sword: {fileID: 2248262134983563429}
+  _slashParent: {fileID: 3342445681172514015}
   _swordTip: {fileID: 918715861}
   _swordHitbox: {fileID: 1691826803}
   _camera: {fileID: 0}

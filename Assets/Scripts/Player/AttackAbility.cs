@@ -11,6 +11,7 @@ public class AttackAbility : AbilityBase
     [Header("Reference")]
     [SerializeField] private Animator _animator = default;
     [SerializeField] private GameObject _sword;
+    [SerializeField] private GameObject _slashParent;
     [SerializeField] private GameObject _swordTip;
     [SerializeField] private HitBox _swordHitbox;
     [SerializeField] private CameraBehaviour _camera;
@@ -35,7 +36,7 @@ public class AttackAbility : AbilityBase
     public float BigRebounceSpeed = 100.0f;
     public float SlowTime = 0.5f;
     public float SlowScale = 0.1f;
-    public float TrailDelay = 0.4f;
+    public float TrailDelay = 0.0f;
 
     private bool _impactFlag = false;
 
@@ -55,7 +56,7 @@ public class AttackAbility : AbilityBase
         .AppendInterval(TrailDelay)
         .AppendCallback(() =>
         {
-            GameObject swordTrail = Instantiate(_swordVFX, _sword.transform);
+            GameObject swordTrail = Instantiate(_swordVFX, _slashParent.transform);
             ScaleVFX(swordTrail, _playerControl.CurrentVelocity.magnitude);
             Destroy(swordTrail, 5f);
         })
