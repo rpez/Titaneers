@@ -24,6 +24,7 @@ namespace AK
         static const AkUniqueID PLAY_PLAYER_JUMP = 562256996U;
         static const AkUniqueID PLAY_PLAYER_SPIN_ATTACK = 213519327U;
         static const AkUniqueID PLAY_PLAYER_SWORD_HIT = 2116655569U;
+        static const AkUniqueID PLAY_PLAYER_SWORD_HIT_POWERFUL = 2812374800U;
         static const AkUniqueID PLAY_PLAYER_SWORD_SLASH = 4003404733U;
         static const AkUniqueID PLAY_TEST_SOUND = 3211564518U;
         static const AkUniqueID PLAY_TITAN_FS = 487948562U;

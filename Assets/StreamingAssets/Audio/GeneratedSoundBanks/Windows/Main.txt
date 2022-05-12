@@ -16,6 +16,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2390231879	Play_titan_fs_L			\Titan\TitanLocomotion\TitanFS\Play_titan_fs_L	
 	2390231897	Play_titan_fs_R			\Titan\TitanLocomotion\TitanFS\Play_titan_fs_R	
 	2713252876	Play_titan_lantern_charge			\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_charge	
+	2812374800	Play_player_sword_hit_powerful			\Player\PlayerAttack\Play_player_sword_hit_powerful	
 	3060992713	Play_titan_trample_voc			\Titan\TitanTrample\Play_titan_trample_voc	
 	3131183803	Play_titan_voc_generic			\Titan\TitanVoc\Play_titan_voc_generic	
 	3155474038	Play_combat_music			\Music\Play_combat_music	
@@ -107,6 +108,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	693578609	sfx_placeholder_missile_explosion_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_placeholder_missile_explosion_2_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\TitanMissileExplode\sfx_placeholder_missile_explosion_2		399816
 	705536709	sfx_player_fs_placeholder_18	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_fs_placeholder_18_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_18		23638
 	708478475	sfx-player-attack-spin-sword-layer	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-sword-layer_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\sfx-player-attack-spin-sword-layer		73124
+	716413036	sfx_player_sword_hit_powerful_6	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_sword_hit_powerful_6_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerSwordHitPowerful\sfx_player_sword_hit_powerful_6		449884
 	720587979	sfx-player-fs-shoe_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-fs-shoe_4_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe_4		26524
 	730213433	sfx_player_booster_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_booster_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerBooster\PlayerBooster\sfx_player_booster_2		308764
 	744968238	sfx_placeholder_titan_fs_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_placeholder_titan_fs_2_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanLocomotion\Titan_fs\sfx_placeholder_titan_fs_2		631128
@@ -115,7 +117,9 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	765919723	sfx-player-attack-spin-whosh-end	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-whosh-end_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_End\sfx-player-attack-spin-whosh-end		82384
 	785053690	sfx-player-attack-spin-whosh-start	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-whosh-start_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Whosh_Start\sfx-player-attack-spin-whosh-start		41224
 	807502362	sfx_player_jump_placeholder_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_jump_placeholder_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_Jump\sfx_player_jump_placeholder_1		117984
+	855549330	sfx_player_sword_hit_powerful_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_sword_hit_powerful_4_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerSwordHitPowerful\sfx_player_sword_hit_powerful_4		469288
 	864508225	sfx-player-attack-spin-cloth-end	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-attack-spin-cloth-end_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerSpinAttack\PlayerSpinAttack_Cloth_End\sfx-player-attack-spin-cloth-end		85324
+	867073128	sfx_player_sword_hit_powerful_5	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_sword_hit_powerful_5_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerSwordHitPowerful\sfx_player_sword_hit_powerful_5		473404
 	896131342	sfx_placeholder_missile_explosion_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_placeholder_missile_explosion_1_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\TitanMissile\TitanMissileExplode\sfx_placeholder_missile_explosion_1		309240
 	907615763	sfx-player-fs-cloth_5	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx-player-fs-cloth_5_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_cloth\sfx-player-fs-cloth_5		29464
 	917046496	sfx_player_fs_placeholder_17	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Windows\SFX\sfx_player_fs_placeholder_17_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS_Run\sfx_player_fs_placeholder_17		31842

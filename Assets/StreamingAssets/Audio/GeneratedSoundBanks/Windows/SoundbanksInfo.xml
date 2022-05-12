@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="4111353134">
+		<SoundBank Id="3161908922" Language="SFX" Hash="3790872502">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -413,7 +413,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="213519327" Name="Play_player_spin_attack" ObjectPath="\Events\Player\PlayerAttack\Play_player_spin_attack" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.939148" DurationMax="0.994992">
+				<Event Id="213519327" Name="Play_player_spin_attack" ObjectPath="\Events\Player\PlayerAttack\Play_player_spin_attack" MaxAttenuation="1000." DurationType="OneShot" DurationMin="0.939148" DurationMax="0.994992">
 					<IncludedMemoryFiles>
 						<File Id="127346191" Language="SFX">
 							<ShortName>sfx-player-attack-spin-cloth-start.wav</ShortName>
@@ -485,7 +485,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
+				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
 					<IncludedMemoryFiles>
 						<File Id="260314807" Language="SFX">
 							<ShortName>sfx_player_sword_hit_4.wav</ShortName>
@@ -501,7 +501,23 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
+				<Event Id="2812374800" Name="Play_player_sword_hit_powerful" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit_powerful" DurationType="OneShot" DurationMin="2.405489" DurationMax="2.844535">
+					<IncludedMemoryFiles>
+						<File Id="716413036" Language="SFX">
+							<ShortName>sfx_player_sword_hit_powerful_6.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_powerful_6_10C4C929.wem</Path>
+						</File>
+						<File Id="855549330" Language="SFX">
+							<ShortName>sfx_player_sword_hit_powerful_4.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_powerful_4_10C4C929.wem</Path>
+						</File>
+						<File Id="867073128" Language="SFX">
+							<ShortName>sfx_player_sword_hit_powerful_5.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_powerful_5_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="1000." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
 					<IncludedMemoryFiles>
 						<File Id="257300301" Language="SFX">
 							<ShortName>sfx_player_sword_slash_2.wav</ShortName>

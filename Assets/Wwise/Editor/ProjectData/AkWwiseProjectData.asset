@@ -425,7 +425,7 @@ MonoBehaviour:
     ParentPath: Events/Music
     guid: bbfb465c3e20624e99578ea3214e09d4
     GuidInternal: 
-    m_lastTime: -8585498531059525223
+    m_lastTime: -8585496908977584346
     List:
     - name: Play_combat_music
       guid: 86bbba142438e248bf2f062aaf330c81
@@ -442,8 +442,8 @@ MonoBehaviour:
         guid: 86bbba142438e248bf2f062aaf330c81
       Path: Events/Music/Play_combat_music
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Stop_combat_music
       guid: 52e44992aae9d548befc1fd27fe50f7f
       id: 970928956
@@ -488,7 +488,7 @@ MonoBehaviour:
     ParentPath: Events/Player/PlayerAttack
     guid: 23a78c06a5796441a2e7cb20cfec1792
     GuidInternal: 
-    m_lastTime: -8585504554498882619
+    m_lastTime: -8585492536685078991
     List:
     - name: Play_player_spin_attack
       guid: 189a44da5a59084db092f37f30e8f58c
@@ -507,7 +507,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 189a44da5a59084db092f37f30e8f58c
       Path: Events/Player/PlayerAttack/Play_player_spin_attack
-      maxAttenuation: 200
+      maxAttenuation: 1000
       maxDuration: 0.994992
       minDuration: 0.939148
     - name: Play_player_sword_hit
@@ -527,9 +527,29 @@ MonoBehaviour:
         ObjectType: 3
         guid: 4bdeca61df99e5428a2868e1a03df397
       Path: Events/Player/PlayerAttack/Play_player_sword_hit
-      maxAttenuation: 200
+      maxAttenuation: 0
       maxDuration: 1.213323
       minDuration: 0.936715
+    - name: Play_player_sword_hit_powerful
+      guid: 158d37a19bc6b04091bad9eb0d96199d
+      id: 2812374800
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: f056f3278b069d4594dd75872401e966
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 23a78c06a5796441a2e7cb20cfec1792
+      - ElementName: Play_player_sword_hit_powerful
+        ObjectType: 3
+        guid: 158d37a19bc6b04091bad9eb0d96199d
+      Path: Events/Player/PlayerAttack/Play_player_sword_hit_powerful
+      maxAttenuation: 0
+      maxDuration: 2.844535
+      minDuration: 2.405489
     - name: Play_player_sword_slash
       guid: 98a4624d85dc844f8601680649f5284a
       id: 4003404733
@@ -547,7 +567,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 98a4624d85dc844f8601680649f5284a
       Path: Events/Player/PlayerAttack/Play_player_sword_slash
-      maxAttenuation: 200
+      maxAttenuation: 1000
       maxDuration: 0.935314
       minDuration: 0.767795
   - PhysicalPath: Events/PlayerBooster.wwu
@@ -840,7 +860,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: a86029b531610a479404ccf3eb9e2427
       Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs
-      maxAttenuation: 3500
+      maxAttenuation: 5000
       maxDuration: 5.247766
       minDuration: 3.57746
     - name: Play_titan_fs_L
@@ -863,7 +883,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 13cb4e89d52d894e8c50d7ba815c4705
       Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs_L
-      maxAttenuation: 3500
+      maxAttenuation: 5000
       maxDuration: 5.247766
       minDuration: 3.57746
     - name: Play_titan_fs_R
@@ -886,7 +906,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 57f975061355b8479b072c588abb45a9
       Path: Events/Titan/TitanLocomotion/TitanFS/Play_titan_fs_R
-      maxAttenuation: 3500
+      maxAttenuation: 5000
       maxDuration: 5.247766
       minDuration: 3.57746
   - PhysicalPath: Events/TitanLanternAttack.wwu
@@ -906,7 +926,7 @@ MonoBehaviour:
     ParentPath: Events/Titan/TitanLocomotion/TitanLanternAttack
     guid: 5f56d661dc0e0b48bd08a153d1029d0f
     GuidInternal: 
-    m_lastTime: -8585499151950728819
+    m_lastTime: -8585497623283703030
     List:
     - name: Play_titan_lantern_attack
       guid: a884d7985f1023498775b41974a0c28a
@@ -1102,7 +1122,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 1798d363e93069409b5641958da5701f
       Path: Events/Titan/TitanTrample/Play_titan_trample_foot
-      maxAttenuation: 3500
+      maxAttenuation: 5000
       maxDuration: 5.247766
       minDuration: 3.57746
     - name: Play_titan_trample_voc
@@ -1122,7 +1142,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 49fc5af124365747a0331be329c7a96f
       Path: Events/Titan/TitanTrample/Play_titan_trample_voc
-      maxAttenuation: 3500
+      maxAttenuation: 2500
       maxDuration: 8.24533
       minDuration: 5.238572
   - PhysicalPath: Events/TitanVoc.wwu
@@ -1158,7 +1178,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 2387d8a138b1a44888ac5e687d989df4
       Path: Events/Titan/TitanVoc/Play_titan_voc_generic
-      maxAttenuation: 3500
+      maxAttenuation: 2500
       maxDuration: 8.24533
       minDuration: 5.238572
   RtpcWwu:
@@ -1281,7 +1301,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 020000001c0000001d0000002200000025000000290000002c000000
-  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000e000000110000001200000013000000140000001700000018000000190000001c0000001d0000002200000033000000360000004b0000004c000000d0030000
+  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000b0000000e0000000f000000110000001200000013000000140000001700000018000000190000001c0000001d0000002200000033000000360000004b0000004c000000d0030000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
