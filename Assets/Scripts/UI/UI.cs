@@ -144,7 +144,7 @@ public class UI : MonoBehaviour
 
     public void DamageTakenEffect(float remainHealth)
     {
-        Debug.LogFormat("Call DamageTakenEffect {0}", remainHealth);
+        //Debug.LogFormat("Call DamageTakenEffect {0}", remainHealth);
         Color _color = BloodScreen.color;
         _color.a = 1 - remainHealth;
         BloodScreen.color = _color;
@@ -259,15 +259,15 @@ public class UI : MonoBehaviour
         DOTween.Sequence().AppendInterval(5.0f)
             .AppendCallback(() => RestartBtn.SetActive(true))
             .AppendInterval(5.0f)
-            .AppendCallback(() => SceneManager.LoadScene("menu"));
+            .AppendCallback(() => SceneManager.LoadScene("MainMenu"));
     }
 
     public void OnTitanDead()
     {
         DOTween.Sequence().AppendInterval(20.0f)
             .AppendCallback(() => WinningHint.SetActive(true))
-            .AppendInterval(10.0f)
-            .AppendCallback(() => SceneManager.LoadScene("menu"));
+            .AppendInterval(5.0f)
+            .AppendCallback(() => SceneManager.LoadScene("MainMenu"));
     }
     private IEnumerator Delay(float delay, Action callback)
     {

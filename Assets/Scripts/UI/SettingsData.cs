@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class SettingsData : MonoBehaviour
 {
+    public static SettingsData Instance;
+
     public float MouseSensitivity;
 
-    private void Awake()
+    void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(this);
     }
 }

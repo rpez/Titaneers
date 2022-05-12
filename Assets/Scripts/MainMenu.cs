@@ -8,8 +8,6 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public SettingsData Settings;
-
     //public float DefaultMouseSensitivity;
     //public float MinimumMouseSensitivity;
     //public float MaximumMouseSensitivity;
@@ -34,6 +32,7 @@ public class MainMenu : MonoBehaviour
     {
         // Must unlock the cursor when main menu launched
         UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
 
         //if (DefaultMouseSensitivity < MinimumMouseSensitivity)
         //    DefaultMouseSensitivity = MinimumMouseSensitivity;
@@ -64,7 +63,7 @@ public class MainMenu : MonoBehaviour
     {
         float result;
         bool hasValue = float.TryParse(MouseSensitivityButtonText.text, out result);
-        Settings.MouseSensitivity = hasValue ? result : 3.0f;
+        SettingsData.Instance.MouseSensitivity = hasValue ? result : 3.0f;
 
         //DontDestroyOnLoad(this.gameObject);
         SceneManager.LoadScene(sceneName);
