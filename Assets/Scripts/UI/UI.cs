@@ -257,17 +257,13 @@ public class UI : MonoBehaviour
     public void OnDead()
     {
         DOTween.Sequence().AppendInterval(5.0f)
-            .AppendCallback(() => RestartBtn.SetActive(true))
-            .AppendInterval(5.0f)
-            .AppendCallback(() => SceneManager.LoadScene("MainMenu"));
+            .AppendCallback(() => RestartBtn.SetActive(true));
     }
 
     public void OnTitanDead()
     {
         DOTween.Sequence().AppendInterval(20.0f)
-            .AppendCallback(() => WinningHint.SetActive(true))
-            .AppendInterval(5.0f)
-            .AppendCallback(() => SceneManager.LoadScene("MainMenu"));
+            .AppendCallback(() => WinningHint.SetActive(true));
     }
     private IEnumerator Delay(float delay, Action callback)
     {
