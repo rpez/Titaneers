@@ -8,20 +8,22 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public float DefaultMouseSensitivity;
-    public float MinimumMouseSensitivity;
-    public float MaximumMouseSensitivity;
-    public GameObject MouseSensitivityAdjustment;
-    public float MouseSensitivity { get => _mouseSensitivity; }
+    public SettingsData Settings;
 
-    public float DefaultGrapplingRange;
-    public float MinimumGrapplingRange;
-    public float MaximumGrapplingRange;
-    public GameObject GrapplingRangeAdjustment;
-    public float GrapplingRange { get => _grapplingRange; }
+    //public float DefaultMouseSensitivity;
+    //public float MinimumMouseSensitivity;
+    //public float MaximumMouseSensitivity;
+    //public GameObject MouseSensitivityAdjustment;
+    //public float MouseSensitivity { get => _mouseSensitivity; }
+
+    //public float DefaultGrapplingRange;
+    //public float MinimumGrapplingRange;
+    //public float MaximumGrapplingRange;
+    //public GameObject GrapplingRangeAdjustment;
+    //public float GrapplingRange { get => _grapplingRange; }
 
     //private TextMeshProUGUI _mouseSensitivityButtonTextUGUI;
-    private TMP_InputField _mouseSensitivityButtonText;
+    public TMP_InputField MouseSensitivityButtonText;
     private TMP_InputField _grapplingRangeButtonText;
 
     private float _mouseSensitivity;
@@ -60,7 +62,10 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame(string sceneName)
     {
-        Debug.Log("prööt");
+        float result = 3.0f;
+        float.TryParse(MouseSensitivityButtonText.text, out result);
+        Settings.MouseSensitivity = result;
+
         //DontDestroyOnLoad(this.gameObject);
         SceneManager.LoadScene(sceneName);
     }
@@ -70,60 +75,60 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void AdjustMouseSensitivity()
-    {
-        if (_mouseSensitivityButtonText.interactable)
-        {
-            _mouseSensitivityButtonText.interactable = false;
-            float val;
-            try
-            {
-                val = float.Parse(_mouseSensitivityButtonText.text);
-            }
-            catch (FormatException e)
-            {
-                val = DefaultMouseSensitivity;
-            }
-            if (val < MinimumMouseSensitivity)
-                _mouseSensitivity = MinimumMouseSensitivity;
-            else if (val > MaximumMouseSensitivity)
-                _mouseSensitivity = MaximumMouseSensitivity;
-            else
-                _mouseSensitivity = val;
-            _mouseSensitivity = Mathf.Round(_mouseSensitivity * 10f) * 0.1f;
-            _mouseSensitivityButtonText.text = _mouseSensitivity.ToString("0.0");
-        } else
-        {
-            _mouseSensitivityButtonText.interactable = true;
-        }
-    }
+    //public void AdjustMouseSensitivity()
+    //{
+    //    if (MouseSensitivityButtonText.interactable)
+    //    {
+    //        MouseSensitivityButtonText.interactable = false;
+    //        float val;
+    //        try
+    //        {
+    //            val = float.Parse(MouseSensitivityButtonText.text);
+    //        }
+    //        catch (FormatException e)
+    //        {
+    //            val = DefaultMouseSensitivity;
+    //        }
+    //        if (val < MinimumMouseSensitivity)
+    //            _mouseSensitivity = MinimumMouseSensitivity;
+    //        else if (val > MaximumMouseSensitivity)
+    //            _mouseSensitivity = MaximumMouseSensitivity;
+    //        else
+    //            _mouseSensitivity = val;
+    //        _mouseSensitivity = Mathf.Round(_mouseSensitivity * 10f) * 0.1f;
+    //        MouseSensitivityButtonText.text = _mouseSensitivity.ToString("0.0");
+    //    } else
+    //    {
+    //        MouseSensitivityButtonText.interactable = true;
+    //    }
+    //}
 
-    public void AdjustGrapplingRange()
-    {
-        if (_grapplingRangeButtonText.interactable)
-        {
-            _grapplingRangeButtonText.interactable = false;
-            float val;
-            try
-            {
-                val = float.Parse(_grapplingRangeButtonText.text);
-            }
-            catch (FormatException e)
-            {
-                val = DefaultGrapplingRange;
-            }
-            if (val < MinimumGrapplingRange)
-                _grapplingRange = MinimumGrapplingRange;
-            else if (val > MaximumGrapplingRange)
-                _grapplingRange = MaximumGrapplingRange;
-            else
-                _grapplingRange = val;
-            _grapplingRange = Mathf.Round(_grapplingRange);
-            _grapplingRangeButtonText.text = _grapplingRange.ToString("0");
-        }
-        else
-        {
-            _grapplingRangeButtonText.interactable = true;
-        }
-    }
+    //public void AdjustGrapplingRange()
+    //{
+    //    if (_grapplingRangeButtonText.interactable)
+    //    {
+    //        _grapplingRangeButtonText.interactable = false;
+    //        float val;
+    //        try
+    //        {
+    //            val = float.Parse(_grapplingRangeButtonText.text);
+    //        }
+    //        catch (FormatException e)
+    //        {
+    //            val = DefaultGrapplingRange;
+    //        }
+    //        if (val < MinimumGrapplingRange)
+    //            _grapplingRange = MinimumGrapplingRange;
+    //        else if (val > MaximumGrapplingRange)
+    //            _grapplingRange = MaximumGrapplingRange;
+    //        else
+    //            _grapplingRange = val;
+    //        _grapplingRange = Mathf.Round(_grapplingRange);
+    //        _grapplingRangeButtonText.text = _grapplingRange.ToString("0");
+    //    }
+    //    else
+    //    {
+    //        _grapplingRangeButtonText.interactable = true;
+    //    }
+    //}
 }
