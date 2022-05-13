@@ -276,7 +276,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject settings = GameObject.Find("SettingsDataHolder");
         if (settings)
         {
-            MouseSensitivity = GameObject.Find("SettingsDataHolder").GetComponent<SettingsData>().MouseSensitivity;
+            MouseSensitivity = settings.GetComponent<SettingsData>().MouseSensitivity;
         }
         //Grapple.Range = _mainMenu.GrapplingRange;
         //Destroy(_mainMenu.gameObject);
