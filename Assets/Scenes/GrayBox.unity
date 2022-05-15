@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.390806, g: 1.4183344, b: 1.4033499, a: 1}
+  m_IndirectSpecularColor: {r: 1.4647121, g: 1.505064, b: 1.5039711, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6655,6 +6655,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 2496024928203559716}
+    - target: {fileID: 157068560780032646, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _randomAreaWidth
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 696950573917220970, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: solver.target
       value: 
@@ -6740,7 +6744,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-111380
+  m_Name: pb_Mesh-4114
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
