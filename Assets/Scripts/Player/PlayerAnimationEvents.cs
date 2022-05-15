@@ -9,6 +9,16 @@ public class PlayerAnimationEvents : MonoBehaviour
     public string RightFootRun = "Play_player_fs_run_R";
     public string SpinAttack = "Play_player_spin_attack";
     public string FS = "Play_player_fs";
+
+    public string Breathe = "Play_player_breathe";
+
+    public string VocAttack = "Play_player_voc_attack";
+    public string VocJump = "Play_player_voc_jump";
+    public string VocTakeHit = "Play_player_voc_take_hit";
+    public string VocTakeHitSoft = "Play_player_voc_take_hit_soft";
+    public string VocDeath = "Play_player_voc_death";
+    public string VocGrapplePull = "Play_player_voc_grapple_pull";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +51,57 @@ public class PlayerAnimationEvents : MonoBehaviour
         if (Debug_Enabled) { Debug.Log("Player spin attack triggered"); }
         AkSoundEngine.PostEvent(SpinAttack, gameObject);
     }
+
+    void Play_player_breathe()
+    {
+        if (Debug_Enabled) { Debug.Log("Player breathe"); }
+        AkSoundEngine.PostEvent(Breathe, gameObject);
+
+    }
+
+    void Play_player_voc_attack()
+    {
+        if (Debug_Enabled) { Debug.Log("Player voc attack"); }
+        AkSoundEngine.PostEvent(VocAttack, gameObject);
+
+    }
+
+    void Play_player_voc_jump()
+    {
+        if (Debug_Enabled) { Debug.Log("Player voc jump"); }
+        AkSoundEngine.PostEvent(VocJump, gameObject);
+
+    }
+
+    void Play_player_voc_grapple_pull()
+    {
+        if (Debug_Enabled) { Debug.Log("Player voc grapple pull"); }
+        AkSoundEngine.PostEvent(VocGrapplePull, gameObject);
+
+    }
+
+    public void Play_player_voc_take_hit()
+    {
+        if (Debug_Enabled) { Debug.Log("Player voc take hit"); }
+        AkSoundEngine.PostEvent(VocTakeHit, gameObject);
+
+    }
+
+    public void Play_player_voc_take_hit_soft()
+    {
+        if (Debug_Enabled) { Debug.Log("Player voc take hit soft"); }
+        AkSoundEngine.PostEvent(VocTakeHitSoft, gameObject);
+
+    }
+
+    public void Play_player_voc_death()
+    {
+        if (Debug_Enabled) { Debug.Log("Player voc death"); }
+        AkSoundEngine.PostEvent(VocDeath, gameObject);
+
+    }
+
+ 
 
 
 }

@@ -82,6 +82,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.17201704
+        functionName: Play_player_voc_attack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 064a22b6ce732478ab51b95c591b4528, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -198,6 +205,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.17857145
+        functionName: Play_player_breathe
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 064a22b6ce732478ab51b95c591b4528, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.42755347
         functionName: Play_player_fs
         data: 

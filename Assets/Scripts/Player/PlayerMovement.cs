@@ -273,13 +273,13 @@ public class PlayerMovement : MonoBehaviour
         _currentBoostAmount = MaxBoostAmount * InitBoostRatio;
         _currentSlowTime = MaxSlowTime;
 
-        MainMenu _mainMenu = FindObjectOfType<MainMenu>();
-        if (_mainMenu)
+        GameObject settings = GameObject.Find("SettingsDataHolder");
+        if (settings)
         {
-            MouseSensitivity = _mainMenu.MouseSensitivity;
-            Grapple.Range = _mainMenu.GrapplingRange;
-            Destroy(_mainMenu.gameObject);
+            MouseSensitivity = settings.GetComponent<SettingsData>().MouseSensitivity;
         }
+        //Grapple.Range = _mainMenu.GrapplingRange;
+        //Destroy(_mainMenu.gameObject);
     }
 
     private void FixedUpdate()

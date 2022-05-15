@@ -792,7 +792,11 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 8815b575ca32e429ab6a7202eb3bf80a, type: 2}
   useCallbacks: 0
-  Callbacks: []
+  Callbacks:
+  - Flags:
+      value: 0
+    FunctionName: 
+    GameObject: {fileID: 834891472}
   playingId: 0
   soundEmitterObject: {fileID: 0}
   transitionDuration: 0
@@ -1632,6 +1636,22 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &834891472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3342445681172514015, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+  m_PrefabInstance: {fileID: 2496024928203559705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &834891475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2496024928203559709, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+  m_PrefabInstance: {fileID: 2496024928203559705}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834891472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064a22b6ce732478ab51b95c591b4528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &866452971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6573799383121238159, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
@@ -7517,9 +7537,105 @@ PrefabInstance:
       value: PlayerContainer
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1457485732}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 834891475}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: 064a22b6ce732478ab51b95c591b4528, type: 3}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Play_player_voc_death
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: set_name
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1457485732}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 834891475}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DamageTakenEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play_player_voc_take_hit_soft
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: PlayerAnimationEvents, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerAnimationEvents, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6965098877999748813, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: Camera
       value: 

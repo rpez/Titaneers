@@ -16,6 +16,7 @@ namespace AK
         static const AkUniqueID PLAY_2D_AMBIENCE_LOOP = 706595652U;
         static const AkUniqueID PLAY_COMBAT_MUSIC = 3155474038U;
         static const AkUniqueID PLAY_PLAYER_BOOSTER = 142245832U;
+        static const AkUniqueID PLAY_PLAYER_BREATHE = 2118095383U;
         static const AkUniqueID PLAY_PLAYER_FS = 4078825889U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_L = 3625340534U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_R = 3625340520U;
@@ -24,7 +25,14 @@ namespace AK
         static const AkUniqueID PLAY_PLAYER_JUMP = 562256996U;
         static const AkUniqueID PLAY_PLAYER_SPIN_ATTACK = 213519327U;
         static const AkUniqueID PLAY_PLAYER_SWORD_HIT = 2116655569U;
+        static const AkUniqueID PLAY_PLAYER_SWORD_HIT_POWERFUL = 2812374800U;
         static const AkUniqueID PLAY_PLAYER_SWORD_SLASH = 4003404733U;
+        static const AkUniqueID PLAY_PLAYER_VOC_ATTACK = 1786226075U;
+        static const AkUniqueID PLAY_PLAYER_VOC_DEATH = 1543233419U;
+        static const AkUniqueID PLAY_PLAYER_VOC_GRAPPLE_PULL = 1641970538U;
+        static const AkUniqueID PLAY_PLAYER_VOC_JUMP = 3830010507U;
+        static const AkUniqueID PLAY_PLAYER_VOC_TAKE_HIT = 3730000400U;
+        static const AkUniqueID PLAY_PLAYER_VOC_TAKE_HIT_SOFT = 2806366063U;
         static const AkUniqueID PLAY_TEST_SOUND = 3211564518U;
         static const AkUniqueID PLAY_TITAN_FS = 487948562U;
         static const AkUniqueID PLAY_TITAN_FS_L = 2390231879U;
@@ -44,6 +52,17 @@ namespace AK
 
     namespace SWITCHES
     {
+        namespace BREATHEINOUT
+        {
+            static const AkUniqueID GROUP = 3602124287U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID IN = 1752637612U;
+                static const AkUniqueID OUT = 645492555U;
+            } // namespace SWITCH
+        } // namespace BREATHEINOUT
+
         namespace MUSIC_PROGRESS
         {
             static const AkUniqueID GROUP = 4150154280U;

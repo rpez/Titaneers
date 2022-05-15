@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="4111353134">
+		<SoundBank Id="3161908922" Language="SFX" Hash="3721288459">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -54,6 +54,150 @@
 						<File Id="927044007" Language="SFX">
 							<ShortName>sfx_player_booster.wav</ShortName>
 							<Path>SFX/sfx_player_booster_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2118095383" Name="Play_player_breathe" ObjectPath="\Events\Player\PlayerBreathe\Play_player_breathe" MaxAttenuation="50." DurationType="OneShot" DurationMin="0.284261" DurationMax="0.47225">
+					<IncludedMemoryFiles>
+						<File Id="33691868" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_10.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_10_10C4C929.wem</Path>
+						</File>
+						<File Id="41225851" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_14.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_14_10C4C929.wem</Path>
+						</File>
+						<File Id="77741026" Language="SFX">
+							<ShortName>sfx_player_voc_exhale.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_10C4C929.wem</Path>
+						</File>
+						<File Id="89322757" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_12.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_12_10C4C929.wem</Path>
+						</File>
+						<File Id="93166240" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_9.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_9_10C4C929.wem</Path>
+						</File>
+						<File Id="112591905" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_1.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_1_10C4C929.wem</Path>
+						</File>
+						<File Id="136526467" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_11.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_11_10C4C929.wem</Path>
+						</File>
+						<File Id="180082533" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_2.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_2_10C4C929.wem</Path>
+						</File>
+						<File Id="180904020" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_15.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_15_10C4C929.wem</Path>
+						</File>
+						<File Id="194965719" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_6.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_6_10C4C929.wem</Path>
+						</File>
+						<File Id="194969890" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_12.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_12_10C4C929.wem</Path>
+						</File>
+						<File Id="250795271" Language="SFX">
+							<ShortName>sfx_player_voc_inhale.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_10C4C929.wem</Path>
+						</File>
+						<File Id="282200393" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_1.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_1_10C4C929.wem</Path>
+						</File>
+						<File Id="294207441" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_13.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_13_10C4C929.wem</Path>
+						</File>
+						<File Id="403224672" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_3.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_3_10C4C929.wem</Path>
+						</File>
+						<File Id="424048290" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_9.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_9_10C4C929.wem</Path>
+						</File>
+						<File Id="484311197" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_5.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_5_10C4C929.wem</Path>
+						</File>
+						<File Id="514257766" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_4.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_4_10C4C929.wem</Path>
+						</File>
+						<File Id="621916204" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_7.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_7_10C4C929.wem</Path>
+						</File>
+						<File Id="625650408" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_3.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_3_10C4C929.wem</Path>
+						</File>
+						<File Id="691119242" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_6.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_6_10C4C929.wem</Path>
+						</File>
+						<File Id="723241360" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_5.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_5_10C4C929.wem</Path>
+						</File>
+						<File Id="725213437" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_17.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_17_10C4C929.wem</Path>
+						</File>
+						<File Id="725714969" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_15.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_15_10C4C929.wem</Path>
+						</File>
+						<File Id="737002460" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_8.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_8_10C4C929.wem</Path>
+						</File>
+						<File Id="765351114" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_4.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_4_10C4C929.wem</Path>
+						</File>
+						<File Id="786905470" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_10.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_10_10C4C929.wem</Path>
+						</File>
+						<File Id="820080969" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_14.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_14_10C4C929.wem</Path>
+						</File>
+						<File Id="874311249" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_7.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_7_10C4C929.wem</Path>
+						</File>
+						<File Id="897208290" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_16.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_16_10C4C929.wem</Path>
+						</File>
+						<File Id="915144410" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_11.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_11_10C4C929.wem</Path>
+						</File>
+						<File Id="986540173" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_2.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_2_10C4C929.wem</Path>
+						</File>
+						<File Id="1001262436" Language="SFX">
+							<ShortName>sfx_player_voc_exhale_13.wav</ShortName>
+							<Path>SFX/sfx_player_voc_exhale_13_10C4C929.wem</Path>
+						</File>
+						<File Id="1002029195" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_16.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_16_10C4C929.wem</Path>
+						</File>
+						<File Id="1061299184" Language="SFX">
+							<ShortName>sfx_player_voc_inhale_8.wav</ShortName>
+							<Path>SFX/sfx_player_voc_inhale_8_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -413,7 +557,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="213519327" Name="Play_player_spin_attack" ObjectPath="\Events\Player\PlayerAttack\Play_player_spin_attack" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.939148" DurationMax="0.994992">
+				<Event Id="213519327" Name="Play_player_spin_attack" ObjectPath="\Events\Player\PlayerAttack\Play_player_spin_attack" MaxAttenuation="1000." DurationType="OneShot" DurationMin="0.939148" DurationMax="0.994992">
 					<IncludedMemoryFiles>
 						<File Id="127346191" Language="SFX">
 							<ShortName>sfx-player-attack-spin-cloth-start.wav</ShortName>
@@ -485,7 +629,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
+				<Event Id="2116655569" Name="Play_player_sword_hit" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit" DurationType="OneShot" DurationMin="0.936715" DurationMax="1.213323">
 					<IncludedMemoryFiles>
 						<File Id="260314807" Language="SFX">
 							<ShortName>sfx_player_sword_hit_4.wav</ShortName>
@@ -501,7 +645,23 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
+				<Event Id="2812374800" Name="Play_player_sword_hit_powerful" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_hit_powerful" DurationType="OneShot" DurationMin="2.405489" DurationMax="2.844535">
+					<IncludedMemoryFiles>
+						<File Id="716413036" Language="SFX">
+							<ShortName>sfx_player_sword_hit_powerful_6.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_powerful_6_10C4C929.wem</Path>
+						</File>
+						<File Id="855549330" Language="SFX">
+							<ShortName>sfx_player_sword_hit_powerful_4.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_powerful_4_10C4C929.wem</Path>
+						</File>
+						<File Id="867073128" Language="SFX">
+							<ShortName>sfx_player_sword_hit_powerful_5.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_powerful_5_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4003404733" Name="Play_player_sword_slash" ObjectPath="\Events\Player\PlayerAttack\Play_player_sword_slash" MaxAttenuation="1000." DurationType="OneShot" DurationMin="0.767795" DurationMax="0.935314">
 					<IncludedMemoryFiles>
 						<File Id="257300301" Language="SFX">
 							<ShortName>sfx_player_sword_slash_2.wav</ShortName>
@@ -514,6 +674,189 @@
 						<File Id="616774092" Language="SFX">
 							<ShortName>sfx_player_sword_slash_1.wav</ShortName>
 							<Path>SFX/sfx_player_sword_slash_1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1786226075" Name="Play_player_voc_attack" ObjectPath="\Events\Player\PlayerVoc\Play_player_voc_attack" MaxAttenuation="50." DurationType="OneShot" DurationMin="0.381299" DurationMax="0.563001">
+					<IncludedMemoryFiles>
+						<File Id="32228090" Language="SFX">
+							<ShortName>sfx_player_voc_attack_5.wav</ShortName>
+							<Path>SFX/sfx_player_voc_attack_5_10C4C929.wem</Path>
+						</File>
+						<File Id="37548974" Language="SFX">
+							<ShortName>sfx_player_voc_attack_1.wav</ShortName>
+							<Path>SFX/sfx_player_voc_attack_1_10C4C929.wem</Path>
+						</File>
+						<File Id="174960373" Language="SFX">
+							<ShortName>sfx_player_voc_attack_3.wav</ShortName>
+							<Path>SFX/sfx_player_voc_attack_3_10C4C929.wem</Path>
+						</File>
+						<File Id="533898798" Language="SFX">
+							<ShortName>sfx_player_voc_attack.wav</ShortName>
+							<Path>SFX/sfx_player_voc_attack_10C4C929.wem</Path>
+						</File>
+						<File Id="568437498" Language="SFX">
+							<ShortName>sfx_player_voc_attack_2.wav</ShortName>
+							<Path>SFX/sfx_player_voc_attack_2_10C4C929.wem</Path>
+						</File>
+						<File Id="682202764" Language="SFX">
+							<ShortName>sfx_player_voc_attack_4.wav</ShortName>
+							<Path>SFX/sfx_player_voc_attack_4_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1543233419" Name="Play_player_voc_death" ObjectPath="\Events\Player\PlayerVoc\Play_player_voc_death" DurationType="OneShot" DurationMin="10.171813" DurationMax="10.171813">
+					<IncludedMemoryFiles>
+						<File Id="142676800" Language="SFX">
+							<ShortName>sfx_player_voc_death.wav</ShortName>
+							<Path>SFX/sfx_player_voc_death_10C4C929.wem</Path>
+						</File>
+						<File Id="167958418" Language="SFX">
+							<ShortName>CH-DS HIT Distorted 02.wav</ShortName>
+							<Path>SFX/CH-DS HIT Distorted 02_10C4C929.wem</Path>
+						</File>
+						<File Id="241965283" Language="SFX">
+							<ShortName>HIT_02.wav</ShortName>
+							<Path>SFX/HIT_02_10C4C929.wem</Path>
+						</File>
+						<File Id="465140454" Language="SFX">
+							<ShortName>sfx_player_voc_death_1.wav</ShortName>
+							<Path>SFX/sfx_player_voc_death_1_10C4C929.wem</Path>
+						</File>
+						<File Id="597227183" Language="SFX">
+							<ShortName>sfx_player_voc_death_3.wav</ShortName>
+							<Path>SFX/sfx_player_voc_death_3_10C4C929.wem</Path>
+						</File>
+						<File Id="609582432" Language="SFX">
+							<ShortName>sfx_player_take_hit_punch.wav</ShortName>
+							<Path>SFX/sfx_player_take_hit_punch_10C4C929.wem</Path>
+						</File>
+						<File Id="718311933" Language="SFX">
+							<ShortName>sfx_player_voc_death_2.wav</ShortName>
+							<Path>SFX/sfx_player_voc_death_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<ActionPostEvent>
+						<ActionPostEventEntry Id="970928956" Name="Stop_combat_music" ObjectPath="\Events\Music\Stop_combat_music"/>
+					</ActionPostEvent>
+				</Event>
+				<Event Id="1641970538" Name="Play_player_voc_grapple_pull" ObjectPath="\Events\Player\PlayerVoc\Play_player_voc_grapple_pull" MaxAttenuation="50." DurationType="OneShot" DurationMin="0.46608" DurationMax="0.541651">
+					<IncludedMemoryFiles>
+						<File Id="45768578" Language="SFX">
+							<ShortName>sfx_player_voc_effort_3.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_3_10C4C929.wem</Path>
+						</File>
+						<File Id="67129233" Language="SFX">
+							<ShortName>sfx_player_voc_effort_4.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_4_10C4C929.wem</Path>
+						</File>
+						<File Id="574424856" Language="SFX">
+							<ShortName>sfx_player_voc_effort_2.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_2_10C4C929.wem</Path>
+						</File>
+						<File Id="608480220" Language="SFX">
+							<ShortName>sfx_player_voc_effort_1.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_1_10C4C929.wem</Path>
+						</File>
+						<File Id="732116695" Language="SFX">
+							<ShortName>sfx_player_voc_effort.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_10C4C929.wem</Path>
+						</File>
+						<File Id="1022958818" Language="SFX">
+							<ShortName>sfx_player_voc_effort_5.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_5_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3830010507" Name="Play_player_voc_jump" ObjectPath="\Events\Player\PlayerVoc\Play_player_voc_jump" MaxAttenuation="50." DurationType="OneShot" DurationMin="0.46608" DurationMax="0.541651">
+					<IncludedMemoryFiles>
+						<File Id="45768578" Language="SFX">
+							<ShortName>sfx_player_voc_effort_3.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_3_10C4C929.wem</Path>
+						</File>
+						<File Id="67129233" Language="SFX">
+							<ShortName>sfx_player_voc_effort_4.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_4_10C4C929.wem</Path>
+						</File>
+						<File Id="574424856" Language="SFX">
+							<ShortName>sfx_player_voc_effort_2.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_2_10C4C929.wem</Path>
+						</File>
+						<File Id="608480220" Language="SFX">
+							<ShortName>sfx_player_voc_effort_1.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_1_10C4C929.wem</Path>
+						</File>
+						<File Id="732116695" Language="SFX">
+							<ShortName>sfx_player_voc_effort.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_10C4C929.wem</Path>
+						</File>
+						<File Id="1022958818" Language="SFX">
+							<ShortName>sfx_player_voc_effort_5.wav</ShortName>
+							<Path>SFX/sfx_player_voc_effort_5_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3730000400" Name="Play_player_voc_take_hit" ObjectPath="\Events\Player\PlayerVoc\Play_player_voc_take_hit" DurationType="OneShot" DurationMin="0.394285" DurationMax="0.717444">
+					<IncludedMemoryFiles>
+						<File Id="9120438" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_1.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_1_10C4C929.wem</Path>
+						</File>
+						<File Id="463055048" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_5.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_5_10C4C929.wem</Path>
+						</File>
+						<File Id="548469670" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_2.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_2_10C4C929.wem</Path>
+						</File>
+						<File Id="586766271" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_3.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_3_10C4C929.wem</Path>
+						</File>
+						<File Id="609582432" Language="SFX">
+							<ShortName>sfx_player_take_hit_punch.wav</ShortName>
+							<Path>SFX/sfx_player_take_hit_punch_10C4C929.wem</Path>
+						</File>
+						<File Id="809400796" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_10C4C929.wem</Path>
+						</File>
+						<File Id="810824379" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_4.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_4_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2806366063" Name="Play_player_voc_take_hit_soft" ObjectPath="\Events\Player\PlayerVoc\Play_player_voc_take_hit_soft" DurationType="OneShot" DurationMin="0.302381" DurationMax="0.472387">
+					<IncludedMemoryFiles>
+						<File Id="247806090" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_soft.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_soft_10C4C929.wem</Path>
+						</File>
+						<File Id="497748662" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_soft_1.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_soft_1_10C4C929.wem</Path>
+						</File>
+						<File Id="583495999" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_soft_5.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_soft_5_10C4C929.wem</Path>
+						</File>
+						<File Id="609582432" Language="SFX">
+							<ShortName>sfx_player_take_hit_punch.wav</ShortName>
+							<Path>SFX/sfx_player_take_hit_punch_10C4C929.wem</Path>
+						</File>
+						<File Id="689989124" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_soft_4.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_soft_4_10C4C929.wem</Path>
+						</File>
+						<File Id="711802153" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_soft_2.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_soft_2_10C4C929.wem</Path>
+						</File>
+						<File Id="859829970" Language="SFX">
+							<ShortName>sfx_player_voc_take_hit_soft_3.wav</ShortName>
+							<Path>SFX/sfx_player_voc_take_hit_soft_3_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
