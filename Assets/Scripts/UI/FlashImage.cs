@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class FlashImage : MonoBehaviour
 {
-    public Sprite sprite0;
-    public Sprite sprite1;
+    public Sprite Sprite0 { get; set; }
+    public Sprite Sprite1 { get; set; }
 
     [SerializeField]
     private Image _image;
@@ -20,7 +20,7 @@ public class FlashImage : MonoBehaviour
     {
         _point = 0;
         _timer = 0f;
-        _image.sprite = sprite0;
+        _image.sprite = Sprite0;
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class FlashImage : MonoBehaviour
         {
             _timer = 0f;
             _point = (_point + 1) % 2;
-            _image.sprite = (_point == 0) ? sprite0 : sprite1;
+            _image.sprite = (_point == 0) ? Sprite0 : Sprite1;
         }
         else
         {
