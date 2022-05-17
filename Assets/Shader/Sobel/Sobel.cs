@@ -10,7 +10,7 @@ public sealed class Sobel : CustomPostProcessVolumeComponent, IPostProcessCompon
     public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1f);
 
     [Tooltip("Controls the color of the outline.")]
-    public ColorParameter outlineColor = new ColorParameter(Color.black);
+    public ColorParameter outlineColor = new ColorParameter(Color.black, true, true, false);
 
     [Tooltip("Controls the thickness of the outline.")]
     public FloatParameter outlineThickness = new FloatParameter(1f);

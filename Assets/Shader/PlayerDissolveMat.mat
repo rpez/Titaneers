@@ -77,7 +77,7 @@ Material:
     - _Intensity: 500
     - _NoiseScale: 30
     - _OpaqueCullMode: 2
-    - _Progress: 0.09979155
+    - _Progress: 1.0071698
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
