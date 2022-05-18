@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 8bd613bd4fdccf45a54520a04ea11cfa
     GuidInternal: 
-    m_lastTime: -8585487088437687152
+    m_lastTime: -8585487062407027337
     List:
     - name: 2DAmbience
       guid: ab2dae2fec0c344c82616f5c3f472ccd
@@ -425,7 +425,7 @@ MonoBehaviour:
     ParentPath: Events/Music
     guid: bbfb465c3e20624e99578ea3214e09d4
     GuidInternal: 
-    m_lastTime: -8585492322205445760
+    m_lastTime: -8585487057029892188
     List:
     - name: Play_combat_music
       guid: 86bbba142438e248bf2f062aaf330c81
@@ -1176,7 +1176,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: a884d7985f1023498775b41974a0c28a
       Path: Events/Titan/TitanLocomotion/TitanLanternAttack/Play_titan_lantern_attack
-      maxAttenuation: 4000
+      maxAttenuation: 3500
       maxDuration: 11.503583
       minDuration: 11.503583
     - name: Play_titan_lantern_attack_seq
@@ -1199,7 +1199,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 05e142761cfdb4439edbfa8842301277
       Path: Events/Titan/TitanLocomotion/TitanLanternAttack/Play_titan_lantern_attack_seq
-      maxAttenuation: 4000
+      maxAttenuation: 3500
       maxDuration: 15.403584
       minDuration: 15.403584
     - name: Play_titan_lantern_charge
@@ -1222,7 +1222,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 5e5eb7d15ae1464797e2d6f2ed442848
       Path: Events/Titan/TitanLocomotion/TitanLanternAttack/Play_titan_lantern_charge
-      maxAttenuation: 4000
+      maxAttenuation: 3500
       maxDuration: 5.00975
       minDuration: 5.00975
   - PhysicalPath: Events/TitanLocomotion.wwu
@@ -1426,7 +1426,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 49fc5af124365747a0331be329c7a96f
       Path: Events/Titan/TitanTrample/Play_titan_trample_voc
-      maxAttenuation: 2500
+      maxAttenuation: 3500
       maxDuration: 8.24533
       minDuration: 5.238572
   - PhysicalPath: Events/TitanVoc.wwu
@@ -1462,7 +1462,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 2387d8a138b1a44888ac5e687d989df4
       Path: Events/Titan/TitanVoc/Play_titan_voc_generic
-      maxAttenuation: 2500
+      maxAttenuation: 3500
       maxDuration: 8.24533
       minDuration: 5.238572
   RtpcWwu:
@@ -1861,7 +1861,7 @@ MonoBehaviour:
     m_lastTime: -8585583922432645473
     List: []
   ExpandedFileSystemItemIds: 01000000020000000500000006000000070000000b0000000c0000000e0000000f00000011000000120000001300000014000000150000001700000018000000190000001c0000001d0000001f00000022000000330000003600000037000000490000004b0000004c000000d0030000
-  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000c00000011000000120000001300000014000000160000001700000018000000190000001c0000001d0000002200000033000000360000004b0000004c00000056000000d0030000
+  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000b0000000c0000001100000012000000130000001400000015000000160000001700000018000000190000001c0000001d0000002200000033000000360000004a0000004b0000004c00000056000000d0030000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

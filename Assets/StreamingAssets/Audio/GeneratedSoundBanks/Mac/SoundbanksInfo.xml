@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3471603591">
+		<SoundBank Id="1355168291" Language="SFX" Hash="1009875776">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -33,7 +33,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="28172975">
+		<SoundBank Id="3161908922" Language="SFX" Hash="198360444">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -985,7 +985,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1409958524" Name="Play_titan_lantern_attack" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack" MaxAttenuation="4000." DurationType="OneShot" DurationMin="11.503583" DurationMax="11.503583">
+				<Event Id="1409958524" Name="Play_titan_lantern_attack" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack" MaxAttenuation="3500." DurationType="OneShot" DurationMin="11.503583" DurationMax="11.503583">
 					<IncludedMemoryFiles>
 						<File Id="207888603" Language="SFX">
 							<ShortName>sfx-titan-lantern-attack-attack.wav</ShortName>
@@ -993,7 +993,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1842908424" Name="Play_titan_lantern_attack_seq" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack_seq" MaxAttenuation="4000." DurationType="OneShot" DurationMin="15.403584" DurationMax="15.403584">
+				<Event Id="1842908424" Name="Play_titan_lantern_attack_seq" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack_seq" MaxAttenuation="3500." DurationType="OneShot" DurationMin="15.403584" DurationMax="15.403584">
 					<IncludedMemoryFiles>
 						<File Id="207888603" Language="SFX">
 							<ShortName>sfx-titan-lantern-attack-attack.wav</ShortName>
@@ -1017,7 +1017,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2713252876" Name="Play_titan_lantern_charge" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_charge" MaxAttenuation="4000." DurationType="OneShot" DurationMin="5.00975" DurationMax="5.00975">
+				<Event Id="2713252876" Name="Play_titan_lantern_charge" ObjectPath="\Events\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_charge" MaxAttenuation="3500." DurationType="OneShot" DurationMin="5.00975" DurationMax="5.00975">
 					<IncludedMemoryFiles>
 						<File Id="382169736" Language="SFX">
 							<ShortName>sfx-titan-lantern-attack-charge.wav</ShortName>
@@ -1115,7 +1115,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3060992713" Name="Play_titan_trample_voc" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_voc" MaxAttenuation="2500." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
+				<Event Id="3060992713" Name="Play_titan_trample_voc" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_voc" MaxAttenuation="3500." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
 					<IncludedMemoryFiles>
 						<File Id="144898128" Language="SFX">
 							<ShortName>sfx_placeholder_titan_voc_1.wav</ShortName>
@@ -1131,7 +1131,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3131183803" Name="Play_titan_voc_generic" ObjectPath="\Events\Titan\TitanVoc\Play_titan_voc_generic" MaxAttenuation="2500." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
+				<Event Id="3131183803" Name="Play_titan_voc_generic" ObjectPath="\Events\Titan\TitanVoc\Play_titan_voc_generic" MaxAttenuation="3500." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
 					<IncludedMemoryFiles>
 						<File Id="144898128" Language="SFX">
 							<ShortName>sfx_placeholder_titan_voc_1.wav</ShortName>
