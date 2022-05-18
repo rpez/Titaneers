@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="588705528">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2984810148">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -19,8 +19,21 @@
 				<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
+			<GameParameters>
+				<GameParameter Id="419602667" Name="Titan_Bus_Volume" ObjectPath="\Game Parameters\Default Work Unit\Titan_Bus_Volume"/>
+				<GameParameter Id="688725058" Name="Player_Bus_Volume" ObjectPath="\Game Parameters\Default Work Unit\Player_Bus_Volume"/>
+			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="4274655655" Name="Slomo" ObjectPath="\States\Default Work Unit\Slomo" GUID="{0E2EA5A1-928F-4B50-880D-46BDC6641EA3}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\Slomo\None" GUID="{29DC8118-718E-4BEE-A143-CD8434F5CB34}"/>
+						<State Id="1603814480" Name="SlomoOn" ObjectPath="\States\Default Work Unit\Slomo\SlomoOn" GUID="{EA9E3090-B102-4BF9-A812-E52E3AB1283D}"/>
+						<State Id="3568539374" Name="SlomoOff" ObjectPath="\States\Default Work Unit\Slomo\SlomoOff" GUID="{C1826A21-3025-43D6-B69D-1C76CF173A30}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2864033090">
+		<SoundBank Id="3161908922" Language="SFX" Hash="28172975">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -1117,9 +1130,6 @@
 							<Path>SFX/sfx_placeholder_titan_voc_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
-					<AuxBusSends>
-						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
-					</AuxBusSends>
 				</Event>
 				<Event Id="3131183803" Name="Play_titan_voc_generic" ObjectPath="\Events\Titan\TitanVoc\Play_titan_voc_generic" MaxAttenuation="2500." DurationType="OneShot" DurationMin="5.238572" DurationMax="8.24533">
 					<IncludedMemoryFiles>
@@ -1136,9 +1146,6 @@
 							<Path>SFX/sfx_placeholder_titan_voc_2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
-					<AuxBusSends>
-						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
-					</AuxBusSends>
 				</Event>
 				<Event Id="1752755706" Name="Stop_2d_ambience_loop" ObjectPath="\Events\Ambience\Stop_2d_ambience_loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="970928956" Name="Stop_combat_music" ObjectPath="\Events\Music\Stop_combat_music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>

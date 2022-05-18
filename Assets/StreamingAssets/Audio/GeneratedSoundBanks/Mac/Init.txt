@@ -1,6 +1,7 @@
 State Group	ID	Name			Wwise Object Path	Notes
 	635115884	TitanState			\Default Work Unit\TitanState	
 	3285234865	PlayerState			\Default Work Unit\PlayerState	
+	4274655655	Slomo			\Default Work Unit\Slomo	
 
 State	ID	Name	State Group			Notes
 	748895195	None	TitanState			
@@ -9,6 +10,19 @@ State	ID	Name	State Group			Notes
 	748895195	None	PlayerState			
 	2356585300	PlayerDead	PlayerState			
 	2557321869	PlayerAlive	PlayerState			
+	748895195	None	Slomo			
+	1603814480	SlomoOn	Slomo			
+	3568539374	SlomoOff	Slomo			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	240762954	SlomoOn	Slomo	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerMaster		
+	259458029	SlomoOn	Slomo	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\TitanMaster		
+	444228701	SlomoOn	Slomo	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Music		
+	895005375	SlomoOn	Slomo	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\AmbientMaster		
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	419602667	Titan_Bus_Volume			\Default Work Unit\Titan_Bus_Volume	
+	688725058	Player_Bus_Volume			\Default Work Unit\Player_Bus_Volume	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	309309195	2DAmbience			\Default Work Unit\Master Audio Bus\AmbientMaster\2DAmbience	
@@ -30,6 +44,8 @@ Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 
 Effect plug-ins	ID	Name	Type				Notes
 	48620415	Have_U_Ever_Been_Outside	Wwise RoomVerb			
+	779686632	Player_Meter	Wwise Meter			
+	2050374399	Titan_Meter	Wwise Meter			
 	2156497161	master_compressor	Wwise Compressor			
 	3134687450	master_limiter	Wwise Peak Limiter			
 

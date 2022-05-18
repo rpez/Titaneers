@@ -68,6 +68,18 @@ namespace AK
             } // namespace STATE
         } // namespace PLAYERSTATE
 
+        namespace SLOMO
+        {
+            static const AkUniqueID GROUP = 4274655655U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID SLOMOOFF = 3568539374U;
+                static const AkUniqueID SLOMOON = 1603814480U;
+            } // namespace STATE
+        } // namespace SLOMO
+
         namespace TITANSTATE
         {
             static const AkUniqueID GROUP = 635115884U;
@@ -107,6 +119,12 @@ namespace AK
         } // namespace MUSIC_PROGRESS
 
     } // namespace SWITCHES
+
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID PLAYER_BUS_VOLUME = 688725058U;
+        static const AkUniqueID TITAN_BUS_VOLUME = 419602667U;
+    } // namespace GAME_PARAMETERS
 
     namespace BANKS
     {
