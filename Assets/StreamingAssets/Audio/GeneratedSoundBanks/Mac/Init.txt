@@ -1,3 +1,15 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	635115884	TitanState			\Default Work Unit\TitanState	
+	3285234865	PlayerState			\Default Work Unit\PlayerState	
+
+State	ID	Name	State Group			Notes
+	748895195	None	TitanState			
+	3775854796	TitanAlive	TitanState			
+	3970465383	TitanDead	TitanState			
+	748895195	None	PlayerState			
+	2356585300	PlayerDead	PlayerState			
+	2557321869	PlayerAlive	PlayerState			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	309309195	2DAmbience			\Default Work Unit\Master Audio Bus\AmbientMaster\2DAmbience	
 	650398475	TitanMaster			\Default Work Unit\Master Audio Bus\TitanMaster	

@@ -523,7 +523,21 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0
+        functionName: Play_titan_sword_attack_charge
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.50831354
+        functionName: Play_titan_sword_attack_hit
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3a38ffdabff6744a7bdec3b947a3237d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

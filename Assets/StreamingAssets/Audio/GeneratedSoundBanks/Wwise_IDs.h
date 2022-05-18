@@ -34,6 +34,8 @@ namespace AK
         static const AkUniqueID PLAY_PLAYER_VOC_TAKE_HIT = 3730000400U;
         static const AkUniqueID PLAY_PLAYER_VOC_TAKE_HIT_SOFT = 2806366063U;
         static const AkUniqueID PLAY_TEST_SOUND = 3211564518U;
+        static const AkUniqueID PLAY_TITAN_ENGINE_LP = 2201492632U;
+        static const AkUniqueID PLAY_TITAN_ENGINE_STOP = 4256576244U;
         static const AkUniqueID PLAY_TITAN_FS = 487948562U;
         static const AkUniqueID PLAY_TITAN_FS_L = 2390231879U;
         static const AkUniqueID PLAY_TITAN_FS_R = 2390231897U;
@@ -42,6 +44,8 @@ namespace AK
         static const AkUniqueID PLAY_TITAN_LANTERN_CHARGE = 2713252876U;
         static const AkUniqueID PLAY_TITAN_MISSILE_EXPLODE = 3892312811U;
         static const AkUniqueID PLAY_TITAN_MISSILE_SHOT = 3166948436U;
+        static const AkUniqueID PLAY_TITAN_SWORD_ATTACK_CHARGE = 3830687480U;
+        static const AkUniqueID PLAY_TITAN_SWORD_ATTACK_HIT = 1250704139U;
         static const AkUniqueID PLAY_TITAN_TRAMPLE_FOOT = 1282535387U;
         static const AkUniqueID PLAY_TITAN_TRAMPLE_VOC = 3060992713U;
         static const AkUniqueID PLAY_TITAN_VOC_GENERIC = 3131183803U;
@@ -49,6 +53,34 @@ namespace AK
         static const AkUniqueID STOP_COMBAT_MUSIC = 970928956U;
         static const AkUniqueID STOP_TITAN_MISSILE_LOOP = 930574960U;
     } // namespace EVENTS
+
+    namespace STATES
+    {
+        namespace PLAYERSTATE
+        {
+            static const AkUniqueID GROUP = 3285234865U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PLAYERALIVE = 2557321869U;
+                static const AkUniqueID PLAYERDEAD = 2356585300U;
+            } // namespace STATE
+        } // namespace PLAYERSTATE
+
+        namespace TITANSTATE
+        {
+            static const AkUniqueID GROUP = 635115884U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID TITANALIVE = 3775854796U;
+                static const AkUniqueID TITANDEAD = 3970465383U;
+            } // namespace STATE
+        } // namespace TITANSTATE
+
+    } // namespace STATES
 
     namespace SWITCHES
     {

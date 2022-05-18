@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3267286823">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3590258114">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="3721288459">
+		<SoundBank Id="3161908922" Language="SFX" Hash="1136944020">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -868,6 +868,26 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2201492632" Name="Play_titan_engine_lp" ObjectPath="\Events\Titan\TitanEngine\Play_titan_engine_lp" MaxAttenuation="1000." DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="819182001" Language="SFX">
+							<ShortName>sfx-titan-engine-loop.wav</ShortName>
+							<Path>SFX/sfx-titan-engine-loop_D79FB2B7.wem</Path>
+						</File>
+						<File Id="931710335" Language="SFX">
+							<ShortName>sfx-titan-engine-start.wav</ShortName>
+							<Path>SFX/sfx-titan-engine-start_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4256576244" Name="Play_titan_engine_stop" ObjectPath="\Events\Titan\TitanEngine\Play_titan_engine_stop" MaxAttenuation="1000." DurationType="OneShot" DurationMin="1.105692" DurationMax="1.105692">
+					<IncludedMemoryFiles>
+						<File Id="508098687" Language="SFX">
+							<ShortName>sfx-titan-engine-stop.wav</ShortName>
+							<Path>SFX/sfx-titan-engine-stop_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="487948562" Name="Play_titan_fs" ObjectPath="\Events\Titan\TitanLocomotion\TitanFS\Play_titan_fs" MaxAttenuation="5000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
 					<IncludedMemoryFiles>
 						<File Id="149432959" Language="SFX">
@@ -1017,6 +1037,30 @@
 					<AuxBusSends>
 						<AuxBus Id="144697359" Name="Outdoor" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor"/>
 					</AuxBusSends>
+				</Event>
+				<Event Id="3830687480" Name="Play_titan_sword_attack_charge" ObjectPath="\Events\Titan\TitanSwordAttack\Play_titan_sword_attack_charge" MaxAttenuation="5000." DurationType="OneShot" DurationMin="4.517324" DurationMax="4.517324">
+					<IncludedMemoryFiles>
+						<File Id="666562206" Language="SFX">
+							<ShortName>sfx-titan-sword-attack-charge-siren.wav</ShortName>
+							<Path>SFX/sfx-titan-sword-attack-charge-siren_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1250704139" Name="Play_titan_sword_attack_hit" ObjectPath="\Events\Titan\TitanSwordAttack\Play_titan_sword_attack_hit" MaxAttenuation="5000." DurationType="OneShot" DurationMin="4.124677" DurationMax="4.90298">
+					<IncludedMemoryFiles>
+						<File Id="549618562" Language="SFX">
+							<ShortName>sfx-titan-sword-attack-hit_2.wav</ShortName>
+							<Path>SFX/sfx-titan-sword-attack-hit_2_10C4C929.wem</Path>
+						</File>
+						<File Id="630232987" Language="SFX">
+							<ShortName>sfx-titan-sword-attack-hit_1.wav</ShortName>
+							<Path>SFX/sfx-titan-sword-attack-hit_1_10C4C929.wem</Path>
+						</File>
+						<File Id="859028343" Language="SFX">
+							<ShortName>sfx-titan-sword-attack-hit.wav</ShortName>
+							<Path>SFX/sfx-titan-sword-attack-hit_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="1282535387" Name="Play_titan_trample_foot" ObjectPath="\Events\Titan\TitanTrample\Play_titan_trample_foot" MaxAttenuation="5000." DurationType="OneShot" DurationMin="3.57746" DurationMax="5.247766">
 					<IncludedMemoryFiles>
