@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealthPoint: 100
+  RecoverySpeed: 0
+  RecoveryCD: 3
   _addHealthPointEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -68,6 +70,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _damageTakenEvents:
+    m_PersistentCalls:
+      m_Calls: []
   _deathEvents:
     m_PersistentCalls:
       m_Calls:
@@ -611,7 +616,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &9177709923339321642
