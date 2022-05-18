@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 8bd613bd4fdccf45a54520a04ea11cfa
     GuidInternal: 
-    m_lastTime: -8585500953056705823
+    m_lastTime: -8585487088437687152
     List:
     - name: 2DAmbience
       guid: ab2dae2fec0c344c82616f5c3f472ccd
@@ -803,7 +803,7 @@ MonoBehaviour:
     ParentPath: Events/Player/PlayerLocomotion/PlayerJump
     guid: 59d9d46e4afbcd48909bd62df24fbabc
     GuidInternal: 
-    m_lastTime: -8585561550370346559
+    m_lastTime: -8585487124259210375
     List:
     - name: Play_player_jump
       guid: 3d86d02061a1c94c980e79ebc57153e5
@@ -858,7 +858,7 @@ MonoBehaviour:
     ParentPath: Events/Player/PlayerVoc
     guid: 94a88ea374b4394295b9ecbe39664788
     GuidInternal: 
-    m_lastTime: -8585492316379488543
+    m_lastTime: -8585487124258758247
     List:
     - name: Play_player_voc_attack
       guid: 35569d57c02bfe4c9aa9296b109f6eec
@@ -919,7 +919,7 @@ MonoBehaviour:
       Path: Events/Player/PlayerVoc/Play_player_voc_grapple_pull
       maxAttenuation: 50
       maxDuration: 0.541651
-      minDuration: 0.46608
+      minDuration: 0
     - name: Play_player_voc_jump
       guid: 96ae69216af70149bbb7cc8fecab2438
       id: 3830010507
@@ -991,8 +991,64 @@ MonoBehaviour:
     ParentPath: Events/Titan
     guid: ea1f2569fa752f4eb51884dd2111927e
     GuidInternal: 
-    m_lastTime: -8585523673436614725
+    m_lastTime: -8585487279937511987
     List: []
+  - PhysicalPath: Events/TitanEngine.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanEngine
+      ObjectType: 12
+      guid: 75dc8a9a9ec8ba4cbe0b81720ea68019
+    ParentPath: Events/Titan/TitanEngine
+    guid: 75dc8a9a9ec8ba4cbe0b81720ea68019
+    GuidInternal: 
+    m_lastTime: -8585487278379171467
+    List:
+    - name: Play_titan_engine_lp
+      guid: 0466be9caad3464db6424fbd94e5a2cc
+      id: 2201492632
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanEngine
+        ObjectType: 12
+        guid: 75dc8a9a9ec8ba4cbe0b81720ea68019
+      - ElementName: Play_titan_engine_lp
+        ObjectType: 3
+        guid: 0466be9caad3464db6424fbd94e5a2cc
+      Path: Events/Titan/TitanEngine/Play_titan_engine_lp
+      maxAttenuation: 1000
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_titan_engine_stop
+      guid: aab27d9cf9d87144a247fde6e1551683
+      id: 4256576244
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanEngine
+        ObjectType: 12
+        guid: 75dc8a9a9ec8ba4cbe0b81720ea68019
+      - ElementName: Play_titan_engine_stop
+        ObjectType: 3
+        guid: aab27d9cf9d87144a247fde6e1551683
+      Path: Events/Titan/TitanEngine/Play_titan_engine_stop
+      maxAttenuation: 1000
+      maxDuration: 1.105692
+      minDuration: 1.105692
   - PhysicalPath: Events/TitanFS.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1098,7 +1154,7 @@ MonoBehaviour:
     ParentPath: Events/Titan/TitanLocomotion/TitanLanternAttack
     guid: 5f56d661dc0e0b48bd08a153d1029d0f
     GuidInternal: 
-    m_lastTime: -8585497623283703030
+    m_lastTime: -8585487254754368796
     List:
     - name: Play_titan_lantern_attack
       guid: a884d7985f1023498775b41974a0c28a
@@ -1120,7 +1176,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: a884d7985f1023498775b41974a0c28a
       Path: Events/Titan/TitanLocomotion/TitanLanternAttack/Play_titan_lantern_attack
-      maxAttenuation: 3500
+      maxAttenuation: 4000
       maxDuration: 11.503583
       minDuration: 11.503583
     - name: Play_titan_lantern_attack_seq
@@ -1143,7 +1199,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 05e142761cfdb4439edbfa8842301277
       Path: Events/Titan/TitanLocomotion/TitanLanternAttack/Play_titan_lantern_attack_seq
-      maxAttenuation: 3500
+      maxAttenuation: 4000
       maxDuration: 15.403584
       minDuration: 15.403584
     - name: Play_titan_lantern_charge
@@ -1166,7 +1222,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 5e5eb7d15ae1464797e2d6f2ed442848
       Path: Events/Titan/TitanLocomotion/TitanLanternAttack/Play_titan_lantern_charge
-      maxAttenuation: 3500
+      maxAttenuation: 4000
       maxDuration: 5.00975
       minDuration: 5.00975
   - PhysicalPath: Events/TitanLocomotion.wwu
@@ -1261,6 +1317,62 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+  - PhysicalPath: Events/TitanSwordAttack.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanSwordAttack
+      ObjectType: 12
+      guid: c11b526b8b434849b50134235e3a429c
+    ParentPath: Events/Titan/TitanSwordAttack
+    guid: c11b526b8b434849b50134235e3a429c
+    GuidInternal: 
+    m_lastTime: -8585487279937136695
+    List:
+    - name: Play_titan_sword_attack_charge
+      guid: ca1d359b4f7b034281861732756def15
+      id: 3830687480
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanSwordAttack
+        ObjectType: 12
+        guid: c11b526b8b434849b50134235e3a429c
+      - ElementName: Play_titan_sword_attack_charge
+        ObjectType: 3
+        guid: ca1d359b4f7b034281861732756def15
+      Path: Events/Titan/TitanSwordAttack/Play_titan_sword_attack_charge
+      maxAttenuation: 5000
+      maxDuration: 4.517324
+      minDuration: 4.517324
+    - name: Play_titan_sword_attack_hit
+      guid: 7bd425318edd5744bd7fa08e9afa7380
+      id: 1250704139
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanSwordAttack
+        ObjectType: 12
+        guid: c11b526b8b434849b50134235e3a429c
+      - ElementName: Play_titan_sword_attack_hit
+        ObjectType: 3
+        guid: 7bd425318edd5744bd7fa08e9afa7380
+      Path: Events/Titan/TitanSwordAttack/Play_titan_sword_attack_hit
+      maxAttenuation: 5000
+      maxDuration: 4.90298
+      minDuration: 4.124677
   - PhysicalPath: Events/TitanTrample.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1365,8 +1477,36 @@ MonoBehaviour:
     ParentPath: Game Parameters/Default Work Unit
     guid: 3fa782341f65e84babaf969b9352ad0e
     GuidInternal: 
-    m_lastTime: -8585583922432760862
-    List: []
+    m_lastTime: -8585487110766527128
+    List:
+    - name: Player_Bus_Volume
+      guid: d2dda9d6c7efab43b16152a557a70f5f
+      id: 688725058
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3fa782341f65e84babaf969b9352ad0e
+      - ElementName: Player_Bus_Volume
+        ObjectType: 13
+        guid: d2dda9d6c7efab43b16152a557a70f5f
+      Path: Game Parameters/Default Work Unit/Player_Bus_Volume
+    - name: Titan_Bus_Volume
+      guid: 837012d64724da419d13b03882c5bda8
+      id: 419602667
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3fa782341f65e84babaf969b9352ad0e
+      - ElementName: Titan_Bus_Volume
+        ObjectType: 13
+        guid: 837012d64724da419d13b03882c5bda8
+      Path: Game Parameters/Default Work Unit/Titan_Bus_Volume
   StateWwu:
   - PhysicalPath: States/Default Work Unit.wwu
     PathAndIcons:
@@ -1379,8 +1519,206 @@ MonoBehaviour:
     ParentPath: States/Default Work Unit
     guid: f13926d85614f14191e2123aed1631f5
     GuidInternal: 
-    m_lastTime: -8585583922432669904
-    List: []
+    m_lastTime: -8585487088436916597
+    List:
+    - name: PlayerState
+      guid: dde9b230cbeaeb46b5c95d80ba2d1adc
+      id: 3285234865
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: f13926d85614f14191e2123aed1631f5
+      - ElementName: PlayerState
+        ObjectType: 9
+        guid: dde9b230cbeaeb46b5c95d80ba2d1adc
+      Path: States/Default Work Unit/PlayerState
+      values:
+      - name: None
+        guid: 166755bc89004940b562587ecdf7c5b6
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: PlayerState
+          ObjectType: 9
+          guid: dde9b230cbeaeb46b5c95d80ba2d1adc
+        - ElementName: None
+          ObjectType: 8
+          guid: 166755bc89004940b562587ecdf7c5b6
+      - name: PlayerAlive
+        guid: 4ab97b50b723ec43878e1d8f687f0990
+        id: 2557321869
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: PlayerState
+          ObjectType: 9
+          guid: dde9b230cbeaeb46b5c95d80ba2d1adc
+        - ElementName: PlayerAlive
+          ObjectType: 8
+          guid: 4ab97b50b723ec43878e1d8f687f0990
+      - name: PlayerDead
+        guid: 9e5d028538d699499b73bb07ec08fafd
+        id: 2356585300
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: PlayerState
+          ObjectType: 9
+          guid: dde9b230cbeaeb46b5c95d80ba2d1adc
+        - ElementName: PlayerDead
+          ObjectType: 8
+          guid: 9e5d028538d699499b73bb07ec08fafd
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Slomo
+      guid: a1a52e0e8f92504b880d46bdc6641ea3
+      id: 4274655655
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: f13926d85614f14191e2123aed1631f5
+      - ElementName: Slomo
+        ObjectType: 9
+        guid: a1a52e0e8f92504b880d46bdc6641ea3
+      Path: States/Default Work Unit/Slomo
+      values:
+      - name: None
+        guid: 1881dc298e71ee4ba143cd8434f5cb34
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: Slomo
+          ObjectType: 9
+          guid: a1a52e0e8f92504b880d46bdc6641ea3
+        - ElementName: None
+          ObjectType: 8
+          guid: 1881dc298e71ee4ba143cd8434f5cb34
+      - name: SlomoOff
+        guid: 216a82c12530d643b69d1c76cf173a30
+        id: 3568539374
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: Slomo
+          ObjectType: 9
+          guid: a1a52e0e8f92504b880d46bdc6641ea3
+        - ElementName: SlomoOff
+          ObjectType: 8
+          guid: 216a82c12530d643b69d1c76cf173a30
+      - name: SlomoOn
+        guid: 90309eea02b1f94ba812e52e3ab1283d
+        id: 1603814480
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: Slomo
+          ObjectType: 9
+          guid: a1a52e0e8f92504b880d46bdc6641ea3
+        - ElementName: SlomoOn
+          ObjectType: 8
+          guid: 90309eea02b1f94ba812e52e3ab1283d
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: TitanState
+      guid: b0a53846583fa24082a83ae1462fca83
+      id: 635115884
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: f13926d85614f14191e2123aed1631f5
+      - ElementName: TitanState
+        ObjectType: 9
+        guid: b0a53846583fa24082a83ae1462fca83
+      Path: States/Default Work Unit/TitanState
+      values:
+      - name: None
+        guid: 8cc39b9dcd449543a4466bc75a739f88
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: TitanState
+          ObjectType: 9
+          guid: b0a53846583fa24082a83ae1462fca83
+        - ElementName: None
+          ObjectType: 8
+          guid: 8cc39b9dcd449543a4466bc75a739f88
+      - name: TitanAlive
+        guid: aeae4039b4deb345be39c93f7b831d15
+        id: 3775854796
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: TitanState
+          ObjectType: 9
+          guid: b0a53846583fa24082a83ae1462fca83
+        - ElementName: TitanAlive
+          ObjectType: 8
+          guid: aeae4039b4deb345be39c93f7b831d15
+      - name: TitanDead
+        guid: 94060a32a98f9741b0d9ac4b8517bf8d
+        id: 3970465383
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: f13926d85614f14191e2123aed1631f5
+        - ElementName: TitanState
+          ObjectType: 9
+          guid: b0a53846583fa24082a83ae1462fca83
+        - ElementName: TitanDead
+          ObjectType: 8
+          guid: 94060a32a98f9741b0d9ac4b8517bf8d
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches/Default Work Unit.wwu
     PathAndIcons:
@@ -1522,8 +1860,8 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8585583922432645473
     List: []
-  ExpandedFileSystemItemIds: 020000001c0000001d0000002200000025000000290000002c000000
-  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000b0000000c0000000e0000000f000000110000001200000013000000140000001700000018000000190000001c0000001d0000002200000033000000360000004b0000004c000000d0030000
+  ExpandedFileSystemItemIds: 01000000020000000500000006000000070000000b0000000c0000000e0000000f00000011000000120000001300000014000000150000001700000018000000190000001c0000001d0000001f00000022000000330000003600000037000000490000004b0000004c000000d0030000
+  ExpandedWaapiItemIds: 01000000020000000500000006000000070000000c00000011000000120000001300000014000000160000001700000018000000190000001c0000001d0000002200000033000000360000004b0000004c00000056000000d0030000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
