@@ -7,6 +7,9 @@ public class Laser : MonoBehaviour
     public bool isAiming { get; private set; }
 
     [SerializeField]
+    private GameObject _laserEye;
+
+    [SerializeField]
     private Transform _shootPoint;
 
     [SerializeField]
@@ -40,6 +43,7 @@ public class Laser : MonoBehaviour
 
     private  IEnumerator ShootLaser()
     {
+        _laserEye.SetActive(true);
 
         //Aim
         isAiming = true;
@@ -62,7 +66,7 @@ public class Laser : MonoBehaviour
         isAiming = false;
 
         yield return new WaitForSeconds(_interval);
-        _shootPoint.LookAt(_laserTrackTarget);
+        Vector3 shootTarget = _laserTrackTarget.position;
 
         timer = _shootTime;
 
@@ -70,9 +74,12 @@ public class Laser : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
+            _shootPoint.LookAt(shootTarget);
             _hitbox.localScale = Vector3.one;
             yield return new WaitForFixedUpdate();
         }
         _hitbox.localScale = Vector3.zero;
+
+        _laserEye.SetActive(false);
     }
 }
