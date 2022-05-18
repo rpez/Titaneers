@@ -20,7 +20,7 @@
 				<AuxBus Id="3545700988" Name="Reverbs" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs"/>
 			</IncludedAuxBusses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2949773016">
+		<SoundBank Id="3161908922" Language="SFX" Hash="2864033090">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -740,7 +740,7 @@
 						<ActionPostEventEntry Id="970928956" Name="Stop_combat_music" ObjectPath="\Events\Music\Stop_combat_music"/>
 					</ActionPostEvent>
 				</Event>
-				<Event Id="1641970538" Name="Play_player_voc_grapple_pull" ObjectPath="\Events\Player\PlayerVoc\Play_player_voc_grapple_pull" MaxAttenuation="50." DurationType="OneShot" DurationMin="0.46608" DurationMax="0.541651">
+				<Event Id="1641970538" Name="Play_player_voc_grapple_pull" ObjectPath="\Events\Player\PlayerVoc\Play_player_voc_grapple_pull" MaxAttenuation="50." DurationType="OneShot" DurationMin="0." DurationMax="0.541651">
 					<IncludedMemoryFiles>
 						<File Id="45768578" Language="SFX">
 							<ShortName>sfx_player_voc_effort_3.wav</ShortName>

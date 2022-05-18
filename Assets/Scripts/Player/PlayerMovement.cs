@@ -35,6 +35,9 @@ using UnityEngine.VFX;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+   public string PlayerJump = "Play_player_jump";
+
     [Header("Assign in editor")]
     public Transform PlayerCamera;
     public Transform Orientation;
@@ -259,10 +262,13 @@ public class PlayerMovement : MonoBehaviour
         _controls = new PlayerControls();
         _controlMapping = _controls.GroundMovement;
         _rigidbody = GetComponent<Rigidbody>();
+        
     }
 
     void Start()
     {
+        AkSoundEngine.RegisterGameObj(gameObject);
+
         _collider = GetComponent<CapsuleCollider>();
         _playerHeight = _collider.height;
         _defaultCameraPostion = PlayerCamera.localPosition;
@@ -475,12 +481,16 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         if (_grounded && _readyToJump)
+            
         {
             _readyToJump = false;
 
             //Add jump forces
+            Debug.Log("Sound should play");
+            AkSoundEngine.PostEvent(PlayerJump, gameObject);
             _rigidbody.AddForce(Vector2.up * JumpForce * 1.5f);
             _rigidbody.AddForce(_normalVector * JumpForce * 0.5f);
+            
 
             //If jumping while falling, reset y velocity.
             Vector3 vel = _rigidbody.velocity;
@@ -490,6 +500,8 @@ public class PlayerMovement : MonoBehaviour
                 _rigidbody.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
 
             Invoke(nameof(ResetJump), _jumpCooldown);
+
+            
         }
     }
 

@@ -13,7 +13,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     public string Breathe = "Play_player_breathe";
 
     public string VocAttack = "Play_player_voc_attack";
-    public string VocJump = "Play_player_voc_jump";
+    
     public string VocTakeHit = "Play_player_voc_take_hit";
     public string VocTakeHitSoft = "Play_player_voc_take_hit_soft";
     public string VocDeath = "Play_player_voc_death";
@@ -66,12 +66,7 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     }
 
-    void Play_player_voc_jump()
-    {
-        if (Debug_Enabled) { Debug.Log("Player voc jump"); }
-        AkSoundEngine.PostEvent(VocJump, gameObject);
 
-    }
 
     void Play_player_voc_grapple_pull()
     {
