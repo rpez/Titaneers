@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
     private UnityEvent _deathEvents;
 
     private float _damageTakenTimer;
-    private void Start()
+    private void OnEnable()
     {
         _currentHealthPoint = _maxHealthPoint;
     }

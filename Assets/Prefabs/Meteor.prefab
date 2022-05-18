@@ -4958,7 +4958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 200
-  _explosionPrefab: {fileID: 0}
+  _explosionPrefab: {fileID: 1134992345354583907, guid: 740b5800393b2474996d3ff9a0570c57, type: 3}
   OnExplode:
     m_PersistentCalls:
       m_Calls: []

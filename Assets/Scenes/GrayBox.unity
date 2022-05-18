@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.390806, g: 1.4183344, b: 1.4033499, a: 1}
+  m_IndirectSpecularColor: {r: 1.4647121, g: 1.505064, b: 1.5039711, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -187,6 +187,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1204075815, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 41
+      objectReference: {fileID: 0}
     - target: {fileID: 1235589519, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
       propertyPath: Titan
       value: 
@@ -195,6 +199,10 @@ PrefabInstance:
       propertyPath: TitanMat
       value: 
       objectReference: {fileID: 2097384583}
+    - target: {fileID: 1235589519, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
+      propertyPath: TitanSpawnTimer
+      value: 
+      objectReference: {fileID: 207648583}
     - target: {fileID: 4930662339800858349, guid: 465404ce760845f4cbe28a8c6de7ba2f, type: 3}
       propertyPath: m_Name
       value: PowerUpSpawner (1)
@@ -273,7 +281,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5846
+  m_Name: pb_Mesh-658168
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -451,6 +459,36 @@ MonoBehaviour:
   m_Events:
     m_Signals: []
     m_Events: []
+--- !u!114 &207648583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207648577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738d530cef0000c488d7d9d8d2dc5826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _time: 1.2
+  _activateOnAwake: 0
+  _autoRestart: 0
+  _CountZeroEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 866452971}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &240448404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1045,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5874
+  m_Name: pb_Mesh-658196
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1478,7 +1516,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5888
+  m_Name: pb_Mesh-658210
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6486,7 +6524,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5860
+  m_Name: pb_Mesh-658182
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6651,18 +6689,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1350924253, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _serializedBlackboard
+      value: '{"_variables":{"target":{"_propertyPath":"TitanSensor._target","_name":"target","_id":"870f5f68-6474-4388-90ff-09ec05565032","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"transform":{"_value":1,"_name":"transform","_id":"1af787e3-61f6-4444-8721-8d61118397ba","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"attackingRange":{"_value":600.0,"_name":"attackingRange","_id":"85bdacef-c35c-484e-9e94-60df3f8b99a8","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"animator":{"_value":2,"_name":"animator","_id":"15654e1a-2817-40f5-8958-fe9030deb8f6","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Animator,
+        UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"HorizontalDistance":{"_propertyPath":"TitanSensor.HorizontalDistance","_name":"HorizontalDistance","_id":"6ee2db6e-7261-4685-a461-ffe6ed68034e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"VerticalDistance":{"_propertyPath":"TitanSensor.VerticalDistance","_name":"VerticalDistance","_id":"aa0e04c7-f829-4261-a232-8eb870e65605","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"DirectionAngle":{"_propertyPath":"TitanSensor.DirectionAngle","_name":"DirectionAngle","_id":"43d08ab7-7a19-41cc-9afa-2c50da420bf2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentHealthPoint":{"_propertyPath":"Health.CurrentHealthPoint","_name":"CurrentHealthPoint","_id":"bd8eacaa-e28a-4233-babd-c1af5a51b7e3","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"SwordExist":{"_propertyPath":"TitanBehavior.SwordExist","_name":"SwordExist","_id":"60163a8b-dd37-4f27-b1e4-560ec3208f10","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"MoveSpeed":{"_propertyPath":"TitanMovement.MoveSpeed","_name":"MoveSpeed","_id":"ba5bbfee-8c3c-40be-a5b6-fec0334b7290","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentTimer":{"_propertyPath":"Timer.CurrentTimer","_name":"CurrentTimer","_id":"686b8408-f4cd-43ec-a987-4a61ece31d46","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"SwordAttackAngle":{"_value":60.0,"_name":"SwordAttackAngle","_id":"fec9864f-ee72-4483-bd47-e0b3827d4c59","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _serializedVariables.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _serializedVariables.Array.data[11]._json
+      value: '{"_value":60.0,"_name":"SwordAttackAngle","_id":"fec9864f-ee72-4483-bd47-e0b3827d4c59","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
       objectReference: {fileID: 0}
     - target: {fileID: 1633277555, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 2496024928203559716}
-    - target: {fileID: 157068560780032646, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: _randomAreaWidth
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 696950573917220970, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: solver.target
       value: 
@@ -6673,16 +6728,8 @@ PrefabInstance:
       objectReference: {fileID: 1391304334}
     - target: {fileID: 1555666948369046978, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_VersionIndex
-      value: 318
+      value: 321
       objectReference: {fileID: 0}
-    - target: {fileID: 4947085955012508035, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: Chest
-      value: 
-      objectReference: {fileID: 1350924252}
-    - target: {fileID: 4947085955012508035, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-      propertyPath: Sword
-      value: 
-      objectReference: {fileID: 1350924251}
     - target: {fileID: 5764622490823904411, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -6745,38 +6792,6 @@ PrefabInstance:
       objectReference: {fileID: 1457485732}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
---- !u!1 &1350924251 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6081299937449922351, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-  m_PrefabInstance: {fileID: 1350924250}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1350924252 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8864567067815190846, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
-  m_PrefabInstance: {fileID: 1350924250}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1350924253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350924251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c8b323742c1a4ff38a94e29d20bf2b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 1
-  isStaticObject: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!1 &1367897560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4758802823799522771, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
@@ -6788,7 +6803,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-8008
+  m_Name: pb_Mesh-17878
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7158,7 +7173,7 @@ PrefabInstance:
       objectReference: {fileID: 1309198930}
     - target: {fileID: 7173342474716959316, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_VersionIndex
-      value: 1099
+      value: 1102
       objectReference: {fileID: 0}
     - target: {fileID: 7173342474716959320, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_Mesh
@@ -7174,7 +7189,7 @@ PrefabInstance:
       objectReference: {fileID: 1748868046}
     - target: {fileID: 7173342474850258027, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_VersionIndex
-      value: 2243
+      value: 2246
       objectReference: {fileID: 0}
     - target: {fileID: 7173342474850258028, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_Mesh
@@ -7190,7 +7205,7 @@ PrefabInstance:
       objectReference: {fileID: 185582658}
     - target: {fileID: 7173342475128655291, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_VersionIndex
-      value: 884
+      value: 887
       objectReference: {fileID: 0}
     - target: {fileID: 7173342475128655292, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_Mesh
@@ -7214,7 +7229,7 @@ PrefabInstance:
       objectReference: {fileID: 679674861}
     - target: {fileID: 7173342475956338494, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_VersionIndex
-      value: 3826
+      value: 3829
       objectReference: {fileID: 0}
     - target: {fileID: 7173342476447140487, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_Mesh
@@ -7222,7 +7237,7 @@ PrefabInstance:
       objectReference: {fileID: 775500813}
     - target: {fileID: 7173342476447140487, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_VersionIndex
-      value: 925
+      value: 928
       objectReference: {fileID: 0}
     - target: {fileID: 7173342476447140488, guid: 8ba51400c84ed634faf946f931d847f8, type: 3}
       propertyPath: m_Mesh
@@ -7251,7 +7266,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5902
+  m_Name: pb_Mesh-658224
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -8,6 +8,8 @@ public class MeteorSpawner : MonoBehaviour
     public GameObject Vfx;
     public Transform StartPoint;
     public Transform EndPoint;
+
+    public Timer TitanSpawnTimer;
     public GameObject Titan;
     public Renderer TitanMat;
     // Start is called before the first frame update
@@ -17,7 +19,8 @@ public class MeteorSpawner : MonoBehaviour
         var starPos = StartPoint.position;
         GameObject objVfx = Instantiate(Vfx, starPos, Quaternion.identity);
         MeteorMove meteor = objVfx.GetComponent<MeteorMove>();
-        meteor.OnExplode.AddListener(OnMeteorExplode);
+        //meteor.OnExplode.AddListener(OnMeteorExplode);
+        meteor.OnExplode.AddListener(TitanSpawnTimer.Restart);
         var endPos = EndPoint.position;
         RotateTo(objVfx, endPos);
     }
