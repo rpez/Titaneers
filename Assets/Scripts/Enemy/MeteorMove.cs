@@ -27,7 +27,8 @@ public class MeteorMove : MonoBehaviour
     {
         _speed = 0;
         ContactPoint contact = collision.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        //Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+        Quaternion rot = Quaternion.identity;
         Vector3 pos = contact.point;
 
         if (_explosionPrefab)

@@ -11,6 +11,9 @@ public class TitanMovement : MonoBehaviour
     private void OnEnable()
     {
         EventManager.FreezeFrame += FreezeForSeconds;
+
+        _agent = GetComponent<NavMeshAgent>();
+        _isStopped = true;
     }
 
     private void OnDisable()
@@ -66,12 +69,6 @@ public class TitanMovement : MonoBehaviour
                 _agent.updateRotation = true;
             }
         }
-    }
-
-    private void Start()
-    {
-        _agent = GetComponent<NavMeshAgent>();
-        _isStopped = true;
     }
 
     public void SetDestination(Vector3 destination)
