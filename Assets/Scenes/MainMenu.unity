@@ -2431,7 +2431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ef7d0a59be5fa45b3bf9d2b2d44631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 423120958}
   MouseSensitivityButtonText: {fileID: 852433133}
 --- !u!1 &1367170810
 GameObject:
@@ -3535,7 +3534,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: GrayBox
+          m_StringArgument: Tutorial
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2029687642
