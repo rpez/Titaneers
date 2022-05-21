@@ -2683,7 +2683,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game design, programming, animation
+  m_text: Game design, programming, UI
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4b3989048137e24988df16a535c1ee0, type: 2}
   m_sharedMaterial: {fileID: -8193089276637303725, guid: b4b3989048137e24988df16a535c1ee0, type: 2}
