@@ -759,6 +759,24 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void LoadCheckpoint(Transform checkpoint)
+    {
+        transform.position = checkpoint.position;
+
+        Transform curParent = Orientation.transform.parent;
+        Orientation.transform.SetParent(null, true);
+        Orientation.LookAt(Vector3.forward * 1000f);
+        Orientation.SetParent(curParent, true);
+        curParent = PlayerAvatar.transform.parent;
+        PlayerAvatar.transform.SetParent(null, true);
+        PlayerAvatar.transform.LookAt(Vector3.forward * 1000f);
+        PlayerAvatar.transform.SetParent(curParent, true);
+
+        transform.rotation = Quaternion.Euler(Vector3.forward);
+        _rigidbody.velocity = Vector3.zero;
+        Freeze(0.5f);
+    }
+
     public void SetMoveInputActive(bool active)
     {
         if (active)

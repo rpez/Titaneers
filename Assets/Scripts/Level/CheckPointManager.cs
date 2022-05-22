@@ -5,14 +5,13 @@ using UnityEngine;
 public class CheckPointManager : MonoBehaviour
 {
     [SerializeField]
-    private Transform _player;
+    private PlayerMovement _player;
     [SerializeField]
     private Transform _checkpoint;
 
     public void LoadCheckpoint()
     {
-        _player.position = _checkpoint.position;
-        _player.rotation = _checkpoint.rotation;
+        _player.LoadCheckpoint(_checkpoint);
     }
 
     public void UpdateCheckpoint(Transform newCheckPoint)
