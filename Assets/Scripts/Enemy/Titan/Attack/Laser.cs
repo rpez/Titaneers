@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    //the sound controller can be put here.
+    //public [Sound Controller Type] SoundContoller;
+
     public bool isAiming { get; private set; }
 
     [SerializeField]
@@ -47,6 +50,7 @@ public class Laser : MonoBehaviour
 
         //Aim
         isAiming = true;
+        //Sound: Laser start charging here
 
         float timer = _aimTime;
         while (timer > 0)
@@ -64,8 +68,11 @@ public class Laser : MonoBehaviour
         _lineRenderer.startWidth = _lineRenderer.endWidth = 0f;
         
         isAiming = false;
+        //Sound: Laser stop charging here
 
         yield return new WaitForSeconds(_interval);
+
+        //Sound: Laser attack start here
         Vector3 shootTarget = _laserTrackTarget.position;
 
         timer = _shootTime;
@@ -79,6 +86,7 @@ public class Laser : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         _hitbox.localScale = Vector3.zero;
+        //Sound: Laser attack start here
 
         _laserEye.SetActive(false);
     }

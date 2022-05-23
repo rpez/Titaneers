@@ -65,6 +65,7 @@ public class TitanBehavior : MonoBehaviour
     private void Start()
     {
         SwordExist = true;
+        StopBehavior = false;
     }
 
     private void Update()
