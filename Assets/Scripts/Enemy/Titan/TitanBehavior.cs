@@ -6,6 +6,7 @@ using RootMotion.FinalIK;
 public class TitanBehavior : MonoBehaviour
 {
     public bool SwordExist { get; set; }
+    public bool StopBehavior { get; set; }
 
     [SerializeField]
     private float _normalPlaySpeed;

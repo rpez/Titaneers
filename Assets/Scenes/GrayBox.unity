@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.4647064, g: 1.5050716, b: 1.503994, a: 1}
+  m_IndirectSpecularColor: {r: 1.4647121, g: 1.505064, b: 1.5039711, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6703,15 +6703,21 @@ PrefabInstance:
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"MoveSpeed":{"_propertyPath":"TitanMovement.MoveSpeed","_name":"MoveSpeed","_id":"ba5bbfee-8c3c-40be-a5b6-fec0334b7290","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentTimer":{"_propertyPath":"Timer.CurrentTimer","_name":"CurrentTimer","_id":"686b8408-f4cd-43ec-a987-4a61ece31d46","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"SwordAttackAngle":{"_value":60.0,"_name":"SwordAttackAngle","_id":"fec9864f-ee72-4483-bd47-e0b3827d4c59","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Stop":{"_propertyPath":"TitanBehavior.StopBehavior","_name":"Stop","_id":"94c575be-b570-4827-b71c-a8a3d94e08d0","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _serializedVariables.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
       propertyPath: _serializedVariables.Array.data[11]._json
       value: '{"_value":60.0,"_name":"SwordAttackAngle","_id":"fec9864f-ee72-4483-bd47-e0b3827d4c59","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350924252, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+      propertyPath: _serializedVariables.Array.data[12]._json
+      value: '{"_propertyPath":"TitanBehavior.StopBehavior","_name":"Stop","_id":"94c575be-b570-4827-b71c-a8a3d94e08d0","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
       objectReference: {fileID: 0}
     - target: {fileID: 1633277555, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
@@ -6803,7 +6809,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-332428
+  m_Name: pb_Mesh-283758
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7446,6 +7452,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b31eb548eccf444ab07fcde9c2259f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2085104712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4293620713577165773, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
+  m_PrefabInstance: {fileID: 1350924250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866452971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53f022cfb0cf7d4998cdeee894278b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &2097384583 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 49073745835764481, guid: 8243505f01707ab49b21ca0cf5706191, type: 3}
@@ -7601,7 +7618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.size
@@ -7609,7 +7626,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -7622,9 +7643,13 @@ PrefabInstance:
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 11500000, guid: 064a22b6ce732478ab51b95c591b4528, type: 3}
+      objectReference: {fileID: 2085104712}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
@@ -7641,7 +7666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: set_name
+      value: set_StopBehavior
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7673,7 +7698,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: TitanBehavior, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6420815478796252905, guid: 67aa12f51c76882468117c589ae37b8b, type: 3}
       propertyPath: _damageTakenEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
