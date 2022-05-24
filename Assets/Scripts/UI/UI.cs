@@ -20,6 +20,7 @@ public class UI : MonoBehaviour
     public GameObject WinningHint;
     public Image BloodScreen;
     public Image LowHealthHue;
+    public GameObject EscPanel;
 
     [SerializeField] private float _bloodScreenFadeSpeed = 0.1f;
     [SerializeField] private float _maxThreatDist;
@@ -267,6 +268,36 @@ public class UI : MonoBehaviour
             .AppendInterval(10.0f)
             .AppendCallback(() => SceneManager.LoadScene("MainMenu"));
     }
+
+    public void ToggleEscMenu()
+    {
+        if (EscPanel.activeSelf)
+        {
+            CloseEscMenu();
+        }
+        else
+        {
+            OpenEscMenu();
+        }
+    }
+
+    public void OpenEscMenu()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        EscPanel.SetActive(true);
+    }
+
+    public void CloseEscMenu()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        EscPanel.SetActive(false);
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     private IEnumerator Delay(float delay, Action callback)
     {
         yield return new WaitForSeconds(delay);

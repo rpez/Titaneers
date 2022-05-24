@@ -125,6 +125,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EscMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""19d7e23a-f1bb-4d33-97a1-156901a2213d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Guide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76a0d1a5-1b3f-4f6b-806a-3acb4661bd8e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EscMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -328,6 +348,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_GroundMovement_Restart = m_GroundMovement.FindAction("Restart", throwIfNotFound: true);
         m_GroundMovement_GrapplePull = m_GroundMovement.FindAction("GrapplePull", throwIfNotFound: true);
         m_GroundMovement_Guide = m_GroundMovement.FindAction("Guide", throwIfNotFound: true);
+        m_GroundMovement_EscMenu = m_GroundMovement.FindAction("EscMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -398,6 +419,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_GroundMovement_Restart;
     private readonly InputAction m_GroundMovement_GrapplePull;
     private readonly InputAction m_GroundMovement_Guide;
+    private readonly InputAction m_GroundMovement_EscMenu;
     public struct GroundMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -413,6 +435,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Restart => m_Wrapper.m_GroundMovement_Restart;
         public InputAction @GrapplePull => m_Wrapper.m_GroundMovement_GrapplePull;
         public InputAction @Guide => m_Wrapper.m_GroundMovement_Guide;
+        public InputAction @EscMenu => m_Wrapper.m_GroundMovement_EscMenu;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -455,6 +478,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Guide.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGuide;
                 @Guide.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGuide;
                 @Guide.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnGuide;
+                @EscMenu.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnEscMenu;
+                @EscMenu.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnEscMenu;
+                @EscMenu.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnEscMenu;
             }
             m_Wrapper.m_GroundMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -492,6 +518,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Guide.started += instance.OnGuide;
                 @Guide.performed += instance.OnGuide;
                 @Guide.canceled += instance.OnGuide;
+                @EscMenu.started += instance.OnEscMenu;
+                @EscMenu.performed += instance.OnEscMenu;
+                @EscMenu.canceled += instance.OnEscMenu;
             }
         }
     }
@@ -518,5 +547,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRestart(InputAction.CallbackContext context);
         void OnGrapplePull(InputAction.CallbackContext context);
         void OnGuide(InputAction.CallbackContext context);
+        void OnEscMenu(InputAction.CallbackContext context);
     }
 }
