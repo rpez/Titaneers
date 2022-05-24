@@ -23,15 +23,27 @@ public class TimeManager : MonoBehaviour
     private float _currentTimeScale;
     private float _freezeTime;
 
+    private bool _pollForInput;
+    private int _requiredKey;
+    private int[] _keyValues;
+    private bool[] _currentKeys;
+
     private void Awake()
     {
         _defaultFixedDeltaTime = Time.fixedDeltaTime;
         _postProcessingManager = GameObject.Find("Volumes").GetComponent<PostProcessingManager>();
+        _keyValues = (int[])System.Enum.GetValues(typeof(KeyCode));
+        _currentKeys = new bool[_keyValues.Length];
     }
 
     private void Update()
     {
         _currentTransitionTime += Time.unscaledDeltaTime;
+
+        if (_pollForInput)
+        {
+            
+        }
 
         if (_frozen)
         {
@@ -95,6 +107,16 @@ public class TimeManager : MonoBehaviour
         Time.timeScale = 0f;
         _frozen = true;
         _freezeTime = time;
+        _currentFreezetime = 0.0f;
+    }
+
+    public void StartConditionalFreeze(KeyCode key)
+    {
+        _currentTimeScale = Time.timeScale;
+        Time.timeScale = 0f;
+        _frozen = true;
+        _pollForInput = true;
+        _requiredKey = (int)key;
         _currentFreezetime = 0.0f;
     }
 
