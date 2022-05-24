@@ -3,7 +3,12 @@ guid: 32fd12f7291d329468c32bd252f424a7
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emissive
+    second: {fileID: 2100000, guid: c73f6d8181e8aad47a368bc42ee395b8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

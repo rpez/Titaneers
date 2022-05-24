@@ -171,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _pullVelocity;
     private float _currentPullSpeedScale;
     private Vector3 _pullDirection;
+    private Vector2 _mouseOffset;
 
     // Collects the floor surfaces touched last frame, used for detecting from which surface player jumps/falls
     private List<GameObject> _floorContactsLastFrame = new List<GameObject>();
@@ -541,9 +542,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mouse.current != null)
         {
-            var delta = Mouse.current.delta.ReadValue();// / 15.0f;
-            mouseX += delta.x;
-            mouseY += delta.y;
+            Vector2 delta = Mouse.current.delta.ReadValue();// / 15.0f;
+            mouseX += delta.x - _mouseOffset.x;
+            mouseY += delta.y - _mouseOffset.y;
         }
 
         mouseX *= MouseSensitivity * Time.unscaledDeltaTime;
@@ -757,6 +758,26 @@ public class PlayerMovement : MonoBehaviour
             gameObject.SetActive(false);
         }));
 
+    }
+
+    public void LoadCheckpoint(Transform checkpoint)
+    {
+        transform.position = checkpoint.position;
+
+        _mouseOffset = Mouse.current.delta.ReadValue();
+
+        Transform curParent = Orientation.transform.parent;
+        Orientation.transform.SetParent(null, true);
+        Orientation.LookAt(Vector3.forward * 1000f);
+        Orientation.SetParent(curParent, true);
+        curParent = PlayerAvatar.transform.parent;
+        PlayerAvatar.transform.SetParent(null, true);
+        PlayerAvatar.transform.LookAt(Vector3.forward * 1000f);
+        PlayerAvatar.transform.SetParent(curParent, true);
+
+        transform.rotation = Quaternion.Euler(Vector3.forward);
+        _rigidbody.velocity = Vector3.zero;
+        Freeze(0.5f);
     }
 
     public void SetMoveInputActive(bool active)
