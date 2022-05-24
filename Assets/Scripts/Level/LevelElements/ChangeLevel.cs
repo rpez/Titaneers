@@ -7,6 +7,7 @@ public class ChangeLevel : MonoBehaviour
 {
     public void Load(string levelName)
     {
+        SettingsData.Instance.SkipTutorial = true;
         SceneManager.LoadScene(levelName);
     }
 }

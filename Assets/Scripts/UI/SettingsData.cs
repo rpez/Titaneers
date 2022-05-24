@@ -7,6 +7,7 @@ public class SettingsData : MonoBehaviour
     public static SettingsData Instance;
 
     public float MouseSensitivity;
+    public bool SkipTutorial;
 
     void Awake()
     {
