@@ -761,6 +761,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void LoadCheckpoint(Transform checkpoint)
     {
+        Grapple.StopGrapple();
         transform.position = checkpoint.position;
 
         Transform curParent = Orientation.transform.parent;

@@ -420,7 +420,7 @@ public class GrapplingGun : MonoBehaviour
     /// <summary>
     /// Call whenever we want to stop a grapple
     /// </summary>
-    private void StopGrapple()
+    public void StopGrapple()
     {
         if (_launchRoutine != null) StopCoroutine(_launchRoutine);
         if (_grapplePoint != null) Destroy(_grapplePoint);
