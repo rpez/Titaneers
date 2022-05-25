@@ -127,6 +127,7 @@ public class TimeManager : MonoBehaviour
         ToggleTimeScale(0.01f, false);
         _pollForInput = false;
         _requiredKey = "";
+        _keyAction.Disable();
     }
 
     private void ResetFreeze()
