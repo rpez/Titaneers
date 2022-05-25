@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TimeManager : MonoBehaviour
 {
@@ -24,16 +25,15 @@ public class TimeManager : MonoBehaviour
     private float _freezeTime;
 
     private bool _pollForInput;
-    private int _requiredKey;
+    private string _requiredKey = "";
     private int[] _keyValues;
-    private bool[] _currentKeys;
+    private InputAction _keyAction;
 
     private void Awake()
     {
         _defaultFixedDeltaTime = Time.fixedDeltaTime;
         _postProcessingManager = GameObject.Find("Volumes").GetComponent<PostProcessingManager>();
         _keyValues = (int[])System.Enum.GetValues(typeof(KeyCode));
-        _currentKeys = new bool[_keyValues.Length];
     }
 
     private void Update()
@@ -42,7 +42,10 @@ public class TimeManager : MonoBehaviour
 
         if (_pollForInput)
         {
-            
+            _keyAction.performed += _ =>
+            {
+                StopConditionalFreeze();
+            };
         }
 
         if (_frozen)
@@ -81,7 +84,6 @@ public class TimeManager : MonoBehaviour
                 _outTransition = false;
                 Time.timeScale = 1f;
                 Time.fixedDeltaTime = _defaultFixedDeltaTime;
-                
             }
         }
     }
@@ -110,14 +112,21 @@ public class TimeManager : MonoBehaviour
         _currentFreezetime = 0.0f;
     }
 
-    public void StartConditionalFreeze(KeyCode key)
+    public void StartConditionalFreeze(string key)
     {
-        _currentTimeScale = Time.timeScale;
-        Time.timeScale = 0f;
-        _frozen = true;
+        ToggleTimeScale(0.01f, true);
         _pollForInput = true;
-        _requiredKey = (int)key;
+        _requiredKey = key;
         _currentFreezetime = 0.0f;
+        _keyAction = new InputAction(binding: key);
+        _keyAction.Enable();
+    }
+
+    public void StopConditionalFreeze()
+    {
+        ToggleTimeScale(0.01f, false);
+        _pollForInput = false;
+        _requiredKey = "";
     }
 
     private void ResetFreeze()
