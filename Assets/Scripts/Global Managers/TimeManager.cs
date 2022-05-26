@@ -94,7 +94,7 @@ public class TimeManager : MonoBehaviour
         _outTransition = !_inTransition;
         _targetScale = scale;
 
-        _currentTransitionTime = 0;
+        _currentTransitionTime = 1;
     }
 
     public void ImpactFrame(float time, Color color)
