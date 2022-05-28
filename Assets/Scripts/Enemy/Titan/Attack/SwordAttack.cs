@@ -28,6 +28,11 @@ public class SwordAttack : MonoBehaviour
         _corLock = false;
     }
 
+
+    private void Update()
+    {
+        //Debug.Log(_corLock);
+    }
     public IEnumerator SwordWave()
     {
         if (!_corLock)
@@ -50,7 +55,8 @@ public class SwordAttack : MonoBehaviour
                 //    );
                 Vector3 swordPos = pos + (transform.right * Random.Range(-_randomAreaWidth / 2, _randomAreaWidth / 2) + transform.forward * Mathf.Sqrt(Random.Range(0, 1)) * _randomAreaLength);
 
-                _swordPool.InitiateFromObjectPool(swordPos, transform.rotation);
+                ObjectPoolUnit u = _swordPool.InitiateFromObjectPool(swordPos, transform.rotation);
+                //Debug.Log(u + ":" + Time.realtimeSinceStartup);
 
                 yield return new WaitForSeconds(interval);
             }

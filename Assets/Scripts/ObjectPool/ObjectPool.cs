@@ -14,7 +14,6 @@ public class ObjectPool : MonoBehaviour
 
     public ObjectPoolUnit InitiateFromObjectPool(Vector3 position, Quaternion rotation, Transform parent = null)
     {
-        if (_units.Count >= _size) return null;
         if (_units.Count > 0)
             foreach (ObjectPoolUnit unit in _units)
             {
@@ -27,6 +26,7 @@ public class ObjectPool : MonoBehaviour
                     return unit;
                 }
             }
+        if (_units.Count >= _size) return null;
         GameObject obj = Instantiate(_unitObject, position, rotation, parent);
         ObjectPoolUnit newUnit = obj.GetComponent<ObjectPoolUnit>();
         if (!newUnit)
