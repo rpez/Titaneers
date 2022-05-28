@@ -94,7 +94,7 @@ public class TimeManager : MonoBehaviour
         _outTransition = !_inTransition;
         _targetScale = scale;
 
-        _currentTransitionTime = 1;
+        _currentTransitionTime = 0f;
     }
 
     public void ImpactFrame(float time, Color color)
@@ -120,6 +120,11 @@ public class TimeManager : MonoBehaviour
         _currentFreezetime = 0.0f;
         _keyAction = new InputAction(binding: key);
         _keyAction.Enable();
+    }
+
+    public void StartPhasedFreeze(int index)
+    {
+
     }
 
     public void StopConditionalFreeze()
