@@ -38,15 +38,24 @@ public class Laser : MonoBehaviour
     private Transform _laserTrackTarget;
 
     private Transform _target;
+    private BuildingPerformance _eyePerformance;
+    private Collider _eyeCollider;
+    private MeshRenderer _eyeRenderer;
 
     private void OnEnable()
     {
         _target = GameObject.FindGameObjectWithTag("Player").transform;
+        _eyePerformance = _laserEye.GetComponent<BuildingPerformance>();
+        _eyeCollider = _laserEye.GetComponent<Collider>();
+        _eyeRenderer= _laserEye.GetComponent<MeshRenderer>();
     }
 
     private  IEnumerator ShootLaser()
     {
-        _laserEye.SetActive(true);
+        if (!_eyeRenderer.enabled) _eyeRenderer.enabled = true;
+        _eyePerformance.Respawn();
+        _eyeCollider.enabled = true;
+
 
         //Aim
         isAiming = true;
@@ -86,8 +95,10 @@ public class Laser : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         _hitbox.localScale = Vector3.zero;
-        //Sound: Laser attack start here
+        //Sound: Laser attack stop here
 
-        _laserEye.SetActive(false);
+        //_laserEye.SetActive(false);
+        _eyePerformance.Destroyed();
+        _eyeCollider.enabled = false;
     }
 }
