@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PopUp : MonoBehaviour
 {
@@ -28,6 +29,20 @@ public class PopUp : MonoBehaviour
             if (popCoroutine != null) StopCoroutine(popCoroutine);
             popCoroutine = StartCoroutine("Pop");
         }
+    }
+
+    private void OnEnable()
+    {
+        _popUI.localScale = Vector3.one * _popSize * 5;
+        Image[] images = GetComponentsInChildren<Image>();
+        foreach (var image in images)
+        {
+            Color originalColor = image.color;
+            Color startColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+            image.color = startColor;
+            image.DOColor(originalColor, 2f);
+        }
+        _popUI.DOScale(_normalSize, 2f);
     }
 
     private IEnumerator Pop()

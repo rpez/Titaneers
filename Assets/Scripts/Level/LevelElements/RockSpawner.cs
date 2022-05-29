@@ -25,7 +25,7 @@ public class RockSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         _elapsed += Time.deltaTime;
         if (_elapsed >= 1f)
@@ -44,6 +44,7 @@ public class RockSpawner : MonoBehaviour
                                             Random.Range(_bounds.min.y, _bounds.max.y),
                                             Random.Range(_bounds.min.z, _bounds.max.z));
                 ObjectPoolUnit rock = _rocksPool.InitiateFromObjectPool(pos, Random.rotation);
+                if (rock == null) break;
                 rock.transform.localScale = new Vector3(scale, scale, scale);
             }
         }

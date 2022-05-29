@@ -290,14 +290,9 @@ public class GrapplingGun : MonoBehaviour
         }
 
         // If still no hit
-        if (!rayHit)
+        if (rayHit && Vector3.Distance(hit.collider.transform.position, transform.position) < Range * 1.5f)
         {
-            _grapplePoint = GameObject.Instantiate(HitpointPrefab, transform.position + PlayerCamera.transform.forward * Range, Quaternion.identity);
-            _grapplePoint.GetComponent<Renderer>().enabled = false;
-            _ricochet = true;
-        }
-        else
-        {
+            // hit 
             _ricochet = false;
             if (hit.collider.gameObject.tag == "Projectile")
             {
@@ -315,6 +310,12 @@ public class GrapplingGun : MonoBehaviour
                 var powerUp = hit.collider.gameObject.GetComponent<NewPowerUp>();
                 StartCoroutine(OnGrapplePowerUp(powerUp));
             }
+        }
+        else
+        {
+            _grapplePoint = GameObject.Instantiate(HitpointPrefab, transform.position + PlayerCamera.transform.forward * Range, Quaternion.identity);
+            _grapplePoint.GetComponent<Renderer>().enabled = false;
+            _ricochet = true;
         }
     }
 

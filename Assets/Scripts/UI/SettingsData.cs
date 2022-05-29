@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SettingsData : MonoBehaviour
 {
-    public static SettingsData Instance;
+    public static SettingsData Instance = new SettingsData();
 
     public float MouseSensitivity;
     public bool SkipTutorial;
