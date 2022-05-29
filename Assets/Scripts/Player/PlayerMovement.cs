@@ -449,6 +449,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (_pulling || _boosting)
         {
+            _currentBoostAmount -= Time.deltaTime * 0.5f;
+            _currentBoostRechargeTime = 0f;
+        }
+        else if (_boosting)
+        {
             _currentBoostAmount -= Time.deltaTime;
             _currentBoostRechargeTime = 0f;
         }
