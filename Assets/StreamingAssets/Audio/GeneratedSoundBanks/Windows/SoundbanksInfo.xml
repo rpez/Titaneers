@@ -33,7 +33,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="198360444">
+		<SoundBank Id="3161908922" Language="SFX" Hash="3089163097">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -1022,6 +1022,22 @@
 						<File Id="382169736" Language="SFX">
 							<ShortName>sfx-titan-lantern-attack-charge.wav</ShortName>
 							<Path>SFX/sfx-titan-lantern-attack-charge_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1726608006" Name="Play_titan_laser_aim" ObjectPath="\Events\Titan\TitanLaserAttack\Play_titan_laser_aim" MaxAttenuation="5000." DurationType="OneShot" DurationMin="7.104669" DurationMax="7.104669">
+					<IncludedMemoryFiles>
+						<File Id="601103600" Language="SFX">
+							<ShortName>sfx_titan_laser_aim.wav</ShortName>
+							<Path>SFX/sfx_titan_laser_aim_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1296203451" Name="Play_titan_laser_shot" ObjectPath="\Events\Titan\TitanLaserAttack\Play_titan_laser_shot" MaxAttenuation="5000." DurationType="OneShot" DurationMin="1.606236" DurationMax="1.802939">
+					<IncludedMemoryFiles>
+						<File Id="176796700" Language="SFX">
+							<ShortName>sfx_titan_laser_shot.wav</ShortName>
+							<Path>SFX/sfx_titan_laser_shot_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

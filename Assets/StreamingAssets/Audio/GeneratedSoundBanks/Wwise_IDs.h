@@ -42,6 +42,8 @@ namespace AK
         static const AkUniqueID PLAY_TITAN_LANTERN_ATTACK = 1409958524U;
         static const AkUniqueID PLAY_TITAN_LANTERN_ATTACK_SEQ = 1842908424U;
         static const AkUniqueID PLAY_TITAN_LANTERN_CHARGE = 2713252876U;
+        static const AkUniqueID PLAY_TITAN_LASER_AIM = 1726608006U;
+        static const AkUniqueID PLAY_TITAN_LASER_SHOT = 1296203451U;
         static const AkUniqueID PLAY_TITAN_MISSILE_EXPLODE = 3892312811U;
         static const AkUniqueID PLAY_TITAN_MISSILE_SHOT = 3166948436U;
         static const AkUniqueID PLAY_TITAN_SWORD_ATTACK_CHARGE = 3830687480U;

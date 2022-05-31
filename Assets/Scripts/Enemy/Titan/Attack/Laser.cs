@@ -7,6 +7,9 @@ public class Laser : MonoBehaviour
     //the sound controller can be put here.
     //public [Sound Controller Type] SoundContoller;
 
+    public string LaserAim = "Play_titan_laser_aim";
+    public string LaserShot = "Play_titan_laser_shot";
+
     public bool isAiming { get; private set; }
 
     [SerializeField]
@@ -44,6 +47,8 @@ public class Laser : MonoBehaviour
 
     private void OnEnable()
     {
+        AkSoundEngine.RegisterGameObj(gameObject);
+
         _target = GameObject.FindGameObjectWithTag("Player").transform;
         _eyePerformance = _laserEye.GetComponent<BuildingPerformance>();
         _eyeCollider = _laserEye.GetComponent<Collider>();
@@ -60,6 +65,7 @@ public class Laser : MonoBehaviour
         //Aim
         isAiming = true;
         //Sound: Laser start charging here
+        
 
         float timer = _aimTime;
         while (timer > 0)
@@ -72,6 +78,8 @@ public class Laser : MonoBehaviour
             _lineRenderer.startWidth = _lineRenderer.endWidth = _aimRayWidth;
 
             yield return new WaitForFixedUpdate();
+
+            AkSoundEngine.PostEvent(LaserAim, gameObject);
         }
         _lineRenderer.SetPosition(1, _shootPoint.position);
         _lineRenderer.startWidth = _lineRenderer.endWidth = 0f;
@@ -93,6 +101,8 @@ public class Laser : MonoBehaviour
             _shootPoint.LookAt(shootTarget);
             _hitbox.localScale = Vector3.one;
             yield return new WaitForFixedUpdate();
+
+            AkSoundEngine.PostEvent(LaserShot, gameObject);
         }
         _hitbox.localScale = Vector3.zero;
         //Sound: Laser attack stop here

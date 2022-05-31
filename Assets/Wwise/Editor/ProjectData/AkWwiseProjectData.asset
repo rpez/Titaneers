@@ -991,7 +991,7 @@ MonoBehaviour:
     ParentPath: Events/Titan
     guid: ea1f2569fa752f4eb51884dd2111927e
     GuidInternal: 
-    m_lastTime: -8585487279937511987
+    m_lastTime: -8585476115222626941
     List: []
   - PhysicalPath: Events/TitanEngine.wwu
     PathAndIcons:
@@ -1225,6 +1225,62 @@ MonoBehaviour:
       maxAttenuation: 3500
       maxDuration: 5.00975
       minDuration: 5.00975
+  - PhysicalPath: Events/TitanLaserAttack.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Titan
+      ObjectType: 12
+      guid: ea1f2569fa752f4eb51884dd2111927e
+    - ElementName: TitanLaserAttack
+      ObjectType: 12
+      guid: 174ff3623e52e143a7d09f8fe84f8c73
+    ParentPath: Events/Titan/TitanLaserAttack
+    guid: 174ff3623e52e143a7d09f8fe84f8c73
+    GuidInternal: 
+    m_lastTime: -8585476103623578357
+    List:
+    - name: Play_titan_laser_aim
+      guid: 0ab50c4ffed0c84cad804b9930e22310
+      id: 1726608006
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanLaserAttack
+        ObjectType: 12
+        guid: 174ff3623e52e143a7d09f8fe84f8c73
+      - ElementName: Play_titan_laser_aim
+        ObjectType: 3
+        guid: 0ab50c4ffed0c84cad804b9930e22310
+      Path: Events/Titan/TitanLaserAttack/Play_titan_laser_aim
+      maxAttenuation: 5000
+      maxDuration: 7.104669
+      minDuration: 7.104669
+    - name: Play_titan_laser_shot
+      guid: 24a75a183c03254883150878049db700
+      id: 1296203451
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Titan
+        ObjectType: 12
+        guid: ea1f2569fa752f4eb51884dd2111927e
+      - ElementName: TitanLaserAttack
+        ObjectType: 12
+        guid: 174ff3623e52e143a7d09f8fe84f8c73
+      - ElementName: Play_titan_laser_shot
+        ObjectType: 3
+        guid: 24a75a183c03254883150878049db700
+      Path: Events/Titan/TitanLaserAttack/Play_titan_laser_shot
+      maxAttenuation: 5000
+      maxDuration: 1.802939
+      minDuration: 1.606236
   - PhysicalPath: Events/TitanLocomotion.wwu
     PathAndIcons:
     - ElementName: Events
