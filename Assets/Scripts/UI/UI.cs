@@ -284,12 +284,14 @@ public class UI : MonoBehaviour
     public void OpenEscMenu()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         EscPanel.SetActive(true);
     }
 
     public void CloseEscMenu()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         EscPanel.SetActive(false);
     }
 
