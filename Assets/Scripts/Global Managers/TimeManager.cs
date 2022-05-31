@@ -90,6 +90,7 @@ public class TimeManager : MonoBehaviour
                 _outTransition = false;
                 Time.timeScale = 1f;
                 Time.fixedDeltaTime = _defaultFixedDeltaTime;
+                _postProcessingManager.SetTimeSlowEffectWeight(0f);
             }
         }
     }
@@ -173,15 +174,17 @@ public class TimeManager : MonoBehaviour
         
     public void StopPhasedFreeze()
     {
-        ToggleTimeScale(0.05f, false);
         _pollForInput = false;
         _phased = false;
         _requiredKey = "";
         _keyAction.Disable();
+
+        ToggleTimeScale(0.05f, false);
     }
 
     private void ResetFreeze()
     {
-        Time.timeScale = _currentTimeScale;
+        Time.timeScale = 1f;
+        _postProcessingManager.SetTimeSlowEffectWeight(0f);
     }
 }
