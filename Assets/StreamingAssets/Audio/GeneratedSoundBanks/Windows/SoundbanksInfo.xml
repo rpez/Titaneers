@@ -33,7 +33,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="3089163097">
+		<SoundBank Id="3161908922" Language="SFX" Hash="1090075282">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -211,6 +211,22 @@
 						<File Id="1061299184" Language="SFX">
 							<ShortName>sfx_player_voc_inhale_8.wav</ShortName>
 							<Path>SFX/sfx_player_voc_inhale_8_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1591569164" Name="Play_player_destroy_weak_spot" ObjectPath="\Events\Player\PlayerAttack\Play_player_destroy_weak_spot" DurationType="OneShot" DurationMin="3.124224" DurationMax="3.915257">
+					<IncludedMemoryFiles>
+						<File Id="724829222" Language="SFX">
+							<ShortName>sfx_player_sword_hit_destroy_weak_spot_2.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_destroy_weak_spot_2_10C4C929.wem</Path>
+						</File>
+						<File Id="847897902" Language="SFX">
+							<ShortName>sfx_player_sword_hit_destroy_weak_spot_1.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_destroy_weak_spot_1_10C4C929.wem</Path>
+						</File>
+						<File Id="1058509991" Language="SFX">
+							<ShortName>sfx_player_sword_hit_destroy_weak_spot.wav</ShortName>
+							<Path>SFX/sfx_player_sword_hit_destroy_weak_spot_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

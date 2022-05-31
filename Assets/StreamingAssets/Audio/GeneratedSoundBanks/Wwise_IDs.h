@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID PLAY_COMBAT_MUSIC = 3155474038U;
         static const AkUniqueID PLAY_PLAYER_BOOSTER = 142245832U;
         static const AkUniqueID PLAY_PLAYER_BREATHE = 2118095383U;
+        static const AkUniqueID PLAY_PLAYER_DESTROY_WEAK_SPOT = 1591569164U;
         static const AkUniqueID PLAY_PLAYER_FS = 4078825889U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_L = 3625340534U;
         static const AkUniqueID PLAY_PLAYER_FS_RUN_R = 3625340520U;

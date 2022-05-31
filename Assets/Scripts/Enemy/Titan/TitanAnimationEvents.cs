@@ -10,6 +10,7 @@ public class TitanAnimationEvents : MonoBehaviour
     public string TitanVocGeneric = "Play_titan_voc_generic";
     public string TitanSwordCharge = "Play_titan_sword_attack_charge";
     public string TitanSwordHit = "Play_titan_sword_attack_hit";
+    public string DestroyWeakSpot = "Play_player_destroy_weak_spot";
     //public string TitanTrampleFoot = "Play_titan_trample_foot";
     //public string TitanTrampleVoc = "Play_titan_trample_voc";
     public GameObject Head;
@@ -17,10 +18,12 @@ public class TitanAnimationEvents : MonoBehaviour
     public GameObject RightFoot;
     public GameObject Chest;
     public GameObject Sword;
+    public GameObject Weakness;
 
     // Start is called before the first frame update
     void Start()
     {
+        AkSoundEngine.RegisterGameObj(gameObject);
         AkSoundEngine.RegisterGameObj(Head);
         AkSoundEngine.RegisterGameObj(LeftFoot);
         AkSoundEngine.RegisterGameObj(RightFoot);
@@ -58,17 +61,22 @@ public class TitanAnimationEvents : MonoBehaviour
         AkSoundEngine.PostEvent(TitanSwordHit, Sword);
     }
 
-   /* void Play_titan_trample_foot()
-    {
-        AkSoundEngine.PostEvent(TitanTrampleFoot, gameObject);
-    }
-   */
+    /* void Play_titan_trample_foot()
+     {
+         AkSoundEngine.PostEvent(TitanTrampleFoot, gameObject);
+     }
+    */
 
     /*void Play_titan_trample_voc()
     {
         AkSoundEngine.PostEvent(TitanTrampleVoc, Head);
     }
     */
+
+    void Play_player_destroy_weak_spot()
+    {
+        AkSoundEngine.PostEvent(DestroyWeakSpot, gameObject);
+    }
 
 
 }

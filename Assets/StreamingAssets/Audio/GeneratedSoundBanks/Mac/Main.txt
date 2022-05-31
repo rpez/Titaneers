@@ -12,6 +12,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1296203451	Play_titan_laser_shot			\Titan\TitanLaserAttack\Play_titan_laser_shot	
 	1409958524	Play_titan_lantern_attack			\Titan\TitanLocomotion\TitanLanternAttack\Play_titan_lantern_attack	
 	1543233419	Play_player_voc_death			\Player\PlayerVoc\Play_player_voc_death	
+	1591569164	Play_player_destroy_weak_spot			\Player\PlayerAttack\Play_player_destroy_weak_spot	
 	1641970538	Play_player_voc_grapple_pull			\Player\PlayerVoc\Play_player_voc_grapple_pull	
 	1726608006	Play_titan_laser_aim			\Titan\TitanLaserAttack\Play_titan_laser_aim	
 	1752755706	Stop_2d_ambience_loop			\Ambience\Stop_2d_ambience_loop	
@@ -186,6 +187,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	718311933	sfx_player_voc_death_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_death_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerDeath\PlayerVocDeath\sfx_player_voc_death_2		201502
 	720587979	sfx-player-fs-shoe_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-fs-shoe_4_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe_4		26524
 	723241360	sfx_player_voc_exhale_5	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_exhale_5_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerBreahte\PlayerExhale\sfx_player_voc_exhale_5		38726
+	724829222	sfx_player_sword_hit_destroy_weak_spot_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_sword_hit_destroy_weak_spot_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerDestroyWeakSpot\sfx_player_sword_hit_destroy_weak_spot_2		651952
 	725213437	sfx_player_voc_inhale_17	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_inhale_17_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerBreahte\PlayerInhale\sfx_player_voc_inhale_17		39356
 	725714969	sfx_player_voc_inhale_15	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_inhale_15_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerBreahte\PlayerInhale\sfx_player_voc_inhale_15		31584
 	730213433	sfx_player_booster_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_booster_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerBooster\PlayerBooster\sfx_player_booster_2		308764
@@ -203,6 +205,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	810824379	sfx_player_voc_take_hit_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_take_hit_4_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerTakeHit\PlayerVocTakeHit\sfx_player_voc_take_hit_4		50602
 	819182001	sfx-titan-engine-loop	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-titan-engine-loop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Titan\TitanEngine\TitanEngineLoop\sfx-titan-engine-loop		1154700
 	820080969	sfx_player_voc_exhale_14	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_exhale_14_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerBreahte\PlayerExhale\sfx_player_voc_exhale_14		37474
+	847897902	sfx_player_sword_hit_destroy_weak_spot_1	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_sword_hit_destroy_weak_spot_1_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerDestroyWeakSpot\sfx_player_sword_hit_destroy_weak_spot_1		620404
 	855549330	sfx_player_sword_hit_powerful_4	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_sword_hit_powerful_4_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerSwordHitPowerful\sfx_player_sword_hit_powerful_4		469288
 	859028343	sfx-titan-sword-attack-hit	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-titan-sword-attack-hit_10C4C929.wem		\Actor-Mixer Hierarchy\Titan\Titan-Lantern-Attack\TitanLanternAttackExplosion\sfx-titan-sword-attack-hit		746308
 	859829970	sfx_player_voc_take_hit_soft_3	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_take_hit_soft_3_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerTakeHit\PlayerVocTakeHitSoft\sfx_player_voc_take_hit_soft_3		25360
@@ -235,5 +238,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1011705202	sfx-player-fs-shoe_2	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx-player-fs-shoe_2_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerLocomotion\Player_FS\player_fs_shoe\sfx-player-fs-shoe_2		26524
 	1021980294	music-combat	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\music-combat_D79FB2B7.wem		\Interactive Music Hierarchy\Music\music-combat\music-combat\music-combat		40322552
 	1022958818	sfx_player_voc_effort_5	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_effort_5_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerVocJump\sfx_player_voc_effort_5		45458
+	1058509991	sfx_player_sword_hit_destroy_weak_spot	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_sword_hit_destroy_weak_spot_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerMeleeAttack\PlayerDestroyWeakSpot\sfx_player_sword_hit_destroy_weak_spot		583948
 	1061299184	sfx_player_voc_inhale_8	Y:\Documents\Wwise Projects\Titaneers_WwiseProject\.cache\Mac\SFX\sfx_player_voc_inhale_8_10C4C929.wem		\Actor-Mixer Hierarchy\Player\PlayerVoc\PlayerBreahte\PlayerInhale\sfx_player_voc_inhale_8		29924
 
