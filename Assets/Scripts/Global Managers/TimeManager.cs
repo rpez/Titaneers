@@ -112,11 +112,11 @@ public class TimeManager : MonoBehaviour
 
     public void FreezeFrame(float time)
     {
-        _currentTimeScale = Time.timeScale;
-        Time.timeScale = 0f;
-        _frozen = true;
-        _freezeTime = time;
-        _currentFreezetime = 0.0f;
+        //_currentTimeScale = Time.timeScale;
+        //Time.timeScale = 0f;
+        //_frozen = true;
+        //_freezeTime = time;
+        //_currentFreezetime = 0.0f;
     }
     
     private void RequiredKeyPressed()
@@ -184,7 +184,7 @@ public class TimeManager : MonoBehaviour
 
     private void ResetFreeze()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = _currentTimeScale;
         _postProcessingManager.SetTimeSlowEffectWeight(0f);
     }
 }
