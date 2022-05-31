@@ -8,6 +8,9 @@ public class TimeManager : MonoBehaviour
     public AnimationCurve TransitionCurveIn;
     public AnimationCurve TransitionCurveOut;
 
+    public string[] PhasedActions;
+    public FlashImage TutorialText;
+
     // Other references
     private PostProcessingManager _postProcessingManager;
 
@@ -15,6 +18,8 @@ public class TimeManager : MonoBehaviour
     private bool _inTransition;
     private bool _outTransition;
     private bool _frozen;
+    private bool _conditional;
+    private bool _phased;
 
     // Other Variables
     private float _targetScale;
@@ -28,6 +33,7 @@ public class TimeManager : MonoBehaviour
     private string _requiredKey = "";
     private int[] _keyValues;
     private InputAction _keyAction;
+    private int _phaseIndex;
 
     private void Awake()
     {
@@ -44,7 +50,7 @@ public class TimeManager : MonoBehaviour
         {
             _keyAction.performed += _ =>
             {
-                StopConditionalFreeze();
+                RequiredKeyPressed();
             };
         }
 
@@ -111,26 +117,65 @@ public class TimeManager : MonoBehaviour
         _freezeTime = time;
         _currentFreezetime = 0.0f;
     }
+    
+    private void RequiredKeyPressed()
+    {
+        if (_conditional)
+        {
+            StopConditionalFreeze();
+        }
+        else if (_phased)
+        {
+            if (_phaseIndex >= PhasedActions.Length - 1) StopPhasedFreeze();
+            AdvancePhasedFreeze();
+        }
+    }
 
     public void StartConditionalFreeze(string key)
     {
         ToggleTimeScale(0.01f, true);
         _pollForInput = true;
+        _conditional = true;
         _requiredKey = key;
         _currentFreezetime = 0.0f;
         _keyAction = new InputAction(binding: key);
         _keyAction.Enable();
     }
 
-    public void StartPhasedFreeze(int index)
-    {
-
-    }
-
     public void StopConditionalFreeze()
     {
         ToggleTimeScale(0.01f, false);
         _pollForInput = false;
+        _conditional = false;
+        _requiredKey = "";
+        _keyAction.Disable();
+    }
+
+    public void StartPhasedFreeze(int index = 0)
+    {
+        ToggleTimeScale(0.05f, true);
+        _pollForInput = true;
+        _phased = true;
+        _currentFreezetime = 0.0f;
+        _phaseIndex = 0;
+
+        AdvancePhasedFreeze();
+    }
+
+    public void AdvancePhasedFreeze(int index = 0)
+    {
+        _keyAction = new InputAction(binding: PhasedActions[_phaseIndex]);
+        _keyAction.Enable();
+        _phaseIndex++;
+
+        if (TutorialText) TutorialText.UpdateText();
+    }
+        
+    public void StopPhasedFreeze()
+    {
+        ToggleTimeScale(0.05f, false);
+        _pollForInput = false;
+        _phased = false;
         _requiredKey = "";
         _keyAction.Disable();
     }

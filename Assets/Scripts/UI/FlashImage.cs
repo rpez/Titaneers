@@ -16,10 +16,15 @@ public class FlashImage : MonoBehaviour
     [SerializeField]
     private TMP_Text _text;
 
-    private void OnEnable()
+    public void UpdateText()
     {
         _text.text = TextHint;
         _image.sprite = ButtonSprite;
+    }
+
+    private void OnEnable()
+    {
+        UpdateText();
     }
 
     private void OnDisable()
