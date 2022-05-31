@@ -1,39 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FlashImage : MonoBehaviour
 {
-    public Sprite Sprite0 { get; set; }
-    public Sprite Sprite1 { get; set; }
+    public Sprite ButtonSprite { get; set; }
+    public string TextHint { get; set; }
 
+    [SerializeField]
+    public Sprite _transparentSprite;
     [SerializeField]
     private Image _image;
     [SerializeField]
-    private float _interval;
+    private TMP_Text _text;
 
-    private int _point;
-    private float _timer;
+    public void UpdateText()
+    {
+        _text.text = TextHint;
+        _image.sprite = ButtonSprite;
+    }
 
     private void OnEnable()
     {
-        _point = 0;
-        _timer = 0f;
-        _image.sprite = Sprite0;
+        UpdateText();
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        if (_timer > _interval)
-        {
-            _timer = 0f;
-            _point = (_point + 1) % 2;
-            _image.sprite = (_point == 0) ? Sprite0 : Sprite1;
-        }
-        else
-        {
-            _timer += Time.deltaTime;
-        }
+        _text.text = "";
+        _image.sprite = _transparentSprite;
     }
 }
