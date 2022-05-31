@@ -73,7 +73,7 @@ public class TitanAnimationEvents : MonoBehaviour
     }
     */
 
-    void Play_player_destroy_weak_spot()
+    public void Play_player_destroy_weak_spot()
     {
         AkSoundEngine.PostEvent(DestroyWeakSpot, gameObject);
     }

@@ -5841,11 +5841,13 @@ MonoBehaviour:
   TitanVocGeneric: Play_titan_voc_generic
   TitanSwordCharge: Play_titan_sword_attack_charge
   TitanSwordHit: Play_titan_sword_attack_hit
+  DestroyWeakSpot: Play_player_destroy_weak_spot
   Head: {fileID: 3614428803937845314}
   LeftFoot: {fileID: 8829847841443829855}
   RightFoot: {fileID: 8379481587044710890}
   Chest: {fileID: 8864567067815190846}
   Sword: {fileID: 6081299937449922351}
+  Weakness: {fileID: 0}
 --- !u!114 &375013441238744037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18374,6 +18376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b31eb548eccf444ab07fcde9c2259f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaserAim: Play_titan_laser_aim
+  LaserShot: Play_titan_laser_shot
   _laserEye: {fileID: 1451376441230689744}
   _shootPoint: {fileID: 6997651944407496928}
   _lineRenderer: {fileID: 1107614921467368314}
@@ -20787,6 +20791,34 @@ PrefabInstance:
       propertyPath: _maxHealthPoint
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 4947085955012508035}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: Play_player_destroy_weak_spot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: TitanAnimationEvents, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
 --- !u!114 &3542089377609412546 stripped
@@ -21901,7 +21933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -21924,6 +21956,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[10].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
       objectReference: {fileID: 9083823054127140993}
@@ -21944,6 +21980,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1953192046691843912}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[10].m_Target
+      value: 
+      objectReference: {fileID: 4947085955012508035}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -21961,6 +22001,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[9].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[10].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
@@ -21984,6 +22028,10 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[10].m_MethodName
+      value: Play_player_destroy_weak_spot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -22004,7 +22052,15 @@ PrefabInstance:
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[10].m_TargetAssemblyTypeName
+      value: TitanAnimationEvents, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[9].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[10].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
@@ -22033,6 +22089,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[9].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
+      propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[10].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -22714,7 +22774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -22730,7 +22790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[8].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Target
@@ -22747,7 +22807,7 @@ PrefabInstance:
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[8].m_Target
       value: 
-      objectReference: {fileID: 7780624026508409020}
+      objectReference: {fileID: 4947085955012508035}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
       value: 2
@@ -22778,7 +22838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[8].m_MethodName
-      value: SetActive
+      value: Play_player_destroy_weak_spot
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -22794,7 +22854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[8].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: TitanAnimationEvents, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_BoolArgument
@@ -23033,7 +23093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -23053,7 +23113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[9].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_Target
@@ -23074,7 +23134,7 @@ PrefabInstance:
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[9].m_Target
       value: 
-      objectReference: {fileID: 1953192046691843912}
+      objectReference: {fileID: 4947085955012508035}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
       value: 2
@@ -23113,7 +23173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[9].m_MethodName
-      value: SetActive
+      value: Play_player_destroy_weak_spot
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -23133,7 +23193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[9].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: TitanAnimationEvents, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5688026480875795397, guid: ae19c2ebf4338604986696872fe7e76f, type: 3}
       propertyPath: _deathEvents.m_PersistentCalls.m_Calls.Array.data[8].m_Arguments.m_BoolArgument
